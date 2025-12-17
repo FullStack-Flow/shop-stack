@@ -1,3 +1,4 @@
+import FooterMiddle from "@/components/containers/store/footer-middle";
 import FooterTop from "@/components/containers/store/footer-top";
 
 export default function Footer() {
@@ -7,6 +8,7 @@ export default function Footer() {
       <FooterTop />
 
       {/* Middle */}
+      <FooterMiddle />
       {/* Bottom */}
     </footer>
   );
