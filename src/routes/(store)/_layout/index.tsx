@@ -1,4 +1,5 @@
 import Collections from "@/components/templates/store/homepage/collections";
+import CtaBanner from "@/components/templates/store/homepage/cta-banner";
 import FeatureGrid from "@/components/templates/store/homepage/feature-grid";
 import Hero from "@/components/templates/store/homepage/heor";
 import { createFileRoute } from "@tanstack/react-router";
@@ -11,6 +12,7 @@ function App() {
       <Hero />
       <FeatureGrid />
       <Collections />
+      <CtaBanner />
     </div>
   );
 }
