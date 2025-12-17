@@ -1,3 +1,4 @@
+import Collections from "@/components/templates/store/homepage/collections";
 import FeatureGrid from "@/components/templates/store/homepage/feature-grid";
 import Hero from "@/components/templates/store/homepage/heor";
 import { createFileRoute } from "@tanstack/react-router";
@@ -9,6 +10,7 @@ function App() {
     <div className="min-h-screen">
       <Hero />
       <FeatureGrid />
+      <Collections />
     </div>
   );
 }
