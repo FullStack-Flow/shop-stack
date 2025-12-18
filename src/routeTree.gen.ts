@@ -13,6 +13,8 @@ import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
 import { Route as storeLayoutRouteImport } from './routes/(store)/_layout'
 import { Route as storeLayoutIndexRouteImport } from './routes/(store)/_layout/index'
 import { Route as storeLayoutCartRouteImport } from './routes/(store)/_layout/cart'
+import { Route as storeLayoutProductIndexRouteImport } from './routes/(store)/_layout/product/index'
+import { Route as storeLayoutProductProductIdRouteImport } from './routes/(store)/_layout/product/$productId'
 
 const AuthSignInRoute = AuthSignInRouteImport.update({
   id: '/auth/sign-in',
@@ -33,16 +35,31 @@ const storeLayoutCartRoute = storeLayoutCartRouteImport.update({
   path: '/cart',
   getParentRoute: () => storeLayoutRoute,
 } as any)
+const storeLayoutProductIndexRoute = storeLayoutProductIndexRouteImport.update({
+  id: '/product/',
+  path: '/product/',
+  getParentRoute: () => storeLayoutRoute,
+} as any)
+const storeLayoutProductProductIdRoute =
+  storeLayoutProductProductIdRouteImport.update({
+    id: '/product/$productId',
+    path: '/product/$productId',
+    getParentRoute: () => storeLayoutRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/auth/sign-in': typeof AuthSignInRoute
   '/cart': typeof storeLayoutCartRoute
   '/': typeof storeLayoutIndexRoute
+  '/product/$productId': typeof storeLayoutProductProductIdRoute
+  '/product': typeof storeLayoutProductIndexRoute
 }
 export interface FileRoutesByTo {
   '/auth/sign-in': typeof AuthSignInRoute
   '/cart': typeof storeLayoutCartRoute
   '/': typeof storeLayoutIndexRoute
+  '/product/$productId': typeof storeLayoutProductProductIdRoute
+  '/product': typeof storeLayoutProductIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -50,18 +67,27 @@ export interface FileRoutesById {
   '/auth/sign-in': typeof AuthSignInRoute
   '/(store)/_layout/cart': typeof storeLayoutCartRoute
   '/(store)/_layout/': typeof storeLayoutIndexRoute
+  '/(store)/_layout/product/$productId': typeof storeLayoutProductProductIdRoute
+  '/(store)/_layout/product/': typeof storeLayoutProductIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/auth/sign-in' | '/cart' | '/'
+  fullPaths:
+    | '/auth/sign-in'
+    | '/cart'
+    | '/'
+    | '/product/$productId'
+    | '/product'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth/sign-in' | '/cart' | '/'
+  to: '/auth/sign-in' | '/cart' | '/' | '/product/$productId' | '/product'
   id:
     | '__root__'
     | '/(store)/_layout'
     | '/auth/sign-in'
     | '/(store)/_layout/cart'
     | '/(store)/_layout/'
+    | '/(store)/_layout/product/$productId'
+    | '/(store)/_layout/product/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -99,17 +125,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof storeLayoutCartRouteImport
       parentRoute: typeof storeLayoutRoute
     }
+    '/(store)/_layout/product/': {
+      id: '/(store)/_layout/product/'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof storeLayoutProductIndexRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/product/$productId': {
+      id: '/(store)/_layout/product/$productId'
+      path: '/product/$productId'
+      fullPath: '/product/$productId'
+      preLoaderRoute: typeof storeLayoutProductProductIdRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
   }
 }
 
 interface storeLayoutRouteChildren {
   storeLayoutCartRoute: typeof storeLayoutCartRoute
   storeLayoutIndexRoute: typeof storeLayoutIndexRoute
+  storeLayoutProductProductIdRoute: typeof storeLayoutProductProductIdRoute
+  storeLayoutProductIndexRoute: typeof storeLayoutProductIndexRoute
 }
 
 const storeLayoutRouteChildren: storeLayoutRouteChildren = {
   storeLayoutCartRoute: storeLayoutCartRoute,
   storeLayoutIndexRoute: storeLayoutIndexRoute,
+  storeLayoutProductProductIdRoute: storeLayoutProductProductIdRoute,
+  storeLayoutProductIndexRoute: storeLayoutProductIndexRoute,
 }
 
 const storeLayoutRouteWithChildren = storeLayoutRoute._addFileChildren(
