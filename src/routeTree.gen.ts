@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
 import { Route as storeLayoutRouteImport } from './routes/(store)/_layout'
 import { Route as storeLayoutIndexRouteImport } from './routes/(store)/_layout/index'
+import { Route as storeLayoutCheckoutRouteImport } from './routes/(store)/_layout/checkout'
 import { Route as storeLayoutCartRouteImport } from './routes/(store)/_layout/cart'
 import { Route as storeLayoutProductIndexRouteImport } from './routes/(store)/_layout/product/index'
 import { Route as storeLayoutProductProductIdRouteImport } from './routes/(store)/_layout/product/$productId'
@@ -28,6 +29,11 @@ const storeLayoutRoute = storeLayoutRouteImport.update({
 const storeLayoutIndexRoute = storeLayoutIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => storeLayoutRoute,
+} as any)
+const storeLayoutCheckoutRoute = storeLayoutCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => storeLayoutRoute,
 } as any)
 const storeLayoutCartRoute = storeLayoutCartRouteImport.update({
@@ -50,6 +56,7 @@ const storeLayoutProductProductIdRoute =
 export interface FileRoutesByFullPath {
   '/auth/sign-in': typeof AuthSignInRoute
   '/cart': typeof storeLayoutCartRoute
+  '/checkout': typeof storeLayoutCheckoutRoute
   '/': typeof storeLayoutIndexRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
   '/product': typeof storeLayoutProductIndexRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/auth/sign-in': typeof AuthSignInRoute
   '/cart': typeof storeLayoutCartRoute
+  '/checkout': typeof storeLayoutCheckoutRoute
   '/': typeof storeLayoutIndexRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
   '/product': typeof storeLayoutProductIndexRoute
@@ -66,6 +74,7 @@ export interface FileRoutesById {
   '/(store)/_layout': typeof storeLayoutRouteWithChildren
   '/auth/sign-in': typeof AuthSignInRoute
   '/(store)/_layout/cart': typeof storeLayoutCartRoute
+  '/(store)/_layout/checkout': typeof storeLayoutCheckoutRoute
   '/(store)/_layout/': typeof storeLayoutIndexRoute
   '/(store)/_layout/product/$productId': typeof storeLayoutProductProductIdRoute
   '/(store)/_layout/product/': typeof storeLayoutProductIndexRoute
@@ -75,16 +84,24 @@ export interface FileRouteTypes {
   fullPaths:
     | '/auth/sign-in'
     | '/cart'
+    | '/checkout'
     | '/'
     | '/product/$productId'
     | '/product'
   fileRoutesByTo: FileRoutesByTo
-  to: '/auth/sign-in' | '/cart' | '/' | '/product/$productId' | '/product'
+  to:
+    | '/auth/sign-in'
+    | '/cart'
+    | '/checkout'
+    | '/'
+    | '/product/$productId'
+    | '/product'
   id:
     | '__root__'
     | '/(store)/_layout'
     | '/auth/sign-in'
     | '/(store)/_layout/cart'
+    | '/(store)/_layout/checkout'
     | '/(store)/_layout/'
     | '/(store)/_layout/product/$productId'
     | '/(store)/_layout/product/'
@@ -118,6 +135,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof storeLayoutIndexRouteImport
       parentRoute: typeof storeLayoutRoute
     }
+    '/(store)/_layout/checkout': {
+      id: '/(store)/_layout/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof storeLayoutCheckoutRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
     '/(store)/_layout/cart': {
       id: '/(store)/_layout/cart'
       path: '/cart'
@@ -144,6 +168,7 @@ declare module '@tanstack/react-router' {
 
 interface storeLayoutRouteChildren {
   storeLayoutCartRoute: typeof storeLayoutCartRoute
+  storeLayoutCheckoutRoute: typeof storeLayoutCheckoutRoute
   storeLayoutIndexRoute: typeof storeLayoutIndexRoute
   storeLayoutProductProductIdRoute: typeof storeLayoutProductProductIdRoute
   storeLayoutProductIndexRoute: typeof storeLayoutProductIndexRoute
@@ -151,6 +176,7 @@ interface storeLayoutRouteChildren {
 
 const storeLayoutRouteChildren: storeLayoutRouteChildren = {
   storeLayoutCartRoute: storeLayoutCartRoute,
+  storeLayoutCheckoutRoute: storeLayoutCheckoutRoute,
   storeLayoutIndexRoute: storeLayoutIndexRoute,
   storeLayoutProductProductIdRoute: storeLayoutProductProductIdRoute,
   storeLayoutProductIndexRoute: storeLayoutProductIndexRoute,

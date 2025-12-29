@@ -1,3 +1,4 @@
+import CartTemplate from "@/components/templates/store/cart/cart-template";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/(store)/_layout/cart")({
@@ -5,5 +6,5 @@ export const Route = createFileRoute("/(store)/_layout/cart")({
 });
 
 function RouteComponent() {
-  return <div>Hello "/(store)/_layout/cart"!</div>;
+  return <CartTemplate />;
 }
