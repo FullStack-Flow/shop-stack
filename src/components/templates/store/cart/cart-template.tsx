@@ -1,14 +1,7 @@
+import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
 import EmptyState from "@/components/base/empty/empty-state";
 import CartItemsList from "@/components/containers/store/cart/cart-items-list";
 import CartSummary from "@/components/containers/store/cart/cart-summary";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
 import { Link } from "@tanstack/react-router";
@@ -17,26 +10,15 @@ import { ShoppingBag } from "lucide-react";
 export default function CartTemplate() {
   const { items } = useCartStore();
 
+  const cartSteps = [
+    { label: "Home", href: "/" },
+    { label: "Cart", isActive: true },
+  ] as const;
+
   return (
     <div className="@container container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link to="/">Home</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Cart</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <h1 className="mt-4 font-bold text-3xl tracking-tight uppercase">
-          Your Cart
-        </h1>
-      </div>
+      <BreadcrumbNav items={cartSteps} className="mb-4" />
+      <h1 className="mt-4 font-bold text-3xl tracking-tight mb-8">YOUR CART</h1>
 
       {items.length === 0 ? (
         <EmptyState
