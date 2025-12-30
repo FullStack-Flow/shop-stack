@@ -68,9 +68,9 @@ export default function CategoryTemplate() {
                 columns={{
                   default: 2,
                   sm: 3,
-                  md: 4,
-                  lg: 4,
-                  xl: 5,
+                  md: 3,
+                  lg: 3,
+                  xl: 4,
                 }}
               />
             </TabsContent>

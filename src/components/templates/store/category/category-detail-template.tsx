@@ -133,10 +133,10 @@ export default function CategoryDetailTemplate({ slug }: { slug: string }) {
                 variant="default"
                 columns={{
                   default: 2,
-                  sm: 3,
-                  md: 4,
-                  lg: 5,
-                  xl: 6,
+                  sm: 2,
+                  md: 3,
+                  lg: 4,
+                  xl: 5,
                 }}
               />
             </div>
