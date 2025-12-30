@@ -1,3 +1,4 @@
+import StorePageTemplate from "@/components/templates/store/storefront/store-page-template";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/(store)/_layout/store/$slug")({
@@ -5,5 +6,6 @@ export const Route = createFileRoute("/(store)/_layout/store/$slug")({
 });
 
 function RouteComponent() {
-  return <div>Hello "/(store)/_layout/store/$slug"!</div>;
+  const { slug } = Route.useParams();
+  return <StorePageTemplate slug={slug} />;
 }
