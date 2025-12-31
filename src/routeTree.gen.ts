@@ -13,6 +13,7 @@ import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
 import { Route as storeLayoutRouteImport } from './routes/(store)/_layout'
 import { Route as storeLayoutIndexRouteImport } from './routes/(store)/_layout/index'
 import { Route as storeLayoutProfileRouteImport } from './routes/(store)/_layout/profile'
+import { Route as storeLayoutOrdersRouteImport } from './routes/(store)/_layout/orders'
 import { Route as storeLayoutOrderTrackingRouteImport } from './routes/(store)/_layout/order-tracking'
 import { Route as storeLayoutOrderConfirmationRouteImport } from './routes/(store)/_layout/order-confirmation'
 import { Route as storeLayoutCheckoutRouteImport } from './routes/(store)/_layout/checkout'
@@ -41,6 +42,11 @@ const storeLayoutIndexRoute = storeLayoutIndexRouteImport.update({
 const storeLayoutProfileRoute = storeLayoutProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => storeLayoutRoute,
+} as any)
+const storeLayoutOrdersRoute = storeLayoutOrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
   getParentRoute: () => storeLayoutRoute,
 } as any)
 const storeLayoutOrderTrackingRoute =
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof storeLayoutCheckoutRoute
   '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
   '/order-tracking': typeof storeLayoutOrderTrackingRoute
+  '/orders': typeof storeLayoutOrdersRoute
   '/profile': typeof storeLayoutProfileRoute
   '/': typeof storeLayoutIndexRoute
   '/category/$slug': typeof storeLayoutCategorySlugRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/checkout': typeof storeLayoutCheckoutRoute
   '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
   '/order-tracking': typeof storeLayoutOrderTrackingRoute
+  '/orders': typeof storeLayoutOrdersRoute
   '/profile': typeof storeLayoutProfileRoute
   '/': typeof storeLayoutIndexRoute
   '/category/$slug': typeof storeLayoutCategorySlugRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/(store)/_layout/checkout': typeof storeLayoutCheckoutRoute
   '/(store)/_layout/order-confirmation': typeof storeLayoutOrderConfirmationRoute
   '/(store)/_layout/order-tracking': typeof storeLayoutOrderTrackingRoute
+  '/(store)/_layout/orders': typeof storeLayoutOrdersRoute
   '/(store)/_layout/profile': typeof storeLayoutProfileRoute
   '/(store)/_layout/': typeof storeLayoutIndexRoute
   '/(store)/_layout/category/$slug': typeof storeLayoutCategorySlugRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/order-confirmation'
     | '/order-tracking'
+    | '/orders'
     | '/profile'
     | '/'
     | '/category/$slug'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/order-confirmation'
     | '/order-tracking'
+    | '/orders'
     | '/profile'
     | '/'
     | '/category/$slug'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/(store)/_layout/checkout'
     | '/(store)/_layout/order-confirmation'
     | '/(store)/_layout/order-tracking'
+    | '/(store)/_layout/orders'
     | '/(store)/_layout/profile'
     | '/(store)/_layout/'
     | '/(store)/_layout/category/$slug'
@@ -227,6 +239,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof storeLayoutProfileRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/orders': {
+      id: '/(store)/_layout/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof storeLayoutOrdersRouteImport
       parentRoute: typeof storeLayoutRoute
     }
     '/(store)/_layout/order-tracking': {
@@ -307,6 +326,7 @@ interface storeLayoutRouteChildren {
   storeLayoutCheckoutRoute: typeof storeLayoutCheckoutRoute
   storeLayoutOrderConfirmationRoute: typeof storeLayoutOrderConfirmationRoute
   storeLayoutOrderTrackingRoute: typeof storeLayoutOrderTrackingRoute
+  storeLayoutOrdersRoute: typeof storeLayoutOrdersRoute
   storeLayoutProfileRoute: typeof storeLayoutProfileRoute
   storeLayoutIndexRoute: typeof storeLayoutIndexRoute
   storeLayoutCategorySlugRoute: typeof storeLayoutCategorySlugRoute
@@ -322,6 +342,7 @@ const storeLayoutRouteChildren: storeLayoutRouteChildren = {
   storeLayoutCheckoutRoute: storeLayoutCheckoutRoute,
   storeLayoutOrderConfirmationRoute: storeLayoutOrderConfirmationRoute,
   storeLayoutOrderTrackingRoute: storeLayoutOrderTrackingRoute,
+  storeLayoutOrdersRoute: storeLayoutOrdersRoute,
   storeLayoutProfileRoute: storeLayoutProfileRoute,
   storeLayoutIndexRoute: storeLayoutIndexRoute,
   storeLayoutCategorySlugRoute: storeLayoutCategorySlugRoute,
