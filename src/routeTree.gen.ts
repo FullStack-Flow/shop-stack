@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
 import { Route as storeLayoutRouteImport } from './routes/(store)/_layout'
 import { Route as storeLayoutIndexRouteImport } from './routes/(store)/_layout/index'
+import { Route as storeLayoutOrderTrackingRouteImport } from './routes/(store)/_layout/order-tracking'
+import { Route as storeLayoutOrderConfirmationRouteImport } from './routes/(store)/_layout/order-confirmation'
 import { Route as storeLayoutCheckoutRouteImport } from './routes/(store)/_layout/checkout'
 import { Route as storeLayoutCartRouteImport } from './routes/(store)/_layout/cart'
 import { Route as storeLayoutStoreIndexRouteImport } from './routes/(store)/_layout/store/index'
@@ -35,6 +37,18 @@ const storeLayoutIndexRoute = storeLayoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => storeLayoutRoute,
 } as any)
+const storeLayoutOrderTrackingRoute =
+  storeLayoutOrderTrackingRouteImport.update({
+    id: '/order-tracking',
+    path: '/order-tracking',
+    getParentRoute: () => storeLayoutRoute,
+  } as any)
+const storeLayoutOrderConfirmationRoute =
+  storeLayoutOrderConfirmationRouteImport.update({
+    id: '/order-confirmation',
+    path: '/order-confirmation',
+    getParentRoute: () => storeLayoutRoute,
+  } as any)
 const storeLayoutCheckoutRoute = storeLayoutCheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
@@ -82,6 +96,8 @@ export interface FileRoutesByFullPath {
   '/auth/sign-in': typeof AuthSignInRoute
   '/cart': typeof storeLayoutCartRoute
   '/checkout': typeof storeLayoutCheckoutRoute
+  '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
+  '/order-tracking': typeof storeLayoutOrderTrackingRoute
   '/': typeof storeLayoutIndexRoute
   '/category/$slug': typeof storeLayoutCategorySlugRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
@@ -94,6 +110,8 @@ export interface FileRoutesByTo {
   '/auth/sign-in': typeof AuthSignInRoute
   '/cart': typeof storeLayoutCartRoute
   '/checkout': typeof storeLayoutCheckoutRoute
+  '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
+  '/order-tracking': typeof storeLayoutOrderTrackingRoute
   '/': typeof storeLayoutIndexRoute
   '/category/$slug': typeof storeLayoutCategorySlugRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
@@ -108,6 +126,8 @@ export interface FileRoutesById {
   '/auth/sign-in': typeof AuthSignInRoute
   '/(store)/_layout/cart': typeof storeLayoutCartRoute
   '/(store)/_layout/checkout': typeof storeLayoutCheckoutRoute
+  '/(store)/_layout/order-confirmation': typeof storeLayoutOrderConfirmationRoute
+  '/(store)/_layout/order-tracking': typeof storeLayoutOrderTrackingRoute
   '/(store)/_layout/': typeof storeLayoutIndexRoute
   '/(store)/_layout/category/$slug': typeof storeLayoutCategorySlugRoute
   '/(store)/_layout/product/$productId': typeof storeLayoutProductProductIdRoute
@@ -122,6 +142,8 @@ export interface FileRouteTypes {
     | '/auth/sign-in'
     | '/cart'
     | '/checkout'
+    | '/order-confirmation'
+    | '/order-tracking'
     | '/'
     | '/category/$slug'
     | '/product/$productId'
@@ -134,6 +156,8 @@ export interface FileRouteTypes {
     | '/auth/sign-in'
     | '/cart'
     | '/checkout'
+    | '/order-confirmation'
+    | '/order-tracking'
     | '/'
     | '/category/$slug'
     | '/product/$productId'
@@ -147,6 +171,8 @@ export interface FileRouteTypes {
     | '/auth/sign-in'
     | '/(store)/_layout/cart'
     | '/(store)/_layout/checkout'
+    | '/(store)/_layout/order-confirmation'
+    | '/(store)/_layout/order-tracking'
     | '/(store)/_layout/'
     | '/(store)/_layout/category/$slug'
     | '/(store)/_layout/product/$productId'
@@ -182,6 +208,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof storeLayoutIndexRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/order-tracking': {
+      id: '/(store)/_layout/order-tracking'
+      path: '/order-tracking'
+      fullPath: '/order-tracking'
+      preLoaderRoute: typeof storeLayoutOrderTrackingRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/order-confirmation': {
+      id: '/(store)/_layout/order-confirmation'
+      path: '/order-confirmation'
+      fullPath: '/order-confirmation'
+      preLoaderRoute: typeof storeLayoutOrderConfirmationRouteImport
       parentRoute: typeof storeLayoutRoute
     }
     '/(store)/_layout/checkout': {
@@ -246,6 +286,8 @@ declare module '@tanstack/react-router' {
 interface storeLayoutRouteChildren {
   storeLayoutCartRoute: typeof storeLayoutCartRoute
   storeLayoutCheckoutRoute: typeof storeLayoutCheckoutRoute
+  storeLayoutOrderConfirmationRoute: typeof storeLayoutOrderConfirmationRoute
+  storeLayoutOrderTrackingRoute: typeof storeLayoutOrderTrackingRoute
   storeLayoutIndexRoute: typeof storeLayoutIndexRoute
   storeLayoutCategorySlugRoute: typeof storeLayoutCategorySlugRoute
   storeLayoutProductProductIdRoute: typeof storeLayoutProductProductIdRoute
@@ -258,6 +300,8 @@ interface storeLayoutRouteChildren {
 const storeLayoutRouteChildren: storeLayoutRouteChildren = {
   storeLayoutCartRoute: storeLayoutCartRoute,
   storeLayoutCheckoutRoute: storeLayoutCheckoutRoute,
+  storeLayoutOrderConfirmationRoute: storeLayoutOrderConfirmationRoute,
+  storeLayoutOrderTrackingRoute: storeLayoutOrderTrackingRoute,
   storeLayoutIndexRoute: storeLayoutIndexRoute,
   storeLayoutCategorySlugRoute: storeLayoutCategorySlugRoute,
   storeLayoutProductProductIdRoute: storeLayoutProductProductIdRoute,
