@@ -11,7 +11,6 @@ interface ShopProductsTemplateProps {
 export default function ShopProductsTemplate({
   products,
   onAddProduct,
-  onSearch,
 }: ShopProductsTemplateProps) {
   return (
     <div className="space-y-6">
