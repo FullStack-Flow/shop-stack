@@ -27,6 +27,7 @@ import { Route as vendorShopSlugIndexRouteImport } from './routes/(vendor)/shop/
 import { Route as storeLayoutStoreIndexRouteImport } from './routes/(store)/_layout/store/index'
 import { Route as storeLayoutProductIndexRouteImport } from './routes/(store)/_layout/product/index'
 import { Route as storeLayoutCategoryIndexRouteImport } from './routes/(store)/_layout/category/index'
+import { Route as vendorShopSlugProductsRouteImport } from './routes/(vendor)/shop/$slug/products'
 import { Route as storeLayoutStoreSlugRouteImport } from './routes/(store)/_layout/store/$slug'
 import { Route as storeLayoutProductProductIdRouteImport } from './routes/(store)/_layout/product/$productId'
 import { Route as storeLayoutCategorySlugRouteImport } from './routes/(store)/_layout/category/$slug'
@@ -122,6 +123,11 @@ const storeLayoutCategoryIndexRoute =
     path: '/category/',
     getParentRoute: () => storeLayoutRoute,
   } as any)
+const vendorShopSlugProductsRoute = vendorShopSlugProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => vendorShopSlugRoute,
+} as any)
 const storeLayoutStoreSlugRoute = storeLayoutStoreSlugRouteImport.update({
   id: '/store/$slug',
   path: '/store/$slug',
@@ -155,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/category/$slug': typeof storeLayoutCategorySlugRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
   '/store/$slug': typeof storeLayoutStoreSlugRoute
+  '/shop/$slug/products': typeof vendorShopSlugProductsRoute
   '/category': typeof storeLayoutCategoryIndexRoute
   '/product': typeof storeLayoutProductIndexRoute
   '/store': typeof storeLayoutStoreIndexRoute
@@ -175,6 +182,7 @@ export interface FileRoutesByTo {
   '/category/$slug': typeof storeLayoutCategorySlugRoute
   '/product/$productId': typeof storeLayoutProductProductIdRoute
   '/store/$slug': typeof storeLayoutStoreSlugRoute
+  '/shop/$slug/products': typeof vendorShopSlugProductsRoute
   '/category': typeof storeLayoutCategoryIndexRoute
   '/product': typeof storeLayoutProductIndexRoute
   '/store': typeof storeLayoutStoreIndexRoute
@@ -199,6 +207,7 @@ export interface FileRoutesById {
   '/(store)/_layout/category/$slug': typeof storeLayoutCategorySlugRoute
   '/(store)/_layout/product/$productId': typeof storeLayoutProductProductIdRoute
   '/(store)/_layout/store/$slug': typeof storeLayoutStoreSlugRoute
+  '/(vendor)/shop/$slug/products': typeof vendorShopSlugProductsRoute
   '/(store)/_layout/category/': typeof storeLayoutCategoryIndexRoute
   '/(store)/_layout/product/': typeof storeLayoutProductIndexRoute
   '/(store)/_layout/store/': typeof storeLayoutStoreIndexRoute
@@ -222,6 +231,7 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/product/$productId'
     | '/store/$slug'
+    | '/shop/$slug/products'
     | '/category'
     | '/product'
     | '/store'
@@ -242,6 +252,7 @@ export interface FileRouteTypes {
     | '/category/$slug'
     | '/product/$productId'
     | '/store/$slug'
+    | '/shop/$slug/products'
     | '/category'
     | '/product'
     | '/store'
@@ -265,6 +276,7 @@ export interface FileRouteTypes {
     | '/(store)/_layout/category/$slug'
     | '/(store)/_layout/product/$productId'
     | '/(store)/_layout/store/$slug'
+    | '/(vendor)/shop/$slug/products'
     | '/(store)/_layout/category/'
     | '/(store)/_layout/product/'
     | '/(store)/_layout/store/'
@@ -406,6 +418,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof storeLayoutCategoryIndexRouteImport
       parentRoute: typeof storeLayoutRoute
     }
+    '/(vendor)/shop/$slug/products': {
+      id: '/(vendor)/shop/$slug/products'
+      path: '/products'
+      fullPath: '/shop/$slug/products'
+      preLoaderRoute: typeof vendorShopSlugProductsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
     '/(store)/_layout/store/$slug': {
       id: '/(store)/_layout/store/$slug'
       path: '/store/$slug'
@@ -483,10 +502,12 @@ const vendorLayoutRouteWithChildren = vendorLayoutRoute._addFileChildren(
 )
 
 interface vendorShopSlugRouteChildren {
+  vendorShopSlugProductsRoute: typeof vendorShopSlugProductsRoute
   vendorShopSlugIndexRoute: typeof vendorShopSlugIndexRoute
 }
 
 const vendorShopSlugRouteChildren: vendorShopSlugRouteChildren = {
+  vendorShopSlugProductsRoute: vendorShopSlugProductsRoute,
   vendorShopSlugIndexRoute: vendorShopSlugIndexRoute,
 }
 

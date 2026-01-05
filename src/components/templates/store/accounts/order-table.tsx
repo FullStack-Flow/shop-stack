@@ -1,6 +1,6 @@
-import { DataTableCore } from "@/components/base/data-table/DataTableCore";
-import { DataTablePagination } from "@/components/base/data-table/DataTablePagination";
-import { DataTableToolbar } from "@/components/base/data-table/DataTableToolbar";
+import { DataTableCore } from "@/components/base/data-table/data-table-core";
+import { DataTablePagination } from "@/components/base/data-table/data-table-pagination";
+import { DataTableToolbar } from "@/components/base/data-table/data-table-toolbar";
 import { columns, Order } from "@/components/base/store/order/columns";
 import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
 import React from "react";
