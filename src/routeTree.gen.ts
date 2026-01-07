@@ -41,6 +41,8 @@ import { Route as vendorShopSlugAttributesRouteImport } from './routes/(vendor)/
 import { Route as storeLayoutStoreSlugRouteImport } from './routes/(store)/_layout/store/$slug'
 import { Route as storeLayoutProductProductIdRouteImport } from './routes/(store)/_layout/product/$productId'
 import { Route as storeLayoutCategorySlugRouteImport } from './routes/(store)/_layout/category/$slug'
+import { Route as vendorShopSlugOrdersIndexRouteImport } from './routes/(vendor)/shop/$slug/orders/index'
+import { Route as vendorShopSlugOrdersOrderIdRouteImport } from './routes/(vendor)/shop/$slug/orders/$orderId'
 
 const AuthSignInRoute = AuthSignInRouteImport.update({
   id: '/auth/sign-in',
@@ -207,6 +209,18 @@ const storeLayoutCategorySlugRoute = storeLayoutCategorySlugRouteImport.update({
   path: '/category/$slug',
   getParentRoute: () => storeLayoutRoute,
 } as any)
+const vendorShopSlugOrdersIndexRoute =
+  vendorShopSlugOrdersIndexRouteImport.update({
+    id: '/orders/',
+    path: '/orders/',
+    getParentRoute: () => vendorShopSlugRoute,
+  } as any)
+const vendorShopSlugOrdersOrderIdRoute =
+  vendorShopSlugOrdersOrderIdRouteImport.update({
+    id: '/orders/$orderId',
+    path: '/orders/$orderId',
+    getParentRoute: () => vendorShopSlugRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/auth/sign-in': typeof AuthSignInRoute
@@ -239,6 +253,8 @@ export interface FileRoutesByFullPath {
   '/product': typeof storeLayoutProductIndexRoute
   '/store': typeof storeLayoutStoreIndexRoute
   '/shop/$slug/': typeof vendorShopSlugIndexRoute
+  '/shop/$slug/orders/$orderId': typeof vendorShopSlugOrdersOrderIdRoute
+  '/shop/$slug/orders': typeof vendorShopSlugOrdersIndexRoute
 }
 export interface FileRoutesByTo {
   '/auth/sign-in': typeof AuthSignInRoute
@@ -270,6 +286,8 @@ export interface FileRoutesByTo {
   '/product': typeof storeLayoutProductIndexRoute
   '/store': typeof storeLayoutStoreIndexRoute
   '/shop/$slug': typeof vendorShopSlugIndexRoute
+  '/shop/$slug/orders/$orderId': typeof vendorShopSlugOrdersOrderIdRoute
+  '/shop/$slug/orders': typeof vendorShopSlugOrdersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -305,6 +323,8 @@ export interface FileRoutesById {
   '/(store)/_layout/product/': typeof storeLayoutProductIndexRoute
   '/(store)/_layout/store/': typeof storeLayoutStoreIndexRoute
   '/(vendor)/shop/$slug/': typeof vendorShopSlugIndexRoute
+  '/(vendor)/shop/$slug/orders/$orderId': typeof vendorShopSlugOrdersOrderIdRoute
+  '/(vendor)/shop/$slug/orders/': typeof vendorShopSlugOrdersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -339,6 +359,8 @@ export interface FileRouteTypes {
     | '/product'
     | '/store'
     | '/shop/$slug/'
+    | '/shop/$slug/orders/$orderId'
+    | '/shop/$slug/orders'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/auth/sign-in'
@@ -370,6 +392,8 @@ export interface FileRouteTypes {
     | '/product'
     | '/store'
     | '/shop/$slug'
+    | '/shop/$slug/orders/$orderId'
+    | '/shop/$slug/orders'
   id:
     | '__root__'
     | '/(store)/_layout'
@@ -404,6 +428,8 @@ export interface FileRouteTypes {
     | '/(store)/_layout/product/'
     | '/(store)/_layout/store/'
     | '/(vendor)/shop/$slug/'
+    | '/(vendor)/shop/$slug/orders/$orderId'
+    | '/(vendor)/shop/$slug/orders/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -639,6 +665,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof storeLayoutCategorySlugRouteImport
       parentRoute: typeof storeLayoutRoute
     }
+    '/(vendor)/shop/$slug/orders/': {
+      id: '/(vendor)/shop/$slug/orders/'
+      path: '/orders'
+      fullPath: '/shop/$slug/orders'
+      preLoaderRoute: typeof vendorShopSlugOrdersIndexRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/orders/$orderId': {
+      id: '/(vendor)/shop/$slug/orders/$orderId'
+      path: '/orders/$orderId'
+      fullPath: '/shop/$slug/orders/$orderId'
+      preLoaderRoute: typeof vendorShopSlugOrdersOrderIdRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
   }
 }
 
@@ -707,6 +747,8 @@ interface vendorShopSlugRouteChildren {
   vendorShopSlugTaxesRoute: typeof vendorShopSlugTaxesRoute
   vendorShopSlugTransactionsRoute: typeof vendorShopSlugTransactionsRoute
   vendorShopSlugIndexRoute: typeof vendorShopSlugIndexRoute
+  vendorShopSlugOrdersOrderIdRoute: typeof vendorShopSlugOrdersOrderIdRoute
+  vendorShopSlugOrdersIndexRoute: typeof vendorShopSlugOrdersIndexRoute
 }
 
 const vendorShopSlugRouteChildren: vendorShopSlugRouteChildren = {
@@ -722,6 +764,8 @@ const vendorShopSlugRouteChildren: vendorShopSlugRouteChildren = {
   vendorShopSlugTaxesRoute: vendorShopSlugTaxesRoute,
   vendorShopSlugTransactionsRoute: vendorShopSlugTransactionsRoute,
   vendorShopSlugIndexRoute: vendorShopSlugIndexRoute,
+  vendorShopSlugOrdersOrderIdRoute: vendorShopSlugOrdersOrderIdRoute,
+  vendorShopSlugOrdersIndexRoute: vendorShopSlugOrdersIndexRoute,
 }
 
 const vendorShopSlugRouteWithChildren = vendorShopSlugRoute._addFileChildren(
