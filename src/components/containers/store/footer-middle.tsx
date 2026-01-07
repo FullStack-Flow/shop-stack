@@ -17,7 +17,7 @@ const productsMenu = [
 export default function FooterMiddle() {
   return (
     <div className="border-body-15 border-y-2 border-dashed">
-      <div className="@4xl:px-12 @6xl:px-[60px] @7xl:px-20 px-4 @5xl:py-16 @7xl:py-20 py-10">
+      <div className="@4xl:px-12 @6xl:px-15 @7xl:px-20 px-4 @5xl:py-16 @7xl:py-20 py-10">
         <div className="grid @4xl:grid-cols-2 @6xl:grid-cols-3 grid-cols-1 gap-10">
           {/* Home Menu */}
           <div className="font-mono text-body-70 text-sm tracking-wide">

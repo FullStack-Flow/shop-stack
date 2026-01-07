@@ -29,10 +29,7 @@ export default function CtaContainer({ className, inline }: CtaContainerProps) {
 
   return (
     <div
-      className={cn(
-        "@4xl:px-12 @6xl:px-[60px] @7xl:px-20 px-5 pb-8",
-        className
-      )}
+      className={cn("@4xl:px-12 @6xl:px-15 @7xl:px-20 px-5 pb-8", className)}
     >
       <div className="flex w-full items-center justify-end">
         <Link to="/">
