@@ -31,3 +31,17 @@ export interface CategoryBreadcrumb {
   name: string;
   slug: string;
 }
+
+export interface CategoryFormValues {
+  name: string;
+  slug: string;
+  description: string;
+  image: FileList | null;
+  icon: string;
+  parentId: string;
+}
+
+export interface CategoryOption {
+  id: string;
+  name: string;
+}

@@ -28,6 +28,7 @@ import { Route as storeLayoutStoreIndexRouteImport } from './routes/(store)/_lay
 import { Route as storeLayoutProductIndexRouteImport } from './routes/(store)/_layout/product/index'
 import { Route as storeLayoutCategoryIndexRouteImport } from './routes/(store)/_layout/category/index'
 import { Route as vendorShopSlugProductsRouteImport } from './routes/(vendor)/shop/$slug/products'
+import { Route as vendorShopSlugCategoriesRouteImport } from './routes/(vendor)/shop/$slug/categories'
 import { Route as vendorShopSlugBrandsRouteImport } from './routes/(vendor)/shop/$slug/brands'
 import { Route as vendorShopSlugAttributesRouteImport } from './routes/(vendor)/shop/$slug/attributes'
 import { Route as storeLayoutStoreSlugRouteImport } from './routes/(store)/_layout/store/$slug'
@@ -130,6 +131,12 @@ const vendorShopSlugProductsRoute = vendorShopSlugProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => vendorShopSlugRoute,
 } as any)
+const vendorShopSlugCategoriesRoute =
+  vendorShopSlugCategoriesRouteImport.update({
+    id: '/categories',
+    path: '/categories',
+    getParentRoute: () => vendorShopSlugRoute,
+  } as any)
 const vendorShopSlugBrandsRoute = vendorShopSlugBrandsRouteImport.update({
   id: '/brands',
   path: '/brands',
@@ -176,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/store/$slug': typeof storeLayoutStoreSlugRoute
   '/shop/$slug/attributes': typeof vendorShopSlugAttributesRoute
   '/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
+  '/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
   '/shop/$slug/products': typeof vendorShopSlugProductsRoute
   '/category': typeof storeLayoutCategoryIndexRoute
   '/product': typeof storeLayoutProductIndexRoute
@@ -199,6 +207,7 @@ export interface FileRoutesByTo {
   '/store/$slug': typeof storeLayoutStoreSlugRoute
   '/shop/$slug/attributes': typeof vendorShopSlugAttributesRoute
   '/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
+  '/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
   '/shop/$slug/products': typeof vendorShopSlugProductsRoute
   '/category': typeof storeLayoutCategoryIndexRoute
   '/product': typeof storeLayoutProductIndexRoute
@@ -226,6 +235,7 @@ export interface FileRoutesById {
   '/(store)/_layout/store/$slug': typeof storeLayoutStoreSlugRoute
   '/(vendor)/shop/$slug/attributes': typeof vendorShopSlugAttributesRoute
   '/(vendor)/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
+  '/(vendor)/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
   '/(vendor)/shop/$slug/products': typeof vendorShopSlugProductsRoute
   '/(store)/_layout/category/': typeof storeLayoutCategoryIndexRoute
   '/(store)/_layout/product/': typeof storeLayoutProductIndexRoute
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
     | '/store/$slug'
     | '/shop/$slug/attributes'
     | '/shop/$slug/brands'
+    | '/shop/$slug/categories'
     | '/shop/$slug/products'
     | '/category'
     | '/product'
@@ -275,6 +286,7 @@ export interface FileRouteTypes {
     | '/store/$slug'
     | '/shop/$slug/attributes'
     | '/shop/$slug/brands'
+    | '/shop/$slug/categories'
     | '/shop/$slug/products'
     | '/category'
     | '/product'
@@ -301,6 +313,7 @@ export interface FileRouteTypes {
     | '/(store)/_layout/store/$slug'
     | '/(vendor)/shop/$slug/attributes'
     | '/(vendor)/shop/$slug/brands'
+    | '/(vendor)/shop/$slug/categories'
     | '/(vendor)/shop/$slug/products'
     | '/(store)/_layout/category/'
     | '/(store)/_layout/product/'
@@ -450,6 +463,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof vendorShopSlugProductsRouteImport
       parentRoute: typeof vendorShopSlugRoute
     }
+    '/(vendor)/shop/$slug/categories': {
+      id: '/(vendor)/shop/$slug/categories'
+      path: '/categories'
+      fullPath: '/shop/$slug/categories'
+      preLoaderRoute: typeof vendorShopSlugCategoriesRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
     '/(vendor)/shop/$slug/brands': {
       id: '/(vendor)/shop/$slug/brands'
       path: '/brands'
@@ -543,6 +563,7 @@ const vendorLayoutRouteWithChildren = vendorLayoutRoute._addFileChildren(
 interface vendorShopSlugRouteChildren {
   vendorShopSlugAttributesRoute: typeof vendorShopSlugAttributesRoute
   vendorShopSlugBrandsRoute: typeof vendorShopSlugBrandsRoute
+  vendorShopSlugCategoriesRoute: typeof vendorShopSlugCategoriesRoute
   vendorShopSlugProductsRoute: typeof vendorShopSlugProductsRoute
   vendorShopSlugIndexRoute: typeof vendorShopSlugIndexRoute
 }
@@ -550,6 +571,7 @@ interface vendorShopSlugRouteChildren {
 const vendorShopSlugRouteChildren: vendorShopSlugRouteChildren = {
   vendorShopSlugAttributesRoute: vendorShopSlugAttributesRoute,
   vendorShopSlugBrandsRoute: vendorShopSlugBrandsRoute,
+  vendorShopSlugCategoriesRoute: vendorShopSlugCategoriesRoute,
   vendorShopSlugProductsRoute: vendorShopSlugProductsRoute,
   vendorShopSlugIndexRoute: vendorShopSlugIndexRoute,
 }
