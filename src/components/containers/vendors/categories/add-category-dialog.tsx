@@ -35,16 +35,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-
-export interface CategoryFormValues {
-  name: string;
-  slug: string;
-  description: string;
-  image: FileList | null;
-  icon: string;
-  parentId: string;
-}
-
+import { CategoryFormValues } from "@/types/category-types";
 export interface CategoryOption {
   id: string;
   name: string;
