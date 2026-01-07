@@ -6,10 +6,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/attributes")({
-  component: RouteComponent,
+  component: AttributePage,
 });
 
-function RouteComponent() {
+function AttributePage() {
   const [attributes, setAttributes] = useState<Attribute[]>(mockAttributes);
   const [isAddAttributeDialogOpen, setIsAddAttributeDialogOpen] =
     useState(false);
