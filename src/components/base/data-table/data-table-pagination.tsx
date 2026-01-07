@@ -1,11 +1,11 @@
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from "@/components/ui/select";
 
 type PaginationProps = {
   pageIndex: number;
@@ -50,7 +50,7 @@ export function DataTablePagination({
             onPageChange(() => ({ pageIndex: 0, pageSize: Number(value) }))
           }
         >
-          <SelectTrigger className="h-8 w-[100px]">
+          <SelectTrigger className="h-8 w-25">
             <SelectValue placeholder={String(pageSize)} />
           </SelectTrigger>
           <SelectContent>
@@ -63,7 +63,7 @@ export function DataTablePagination({
         </Select>
       </div>
       <div className="flex items-center gap-2">
-        {typeof total === 'number' ? (
+        {typeof total === "number" ? (
           <span className="text-muted-foreground text-sm" aria-live="polite">
             {total} total
           </span>

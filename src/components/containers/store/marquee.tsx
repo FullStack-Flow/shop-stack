@@ -23,7 +23,7 @@ export default function Marquee({ items, className, speed }: MarqueeProps) {
     >
       <div
         className={cn(
-          "marquee flex w-max min-w-full items-center gap-6 @5xl:py-10 @7xl:py-12 py-[30px]",
+          "marquee flex w-max min-w-full items-center gap-6 @5xl:py-10 @7xl:py-12 py-7.5",
           speedMap[speed ?? "normal"]
         )}
         aria-label="Brand"
