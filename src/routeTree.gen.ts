@@ -25,6 +25,7 @@ import { Route as storeLayoutOrderTrackingRouteImport } from './routes/(store)/_
 import { Route as storeLayoutOrderConfirmationRouteImport } from './routes/(store)/_layout/order-confirmation'
 import { Route as storeLayoutCheckoutRouteImport } from './routes/(store)/_layout/checkout'
 import { Route as storeLayoutCartRouteImport } from './routes/(store)/_layout/cart'
+import { Route as adminAdminMyStoreRouteImport } from './routes/(admin)/admin/my-store'
 import { Route as vendorShopSlugIndexRouteImport } from './routes/(vendor)/shop/$slug/index'
 import { Route as storeLayoutStoreIndexRouteImport } from './routes/(store)/_layout/store/index'
 import { Route as storeLayoutProductIndexRouteImport } from './routes/(store)/_layout/product/index'
@@ -127,6 +128,11 @@ const storeLayoutCartRoute = storeLayoutCartRouteImport.update({
   id: '/cart',
   path: '/cart',
   getParentRoute: () => storeLayoutRoute,
+} as any)
+const adminAdminMyStoreRoute = adminAdminMyStoreRouteImport.update({
+  id: '/my-store',
+  path: '/my-store',
+  getParentRoute: () => adminAdminRoute,
 } as any)
 const vendorShopSlugIndexRoute = vendorShopSlugIndexRouteImport.update({
   id: '/',
@@ -250,6 +256,7 @@ const vendorShopSlugOrdersOrderIdRoute =
 export interface FileRoutesByFullPath {
   '/admin': typeof adminAdminRouteWithChildren
   '/auth/sign-in': typeof AuthSignInRoute
+  '/admin/my-store': typeof adminAdminMyStoreRoute
   '/cart': typeof storeLayoutCartRoute
   '/checkout': typeof storeLayoutCheckoutRoute
   '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
@@ -287,6 +294,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/auth/sign-in': typeof AuthSignInRoute
+  '/admin/my-store': typeof adminAdminMyStoreRoute
   '/cart': typeof storeLayoutCartRoute
   '/checkout': typeof storeLayoutCheckoutRoute
   '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
@@ -327,6 +335,7 @@ export interface FileRoutesById {
   '/(store)/_layout': typeof storeLayoutRouteWithChildren
   '/(vendor)/_layout': typeof vendorLayoutRouteWithChildren
   '/auth/sign-in': typeof AuthSignInRoute
+  '/(admin)/admin/my-store': typeof adminAdminMyStoreRoute
   '/(store)/_layout/cart': typeof storeLayoutCartRoute
   '/(store)/_layout/checkout': typeof storeLayoutCheckoutRoute
   '/(store)/_layout/order-confirmation': typeof storeLayoutOrderConfirmationRoute
@@ -367,6 +376,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/admin'
     | '/auth/sign-in'
+    | '/admin/my-store'
     | '/cart'
     | '/checkout'
     | '/order-confirmation'
@@ -404,6 +414,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/auth/sign-in'
+    | '/admin/my-store'
     | '/cart'
     | '/checkout'
     | '/order-confirmation'
@@ -443,6 +454,7 @@ export interface FileRouteTypes {
     | '/(store)/_layout'
     | '/(vendor)/_layout'
     | '/auth/sign-in'
+    | '/(admin)/admin/my-store'
     | '/(store)/_layout/cart'
     | '/(store)/_layout/checkout'
     | '/(store)/_layout/order-confirmation'
@@ -600,6 +612,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/cart'
       preLoaderRoute: typeof storeLayoutCartRouteImport
       parentRoute: typeof storeLayoutRoute
+    }
+    '/(admin)/admin/my-store': {
+      id: '/(admin)/admin/my-store'
+      path: '/my-store'
+      fullPath: '/admin/my-store'
+      preLoaderRoute: typeof adminAdminMyStoreRouteImport
+      parentRoute: typeof adminAdminRoute
     }
     '/(vendor)/shop/$slug/': {
       id: '/(vendor)/shop/$slug/'
@@ -759,12 +778,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface adminAdminRouteChildren {
+  adminAdminMyStoreRoute: typeof adminAdminMyStoreRoute
   adminAdminIndexRoute: typeof adminAdminIndexRoute
   adminAdminTenantsTenantIdRoute: typeof adminAdminTenantsTenantIdRoute
   adminAdminTenantsIndexRoute: typeof adminAdminTenantsIndexRoute
 }
 
 const adminAdminRouteChildren: adminAdminRouteChildren = {
+  adminAdminMyStoreRoute: adminAdminMyStoreRoute,
   adminAdminIndexRoute: adminAdminIndexRoute,
   adminAdminTenantsTenantIdRoute: adminAdminTenantsTenantIdRoute,
   adminAdminTenantsIndexRoute: adminAdminTenantsIndexRoute,

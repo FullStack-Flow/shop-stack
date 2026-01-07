@@ -91,7 +91,9 @@ export default function ShopCard({ shop, className }: ShopCardProps) {
 
       <CardFooter className="gap-2">
         <Button variant="outline" className="flex-1" asChild>
-          <Link to={`/shop/${shop.slug}`}>View Dashboard</Link>
+          <Link to="/shop/$slug" params={{ slug: shop.slug }}>
+            View Dashboard
+          </Link>
         </Button>
         <Button className="flex-1">Manage</Button>
       </CardFooter>

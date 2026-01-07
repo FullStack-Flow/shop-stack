@@ -1,13 +1,12 @@
 import { MyShopsPageSkeleton } from "@/components/base/vendors/skeleton/shop-card-skeleton";
 import { AddShopDialog } from "@/components/containers/vendors/my-shop/add-shop-dialog";
-import MyShopsTemplate from "@/components/templates/vendor/my-shops-template";
-import { mockShops } from "@/data/my-shops";
+import MyStoreTemplate from "@/components/templates/admin/my-store-template";
 import { ShopFormValues } from "@/types/shop";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
-export const Route = createFileRoute("/(vendor)/_layout/my-shop")({
-  component: MyShopPage,
+export const Route = createFileRoute("/(admin)/admin/my-store")({
+  component: AdminMyStorePage,
   loader: async () => {
     // Simulate loading delay for skeleton demonstration
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -16,13 +15,30 @@ export const Route = createFileRoute("/(vendor)/_layout/my-shop")({
   pendingComponent: MyShopsPageSkeleton,
 });
 
-function MyShopPage() {
+const mockAdminShops = [
+  {
+    id: "1",
+    slug: "official-shopstack-store",
+    name: "Official ShopStack Store",
+    description:
+      "The official store for ShopStack merchandise and digital products.",
+    logo: "",
+    banner: "",
+    category: "Merchandise",
+    rating: 5.0,
+    totalProducts: 24,
+    totalOrders: 156,
+    monthlyRevenue: "$3,450",
+    status: "active" as const,
+  },
+];
+
+function AdminMyStorePage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [shops, setShops] = useState(mockShops);
+  const [shops, setShops] = useState(mockAdminShops);
 
   const handleCreateShop = () => {
-    // TODO: Implement create shop functionality
-    console.log("Create new shop clicked");
+    setIsDialogOpen(true);
   };
 
   const handleShopSubmit = (data: ShopFormValues) => {
@@ -45,9 +61,10 @@ function MyShopPage() {
     setShops([...shops, newShop]);
     setIsDialogOpen(false);
   };
+
   return (
     <>
-      <MyShopsTemplate shops={mockShops} onCreateShop={handleCreateShop} />
+      <MyStoreTemplate shops={shops} onAddShop={handleCreateShop} />
 
       <AddShopDialog
         open={isDialogOpen}
