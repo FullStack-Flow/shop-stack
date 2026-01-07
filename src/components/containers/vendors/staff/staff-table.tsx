@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal, Edit, Trash2 } from "lucide-react";
+import { format } from "date-fns";
 
 interface StaffTableProps {
   staff: Staff[];
@@ -45,9 +46,7 @@ export default function StaffTable({ staff }: StaffTableProps) {
       header: "Email",
       cell: ({ row }) => {
         return (
-          <div className="text-muted-foreground">
-            {row.getValue("email")}
-          </div>
+          <div className="text-muted-foreground">{row.getValue("email")}</div>
         );
       },
     },
@@ -56,11 +55,7 @@ export default function StaffTable({ staff }: StaffTableProps) {
       header: "Role",
       cell: ({ row }) => {
         const role = row.getValue("role") as string;
-        return (
-          <Badge variant="outline">
-            {role}
-          </Badge>
-        );
+        return <Badge variant="outline">{role}</Badge>;
       },
     },
     {
@@ -85,7 +80,7 @@ export default function StaffTable({ staff }: StaffTableProps) {
         const joinedDate = row.getValue("joinedDate") as string;
         return (
           <div className="text-muted-foreground">
-            {joinedDate}
+            {format(joinedDate, "yyyy-MM-dd")}
           </div>
         );
       },
@@ -125,7 +120,5 @@ export default function StaffTable({ staff }: StaffTableProps) {
     },
   ];
 
-  return (
-    <DataTable columns={columns} data={staff} />
-  );
+  return <DataTable columns={columns} data={staff} />;
 }
