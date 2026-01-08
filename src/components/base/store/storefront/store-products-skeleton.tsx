@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from '@/components/ui/skeleton';
 
 export function StoreProductsSkeleton({ count = 6 }: { count?: number }) {
   return (

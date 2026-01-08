@@ -1,4 +1,6 @@
-import { Building2 } from "lucide-react";
+import { Building2 } from 'lucide-react';
+import VendorNavMenu from '@/components/base/vendors/vendor-nav-menu';
+import VendorUserMenu from '@/components/base/vendors/vendor-user-menu';
 import {
   Sidebar,
   SidebarContent,
@@ -8,16 +10,14 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar";
-import { adminNavItems } from "@/lib/constants/admin.routes";
-import VendorNavMenu from "@/components/base/vendors/vendor-nav-menu";
-import VendorUserMenu from "@/components/base/vendors/vendor-user-menu";
+} from '@/components/ui/sidebar';
+import { adminNavItems } from '@/lib/constants/admin.routes';
 
 const mockAdmin = {
-  name: "Super Admin",
-  email: "admin@shopstack.com",
-  avatar: "",
-  role: "Super Admin",
+  name: 'Super Admin',
+  email: 'admin@shopstack.com',
+  avatar: '',
+  role: 'Super Admin',
 };
 
 export default function AdminDashboardSidebar() {

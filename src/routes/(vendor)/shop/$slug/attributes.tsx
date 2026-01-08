@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { ShopAttributesTemplate } from "@/components/templates/vendor/shop-attributes-template";
-import { mockAttributes } from "@/data/attributes";
-import type { Attribute, AttributeFormValues } from "@/types/attributes";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { ShopAttributesTemplate } from '@/components/templates/vendor/shop-attributes-template';
+import { mockAttributes } from '@/data/attributes';
+import type { Attribute, AttributeFormValues } from '@/types/attributes';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/attributes")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/attributes')({
   component: AttributePage,
 });
 

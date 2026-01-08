@@ -1,16 +1,16 @@
-import CartItem from "@/components/base/store/cart/cart-item";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
+import { Link } from '@tanstack/react-router';
+import { ShoppingBag } from 'lucide-react';
+import CartItem from '@/components/base/store/cart/cart-item';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/sheet";
-import { useCartStore } from "@/lib/store/cart-store";
-import { Link } from "@tanstack/react-router";
-import { ShoppingBag } from "lucide-react";
+} from '@/components/ui/sheet';
+import { useCartStore } from '@/lib/store/cart-store';
 
 export default function CartSheet() {
   const { items, isOpen, setIsOpen, totalItems, subtotal } = useCartStore();

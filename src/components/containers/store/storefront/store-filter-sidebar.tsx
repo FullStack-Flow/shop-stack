@@ -1,39 +1,39 @@
-import StoreSearch from "@/components/base/store/storefront/store-search";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { SlidersHorizontal, Star, X } from 'lucide-react';
+import StoreSearch from '@/components/base/store/storefront/store-search';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useStoreFront } from "@/lib/store/store";
-import { SlidersHorizontal, Star, X } from "lucide-react";
+} from '@/components/ui/select';
+import { useStoreFront } from '@/lib/store/store';
 
 const categories = [
-  "All Categories",
-  "Groceries",
-  "Electronics",
-  "Fashion",
-  "Home & Garden",
-  "Sports",
-  "Books",
+  'All Categories',
+  'Groceries',
+  'Electronics',
+  'Fashion',
+  'Home & Garden',
+  'Sports',
+  'Books',
 ];
 
 const ratingOptions = [
-  { value: 0, label: "All Ratings" },
-  { value: 4, label: "4+ Stars" },
-  { value: 4.5, label: "4.5+ Stars" },
+  { value: 0, label: 'All Ratings' },
+  { value: 4, label: '4+ Stars' },
+  { value: 4.5, label: '4.5+ Stars' },
 ];
 
 const sortOptions = [
-  { value: "rating", label: "Highest Rated" },
-  { value: "popular", label: "Most Popular" },
-  { value: "newest", label: "Newest" },
-  { value: "name", label: "Name (A-Z)" },
+  { value: 'rating', label: 'Highest Rated' },
+  { value: 'popular', label: 'Most Popular' },
+  { value: 'newest', label: 'Newest' },
+  { value: 'name', label: 'Name (A-Z)' },
 ];
 
 export default function StoreFilterSidebar() {
@@ -49,7 +49,7 @@ export default function StoreFilterSidebar() {
   };
 
   const handleCategoryChange = (value: string) => {
-    setFilters({ category: value === "All Categories" ? "" : value });
+    setFilters({ category: value === 'All Categories' ? '' : value });
   };
 
   const handleRatingChange = (value: string) => {
@@ -92,7 +92,7 @@ export default function StoreFilterSidebar() {
       <div className="space-y-2">
         <Label>Category</Label>
         <Select
-          value={filters.category || "All Categories"}
+          value={filters.category || 'All Categories'}
           onValueChange={handleCategoryChange}
         >
           <SelectTrigger>

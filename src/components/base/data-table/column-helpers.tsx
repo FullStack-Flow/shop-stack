@@ -1,15 +1,18 @@
-import * as React from "react";
-import type { ColumnDef } from "@tanstack/react-table";
-import { Checkbox } from "@/components/ui/checkbox";
+import type { ColumnDef } from '@tanstack/react-table';
+import * as React from 'react';
+import { Checkbox } from '@/components/ui/checkbox';
 
 function IndeterminateCheckbox(
   props: React.ComponentProps<typeof Checkbox> & { indeterminate?: boolean }
 ) {
   const { indeterminate, ...rest } = props;
-  const ref = React.useRef<HTMLInputElement>(null);
+  const ref = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
     if (ref.current) {
-      ref.current.indeterminate = !!indeterminate;
+      const input = ref.current.querySelector('input');
+      if (input) {
+        input.indeterminate = !!indeterminate;
+      }
     }
   }, [indeterminate]);
   return <Checkbox ref={ref} {...rest} />;
@@ -18,14 +21,14 @@ function IndeterminateCheckbox(
 /** Create a checkbox selection column. */
 export function createSelectionColumn<TData>(): ColumnDef<TData> {
   return {
-    id: "select",
+    id: 'select',
     header: ({ table }) => (
       <IndeterminateCheckbox
         aria-label="Select all"
         indeterminate={table.getIsSomePageRowsSelected()}
         checked={table.getIsAllPageRowsSelected()}
-        onChange={(e) =>
-          table.toggleAllPageRowsSelected(!!e.currentTarget.checked)
+        onCheckedChange={(checked) =>
+          table.toggleAllPageRowsSelected(checked === true)
         }
       />
     ),
@@ -33,7 +36,7 @@ export function createSelectionColumn<TData>(): ColumnDef<TData> {
       <Checkbox
         aria-label="Select row"
         checked={row.getIsSelected()}
-        onChange={(e) => row.toggleSelected(!!e.currentTarget.checked)}
+        onCheckedChange={(checked) => row.toggleSelected(checked === true)}
       />
     ),
     enableSorting: false,
@@ -45,12 +48,12 @@ export function createSelectionColumn<TData>(): ColumnDef<TData> {
 /** Utility to format currency values */
 export function formatCurrency(
   amount: number,
-  currency = "USD",
-  locale = "en-US"
+  currency = 'USD',
+  locale = 'en-US'
 ) {
   try {
     return new Intl.NumberFormat(locale, {
-      style: "currency",
+      style: 'currency',
       currency,
     }).format(amount);
   } catch {

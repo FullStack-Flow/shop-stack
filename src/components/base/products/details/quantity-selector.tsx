@@ -1,11 +1,11 @@
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus } from 'lucide-react';
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/components/ui/input-group";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/input-group';
+import { cn } from '@/lib/utils';
 
 interface QuantitySelectorProps {
   value: number;
@@ -14,7 +14,7 @@ interface QuantitySelectorProps {
   max?: number;
   disabled?: boolean;
   className?: string;
-  size?: "default" | "sm";
+  size?: 'default' | 'sm';
 }
 
 export function QuantitySelector({
@@ -24,11 +24,11 @@ export function QuantitySelector({
   max = 99,
   disabled = false,
   className,
-  size = "default",
+  size = 'default',
 }: QuantitySelectorProps) {
-  const buttonSize = size === "sm" ? "icon-xs" : "icon-sm";
-  const containerHeight = size === "sm" ? "h-8" : "h-10";
-  const iconSize = size === "sm" ? "h-3 w-3" : "h-4 w-4";
+  const buttonSize = size === 'sm' ? 'icon-xs' : 'icon-sm';
+  const containerHeight = size === 'sm' ? 'h-8' : 'h-10';
+  const iconSize = size === 'sm' ? 'h-3 w-3' : 'h-4 w-4';
 
   const handleIncrement = () => {
     if (value < max) {
@@ -50,7 +50,7 @@ export function QuantitySelector({
   };
 
   return (
-    <InputGroup className={cn("w-auto", containerHeight, className)}>
+    <InputGroup className={cn('w-auto', containerHeight, className)}>
       <InputGroupAddon align="inline-start">
         <InputGroupButton
           variant="default"
@@ -67,8 +67,8 @@ export function QuantitySelector({
         value={value}
         onChange={handleInputChange}
         className={cn(
-          "w-12 text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
-          size === "default" ? "text-base" : "text-sm"
+          'w-12 text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+          size === 'default' ? 'text-base' : 'text-sm'
         )}
         min={min}
         max={max}

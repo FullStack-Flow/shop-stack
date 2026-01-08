@@ -1,4 +1,4 @@
-import type { UserPermissions } from "@/types/users";
+import type { UserPermissions } from '@/types/users';
 
 export const ADMIN_USER_PERMISSIONS: UserPermissions = {
   canDelete: true,

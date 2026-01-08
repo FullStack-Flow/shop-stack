@@ -1,15 +1,15 @@
-import { Plus } from "lucide-react";
-import { useState } from "react";
-import { AddTaxDialog } from "@/components/containers/shared/taxes/add-tax-dialog";
-import TaxHeader from "@/components/containers/shared/taxes/tax-header";
-import TaxesTable from "@/components/containers/shared/taxes/tax-table";
-import { Button } from "@/components/ui/button";
-import { ADMIN_TAX_PERMISSIONS } from "@/lib/config/tax-permissions";
-import type { Taxes as Tax } from "@/types/taxes";
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
+import { AddTaxDialog } from '@/components/containers/shared/taxes/add-tax-dialog';
+import TaxHeader from '@/components/containers/shared/taxes/tax-header';
+import TaxesTable from '@/components/containers/shared/taxes/tax-table';
+import { Button } from '@/components/ui/button';
+import { ADMIN_TAX_PERMISSIONS } from '@/lib/config/tax-permissions';
+import type { Taxes as Tax } from '@/types/taxes';
 
 interface AdminTaxesTemplateProps {
   taxes: Tax[];
-  onAddTax: (data: Omit<Tax, "id" | "createdAt">) => void;
+  onAddTax: (data: Omit<Tax, 'id' | 'createdAt'>) => void;
   onDeleteTax: (id: string) => void;
 }
 

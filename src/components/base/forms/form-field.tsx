@@ -1,12 +1,12 @@
-import type * as React from "react";
+import type * as React from 'react';
 import {
   Field,
   FieldDescription,
   FieldLabel,
   FieldError as UiFieldError,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 interface BaseFieldProps {
   label: string;
@@ -19,7 +19,7 @@ interface BaseFieldProps {
 
 // Helper to safely extract error string
 function getErrorMessage(error: unknown): string | undefined {
-  if (typeof error === "string") return error;
+  if (typeof error === 'string') return error;
   if (error instanceof Error) return error.message;
   return undefined;
 }
@@ -34,8 +34,8 @@ type FieldRenderProp = {
 };
 
 type InputFieldProps = BaseFieldProps &
-  Omit<React.ComponentProps<"input">, "value" | "onChange" | "onBlur"> & {
-    type?: "text" | "email" | "tel" | "password" | "number";
+  Omit<React.ComponentProps<'input'>, 'value' | 'onChange' | 'onBlur'> & {
+    type?: 'text' | 'email' | 'tel' | 'password' | 'number';
     value?: unknown;
     onChange?: (value: string) => void;
     onBlur?: () => void;
@@ -43,7 +43,7 @@ type InputFieldProps = BaseFieldProps &
   };
 
 type TextareaFieldProps = BaseFieldProps &
-  Omit<React.ComponentProps<"textarea">, "value" | "onChange" | "onBlur"> & {
+  Omit<React.ComponentProps<'textarea'>, 'value' | 'onChange' | 'onBlur'> & {
     value?: unknown;
     onChange?: (value: string) => void;
     onBlur?: () => void;
@@ -60,7 +60,7 @@ export function FormTextField({
   onChange,
   onBlur,
   field,
-  type = "text",
+  type = 'text',
   className,
   description,
   ...props
@@ -85,7 +85,7 @@ export function FormTextField({
         type={type}
         id={props.id || props.name}
         name={props.name}
-        value={String(fieldValue ?? "")}
+        value={String(fieldValue ?? '')}
         onBlur={() => fieldBlur?.()}
         onChange={(e) => fieldChange?.(e.target.value)}
         placeholder={placeholder}
@@ -131,7 +131,7 @@ export function FormTextareaField({
       <Textarea
         id={props.id || props.name}
         name={props.name}
-        value={String(fieldValue ?? "")}
+        value={String(fieldValue ?? '')}
         onBlur={() => fieldBlur?.()}
         onChange={(e) => fieldChange?.(e.target.value)}
         placeholder={placeholder}

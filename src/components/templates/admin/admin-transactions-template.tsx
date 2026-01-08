@@ -1,7 +1,7 @@
-import TransactionHeader from "@/components/containers/shared/transactions/transaction-header";
-import TransactionsTable from "@/components/containers/shared/transactions/transaction-table";
-import { ADMIN_TRANSACTION_PERMISSIONS } from "@/lib/config/transaction-permissions";
-import type { Transaction } from "@/types/transaction";
+import TransactionHeader from '@/components/containers/shared/transactions/transaction-header';
+import TransactionsTable from '@/components/containers/shared/transactions/transaction-table';
+import { ADMIN_TRANSACTION_PERMISSIONS } from '@/lib/config/transaction-permissions';
+import type { Transaction } from '@/types/transaction';
 
 interface AdminTransactionsTemplateProps {
   transactions: Transaction[];

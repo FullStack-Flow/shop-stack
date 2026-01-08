@@ -1,9 +1,9 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import OrderTimeline from "@/components/containers/vendors/order-details/order-timeline";
-import OrderSummary from "@/components/containers/vendors/order-details/order-summary";
-import OrderItemsList from "@/components/containers/vendors/order-details/order-items-list";
+import { Link } from '@tanstack/react-router';
+import { ArrowLeft } from 'lucide-react';
+import OrderItemsList from '@/components/containers/vendors/order-details/order-items-list';
+import OrderSummary from '@/components/containers/vendors/order-details/order-summary';
+import OrderTimeline from '@/components/containers/vendors/order-details/order-timeline';
+import { Button } from '@/components/ui/button';
 
 interface ShopOrderDetailsTemplateProps {
   shopSlug: string;

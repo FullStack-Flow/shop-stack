@@ -1,5 +1,5 @@
-import { useForm } from "@tanstack/react-form";
-import { Button } from "@/components/ui/button";
+import { useForm } from '@tanstack/react-form';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,20 +7,20 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import type { TaxFormValues } from "@/types/tax-form";
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import type { TaxFormValues } from '@/types/tax-form';
 
 // Helper function to safely get string errors from field meta
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === "string");
+  return errors.filter((error): error is string => typeof error === 'string');
 }
 
 interface AddTaxDialogProps {
@@ -36,11 +36,11 @@ export function AddTaxDialog({
 }: AddTaxDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: "",
+      name: '',
       rate: 0,
-      country: "",
-      state: "",
-      zip: "",
+      country: '',
+      state: '',
+      zip: '',
       priority: 1,
     },
     onSubmit: async ({ value }) => {
@@ -245,7 +245,7 @@ export function AddTaxDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? "Adding..." : "Add Tax Rate"}
+                  {isSubmitting ? 'Adding...' : 'Add Tax Rate'}
                 </Button>
               )}
             </form.Subscribe>

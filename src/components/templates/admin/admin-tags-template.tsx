@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { AddTagDialog } from "@/components/containers/shared/tags/add-tag-dialog";
-import TagHeader from "@/components/containers/shared/tags/tag-header";
-import TagsTable from "@/components/containers/shared/tags/tag-table";
-import { ADMIN_TAG_PERMISSIONS } from "@/lib/config/tag-permissions";
-import type { Tag } from "@/types/tags";
+import { useState } from 'react';
+import { AddTagDialog } from '@/components/containers/shared/tags/add-tag-dialog';
+import TagHeader from '@/components/containers/shared/tags/tag-header';
+import TagsTable from '@/components/containers/shared/tags/tag-table';
+import { ADMIN_TAG_PERMISSIONS } from '@/lib/config/tag-permissions';
+import type { Tag } from '@/types/tags';
 
 interface AdminTagsTemplateProps {
   tags: Tag[];

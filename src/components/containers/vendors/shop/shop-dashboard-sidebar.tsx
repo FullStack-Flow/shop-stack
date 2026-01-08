@@ -1,7 +1,9 @@
-import { Link } from "@tanstack/react-router";
-import { ArrowLeft, Store } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Link } from '@tanstack/react-router';
+import { ArrowLeft, Store } from 'lucide-react';
+import VendorNavMenu from '@/components/base/vendors/vendor-nav-menu';
+import VendorUserMenu from '@/components/base/vendors/vendor-user-menu';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 import {
   Sidebar,
   SidebarContent,
@@ -11,10 +13,8 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar";
-import VendorNavMenu from "@/components/base/vendors/vendor-nav-menu";
-import VendorUserMenu from "@/components/base/vendors/vendor-user-menu";
-import { getShopNavItems } from "@/lib/constants/vendors.routes";
+} from '@/components/ui/sidebar';
+import { getShopNavItems } from '@/lib/constants/vendors.routes';
 
 interface ShopSidebarProps {
   shopName: string;
@@ -23,10 +23,10 @@ interface ShopSidebarProps {
 
 // Mock user data - replace with actual user data from auth context
 const mockUser = {
-  name: "John Vendor",
-  email: "john@vendor.com",
-  avatar: "",
-  role: "Vendor",
+  name: 'John Vendor',
+  email: 'john@vendor.com',
+  avatar: '',
+  role: 'Vendor',
 };
 
 export default function ShopDashboardSidebar({

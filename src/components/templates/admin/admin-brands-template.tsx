@@ -1,7 +1,7 @@
-import BrandHeader from "@/components/containers/shared/brands/brand-header";
-import BrandTable from "@/components/containers/shared/brands/brand-table";
-import { ADMIN_BRAND_PERMISSIONS } from "@/lib/config/brand-permissions";
-import type { Brand } from "@/types/brands";
+import BrandHeader from '@/components/containers/shared/brands/brand-header';
+import BrandTable from '@/components/containers/shared/brands/brand-table';
+import { ADMIN_BRAND_PERMISSIONS } from '@/lib/config/brand-permissions';
+import type { Brand } from '@/types/brands';
 
 interface AdminBrandsTemplateProps {
   brands: Brand[];

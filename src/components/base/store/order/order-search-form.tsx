@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Search } from "lucide-react";
-import { useState } from "react";
+import { Search } from 'lucide-react';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 interface OrderSearchFormProps {
   onSearch: (orderId: string) => void;
@@ -13,7 +13,7 @@ export default function OrderSearchForm({
   onSearch,
   isLoading = false,
 }: OrderSearchFormProps) {
-  const [orderId, setOrderId] = useState("");
+  const [orderId, setOrderId] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ export default function OrderSearchForm({
               disabled={!orderId.trim() || isLoading}
             >
               <Search className="mr-2 h-4 w-4" />
-              {isLoading ? "Searching..." : "Track Order"}
+              {isLoading ? 'Searching...' : 'Track Order'}
             </Button>
           </div>
         </div>

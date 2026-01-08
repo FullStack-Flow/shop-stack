@@ -1,15 +1,15 @@
-import DataTable from "@/components/base/data-table/data-table";
-import type { ShippingMethod, ShippingPermissions } from "@/types/shipping";
-import type { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { ColumnDef } from '@tanstack/react-table';
+import { Edit, MoreHorizontal, Trash2 } from 'lucide-react';
+import DataTable from '@/components/base/data-table/data-table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, Edit, Trash2 } from "lucide-react";
+} from '@/components/ui/dropdown-menu';
+import type { ShippingMethod, ShippingPermissions } from '@/types/shipping';
 
 interface ShippingTableProps {
   shippingMethods: ShippingMethod[];
@@ -21,49 +21,54 @@ interface ShippingTableProps {
 
 export default function ShippingTable({
   shippingMethods,
-  permissions = { canDelete: false, canEdit: true, canView: true, canCreate: true },
+  permissions = {
+    canDelete: false,
+    canEdit: true,
+    canView: true,
+    canCreate: true,
+  },
   onEditShipping,
   onDeleteShipping,
   className,
 }: ShippingTableProps) {
   const columns: ColumnDef<ShippingMethod>[] = [
     {
-      accessorKey: "name",
-      header: "Name",
+      accessorKey: 'name',
+      header: 'Name',
       cell: ({ row }) => {
-        return <div className="font-medium">{row.getValue("name")}</div>;
+        return <div className="font-medium">{row.getValue('name')}</div>;
       },
     },
     {
-      accessorKey: "price",
-      header: "Price",
+      accessorKey: 'price',
+      header: 'Price',
       cell: ({ row }) => {
-        const price = row.getValue("price") as number;
+        const price = row.getValue('price') as number;
         return <div className="font-medium">${price.toFixed(2)}</div>;
       },
     },
     {
-      accessorKey: "duration",
-      header: "Duration",
+      accessorKey: 'duration',
+      header: 'Duration',
       cell: ({ row }) => {
-        const duration = row.getValue("duration") as string;
+        const duration = row.getValue('duration') as string;
         return <Badge variant="outline">{duration}</Badge>;
       },
     },
     {
-      accessorKey: "description",
-      header: "Description",
+      accessorKey: 'description',
+      header: 'Description',
       cell: ({ row }) => {
-        const description = row.getValue("description") as string;
+        const description = row.getValue('description') as string;
         return (
           <div className="max-w-xs truncate text-muted-foreground">
-            {description || "No description"}
+            {description || 'No description'}
           </div>
         );
       },
     },
     {
-      id: "actions",
+      id: 'actions',
       enableHiding: false,
       cell: ({ row }) => {
         const shippingMethod = row.original;
@@ -101,5 +106,7 @@ export default function ShippingTable({
     },
   ];
 
-  return <DataTable columns={columns} data={shippingMethods} className={className} />;
+  return (
+    <DataTable columns={columns} data={shippingMethods} className={className} />
+  );
 }

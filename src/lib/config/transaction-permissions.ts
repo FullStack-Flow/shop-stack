@@ -1,4 +1,4 @@
-import type { TransactionPermissions } from "@/types/transaction";
+import type { TransactionPermissions } from '@/types/transaction';
 
 export const ADMIN_TRANSACTION_PERMISSIONS: TransactionPermissions = {
   canDelete: true,

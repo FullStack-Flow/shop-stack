@@ -1,7 +1,7 @@
-import PageHeader from "@/components/base/common/page-header";
-import ShopCard from "@/components/base/vendors/my-shop/shop-card";
-import { Button } from "@/components/ui/button";
-import type { Shop } from "@/types/shop";
+import PageHeader from '@/components/base/common/page-header';
+import ShopCard from '@/components/base/vendors/my-shop/shop-card';
+import { Button } from '@/components/ui/button';
+import type { Shop } from '@/types/shop';
 
 interface MyStoreTemplateProps {
   shops: Shop[];

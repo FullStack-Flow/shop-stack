@@ -1,7 +1,7 @@
-import CategoryHeader from "@/components/containers/shared/categories/category-header";
-import CategoryTable from "@/components/containers/shared/categories/category-table";
-import { VENDOR_CATEGORY_PERMISSIONS } from "@/lib/config/category-permissions";
-import type { Category } from "@/types/category-types";
+import CategoryHeader from '@/components/containers/shared/categories/category-header';
+import CategoryTable from '@/components/containers/shared/categories/category-table';
+import { VENDOR_CATEGORY_PERMISSIONS } from '@/lib/config/category-permissions';
+import type { Category } from '@/types/category-types';
 
 interface ShopCategoriesTemplateProps {
   categories: Category[];

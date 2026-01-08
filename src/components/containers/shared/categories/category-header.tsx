@@ -1,11 +1,11 @@
-import { useState } from "react";
-import PageHeader from "@/components/base/common/page-header";
-import type { CategoryFormValues } from "@/types/category-types";
-import { AddCategoryDialog } from "./add-category-dialog";
+import { useState } from 'react';
+import PageHeader from '@/components/base/common/page-header';
+import type { CategoryFormValues } from '@/types/category-types';
+import { AddCategoryDialog } from './add-category-dialog';
 
 export interface CategoryHeaderProps {
   onAddCategory?: (data: CategoryFormValues) => void;
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -13,7 +13,7 @@ export interface CategoryHeaderProps {
 
 export default function CategoryHeader({
   onAddCategory,
-  role = "vendor",
+  role = 'vendor',
   showAddButton = true,
   children,
   className,
@@ -28,9 +28,9 @@ export default function CategoryHeader({
     <PageHeader
       title="Categories"
       description={
-        role === "admin"
-          ? "Manage product categories across the platform"
-          : "Manage your product categories and organization"
+        role === 'admin'
+          ? 'Manage product categories across the platform'
+          : 'Manage your product categories and organization'
       }
       className={className}
     >

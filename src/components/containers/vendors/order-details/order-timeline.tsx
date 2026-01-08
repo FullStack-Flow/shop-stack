@@ -1,18 +1,18 @@
-import OrderStatusTimeline from "@/components/base/store/order/order-status-timeline";
+import OrderStatusTimeline from '@/components/base/store/order/order-status-timeline';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
 interface OrderTimelineProps {
   stages: {
     id: string;
     label: string;
     date?: string;
-    status: "completed" | "active" | "pending";
+    status: 'completed' | 'active' | 'pending';
   }[];
 }
 

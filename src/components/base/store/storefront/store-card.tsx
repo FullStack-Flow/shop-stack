@@ -1,11 +1,11 @@
-import { Link } from "@tanstack/react-router";
-import { CheckCircle2, MapPin, Package, Star, Users } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import type { Store } from "@/types/store-types";
+import { Link } from '@tanstack/react-router';
+import { CheckCircle2, MapPin, Package, Star, Users } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import type { Store } from '@/types/store-types';
 
 interface StoreCardProps {
   store: Store;
@@ -16,7 +16,7 @@ export default function StoreCard({ store, className }: StoreCardProps) {
   return (
     <Card
       className={cn(
-        "group gap-0 overflow-hidden bg-card py-0 transition-all hover:shadow-primary/5 hover:shadow-xl",
+        'group gap-0 overflow-hidden bg-card py-0 transition-all hover:shadow-primary/5 hover:shadow-xl',
         className
       )}
     >

@@ -1,14 +1,14 @@
-import { ColorRadioItem } from "@/components/base/products/color-redio-item";
-import FilterGroup from "@/components/base/products/filter-group";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { RadioGroup } from "@/components/ui/radio-group";
-import { Slider } from "@/components/ui/slider";
-import { BRANDS, CATEGORIES, COLORS, SIZES } from "@/data/products";
-import type { FilterState } from "@/lib/store/product-filters-store";
-import { cn } from "@/lib/utils";
-import { Star } from "lucide-react";
+import { Star } from 'lucide-react';
+import { ColorRadioItem } from '@/components/base/products/color-redio-item';
+import FilterGroup from '@/components/base/products/filter-group';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+import { RadioGroup } from '@/components/ui/radio-group';
+import { Slider } from '@/components/ui/slider';
+import { BRANDS, CATEGORIES, COLORS, SIZES } from '@/data/products';
+import type { FilterState } from '@/lib/store/product-filters-store';
+import { cn } from '@/lib/utils';
 
 interface FilterSidebarProps {
   filters: FilterState;
@@ -41,11 +41,11 @@ export default function FilterSidebar({
   };
 
   const handlePriceChange = (value: [number, number]) => {
-    updateFilter("priceRange", value);
+    updateFilter('priceRange', value);
   };
 
   return (
-    <div className={cn("space-y-1 px-5", className)}>
+    <div className={cn('space-y-1 px-5', className)}>
       <div className="mb-4 font-semibold text-lg">Filters</div>
 
       <FilterGroup id="categories" title="Categories">
@@ -59,7 +59,7 @@ export default function FilterSidebar({
                   handleCheckboxChange(
                     checked as boolean,
                     category,
-                    "categories"
+                    'categories'
                   )
                 }
               />
@@ -99,7 +99,7 @@ export default function FilterSidebar({
                 id={`brand-${brand}`}
                 checked={filters.brands.includes(brand)}
                 onCheckedChange={(checked) =>
-                  handleCheckboxChange(checked as boolean, brand, "brands")
+                  handleCheckboxChange(checked as boolean, brand, 'brands')
                 }
               />
               <Label
@@ -115,9 +115,9 @@ export default function FilterSidebar({
 
       <FilterGroup id="colors" title="Colors">
         <RadioGroup
-          value={filters.colors[0] || ""}
+          value={filters.colors[0] || ''}
           onValueChange={(value) =>
-            updateFilter("colors", value ? [value] : [])
+            updateFilter('colors', value ? [value] : [])
           }
           className="flex flex-wrap gap-2"
         >
@@ -138,11 +138,11 @@ export default function FilterSidebar({
           {SIZES.map((size) => (
             <Button
               key={size}
-              variant={filters.sizes.includes(size) ? "default" : "outline"}
+              variant={filters.sizes.includes(size) ? 'default' : 'outline'}
               size="sm"
               onClick={() => {
                 const isSelected = filters.sizes.includes(size);
-                handleCheckboxChange(!isSelected, size, "sizes");
+                handleCheckboxChange(!isSelected, size, 'sizes');
               }}
               className="h-8 w-10 p-0"
             >
@@ -161,19 +161,19 @@ export default function FilterSidebar({
               className="flex w-full cursor-pointer items-center space-x-2 rounded border-0 bg-transparent p-1 hover:bg-muted/50"
               onClick={() =>
                 updateFilter(
-                  "rating",
+                  'rating',
                   filters.rating === rating ? null : rating
                 )
               }
             >
               <div
-                className={`h-4 w-4 rounded-full border ${filters.rating === rating ? "border-primary bg-primary" : "border-gray-300"}`}
+                className={`h-4 w-4 rounded-full border ${filters.rating === rating ? 'border-primary bg-primary' : 'border-gray-300'}`}
               />
               <div className="flex items-center">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-4 w-4 ${i < rating ? "fill-amber-400 text-amber-400" : "text-gray-300"}`}
+                    className={`h-4 w-4 ${i < rating ? 'fill-amber-400 text-amber-400' : 'text-gray-300'}`}
                   />
                 ))}
                 <span className="ml-2 text-muted-foreground text-sm">& Up</span>
@@ -185,7 +185,7 @@ export default function FilterSidebar({
 
       <FilterGroup id="availability" title="Availability">
         <div className="space-y-2">
-          {["In Stock", "Ships in 24 hours", "Available for pickup"].map(
+          {['In Stock', 'Ships in 24 hours', 'Available for pickup'].map(
             (status) => (
               <div key={status} className="flex items-center space-x-2">
                 <Checkbox
@@ -195,7 +195,7 @@ export default function FilterSidebar({
                     handleCheckboxChange(
                       checked as boolean,
                       status,
-                      "availability"
+                      'availability'
                     )
                   }
                 />

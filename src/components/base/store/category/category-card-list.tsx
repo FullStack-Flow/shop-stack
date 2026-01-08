@@ -1,10 +1,10 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import type { Category } from "@/types/category-types";
-import { Link } from "@tanstack/react-router";
-import { ArrowRight, Package } from "lucide-react";
+import { Link } from '@tanstack/react-router';
+import { ArrowRight, Package } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import type { Category } from '@/types/category-types';
 
 interface CategoryCardListProps {
   category: Category;
@@ -25,7 +25,7 @@ export default function CategoryCardList({
     >
       <Card
         className={cn(
-          "overflow-hidden py-0 transition-all hover:border-primary/50 hover:shadow-md",
+          'overflow-hidden py-0 transition-all hover:border-primary/50 hover:shadow-md',
           className
         )}
       >

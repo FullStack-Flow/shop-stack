@@ -1,30 +1,30 @@
-import NotFound from "@/components/base/empty/notfound";
-import ProductCard from "@/components/base/products/product-card";
+import { PackageOpen } from 'lucide-react';
+import { useState } from 'react';
+import NotFound from '@/components/base/empty/notfound';
+import ProductCard from '@/components/base/products/product-card';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { mockProducts } from "@/data/products";
-import { PackageOpen } from "lucide-react";
-import { useState } from "react";
+} from '@/components/ui/select';
+import { mockProducts } from '@/data/products';
 
 interface StoreProductsProps {
   storeName: string;
 }
 
 const sortOptions = [
-  { value: "newest", label: "Newest" },
-  { value: "price-low", label: "Price: Low to High" },
-  { value: "price-high", label: "Price: High to Low" },
-  { value: "rating", label: "Highest Rated" },
-  { value: "popular", label: "Most Popular" },
+  { value: 'newest', label: 'Newest' },
+  { value: 'price-low', label: 'Price: Low to High' },
+  { value: 'price-high', label: 'Price: High to Low' },
+  { value: 'rating', label: 'Highest Rated' },
+  { value: 'popular', label: 'Most Popular' },
 ];
 
 export default function StoreProducts({ storeName }: StoreProductsProps) {
-  const [sortBy, setSortBy] = useState("newest");
+  const [sortBy, setSortBy] = useState('newest');
 
   // Filter products by store name
   // In a real app, products would have a storeId field for direct matching
@@ -35,13 +35,13 @@ export default function StoreProducts({ storeName }: StoreProductsProps) {
   // Sort products
   const sortedProducts = [...storeProducts].sort((a, b) => {
     switch (sortBy) {
-      case "price-low":
+      case 'price-low':
         return a.price.current - b.price.current;
-      case "price-high":
+      case 'price-high':
         return b.price.current - a.price.current;
-      case "rating":
+      case 'rating':
         return b.rating.average - a.rating.average;
-      case "popular":
+      case 'popular':
         return b.rating.count - a.rating.count;
       default:
         return 0;

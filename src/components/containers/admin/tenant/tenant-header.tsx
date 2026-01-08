@@ -1,5 +1,8 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Link } from '@tanstack/react-router';
+import { format } from 'date-fns';
+import { ArrowLeft, MoreHorizontal } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,11 +10,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { AdminTenantDetailsProps } from "@/types/tenant";
-import { Link } from "@tanstack/react-router";
-import { format } from "date-fns";
-import { ArrowLeft, MoreHorizontal } from "lucide-react";
+} from '@/components/ui/dropdown-menu';
+import type { AdminTenantDetailsProps } from '@/types/tenant';
 
 export default function TenantHeader({ tenant }: AdminTenantDetailsProps) {
   return (
@@ -27,11 +27,11 @@ export default function TenantHeader({ tenant }: AdminTenantDetailsProps) {
             {tenant.name}
             <Badge
               variant={
-                tenant.status === "active"
-                  ? "default"
-                  : tenant.status === "suspended"
-                    ? "destructive"
-                    : "secondary"
+                tenant.status === 'active'
+                  ? 'default'
+                  : tenant.status === 'suspended'
+                    ? 'destructive'
+                    : 'secondary'
               }
               className="capitalize"
             >
@@ -41,7 +41,7 @@ export default function TenantHeader({ tenant }: AdminTenantDetailsProps) {
           <div className="flex items-center gap-2 text-muted-foreground">
             <span>{tenant.slug}</span>
             <span>•</span>
-            <span>Joined {format(tenant.joinedDate, "MMM d, yyyy")}</span>
+            <span>Joined {format(tenant.joinedDate, 'MMM d, yyyy')}</span>
           </div>
         </div>
       </div>

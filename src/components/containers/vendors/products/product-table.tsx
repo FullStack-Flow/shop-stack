@@ -1,8 +1,8 @@
-import DataTable from "@/components/base/data-table/data-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import type { Product } from "@/types/products";
-import type { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from '@tanstack/react-table';
+import DataTable from '@/components/base/data-table/data-table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import type { Product } from '@/types/products';
 
 interface ProductTableProps {
   products: Product[];
@@ -15,57 +15,57 @@ export default function ProductTable({
 }: ProductTableProps) {
   const columns: ColumnDef<Product>[] = [
     {
-      accessorKey: "id",
-      header: "ID",
+      accessorKey: 'id',
+      header: 'ID',
       cell: ({ row }) => (
         <div className="w-20 truncate text-muted-foreground text-xs">
-          {row.getValue("id")}
+          {row.getValue('id')}
         </div>
       ),
     },
     {
-      accessorKey: "image",
-      header: "Image",
+      accessorKey: 'image',
+      header: 'Image',
       cell: ({ row }) => (
         <div className="h-10 w-10 overflow-hidden rounded-md border bg-muted">
           <img
-            src={row.getValue("image") || "/placeholder.svg"}
-            alt={row.getValue("name")}
+            src={row.getValue('image') || '/placeholder.svg'}
+            alt={row.getValue('name')}
             className="h-full w-full object-cover"
           />
         </div>
       ),
     },
     {
-      accessorKey: "name",
-      header: "Product",
+      accessorKey: 'name',
+      header: 'Product',
       cell: ({ row }) => (
-        <div className="font-medium">{row.getValue("name")}</div>
+        <div className="font-medium">{row.getValue('name')}</div>
       ),
     },
     {
-      accessorKey: "category",
-      header: "Category",
+      accessorKey: 'category',
+      header: 'Category',
       cell: ({ row }) => (
         <div className="text-muted-foreground text-sm">
-          {row.getValue("category") || "-"}
+          {row.getValue('category') || '-'}
         </div>
       ),
     },
     {
-      accessorKey: "brand",
-      header: "Brand",
+      accessorKey: 'brand',
+      header: 'Brand',
       cell: ({ row }) => (
         <div className="text-muted-foreground text-sm">
-          {row.getValue("brand") || "-"}
+          {row.getValue('brand') || '-'}
         </div>
       ),
     },
     {
-      accessorKey: "tags",
-      header: "Tags",
+      accessorKey: 'tags',
+      header: 'Tags',
       cell: ({ row }) => {
-        const tags = row.getValue("tags") as string[] | undefined;
+        const tags = row.getValue('tags') as string[] | undefined;
         if (!tags || tags.length === 0)
           return <span className="text-muted-foreground">-</span>;
         return (
@@ -85,27 +85,27 @@ export default function ProductTable({
       },
     },
     {
-      accessorKey: "price",
-      header: "Price",
+      accessorKey: 'price',
+      header: 'Price',
     },
     {
-      accessorKey: "stock",
-      header: "Stock",
+      accessorKey: 'stock',
+      header: 'Stock',
     },
     {
-      accessorKey: "status",
-      header: "Status",
+      accessorKey: 'status',
+      header: 'Status',
       cell: ({ row }) => {
-        const status = row.getValue("status") as Product["status"];
+        const status = row.getValue('status') as Product['status'];
         return (
-          <Badge variant={status === "active" ? "default" : "destructive"}>
-            {status === "active" ? "Active" : "Out of Stock"}
+          <Badge variant={status === 'active' ? 'default' : 'destructive'}>
+            {status === 'active' ? 'Active' : 'Out of Stock'}
           </Badge>
         );
       },
     },
     {
-      id: "actions",
+      id: 'actions',
       header: () => <div className="text-right">Actions</div>,
       cell: () => (
         <div className="text-right">

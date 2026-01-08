@@ -1,12 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { AddTagDialog } from "@/components/containers/shared/tags/add-tag-dialog";
-import ShopTagsTemplate from "@/components/templates/vendor/shop-tags-template";
-import { mockTags } from "@/data/tags";
-import type { TagFormValues } from "@/types/tag-form";
-import type { Tag } from "@/types/tags";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { AddTagDialog } from '@/components/containers/shared/tags/add-tag-dialog';
+import ShopTagsTemplate from '@/components/templates/vendor/shop-tags-template';
+import { mockTags } from '@/data/tags';
+import type { TagFormValues } from '@/types/tag-form';
+import type { Tag } from '@/types/tags';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/tags")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/tags')({
   component: TagsPage,
 });
 
@@ -22,13 +22,13 @@ function TagsPage() {
     const newTag: Tag = {
       id: String(tags.length + 1),
       name: data.name,
-      slug: data.name.toLowerCase().replace(/\s+/g, "-"),
+      slug: data.name.toLowerCase().replace(/\s+/g, '-'),
       description: data.description,
       productCount: 0,
     };
 
     setTags([...tags, newTag]);
-    console.log("Created tag:", newTag);
+    console.log('Created tag:', newTag);
   };
 
   return (

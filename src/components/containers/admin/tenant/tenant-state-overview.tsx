@@ -1,6 +1,6 @@
-import type { AdminTenantDetailsProps } from "@/types/tenant";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, ShoppingBag, Package, Users } from "lucide-react";
+import { CreditCard, Package, ShoppingBag, Users } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import type { AdminTenantDetailsProps } from '@/types/tenant';
 
 export default function TenantStateOverview({
   tenant,

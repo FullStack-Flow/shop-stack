@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,10 +7,10 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
 interface BrandFormValues {
   name: string;
@@ -24,27 +24,27 @@ interface AddBrandDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (data: BrandFormValues) => void;
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
 }
 
 export function AddBrandDialog({
   open,
   onOpenChange,
   onSubmit,
-  role = "vendor",
+  role = 'vendor',
 }: AddBrandDialogProps) {
   const [formData, setFormData] = useState<BrandFormValues>({
-    name: "",
-    slug: "",
-    website: "",
-    description: "",
-    logo: "",
+    name: '',
+    slug: '',
+    website: '',
+    description: '',
+    logo: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({ name: "", slug: "", website: "", description: "", logo: "" });
+    setFormData({ name: '', slug: '', website: '', description: '', logo: '' });
     onOpenChange(false);
   };
 
@@ -54,8 +54,8 @@ export function AddBrandDialog({
         <DialogHeader>
           <DialogTitle>Add New Brand</DialogTitle>
           <DialogDescription>
-            {role === "admin"
-              ? "Create a new brand to associate with products across the platform."
+            {role === 'admin'
+              ? 'Create a new brand to associate with products across the platform.'
               : "Add a new brand to your shop's catalog."}
           </DialogDescription>
         </DialogHeader>
@@ -72,7 +72,7 @@ export function AddBrandDialog({
                   setFormData({
                     ...formData,
                     name,
-                    slug: name.toLowerCase().replace(/\s+/g, "-"),
+                    slug: name.toLowerCase().replace(/\s+/g, '-'),
                   });
                 }}
                 placeholder="e.g. Nike, Adidas"

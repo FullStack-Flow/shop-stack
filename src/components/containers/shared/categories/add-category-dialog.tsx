@@ -1,5 +1,5 @@
-import { useForm } from "@tanstack/react-form";
-import { Button } from "@/components/ui/button";
+import { useForm } from '@tanstack/react-form';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,38 +7,38 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import getFieldErrors from "@/lib/helper/field-errors";
-import type { CategoryFormValues } from "@/types/category-types";
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import getFieldErrors from '@/lib/helper/field-errors';
+import type { CategoryFormValues } from '@/types/category-types';
 
 interface AddCategoryDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (data: CategoryFormValues) => void;
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
 }
 
 export function AddCategoryDialog({
   open,
   onOpenChange,
   onSubmit,
-  role = "vendor",
+  role = 'vendor',
 }: AddCategoryDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: "",
-      slug: "",
-      description: "",
+      name: '',
+      slug: '',
+      description: '',
       image: null as FileList | null,
-      icon: "",
-      parentId: "",
+      icon: '',
+      parentId: '',
     },
     onSubmit: async ({ value }) => {
       onSubmit(value);
@@ -53,9 +53,9 @@ export function AddCategoryDialog({
         <DialogHeader>
           <DialogTitle>Add New Category</DialogTitle>
           <DialogDescription>
-            {role === "admin"
-              ? "Create a new product category for the platform."
-              : "Create a new product category for your shop."}
+            {role === 'admin'
+              ? 'Create a new product category for the platform.'
+              : 'Create a new product category for your shop.'}
           </DialogDescription>
         </DialogHeader>
 
@@ -85,8 +85,8 @@ export function AddCategoryDialog({
                         onChange={(e) => {
                           field.handleChange(e.target.value);
                           form.setFieldValue(
-                            "slug",
-                            e.target.value.toLowerCase().replace(/\s+/g, "-")
+                            'slug',
+                            e.target.value.toLowerCase().replace(/\s+/g, '-')
                           );
                         }}
                         placeholder="Electronics"

@@ -10,7 +10,7 @@ export interface Shop {
   totalProducts: number;
   totalOrders: number;
   monthlyRevenue: string;
-  status: "active" | "pending";
+  status: 'active' | 'pending';
 }
 
 export interface ShopFormValues {

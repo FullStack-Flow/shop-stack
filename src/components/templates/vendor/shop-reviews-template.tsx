@@ -1,7 +1,7 @@
-import ReviewHeader from "@/components/containers/shared/reviews/review-header";
-import ReviewTable from "@/components/containers/shared/reviews/review-table";
-import { VENDOR_REVIEW_PERMISSIONS } from "@/lib/config/review-permissions";
-import type { Review } from "@/types/review";
+import ReviewHeader from '@/components/containers/shared/reviews/review-header';
+import ReviewTable from '@/components/containers/shared/reviews/review-table';
+import { VENDOR_REVIEW_PERMISSIONS } from '@/lib/config/review-permissions';
+import type { Review } from '@/types/review';
 
 interface ShopReviewsTemplateProps {
   reviews: Review[];

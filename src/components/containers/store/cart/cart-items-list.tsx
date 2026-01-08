@@ -1,5 +1,5 @@
-import CartItem from "@/components/base/store/cart/cart-item";
-import { useCartStore } from "@/lib/store/cart-store";
+import CartItem from '@/components/base/store/cart/cart-item';
+import { useCartStore } from '@/lib/store/cart-store';
 
 export default function CartItemsList() {
   const { items } = useCartStore();

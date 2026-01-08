@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { AddCategoryDialog } from "@/components/containers/shared/categories/add-category-dialog";
-import ShopCategoriesTemplate from "@/components/templates/vendor/shop-categories-template";
-import { mockCategories } from "@/data/categories";
-import type { Category, CategoryFormValues } from "@/types/category-types";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { AddCategoryDialog } from '@/components/containers/shared/categories/add-category-dialog';
+import ShopCategoriesTemplate from '@/components/templates/vendor/shop-categories-template';
+import { mockCategories } from '@/data/categories';
+import type { Category, CategoryFormValues } from '@/types/category-types';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/categories")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/categories')({
   component: CategoriesPage,
 });
 
@@ -24,8 +24,8 @@ function CategoriesPage() {
       slug: data.slug,
       description: data.description,
       icon: data.icon,
-      parentId: data.parentId === "none" ? undefined : data.parentId,
-      level: data.parentId && data.parentId !== "none" ? 1 : 0,
+      parentId: data.parentId === 'none' ? undefined : data.parentId,
+      level: data.parentId && data.parentId !== 'none' ? 1 : 0,
       productCount: 0,
       isActive: true,
       sortOrder: categories.length + 1,
@@ -33,7 +33,7 @@ function CategoriesPage() {
     };
 
     setCategories([...categories, newCategory]);
-    console.log("Created category:", newCategory);
+    console.log('Created category:', newCategory);
   };
 
   return (

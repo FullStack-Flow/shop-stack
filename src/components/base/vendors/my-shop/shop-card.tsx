@@ -1,14 +1,14 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Link } from '@tanstack/react-router';
+import { BarChart3, MapPin, Package, Star } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { Link } from "@tanstack/react-router";
-import { BarChart3, MapPin, Package, Star } from "lucide-react";
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface ShopCardProps {
   shop: {
@@ -23,14 +23,14 @@ interface ShopCardProps {
     totalProducts: number;
     totalOrders: number;
     monthlyRevenue: string;
-    status: "active" | "pending";
+    status: 'active' | 'pending';
   };
   className?: string;
 }
 
 export default function ShopCard({ shop, className }: ShopCardProps) {
   return (
-    <Card className={cn("pt-0", className)}>
+    <Card className={cn('pt-0', className)}>
       <div className="relative h-32 rounded-t-xl bg-linear-to-br from-primary/20 to-primary/5">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex size-16 items-center justify-center rounded-full bg-background shadow-lg">
@@ -49,7 +49,7 @@ export default function ShopCard({ shop, className }: ShopCardProps) {
               {shop.description}
             </p>
           </div>
-          <Badge variant={shop.status === "active" ? "default" : "secondary"}>
+          <Badge variant={shop.status === 'active' ? 'default' : 'secondary'}>
             {shop.status}
           </Badge>
         </div>

@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import AdminTenantDetailsTemplate from "@/components/templates/admin/tenants/admin-tenant-details-template";
-import { mockTenantDetails } from "@/data/tenant";
+import { createFileRoute } from '@tanstack/react-router';
+import AdminTenantDetailsTemplate from '@/components/templates/admin/tenants/admin-tenant-details-template';
+import { mockTenantDetails } from '@/data/tenant';
 
-export const Route = createFileRoute("/(admin)/admin/tenants/$tenantId")({
+export const Route = createFileRoute('/(admin)/admin/tenants/$tenantId')({
   component: TenantDetailsPage,
 });
 

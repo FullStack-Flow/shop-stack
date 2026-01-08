@@ -1,4 +1,4 @@
-import StarburstIcon from "@/components/ui/icons/starburst-icon";
+import StarburstIcon from '@/components/ui/icons/starburst-icon';
 
 export default function MarqueeBadge({ label }: { label: string }) {
   return (

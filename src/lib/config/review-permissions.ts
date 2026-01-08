@@ -1,4 +1,4 @@
-import type { ReviewPermissions } from "@/types/review";
+import type { ReviewPermissions } from '@/types/review';
 
 export const ADMIN_REVIEW_PERMISSIONS: ReviewPermissions = {
   canDelete: true,

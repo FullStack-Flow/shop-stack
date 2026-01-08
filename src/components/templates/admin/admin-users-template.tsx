@@ -1,7 +1,7 @@
-import UserHeader from "@/components/containers/shared/users/user-header";
-import UserTable from "@/components/containers/shared/users/user-table";
-import { ADMIN_USER_PERMISSIONS } from "@/lib/config/user-permissions";
-import type { User, UserFormValues } from "@/types/users";
+import UserHeader from '@/components/containers/shared/users/user-header';
+import UserTable from '@/components/containers/shared/users/user-table';
+import { ADMIN_USER_PERMISSIONS } from '@/lib/config/user-permissions';
+import type { User, UserFormValues } from '@/types/users';
 
 interface AdminUsersTemplateProps {
   users: User[];

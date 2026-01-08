@@ -1,18 +1,18 @@
-import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
-import NotFound from "@/components/base/empty/notfound";
-import { StoreHeaderSkeleton } from "@/components/base/store/storefront/store-header-skeleton";
-import { StoreProductsSkeleton } from "@/components/base/store/storefront/store-products-skeleton";
-import { StoreAbout } from "@/components/containers/store/storefront/store-about";
-import StoreHeader from "@/components/containers/store/storefront/store-header";
-import StoreProducts from "@/components/containers/store/storefront/store-product";
-import { StoreReviews } from "@/components/containers/store/storefront/store-reviews";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useStoreFront } from "@/lib/store/store";
-import { Link } from "@tanstack/react-router";
-import { Store } from "lucide-react";
-import { useEffect } from "react";
+import { Link } from '@tanstack/react-router';
+import { Store } from 'lucide-react';
+import { useEffect } from 'react';
+import { BreadcrumbNav } from '@/components/base/common/breadcrumb-nav';
+import NotFound from '@/components/base/empty/notfound';
+import { StoreHeaderSkeleton } from '@/components/base/store/storefront/store-header-skeleton';
+import { StoreProductsSkeleton } from '@/components/base/store/storefront/store-products-skeleton';
+import { StoreAbout } from '@/components/containers/store/storefront/store-about';
+import StoreHeader from '@/components/containers/store/storefront/store-header';
+import StoreProducts from '@/components/containers/store/storefront/store-product';
+import { StoreReviews } from '@/components/containers/store/storefront/store-reviews';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useStoreFront } from '@/lib/store/store';
 
 interface StorePageTemplateProps {
   slug: string;
@@ -67,8 +67,8 @@ export default function StorePageTemplate({ slug }: StorePageTemplateProps) {
   }
 
   const storeSteps = [
-    { label: "Home", href: "/" },
-    { label: "Stores", href: "/store" },
+    { label: 'Home', href: '/' },
+    { label: 'Stores', href: '/store' },
     { label: currentStore.name, isActive: true },
   ] as const;
 

@@ -1,11 +1,11 @@
-import { cn } from "@/lib/utils";
-import { Check, Circle, Package } from "lucide-react";
+import { Check, Circle, Package } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface TimelineStage {
   id: string;
   label: string;
   date?: string;
-  status: "completed" | "active" | "pending";
+  status: 'completed' | 'active' | 'pending';
 }
 
 interface OrderStatusTimelineProps {
@@ -25,8 +25,8 @@ export default function OrderStatusTimeline({
               <div
                 key={`line-${stage.id}`}
                 className={cn(
-                  "h-0.5 flex-1 transition-colors",
-                  stage.status === "completed" ? "bg-primary" : "bg-muted"
+                  'h-0.5 flex-1 transition-colors',
+                  stage.status === 'completed' ? 'bg-primary' : 'bg-muted'
                 )}
               />
             )
@@ -40,17 +40,17 @@ export default function OrderStatusTimeline({
             {/* Icon */}
             <div
               className={cn(
-                "relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-background transition-colors",
-                stage.status === "completed" &&
-                  "border-primary bg-primary text-primary-foreground",
-                stage.status === "active" && "border-primary text-primary",
-                stage.status === "pending" &&
-                  "border-muted text-muted-foreground"
+                'relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-background transition-colors',
+                stage.status === 'completed' &&
+                  'border-primary bg-primary text-primary-foreground',
+                stage.status === 'active' && 'border-primary text-primary',
+                stage.status === 'pending' &&
+                  'border-muted text-muted-foreground'
               )}
             >
-              {stage.status === "completed" ? (
+              {stage.status === 'completed' ? (
                 <Check className="h-6 w-6" />
-              ) : stage.status === "active" ? (
+              ) : stage.status === 'active' ? (
                 <Package className="h-6 w-6" />
               ) : (
                 <Circle className="h-6 w-6" />
@@ -61,8 +61,8 @@ export default function OrderStatusTimeline({
             <div className="mt-4 text-center">
               <p
                 className={cn(
-                  "font-medium text-sm",
-                  stage.status === "pending" && "text-muted-foreground"
+                  'font-medium text-sm',
+                  stage.status === 'pending' && 'text-muted-foreground'
                 )}
               >
                 {stage.label}

@@ -1,4 +1,3 @@
-import type { VendorNavItem } from "@/types/vendor";
 import {
   Briefcase,
   CreditCard,
@@ -11,66 +10,67 @@ import {
   Tag,
   Tags,
   Users,
-} from "lucide-react";
+} from 'lucide-react';
+import type { VendorNavItem } from '@/types/vendor';
 
 export const getShopNavItems = (shopSlug: string): VendorNavItem[] => [
   {
-    title: "Overview",
+    title: 'Overview',
     href: `/shop/${shopSlug}`,
     icon: Home,
   },
   {
-    title: "Products",
+    title: 'Products',
     href: `/shop/${shopSlug}/products`,
     icon: Package,
   },
   {
-    title: "Coupons",
+    title: 'Coupons',
     href: `/shop/${shopSlug}/coupons`,
     icon: Tag,
   },
   {
-    title: "Orders",
+    title: 'Orders',
     href: `/shop/${shopSlug}/orders`,
     icon: ShoppingBag,
   },
   {
-    title: "Categories",
+    title: 'Categories',
     href: `/shop/${shopSlug}/categories`,
     icon: Tags,
   },
   {
-    title: "Tags",
+    title: 'Tags',
     href: `/shop/${shopSlug}/tags`,
     icon: Tag,
   },
   {
-    title: "Brands",
+    title: 'Brands',
     href: `/shop/${shopSlug}/brands`,
     icon: Briefcase,
   },
   {
-    title: "Attributes",
+    title: 'Attributes',
     href: `/shop/${shopSlug}/attributes`,
     icon: FileText,
   },
   {
-    title: "Reviews",
+    title: 'Reviews',
     href: `/shop/${shopSlug}/reviews`,
     icon: Star,
   },
   {
-    title: "Transactions",
+    title: 'Transactions',
     href: `/shop/${shopSlug}/transactions`,
     icon: CreditCard,
   },
   {
-    title: "Taxes",
+    title: 'Taxes',
     href: `/shop/${shopSlug}/taxes`,
     icon: Landmark,
   },
   {
-    title: "Staff",
+    title: 'Staff',
     href: `/shop/${shopSlug}/staff`,
     icon: Users,
   },

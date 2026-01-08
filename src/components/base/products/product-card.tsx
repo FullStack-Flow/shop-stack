@@ -1,13 +1,13 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import type { Product } from "@/data/products";
-import { useCartStore } from "@/lib/store/cart-store";
-import { cn } from "@/lib/utils";
-import { Link } from "@tanstack/react-router";
-import { Eye, ShoppingCart, Star } from "lucide-react";
-import { toast } from "sonner";
-import PriceTag from "./price-tag";
-import { ColorSwatch } from "./color-redio-item";
+import { Link } from '@tanstack/react-router';
+import { Eye, ShoppingCart, Star } from 'lucide-react';
+import { toast } from 'sonner';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import type { Product } from '@/data/products';
+import { useCartStore } from '@/lib/store/cart-store';
+import { cn } from '@/lib/utils';
+import { ColorSwatch } from './color-redio-item';
+import PriceTag from './price-tag';
 
 interface ProductCardProps {
   product: Product;
@@ -28,12 +28,12 @@ export default function ProductCard({ product, className }: ProductCardProps) {
       quantity: 1,
       maxQuantity: product.stock.quantity,
     });
-    toast.success("Added to cart");
+    toast.success('Added to cart');
   };
   return (
     <div
       className={cn(
-        "group relative flex flex-col rounded-xl border-2 border-muted border-dashed p-4 transition-colors hover:border-primary/50",
+        'group relative flex flex-col rounded-xl border-2 border-muted border-dashed p-4 transition-colors hover:border-primary/50',
         className
       )}
     >

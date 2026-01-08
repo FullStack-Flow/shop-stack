@@ -1,11 +1,11 @@
-import { useState } from "react";
-import PageHeader from "@/components/base/common/page-header";
-import { AddAttributeDialog } from "./add-attribute-dialog";
-import type { AttributeFormValues } from "@/types/attributes";
+import { useState } from 'react';
+import PageHeader from '@/components/base/common/page-header';
+import type { AttributeFormValues } from '@/types/attributes';
+import { AddAttributeDialog } from './add-attribute-dialog';
 
 export interface AttributeHeaderProps {
   onAddAttribute?: (data: AttributeFormValues) => void;
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -13,7 +13,7 @@ export interface AttributeHeaderProps {
 
 export default function AttributeHeader({
   onAddAttribute,
-  role = "vendor",
+  role = 'vendor',
   showAddButton = true,
   children,
   className,
@@ -28,9 +28,9 @@ export default function AttributeHeader({
     <PageHeader
       title="Attributes"
       description={
-        role === "admin"
-          ? "Manage product attributes across the platform"
-          : "Manage product attributes and variations for your shop"
+        role === 'admin'
+          ? 'Manage product attributes across the platform'
+          : 'Manage product attributes and variations for your shop'
       }
       className={className}
     >

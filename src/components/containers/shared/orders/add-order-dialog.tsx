@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Dialog,
   DialogContent,
@@ -8,25 +8,25 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/dialog';
+import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 export interface OrderFormValues {
   orderNumber: string;
   customerName: string;
   customerEmail: string;
   total: string;
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
-  paymentStatus: "paid" | "unpaid" | "refunded";
+  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  paymentStatus: 'paid' | 'unpaid' | 'refunded';
   items: number;
   notes?: string;
   orderDate?: Date;
@@ -44,14 +44,14 @@ export function AddOrderDialog({
   onSubmit,
 }: AddOrderDialogProps) {
   const [formData, setFormData] = useState<OrderFormValues>({
-    orderNumber: "",
-    customerName: "",
-    customerEmail: "",
-    total: "",
-    status: "pending",
-    paymentStatus: "unpaid",
+    orderNumber: '',
+    customerName: '',
+    customerEmail: '',
+    total: '',
+    status: 'pending',
+    paymentStatus: 'unpaid',
     items: 0,
-    notes: "",
+    notes: '',
     orderDate: new Date(),
   });
 
@@ -59,14 +59,14 @@ export function AddOrderDialog({
     e.preventDefault();
     onSubmit(formData);
     setFormData({
-      orderNumber: "",
-      customerName: "",
-      customerEmail: "",
-      total: "",
-      status: "pending",
-      paymentStatus: "unpaid",
+      orderNumber: '',
+      customerName: '',
+      customerEmail: '',
+      total: '',
+      status: 'pending',
+      paymentStatus: 'unpaid',
       items: 0,
-      notes: "",
+      notes: '',
       orderDate: new Date(),
     });
   };
@@ -95,7 +95,7 @@ export function AddOrderDialog({
                 <FieldLabel>Order Number</FieldLabel>
                 <Input
                   value={formData.orderNumber}
-                  onChange={(e) => handleChange("orderNumber", e.target.value)}
+                  onChange={(e) => handleChange('orderNumber', e.target.value)}
                   placeholder="ORD-001"
                   required
                 />
@@ -105,7 +105,7 @@ export function AddOrderDialog({
                 <FieldLabel>Customer Name</FieldLabel>
                 <Input
                   value={formData.customerName}
-                  onChange={(e) => handleChange("customerName", e.target.value)}
+                  onChange={(e) => handleChange('customerName', e.target.value)}
                   placeholder="John Doe"
                   required
                 />
@@ -117,7 +117,7 @@ export function AddOrderDialog({
                   type="email"
                   value={formData.customerEmail}
                   onChange={(e) =>
-                    handleChange("customerEmail", e.target.value)
+                    handleChange('customerEmail', e.target.value)
                   }
                   placeholder="john@example.com"
                   required
@@ -132,7 +132,7 @@ export function AddOrderDialog({
                     step="0.01"
                     min="0"
                     value={formData.total}
-                    onChange={(e) => handleChange("total", e.target.value)}
+                    onChange={(e) => handleChange('total', e.target.value)}
                     placeholder="0.00"
                     required
                   />
@@ -145,7 +145,7 @@ export function AddOrderDialog({
                     min="0"
                     value={formData.items}
                     onChange={(e) =>
-                      handleChange("items", parseInt(e.target.value, 10) || 0)
+                      handleChange('items', parseInt(e.target.value, 10) || 0)
                     }
                     placeholder="0"
                     required
@@ -159,7 +159,7 @@ export function AddOrderDialog({
                   <Select
                     value={formData.status}
                     onValueChange={(value) =>
-                      handleChange("status", value as OrderFormValues["status"])
+                      handleChange('status', value as OrderFormValues['status'])
                     }
                   >
                     <SelectTrigger>
@@ -181,8 +181,8 @@ export function AddOrderDialog({
                     value={formData.paymentStatus}
                     onValueChange={(value) =>
                       handleChange(
-                        "paymentStatus",
-                        value as OrderFormValues["paymentStatus"]
+                        'paymentStatus',
+                        value as OrderFormValues['paymentStatus']
                       )
                     }
                   >
@@ -204,7 +204,7 @@ export function AddOrderDialog({
                   mode="single"
                   selected={formData.orderDate}
                   onSelect={(date) => {
-                    if (date) handleChange("orderDate", date);
+                    if (date) handleChange('orderDate', date);
                   }}
                   className="rounded-md border"
                 />
@@ -214,7 +214,7 @@ export function AddOrderDialog({
                 <FieldLabel>Notes (Optional)</FieldLabel>
                 <Textarea
                   value={formData.notes}
-                  onChange={(e) => handleChange("notes", e.target.value)}
+                  onChange={(e) => handleChange('notes', e.target.value)}
                   placeholder="Additional notes about this order..."
                   rows={3}
                 />

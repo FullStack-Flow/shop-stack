@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import ShopTaxesTemplate from "@/components/templates/vendor/shop-taxes-template";
-import { mockTaxes } from "@/data/taxes";
-import type { Taxes as Tax, TaxFormValues } from "@/types/taxes";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import ShopTaxesTemplate from '@/components/templates/vendor/shop-taxes-template';
+import { mockTaxes } from '@/data/taxes';
+import type { Taxes as Tax, TaxFormValues } from '@/types/taxes';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/taxes")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/taxes')({
   component: TaxesPage,
 });
 
@@ -23,7 +23,7 @@ function TaxesPage() {
     };
 
     setTaxes([...taxes, newTax]);
-    console.log("Created tax:", newTax);
+    console.log('Created tax:', newTax);
   };
 
   return <ShopTaxesTemplate taxes={taxes} onAddTax={handleTaxSubmit} />;

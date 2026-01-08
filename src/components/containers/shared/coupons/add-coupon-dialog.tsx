@@ -1,5 +1,5 @@
-import { useForm } from "@tanstack/react-form";
-import { Button } from "@/components/ui/button";
+import { useForm } from '@tanstack/react-form';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,40 +7,40 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import getFieldErrors from "@/lib/helper/field-errors";
-import type { CouponFormValues } from "@/types/coupon";
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import getFieldErrors from '@/lib/helper/field-errors';
+import type { CouponFormValues } from '@/types/coupon';
 
 interface AddCouponDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (data: CouponFormValues) => void;
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
 }
 
 export function AddCouponDialog({
   open,
   onOpenChange,
   onSubmit,
-  role = "vendor",
+  role = 'vendor',
 }: AddCouponDialogProps) {
   const form = useForm({
     defaultValues: {
-      code: "",
-      description: "",
-      type: "fixed" as "percentage" | "fixed" | "free_shipping",
+      code: '',
+      description: '',
+      type: 'fixed' as 'percentage' | 'fixed' | 'free_shipping',
       discountAmount: 0,
       minimumCartAmount: 0,
-      activeFrom: "",
-      activeTo: "",
-      status: "active" as "active" | "expired" | "inactive",
+      activeFrom: '',
+      activeTo: '',
+      status: 'active' as 'active' | 'expired' | 'inactive',
       usageLimit: undefined as number | undefined,
       image: null as FileList | null,
     },
@@ -57,9 +57,9 @@ export function AddCouponDialog({
         <DialogHeader>
           <DialogTitle>Add New Coupon</DialogTitle>
           <DialogDescription>
-            {role === "admin"
-              ? "Create a new discount coupon for the platform."
-              : "Create a new discount coupon for your shop."}
+            {role === 'admin'
+              ? 'Create a new discount coupon for the platform.'
+              : 'Create a new discount coupon for your shop.'}
           </DialogDescription>
         </DialogHeader>
 

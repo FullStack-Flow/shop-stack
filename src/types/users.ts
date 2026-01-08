@@ -5,14 +5,14 @@ export interface User {
   avatar?: string;
   totalOrders: number;
   totalSpent: string;
-  status: "active" | "inactive" | "suspended";
+  status: 'active' | 'inactive' | 'suspended';
   createdAt: Date;
 }
 
 export interface UserFormValues {
   name: string;
   email: string;
-  status: "active" | "inactive" | "suspended";
+  status: 'active' | 'inactive' | 'suspended';
   avatar?: FileList | null;
 }
 

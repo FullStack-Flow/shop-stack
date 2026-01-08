@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { AddStaffDialog } from "@/components/containers/shared/staff/add-staff-dialog";
-import ShopStaffTemplate from "@/components/templates/vendor/shop-staff-template";
-import { mockStaff } from "@/data/staff";
-import type { Staff, StaffFormValues } from "@/types/staff";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { AddStaffDialog } from '@/components/containers/shared/staff/add-staff-dialog';
+import ShopStaffTemplate from '@/components/templates/vendor/shop-staff-template';
+import { mockStaff } from '@/data/staff';
+import type { Staff, StaffFormValues } from '@/types/staff';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/staff")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/staff')({
   component: StaffPage,
 });
 
@@ -25,11 +25,11 @@ function StaffPage() {
       role: data.role,
       avatar: data.avatar ? URL.createObjectURL(data.avatar[0]) : undefined,
       status: data.status,
-      joinedDate: new Date().toISOString().split("T")[0],
+      joinedDate: new Date().toISOString().split('T')[0],
     };
 
     setStaff([...staff, newStaff]);
-    console.log("Created staff:", newStaff);
+    console.log('Created staff:', newStaff);
   };
 
   return (

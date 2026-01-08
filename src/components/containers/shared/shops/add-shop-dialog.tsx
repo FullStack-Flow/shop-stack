@@ -1,11 +1,5 @@
-import { useForm } from "@tanstack/react-form";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Button } from "@/components/ui/button";
+import { useForm } from '@tanstack/react-form';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -13,12 +7,18 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Switch } from "@/components/ui/switch";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/dialog';
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
+import { Switch } from '@/components/ui/switch';
+import { Textarea } from '@/components/ui/textarea';
 
 export interface ShopFormValues {
   name: string;
@@ -40,7 +40,7 @@ interface AddShopDialogProps {
 
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === "string");
+  return errors.filter((error): error is string => typeof error === 'string');
 }
 
 export function AddShopDialog({
@@ -50,14 +50,14 @@ export function AddShopDialog({
 }: AddShopDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: "",
-      slug: "",
-      description: "",
+      name: '',
+      slug: '',
+      description: '',
       logo: null as FileList | null,
       banner: null as FileList | null,
-      address: "",
-      phone: "",
-      email: "",
+      address: '',
+      phone: '',
+      email: '',
       enableNotification: false,
     },
     onSubmit: async ({ value }) => {
@@ -102,8 +102,8 @@ export function AddShopDialog({
                         onChange={(e) => {
                           field.handleChange(e.target.value);
                           form.setFieldValue(
-                            "slug",
-                            e.target.value.toLowerCase().replace(/\s+/g, "-")
+                            'slug',
+                            e.target.value.toLowerCase().replace(/\s+/g, '-')
                           );
                         }}
                         placeholder="e.g. Tech Gadgets Store"
@@ -360,7 +360,7 @@ export function AddShopDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? "Creating..." : "Create Shop"}
+                  {isSubmitting ? 'Creating...' : 'Create Shop'}
                 </Button>
               )}
             </form.Subscribe>

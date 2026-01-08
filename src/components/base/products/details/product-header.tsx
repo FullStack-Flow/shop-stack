@@ -1,7 +1,7 @@
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
-import { Link } from "@tanstack/react-router";
-import { Star } from "lucide-react";
+import { Link } from '@tanstack/react-router';
+import { Star } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 interface ProductHeaderProps {
   title: string;
@@ -24,7 +24,7 @@ export default function ProductHeader({
   className,
 }: ProductHeaderProps) {
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn('space-y-4', className)}>
       {isOnSale && (
         <Badge variant="destructive" className="w-fit">
           Sale
@@ -38,7 +38,8 @@ export default function ProductHeader({
       <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
         <div className="flex items-center gap-1">
           <Link
-            to={`/category/${category.slug}`}
+            to="/category/$slug"
+            params={{ slug: category.slug }}
             className="font-medium text-primary hover:underline"
           >
             {category.name}
@@ -53,8 +54,8 @@ export default function ProductHeader({
               <Star
                 key={i}
                 className={cn(
-                  "h-4 w-4",
-                  i < Math.floor(rating) ? "fill-current" : "text-muted"
+                  'h-4 w-4',
+                  i < Math.floor(rating) ? 'fill-current' : 'text-muted'
                 )}
               />
             ))}

@@ -1,15 +1,15 @@
-import { Download } from "lucide-react";
-import PageHeader from "@/components/base/common/page-header";
-import { Button } from "@/components/ui/button";
+import { Download } from 'lucide-react';
+import PageHeader from '@/components/base/common/page-header';
+import { Button } from '@/components/ui/button';
 
 export interface OrderHeaderProps {
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
   children?: React.ReactNode;
   className?: string;
 }
 
 export default function OrderHeader({
-  role = "vendor",
+  role = 'vendor',
   children,
   className,
 }: OrderHeaderProps) {
@@ -17,9 +17,9 @@ export default function OrderHeader({
     <PageHeader
       title="Orders"
       description={
-        role === "admin"
-          ? "Manage platform-wide orders and shipping"
-          : "Manage and track your shop orders"
+        role === 'admin'
+          ? 'Manage platform-wide orders and shipping'
+          : 'Manage and track your shop orders'
       }
       className={className}
     >

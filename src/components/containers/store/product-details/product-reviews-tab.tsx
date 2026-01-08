@@ -1,7 +1,7 @@
-import RatingSummary from "@/components/base/products/details/review/rating-summary";
-import ReviewCard from "@/components/base/products/details/review/review-card";
-import ReviewFormCta from "@/components/base/products/details/review/review-form-cta";
-import type { Review } from "@/data/products";
+import RatingSummary from '@/components/base/products/details/review/rating-summary';
+import ReviewCard from '@/components/base/products/details/review/review-card';
+import ReviewFormCta from '@/components/base/products/details/review/review-form-cta';
+import type { Review } from '@/data/products';
 
 interface ProductReviewsTabProps {
   reviews: Review[];
@@ -53,7 +53,7 @@ export default function ProductReviewsTab({
             className="@2xl:flex-row @5xl:flex-col flex-col"
           />
           <ReviewFormCta
-            onReviewClick={() => console.log("Write review for", productId)}
+            onReviewClick={() => console.log('Write review for', productId)}
           />
         </div>
       </div>

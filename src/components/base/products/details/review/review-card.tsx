@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { cn } from "@/lib/utils";
-import { Star } from "lucide-react";
+import { Star } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { cn } from '@/lib/utils';
 
 interface ReviewCardProps {
   userName: string;
@@ -20,7 +20,7 @@ export default function ReviewCard({
   className,
 }: ReviewCardProps) {
   return (
-    <div className={cn("flex gap-4 border-b py-6 last:border-0", className)}>
+    <div className={cn('flex gap-4 border-b py-6 last:border-0', className)}>
       <Avatar className="h-10 w-10">
         <AvatarImage src={userAvatar} alt={userName} />
         <AvatarFallback>{userName[0]}</AvatarFallback>
@@ -37,8 +37,8 @@ export default function ReviewCard({
               <Star
                 key={i}
                 className={cn(
-                  "h-3.5 w-3.5",
-                  i < rating ? "fill-current" : "text-muted"
+                  'h-3.5 w-3.5',
+                  i < rating ? 'fill-current' : 'text-muted'
                 )}
               />
             ))}

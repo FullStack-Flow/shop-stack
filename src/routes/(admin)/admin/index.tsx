@@ -1,35 +1,35 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Building2, DollarSign, ShoppingBag, Users } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { createFileRoute } from '@tanstack/react-router';
+import { Building2, DollarSign, ShoppingBag, Users } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-export const Route = createFileRoute("/(admin)/admin/")({
+export const Route = createFileRoute('/(admin)/admin/')({
   component: AdminDashboardPage,
 });
 
 function AdminDashboardPage() {
   const stats = [
     {
-      title: "Total Tenants",
-      value: "24",
-      change: "+3 new this month",
+      title: 'Total Tenants',
+      value: '24',
+      change: '+3 new this month',
       icon: Building2,
     },
     {
-      title: "Total Users",
-      value: "1,234",
-      change: "+180 from last month",
+      title: 'Total Users',
+      value: '1,234',
+      change: '+180 from last month',
       icon: Users,
     },
     {
-      title: "Total Orders",
-      value: "5,432",
-      change: "+1,234 from last month",
+      title: 'Total Orders',
+      value: '5,432',
+      change: '+1,234 from last month',
       icon: ShoppingBag,
     },
     {
-      title: "Platform Revenue",
-      value: "$234,567",
-      change: "+12.5% from last month",
+      title: 'Platform Revenue',
+      value: '$234,567',
+      change: '+12.5% from last month',
       icon: DollarSign,
     },
   ];

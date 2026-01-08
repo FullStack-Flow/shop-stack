@@ -1,6 +1,6 @@
-import PageHeader from "@/components/base/common/page-header";
-import AdminProductsTable from "@/components/containers/admin/products/admin-products-table";
-import type { Product } from "@/data/products";
+import PageHeader from '@/components/base/common/page-header';
+import AdminProductsTable from '@/components/containers/admin/products/admin-products-table';
+import type { Product } from '@/data/products';
 
 interface AdminProductsTemplateProps {
   products: Product[];

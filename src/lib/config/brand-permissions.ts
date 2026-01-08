@@ -1,4 +1,4 @@
-import type { BrandPermissions } from "@/types/brands";
+import type { BrandPermissions } from '@/types/brands';
 
 export const ADMIN_BRAND_PERMISSIONS: BrandPermissions = {
   canDelete: true,

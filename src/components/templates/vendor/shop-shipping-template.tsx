@@ -1,7 +1,7 @@
-import ShippingHeader from "@/components/containers/shared/shipping/shipping-header";
-import ShippingTable from "@/components/containers/shared/shipping/shipping-table";
-import { VENDOR_SHIPPING_PERMISSIONS } from "@/lib/config/shipping-permissions";
-import type { ShippingMethod } from "@/types/shipping";
+import ShippingHeader from '@/components/containers/shared/shipping/shipping-header';
+import ShippingTable from '@/components/containers/shared/shipping/shipping-table';
+import { VENDOR_SHIPPING_PERMISSIONS } from '@/lib/config/shipping-permissions';
+import type { ShippingMethod } from '@/types/shipping';
 
 interface ShopShippingTemplateProps {
   shippingMethods: ShippingMethod[];
@@ -18,7 +18,11 @@ export default function ShopShippingTemplate({
 }: ShopShippingTemplateProps) {
   return (
     <div className="space-y-6">
-      <ShippingHeader role="vendor" onAddShipping={onAddShipping} showAddButton={!!onAddShipping} />
+      <ShippingHeader
+        role="vendor"
+        onAddShipping={onAddShipping}
+        showAddButton={!!onAddShipping}
+      />
       <ShippingTable
         shippingMethods={shippingMethods}
         permissions={VENDOR_SHIPPING_PERMISSIONS}

@@ -1,9 +1,9 @@
-import { Link } from "@tanstack/react-router";
-import type { ColumnDef } from "@tanstack/react-table";
-import { Eye, MoreHorizontal } from "lucide-react";
-import DataTable from "@/components/base/data-table/data-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Link } from '@tanstack/react-router';
+import type { ColumnDef } from '@tanstack/react-table';
+import { Eye, MoreHorizontal } from 'lucide-react';
+import DataTable from '@/components/base/data-table/data-table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +11,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { Order, OrderPermissions } from "@/types/orders";
+} from '@/components/ui/dropdown-menu';
+import type { Order, OrderPermissions } from '@/types/orders';
 
 interface OrderTableProps {
   orders: Order[];
@@ -26,31 +26,36 @@ interface OrderTableProps {
 export default function OrderTable({
   orders,
   shopSlug,
-  permissions = { canDelete: false, canEdit: true, canView: true, canUpdateStatus: true },
+  permissions = {
+    canDelete: false,
+    canEdit: true,
+    canView: true,
+    canUpdateStatus: true,
+  },
   onUpdateStatus,
   onDeleteOrder,
   className,
 }: OrderTableProps) {
   const columns: ColumnDef<Order>[] = [
     {
-      accessorKey: "orderNumber",
-      header: "Order",
+      accessorKey: 'orderNumber',
+      header: 'Order',
       cell: ({ row }) => (
-        <div className="font-medium">{row.getValue("orderNumber")}</div>
+        <div className="font-medium">{row.getValue('orderNumber')}</div>
       ),
     },
     {
-      accessorKey: "date",
-      header: "Date",
+      accessorKey: 'date',
+      header: 'Date',
       cell: ({ row }) => (
         <div className="text-muted-foreground text-sm">
-          {row.getValue("date")}
+          {row.getValue('date')}
         </div>
       ),
     },
     {
-      accessorKey: "customer",
-      header: "Customer",
+      accessorKey: 'customer',
+      header: 'Customer',
       cell: ({ row }) => {
         const customer = row.original.customer;
         return (
@@ -64,20 +69,20 @@ export default function OrderTable({
       },
     },
     {
-      accessorKey: "status",
-      header: "Status",
+      accessorKey: 'status',
+      header: 'Status',
       cell: ({ row }) => {
-        const status = row.getValue("status") as Order["status"];
+        const status = row.getValue('status') as Order['status'];
         return (
           <Badge
             variant={
-              status === "delivered"
-                ? "default"
-                : status === "cancelled"
-                  ? "destructive"
-                  : status === "processing"
-                    ? "secondary"
-                    : "outline"
+              status === 'delivered'
+                ? 'default'
+                : status === 'cancelled'
+                  ? 'destructive'
+                  : status === 'processing'
+                    ? 'secondary'
+                    : 'outline'
             }
             className="capitalize"
           >
@@ -87,23 +92,23 @@ export default function OrderTable({
       },
     },
     {
-      accessorKey: "paymentStatus",
-      header: "Payment",
+      accessorKey: 'paymentStatus',
+      header: 'Payment',
       cell: ({ row }) => {
-        const status = row.getValue("paymentStatus") as Order["paymentStatus"];
+        const status = row.getValue('paymentStatus') as Order['paymentStatus'];
         return (
           <Badge
             variant={
-              status === "paid"
-                ? "outline"
-                : status === "refunded"
-                  ? "destructive"
-                  : "secondary"
+              status === 'paid'
+                ? 'outline'
+                : status === 'refunded'
+                  ? 'destructive'
+                  : 'secondary'
             }
             className={
-              status === "paid"
-                ? "border-green-500 text-green-600"
-                : "capitalize"
+              status === 'paid'
+                ? 'border-green-500 text-green-600'
+                : 'capitalize'
             }
           >
             {status}
@@ -112,23 +117,23 @@ export default function OrderTable({
       },
     },
     {
-      accessorKey: "total",
-      header: "Total",
+      accessorKey: 'total',
+      header: 'Total',
       cell: ({ row }) => (
-        <div className="font-medium">{row.getValue("total")}</div>
+        <div className="font-medium">{row.getValue('total')}</div>
       ),
     },
     {
-      accessorKey: "items",
-      header: "Items",
+      accessorKey: 'items',
+      header: 'Items',
       cell: ({ row }) => (
         <div className="text-muted-foreground text-sm">
-          {row.getValue("items")} items
+          {row.getValue('items')} items
         </div>
       ),
     },
     {
-      id: "actions",
+      id: 'actions',
       header: () => <div className="text-right">Actions</div>,
       cell: ({ row }) => (
         <div className="flex justify-end">
@@ -155,7 +160,9 @@ export default function OrderTable({
               )}
               {permissions.canUpdateStatus && (
                 <DropdownMenuItem
-                  onClick={() => onUpdateStatus?.(row.original.id, row.original.status)}
+                  onClick={() =>
+                    onUpdateStatus?.(row.original.id, row.original.status)
+                  }
                 >
                   Update Status
                 </DropdownMenuItem>

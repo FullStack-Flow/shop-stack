@@ -1,9 +1,9 @@
-import Header from "@/components/base/common/header";
-import Brand from "@/components/templates/store/brand";
-import Footer from "@/components/templates/store/footer";
-import { Outlet, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from '@tanstack/react-router';
+import Header from '@/components/base/common/header';
+import Brand from '@/components/templates/store/brand';
+import Footer from '@/components/templates/store/footer';
 
-export const Route = createFileRoute("/(store)/_layout")({
+export const Route = createFileRoute('/(store)/_layout')({
   component: RouteComponent,
 });
 

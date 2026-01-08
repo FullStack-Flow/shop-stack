@@ -1,9 +1,9 @@
-import ProductAdditionalInfoTab from "@/components/base/products/details/product-additional-info-tab";
-import ProductDescriptionTab from "@/components/base/products/details/product-description-tab";
-import ProductShippingTab from "@/components/base/products/details/product-shipping-tab";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { Product } from "@/data/products";
-import ProductReviewsTab from "./product-reviews-tab";
+import ProductAdditionalInfoTab from '@/components/base/products/details/product-additional-info-tab';
+import ProductDescriptionTab from '@/components/base/products/details/product-description-tab';
+import ProductShippingTab from '@/components/base/products/details/product-shipping-tab';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import type { Product } from '@/data/products';
+import ProductReviewsTab from './product-reviews-tab';
 
 interface ProductDetailsTabsProps {
   product: Product;

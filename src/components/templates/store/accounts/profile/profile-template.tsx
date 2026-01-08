@@ -1,5 +1,5 @@
-import AccountLayout from "@/components/containers/store/accounts/account-layout";
-import ProfileForm from "./profile-form";
+import AccountLayout from '@/components/containers/store/accounts/account-layout';
+import ProfileForm from './profile-form';
 
 export default function ProfileTemplate() {
   return (

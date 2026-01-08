@@ -1,11 +1,11 @@
-import { useState } from "react";
-import PageHeader from "@/components/base/common/page-header";
-import { AddCouponDialog } from "./add-coupon-dialog";
-import type { CouponFormValues } from "@/types/coupon";
+import { useState } from 'react';
+import PageHeader from '@/components/base/common/page-header';
+import type { CouponFormValues } from '@/types/coupon';
+import { AddCouponDialog } from './add-coupon-dialog';
 
 export interface CouponHeaderProps {
   onAddCoupon?: (data: CouponFormValues) => void;
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -13,7 +13,7 @@ export interface CouponHeaderProps {
 
 export default function CouponHeader({
   onAddCoupon,
-  role = "vendor",
+  role = 'vendor',
   showAddButton = true,
   children,
   className,
@@ -28,8 +28,8 @@ export default function CouponHeader({
     <PageHeader
       title="Coupons"
       description={
-        role === "admin"
-          ? "Manage platform-wide discount coupons and promotional offers"
+        role === 'admin'
+          ? 'Manage platform-wide discount coupons and promotional offers'
           : "Manage your shop's discount coupons and promotional offers"
       }
       className={className}

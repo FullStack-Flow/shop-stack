@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { Link } from '@tanstack/react-router';
+import { ArrowUpRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface CtaContainerProps {
   className?: string;
@@ -11,7 +11,7 @@ interface CtaContainerProps {
 export default function CtaContainer({ className, inline }: CtaContainerProps) {
   if (inline) {
     return (
-      <div className={cn("flex w-full items-center", className)}>
+      <div className={cn('flex w-full items-center', className)}>
         <Link to="/" className="@4xl:w-auto w-full">
           <Button
             variant="secondary"
@@ -29,7 +29,7 @@ export default function CtaContainer({ className, inline }: CtaContainerProps) {
 
   return (
     <div
-      className={cn("@4xl:px-12 @6xl:px-15 @7xl:px-20 px-5 pb-8", className)}
+      className={cn('@4xl:px-12 @6xl:px-15 @7xl:px-20 px-5 pb-8', className)}
     >
       <div className="flex w-full items-center justify-end">
         <Link to="/">

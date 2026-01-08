@@ -1,8 +1,8 @@
-import type { Product } from "@/data/products";
-import { Link } from "@tanstack/react-router";
-import { Star } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { Link } from '@tanstack/react-router';
+import { Star } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import type { Product } from '@/data/products';
+import { cn } from '@/lib/utils';
 
 interface ProductCardHorizontalProps {
   product: Product;
@@ -13,13 +13,14 @@ export default function ProductCardHorizontal({
   product,
   className,
 }: ProductCardHorizontalProps) {
-  const mainImage = product.images[0]?.url || "https://placehold.co/300x300";
+  const mainImage = product.images[0]?.url || 'https://placehold.co/300x300';
 
   return (
     <Link
-      to={`/product/${product.id}`}
+      to="/product/$productId"
+      params={{ productId: product.id }}
       className={cn(
-        "group flex w-full min-w-[280px] max-w-[320px] flex-col gap-3 rounded-lg border bg-background p-4 transition-all hover:shadow-md",
+        'group flex w-full min-w-70 max-w-[320px] flex-col gap-3 rounded-lg border bg-background p-4 transition-all hover:shadow-md',
         className
       )}
     >
@@ -51,10 +52,10 @@ export default function ProductCardHorizontal({
               <Star
                 key={i}
                 className={cn(
-                  "h-3 w-3",
+                  'h-3 w-3',
                   i < Math.round(product.rating.average)
-                    ? "fill-current"
-                    : "text-muted"
+                    ? 'fill-current'
+                    : 'text-muted'
                 )}
               />
             ))}

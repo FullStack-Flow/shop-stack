@@ -1,4 +1,4 @@
-import CounterItem from "@/components/base/common/counter-item";
+import CounterItemComponent from '@/components/base/common/counter-item';
 
 interface CounterItem {
   label: string;
@@ -13,7 +13,7 @@ export default function CounterBox({ items }: CounterBoxProps) {
   return (
     <div className="grid grid-cols-2">
       {items.map((item, index) => (
-        <CounterItem
+        <CounterItemComponent
           key={item.label}
           value={item.value}
           label={item.label}

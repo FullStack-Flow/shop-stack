@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { AddressBook } from "./address-book";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { AddressBook } from './address-book';
 
 export default function ProfileForm() {
   //   const { data } = useSession();
@@ -70,7 +70,7 @@ export default function ProfileForm() {
             <Input
               id="image"
               placeholder="https://example.com/avatar.jpg"
-              defaultValue={""}
+              defaultValue={''}
             />
           </div>
         </div>

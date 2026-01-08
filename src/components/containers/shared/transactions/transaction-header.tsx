@@ -1,13 +1,13 @@
-import PageHeader from "@/components/base/common/page-header";
+import PageHeader from '@/components/base/common/page-header';
 
 export interface TransactionHeaderProps {
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
   children?: React.ReactNode;
   className?: string;
 }
 
 export default function TransactionHeader({
-  role = "vendor",
+  role = 'vendor',
   children,
   className,
 }: TransactionHeaderProps) {
@@ -15,9 +15,9 @@ export default function TransactionHeader({
     <PageHeader
       title="Transactions"
       description={
-        role === "admin"
-          ? "View and manage platform-wide transactions"
-          : "View and manage your shop transactions"
+        role === 'admin'
+          ? 'View and manage platform-wide transactions'
+          : 'View and manage your shop transactions'
       }
       className={className}
     >

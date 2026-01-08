@@ -4,8 +4,8 @@ export interface AdminTenant {
   slug: string;
   ownerName: string;
   ownerEmail: string;
-  plan: "free" | "pro" | "enterprise";
-  status: "active" | "suspended" | "pending";
+  plan: 'free' | 'pro' | 'enterprise';
+  status: 'active' | 'suspended' | 'pending';
   joinedDate: string;
   productCount: number;
   orderCount: number;
@@ -23,7 +23,7 @@ export interface AdminTenantDetailsProps {
       avatar?: string;
     };
     plan: string;
-    status: "active" | "suspended" | "pending";
+    status: 'active' | 'suspended' | 'pending';
     joinedDate: string;
     stats: {
       revenue: string;

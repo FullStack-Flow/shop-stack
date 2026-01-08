@@ -1,6 +1,6 @@
-import type { SortOption } from "@/components/base/products/sort-dropdown";
-import { mockProducts } from "@/data/products";
-import { useMemo, useState } from "react";
+import { useMemo, useState } from 'react';
+import type { SortOption } from '@/components/base/products/sort-dropdown';
+import { mockProducts } from '@/data/products';
 
 export interface FilterState {
   search: string;
@@ -16,8 +16,8 @@ export interface FilterState {
 }
 
 const initialState: FilterState = {
-  search: "",
-  sort: "relevance",
+  search: '',
+  sort: 'relevance',
   categories: [],
   brands: [],
   priceRange: [0, 1000],
@@ -95,7 +95,7 @@ export const useProductFilters = () => {
     // Availability
     if (filters.availability.length > 0) {
       result = result.filter((p) => {
-        if (filters.availability.includes("In Stock") && p.stock.inStock)
+        if (filters.availability.includes('In Stock') && p.stock.inStock)
           return true;
         // Add other availability checks here if data becomes available
         return false;
@@ -105,30 +105,30 @@ export const useProductFilters = () => {
     // Conditions
     if (filters.conditions.length > 0) {
       result = result.filter((p) => {
-        if (filters.conditions.includes("New") && p.isNew) return true;
-        if (filters.conditions.includes("Used") && !p.isNew) return true;
+        if (filters.conditions.includes('New') && p.isNew) return true;
+        if (filters.conditions.includes('Used') && !p.isNew) return true;
         return false;
       });
     }
 
     // Sort
     switch (filters.sort) {
-      case "price-asc":
+      case 'price-asc':
         result.sort((a, b) => a.price.current - b.price.current);
         break;
-      case "price-desc":
+      case 'price-desc':
         result.sort((a, b) => b.price.current - a.price.current);
         break;
-      case "newest":
+      case 'newest':
         result.sort(
           (a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
         break;
-      case "rating":
+      case 'rating':
         result.sort((a, b) => b.rating.average - a.rating.average);
         break;
-      case "best-selling":
+      case 'best-selling':
         result.sort((a, b) => b.sales - a.sales);
         break;
       default:
@@ -144,40 +144,40 @@ export const useProductFilters = () => {
     const active = [];
     if (filters.search)
       active.push({
-        id: "search",
+        id: 'search',
         label: `Search: ${filters.search}`,
-        type: "search",
+        type: 'search',
       });
     filters.categories.forEach((c) => {
-      active.push({ id: c, label: c, type: "category" });
+      active.push({ id: c, label: c, type: 'category' });
     });
     filters.brands.forEach((b) => {
-      active.push({ id: b, label: b, type: "brand" });
+      active.push({ id: b, label: b, type: 'brand' });
     });
     if (filters.priceRange[0] > 0 || filters.priceRange[1] < 1000) {
       active.push({
-        id: "price",
+        id: 'price',
         label: `$${filters.priceRange[0]} - $${filters.priceRange[1]}`,
-        type: "price",
+        type: 'price',
       });
     }
     filters.colors.forEach((c) => {
-      active.push({ id: c, label: c, type: "color" });
+      active.push({ id: c, label: c, type: 'color' });
     });
     filters.sizes.forEach((s) => {
-      active.push({ id: s, label: `Size: ${s}`, type: "size" });
+      active.push({ id: s, label: `Size: ${s}`, type: 'size' });
     });
     if (filters.rating)
       active.push({
-        id: "rating",
+        id: 'rating',
         label: `${filters.rating}+ Stars`,
-        type: "rating",
+        type: 'rating',
       });
     filters.availability.forEach((a) => {
-      active.push({ id: a, label: a, type: "availability" });
+      active.push({ id: a, label: a, type: 'availability' });
     });
     filters.conditions.forEach((c) => {
-      active.push({ id: c, label: c, type: "condition" });
+      active.push({ id: c, label: c, type: 'condition' });
     });
 
     return active;
@@ -185,48 +185,48 @@ export const useProductFilters = () => {
 
   const removeFilter = (id: string, type: string) => {
     switch (type) {
-      case "search":
-        updateFilter("search", "");
+      case 'search':
+        updateFilter('search', '');
         break;
-      case "category":
+      case 'category':
         updateFilter(
-          "categories",
+          'categories',
           filters.categories.filter((c) => c !== id)
         );
         break;
-      case "brand":
+      case 'brand':
         updateFilter(
-          "brands",
+          'brands',
           filters.brands.filter((b) => b !== id)
         );
         break;
-      case "price":
-        updateFilter("priceRange", [0, 1000]);
+      case 'price':
+        updateFilter('priceRange', [0, 1000]);
         break;
-      case "color":
+      case 'color':
         updateFilter(
-          "colors",
+          'colors',
           filters.colors.filter((c) => c !== id)
         );
         break;
-      case "size":
+      case 'size':
         updateFilter(
-          "sizes",
+          'sizes',
           filters.sizes.filter((s) => s !== id)
         );
         break;
-      case "rating":
-        updateFilter("rating", null);
+      case 'rating':
+        updateFilter('rating', null);
         break;
-      case "availability":
+      case 'availability':
         updateFilter(
-          "availability",
+          'availability',
           filters.availability.filter((a) => a !== id)
         );
         break;
-      case "condition":
+      case 'condition':
         updateFilter(
-          "conditions",
+          'conditions',
           filters.conditions.filter((c) => c !== id)
         );
         break;

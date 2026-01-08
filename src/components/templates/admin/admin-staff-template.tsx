@@ -1,15 +1,15 @@
-import { Plus } from "lucide-react";
-import { useState } from "react";
-import { AddStaffDialog } from "@/components/containers/shared/staff/add-staff-dialog";
-import StaffHeader from "@/components/containers/shared/staff/staff-header";
-import StaffTable from "@/components/containers/shared/staff/staff-table";
-import { Button } from "@/components/ui/button";
-import { ADMIN_STAFF_PERMISSIONS } from "@/lib/config/staff-permissions";
-import type { Staff } from "@/types/staff";
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
+import { AddStaffDialog } from '@/components/containers/shared/staff/add-staff-dialog';
+import StaffHeader from '@/components/containers/shared/staff/staff-header';
+import StaffTable from '@/components/containers/shared/staff/staff-table';
+import { Button } from '@/components/ui/button';
+import { ADMIN_STAFF_PERMISSIONS } from '@/lib/config/staff-permissions';
+import type { Staff } from '@/types/staff';
 
 interface AdminStaffTemplateProps {
   staff: Staff[];
-  onAddStaff: (data: Omit<Staff, "id" | "joinedDate">) => void;
+  onAddStaff: (data: Omit<Staff, 'id' | 'joinedDate'>) => void;
   onDeleteStaff: (id: string) => void;
 }
 
@@ -21,7 +21,7 @@ export default function AdminStaffTemplate({
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
 
   const handleAddStaff = (data: any) => {
-    const newStaff: Omit<Staff, "id" | "joinedDate"> = {
+    const newStaff: Omit<Staff, 'id' | 'joinedDate'> = {
       ...data,
       avatar: undefined,
     };

@@ -1,4 +1,4 @@
-import type { AttributePermissions } from "@/types/attributes";
+import type { AttributePermissions } from '@/types/attributes';
 
 export const ADMIN_ATTRIBUTE_PERMISSIONS: AttributePermissions = {
   canDelete: true,

@@ -1,7 +1,7 @@
-import CategoryDetailTemplate from "@/components/templates/store/category/category-detail-template";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
+import CategoryDetailTemplate from '@/components/templates/store/category/category-detail-template';
 
-export const Route = createFileRoute("/(store)/_layout/category/$slug")({
+export const Route = createFileRoute('/(store)/_layout/category/$slug')({
   component: RouteComponent,
 });
 

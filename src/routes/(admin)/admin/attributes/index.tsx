@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import AdminAttributesTemplate from "@/components/templates/admin/admin-attributes-template";
-import { mockAttributes } from "@/data/attributes";
-import type { Attribute, AttributeFormValues } from "@/types/attributes";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import AdminAttributesTemplate from '@/components/templates/admin/admin-attributes-template';
+import { mockAttributes } from '@/data/attributes';
+import type { Attribute, AttributeFormValues } from '@/types/attributes';
 
-export const Route = createFileRoute("/(admin)/admin/attributes/")({
+export const Route = createFileRoute('/(admin)/admin/attributes/')({
   component: AdminAttributesPage,
 });
 

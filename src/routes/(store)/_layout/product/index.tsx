@@ -1,7 +1,7 @@
-import ProductListingTemplate from "@/components/templates/store/product-page/product-listing-template";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
+import ProductListingTemplate from '@/components/templates/store/product-page/product-listing-template';
 
-export const Route = createFileRoute("/(store)/_layout/product/")({
+export const Route = createFileRoute('/(store)/_layout/product/')({
   component: RouteComponent,
 });
 

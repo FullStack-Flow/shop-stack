@@ -1,7 +1,7 @@
-import TaxHeader from "@/components/containers/shared/taxes/tax-header";
-import TaxesTable from "@/components/containers/shared/taxes/tax-table";
-import { VENDOR_TAX_PERMISSIONS } from "@/lib/config/tax-permissions";
-import type { Taxes as Tax } from "@/types/taxes";
+import TaxHeader from '@/components/containers/shared/taxes/tax-header';
+import TaxesTable from '@/components/containers/shared/taxes/tax-table';
+import { VENDOR_TAX_PERMISSIONS } from '@/lib/config/tax-permissions';
+import type { Taxes as Tax } from '@/types/taxes';
 
 interface ShopTaxesTemplateProps {
   taxes: Tax[];

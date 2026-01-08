@@ -1,7 +1,7 @@
-import { mockStores } from "@/data/store";
-import type { Store, StoreFilters } from "@/types/store-types";
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { mockStores } from '@/data/store';
+import type { Store, StoreFilters } from '@/types/store-types';
 
 interface StoreState {
   stores: Store[];
@@ -22,11 +22,11 @@ interface StoreState {
 }
 
 const defaultFilters: StoreFilters = {
-  search: "",
-  category: "",
+  search: '',
+  category: '',
   minRating: 0,
   verifiedOnly: false,
-  sortBy: "rating",
+  sortBy: 'rating',
 };
 
 export const useStoreFront = create<StoreState>()(
@@ -105,16 +105,16 @@ export const useStoreFront = create<StoreState>()(
         // Apply sorting
         filtered.sort((a, b) => {
           switch (filters.sortBy) {
-            case "rating":
+            case 'rating':
               return b.rating - a.rating;
-            case "newest":
+            case 'newest':
               return (
                 new Date(b.memberSince).getTime() -
                 new Date(a.memberSince).getTime()
               );
-            case "popular":
+            case 'popular':
               return b.followers - a.followers;
-            case "name":
+            case 'name':
               return a.name.localeCompare(b.name);
             default:
               return 0;
@@ -125,7 +125,7 @@ export const useStoreFront = create<StoreState>()(
       },
     }),
     {
-      name: "storefront",
+      name: 'storefront',
       partialize: (state) => ({
         followedStores: state.followedStores,
       }),

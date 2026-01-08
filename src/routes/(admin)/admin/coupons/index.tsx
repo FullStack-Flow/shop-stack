@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import AdminCouponsTemplate from "@/components/templates/admin/admin-coupons-template";
-import { mockCoupons } from "@/data/coupons";
-import type { Coupon, CouponFormValues } from "@/types/coupon";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import AdminCouponsTemplate from '@/components/templates/admin/admin-coupons-template';
+import { mockCoupons } from '@/data/coupons';
+import type { Coupon, CouponFormValues } from '@/types/coupon';
 
-export const Route = createFileRoute("/(admin)/admin/coupons/")({
+export const Route = createFileRoute('/(admin)/admin/coupons/')({
   component: AdminCouponsPage,
 });
 
@@ -13,7 +13,7 @@ function AdminCouponsPage() {
 
   const handleCouponStatusChange = (
     couponId: string,
-    newStatus: "active" | "expired" | "inactive"
+    newStatus: 'active' | 'expired' | 'inactive'
   ) => {
     setCoupons(
       coupons.map((coupon) =>

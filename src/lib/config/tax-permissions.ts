@@ -1,4 +1,4 @@
-import type { TaxPermissions } from "@/types/taxes";
+import type { TaxPermissions } from '@/types/taxes';
 
 export const ADMIN_TAX_PERMISSIONS: TaxPermissions = {
   canDelete: true,

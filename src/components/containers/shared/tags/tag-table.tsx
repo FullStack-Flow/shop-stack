@@ -1,15 +1,15 @@
-import DataTable from "@/components/base/data-table/data-table";
-import type { Tag, TagPermissions } from "@/types/tags";
-import type { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type { ColumnDef } from '@tanstack/react-table';
+import { Edit, MoreHorizontal, Trash2 } from 'lucide-react';
+import DataTable from '@/components/base/data-table/data-table';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { MoreHorizontal, Edit, Trash2 } from "lucide-react";
+} from '@/components/ui/dropdown-menu';
+import type { Tag, TagPermissions } from '@/types/tags';
 
 interface TagsTableProps {
   tags: Tag[];
@@ -33,17 +33,17 @@ export default function TagsTable({
 }: TagsTableProps) {
   const columns: ColumnDef<Tag>[] = [
     {
-      accessorKey: "name",
-      header: "Name",
+      accessorKey: 'name',
+      header: 'Name',
       cell: ({ row }) => {
-        return <div className="font-medium">{row.getValue("name")}</div>;
+        return <div className="font-medium">{row.getValue('name')}</div>;
       },
     },
     {
-      accessorKey: "slug",
-      header: "Slug",
+      accessorKey: 'slug',
+      header: 'Slug',
       cell: ({ row }) => {
-        const slug = row.getValue("slug") as string;
+        const slug = row.getValue('slug') as string;
         return (
           <Badge variant="outline" className="font-mono">
             {slug}
@@ -52,27 +52,27 @@ export default function TagsTable({
       },
     },
     {
-      accessorKey: "description",
-      header: "Description",
+      accessorKey: 'description',
+      header: 'Description',
       cell: ({ row }) => {
-        const description = row.getValue("description") as string;
+        const description = row.getValue('description') as string;
         return (
           <div className="max-w-xs truncate text-muted-foreground">
-            {description || "No description"}
+            {description || 'No description'}
           </div>
         );
       },
     },
     {
-      accessorKey: "productCount",
-      header: "Products",
+      accessorKey: 'productCount',
+      header: 'Products',
       cell: ({ row }) => {
-        const productCount = row.getValue("productCount") as number;
+        const productCount = row.getValue('productCount') as number;
         return <Badge variant="secondary">{productCount} products</Badge>;
       },
     },
     {
-      id: "actions",
+      id: 'actions',
       enableHiding: false,
       cell: ({ row }) => {
         const tag = row.original;

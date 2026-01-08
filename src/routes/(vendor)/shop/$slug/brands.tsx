@@ -1,10 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { ShopBrandsTemplate } from "@/components/templates/vendor/shop-brands-template";
-import { mockBrands } from "@/data/brand";
-import type { Brand } from "@/types/brands";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { ShopBrandsTemplate } from '@/components/templates/vendor/shop-brands-template';
+import { mockBrands } from '@/data/brand';
+import type { Brand } from '@/types/brands';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/brands")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/brands')({
   component: BrandsPage,
 });
 

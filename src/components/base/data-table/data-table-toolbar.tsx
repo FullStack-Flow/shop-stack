@@ -1,9 +1,10 @@
+import { RefreshCw } from "lucide-react";
 import type { FilterableColumn } from "@/components/base/data-table/types";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuCheckboxItem,
+  DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
@@ -15,13 +16,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { RefreshCw } from "lucide-react";
 
-type ToolbarProps<TData> = {
+type ToolbarProps = {
   title?: string;
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
-  filterableColumns?: FilterableColumn<TData>[];
+  filterableColumns?: FilterableColumn[];
   columnFilters: { id: string; value: unknown }[];
   onColumnFilterChange: (columnId: string, value: unknown) => void;
   /** Column visibility toggles */
@@ -37,7 +37,7 @@ type ToolbarProps<TData> = {
   onRefresh?: () => void;
 };
 
-export function DataTableToolbar<TData>({
+export function DataTableToolbar({
   title,
   globalFilter,
   onGlobalFilterChange,
@@ -49,7 +49,7 @@ export function DataTableToolbar<TData>({
   className,
   placeholder,
   onRefresh,
-}: ToolbarProps<TData>) {
+}: ToolbarProps) {
   // Get current filter value for a column
   const getFilterValue = (columnId: string): string => {
     const filter = columnFilters.find((f) => f.id === columnId);

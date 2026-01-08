@@ -1,6 +1,6 @@
-import { useState } from "react";
-import PageHeader from "@/components/base/common/page-header";
-import { AddBrandDialog } from "./add-brand-dialog";
+import { useState } from 'react';
+import PageHeader from '@/components/base/common/page-header';
+import { AddBrandDialog } from './add-brand-dialog';
 
 export interface BrandHeaderProps {
   onAddBrand?: (data: {
@@ -10,7 +10,7 @@ export interface BrandHeaderProps {
     description?: string;
     logo?: string;
   }) => void;
-  role?: "admin" | "vendor";
+  role?: 'admin' | 'vendor';
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -18,7 +18,7 @@ export interface BrandHeaderProps {
 
 export default function BrandHeader({
   onAddBrand,
-  role = "vendor",
+  role = 'vendor',
   showAddButton = true,
   children,
   className,
@@ -39,9 +39,9 @@ export default function BrandHeader({
     <PageHeader
       title="Brands"
       description={
-        role === "admin"
-          ? "Manage product brands across the platform"
-          : "Manage the brands associated with your shop"
+        role === 'admin'
+          ? 'Manage product brands across the platform'
+          : 'Manage the brands associated with your shop'
       }
       className={className}
     >
