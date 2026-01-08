@@ -1,10 +1,10 @@
-import { AddReviewDialog } from "@/components/containers/vendors/reviews/add-review-dialog";
-import ShopReviewsTemplate from "@/components/templates/vendor/shop-reviews-template";
-import { mockReviews } from "@/data/review";
-import { Review } from "@/types/review";
-import { ReviewFormValues } from "@/types/review-form";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { AddReviewDialog } from "@/components/containers/shared/reviews/add-review-dialog";
+import ReviewTable from "@/components/containers/shared/reviews/review-table";
+import { mockReviews } from "@/data/review";
+import type { Review } from "@/types/review";
+import type { ReviewFormValues } from "@/types/review-form";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/reviews")({
   component: ReviewsPage,
@@ -39,7 +39,7 @@ function ReviewsPage() {
 
   return (
     <>
-      <ShopReviewsTemplate reviews={reviews} onAddReview={handleAddReview} />
+      <ReviewTable reviews={reviews} onAddReview={handleAddReview} />
 
       <AddReviewDialog
         open={isDialogOpen}

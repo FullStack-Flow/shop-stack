@@ -1,8 +1,8 @@
-import ProductCardHorizontal from "@/components/base/products/details/product-card-horizontal";
-import { Button } from "@/components/ui/button";
-import { Product } from "@/data/products";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef } from "react";
+import ProductCardHorizontal from "@/components/base/products/details/product-card-horizontal";
+import { Button } from "@/components/ui/button";
+import type { Product } from "@/data/products";
 
 interface SimilarProductsSectionProps {
   products: Product[];

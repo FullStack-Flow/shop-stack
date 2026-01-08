@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { AdminTenantDetailsProps } from "@/types/tenant";
+import type { AdminTenantDetailsProps } from "@/types/tenant";
 import { Link } from "@tanstack/react-router";
 import { format } from "date-fns";
 import { ArrowLeft, MoreHorizontal } from "lucide-react";

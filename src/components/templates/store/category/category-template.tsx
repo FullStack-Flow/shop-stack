@@ -18,7 +18,7 @@ export default function CategoryTemplate() {
     <div className="@container container mx-auto px-4 py-8">
       <BreadcrumbNav items={cartSteps} className="mb-4" />
       <h1 className="mt-4 font-bold text-3xl tracking-tight">All Categories</h1>
-      <p className="mt-2 text-muted-foreground mb-8">
+      <p className="mt-2 mb-8 text-muted-foreground">
         Browse our wide range of product categories
       </p>
 

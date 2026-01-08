@@ -1,6 +1,6 @@
 import { ShippingAddressFields } from "@/components/containers/store/checkout/shipping-address-fields";
 import {
-  ShippingAddressInput,
+  type ShippingAddressInput,
   shippingAddressSchema,
 } from "@/lib/validators/shipping-address";
 import { useForm } from "@tanstack/react-form";

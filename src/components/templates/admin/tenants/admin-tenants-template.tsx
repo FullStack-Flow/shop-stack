@@ -1,6 +1,6 @@
 import PageHeader from "@/components/base/common/page-header";
 import AdminTenantTable from "@/components/containers/admin/tenant/admin-tenant-table";
-import { AdminTenant } from "@/types/tenant";
+import type { AdminTenant } from "@/types/tenant";
 
 interface AdminTenantsTemplateProps {
   tenants: AdminTenant[];

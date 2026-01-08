@@ -1,5 +1,5 @@
 import { mockCategories } from "@/data/categories";
-import { Category, CategoryWithChildren } from "@/types/category-types";
+import type { Category, CategoryWithChildren } from "@/types/category-types";
 
 // Helper function to build category tree
 export const buildCategoryTree = (

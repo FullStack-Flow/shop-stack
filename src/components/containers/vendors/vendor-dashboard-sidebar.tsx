@@ -10,7 +10,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { VendorNavItem } from "@/types/vendor";
+import type { VendorNavItem } from "@/types/vendor";
 import { Home, Store } from "lucide-react";
 
 export default function VendorDashboardSidebar() {

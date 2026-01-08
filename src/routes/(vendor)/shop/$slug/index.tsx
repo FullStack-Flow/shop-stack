@@ -1,7 +1,7 @@
-import { ShopDashboardSkeleton } from "@/components/base/vendors/skeleton/shop-dashboard-skeleton";
-import ShopDashboardTemplate from "@/components/templates/vendor/shop-dashboard-template";
 import { createFileRoute } from "@tanstack/react-router";
 import { DollarSign, Package, ShoppingBag, TrendingUp } from "lucide-react";
+import { ShopDashboardSkeleton } from "@/components/base/vendors/skeleton/shop-dashboard-skeleton";
+import ShopDashboardTemplate from "@/components/templates/vendor/shop-dashboard-template";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/")({
   component: ShopDashboardPage,

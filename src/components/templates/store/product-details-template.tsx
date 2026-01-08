@@ -2,7 +2,7 @@ import ProductBreadcrumb from "@/components/base/products/details/product-breadc
 import ProductDetailsTabs from "@/components/containers/store/product-details/details-tabs";
 import ProductMainSection from "@/components/containers/store/product-details/main-section";
 import SimilarProductsSection from "@/components/containers/store/product-details/similar-products-section";
-import { Product } from "@/data/products";
+import type { Product } from "@/data/products";
 
 interface ProductDetailsTemplateProps {
   product: Product;

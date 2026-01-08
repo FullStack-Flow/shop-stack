@@ -9,3 +9,10 @@ export interface Review {
   date: string;
   status: "published" | "pending" | "rejected";
 }
+
+export interface ReviewPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canUpdateStatus: boolean;
+}

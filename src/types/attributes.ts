@@ -19,3 +19,9 @@ export interface AttributeFormValues {
   type: "select" | "color" | "image" | "label";
   values: AttributeValue[];
 }
+
+export interface AttributePermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+}

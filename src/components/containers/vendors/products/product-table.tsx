@@ -1,8 +1,8 @@
 import DataTable from "@/components/base/data-table/data-table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Product } from "@/types/products";
-import { ColumnDef } from "@tanstack/react-table";
+import type { Product } from "@/types/products";
+import type { ColumnDef } from "@tanstack/react-table";
 
 interface ProductTableProps {
   products: Product[];

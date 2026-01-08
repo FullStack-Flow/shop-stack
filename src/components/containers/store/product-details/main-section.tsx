@@ -5,7 +5,7 @@ import ProductPrice from "@/components/base/products/details/product-price";
 import { QuantitySelector } from "@/components/base/products/details/quantity-selector";
 import ShippingInfoSection from "@/components/base/products/details/shipping-info-section";
 import StoreInfoCard from "@/components/base/products/details/store-info-card";
-import { Product } from "@/data/products";
+import type { Product } from "@/data/products";
 import { useCartStore } from "@/lib/store/cart-store";
 import { useState } from "react";
 import { toast } from "sonner";

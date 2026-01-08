@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { StoreFilters } from "@/types/store-types";
+import type { StoreFilters } from "@/types/store-types";
 import { Search } from "lucide-react";
 
 interface StoreSearchProps {

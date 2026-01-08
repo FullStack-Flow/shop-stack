@@ -15,3 +15,10 @@ export interface StaffFormValues {
   status: "active" | "invited" | "inactive";
   avatar?: FileList | null;
 }
+
+export interface StaffPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canCreate: boolean;
+}

@@ -1,5 +1,5 @@
 import {
-  ErrorComponentProps,
+  type ErrorComponentProps,
   Link,
   rootRouteId,
   useMatch,

@@ -1,4 +1,4 @@
-import { Transaction } from "@/types/transaction";
+import type { Transaction } from "@/types/transaction";
 
 export const mockTransactions: Transaction[] = [
   {

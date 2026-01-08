@@ -1,4 +1,4 @@
-import { Product } from "@/data/products";
+import type { Product } from "@/data/products";
 import { Link } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";

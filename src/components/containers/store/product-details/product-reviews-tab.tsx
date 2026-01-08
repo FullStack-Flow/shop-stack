@@ -1,7 +1,7 @@
 import RatingSummary from "@/components/base/products/details/review/rating-summary";
 import ReviewCard from "@/components/base/products/details/review/review-card";
 import ReviewFormCta from "@/components/base/products/details/review/review-form-cta";
-import { Review } from "@/data/products";
+import type { Review } from "@/data/products";
 
 interface ProductReviewsTabProps {
   reviews: Review[];

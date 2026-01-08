@@ -1,4 +1,4 @@
-import { Taxes } from "@/types/taxes";
+import type { Taxes } from "@/types/taxes";
 
 export const mockTaxes: Taxes[] = [
   {

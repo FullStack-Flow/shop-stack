@@ -1,4 +1,4 @@
-import { Tag } from "@/types/tags";
+import type { Tag } from "@/types/tags";
 
 export const mockTags: Tag[] = [
   {

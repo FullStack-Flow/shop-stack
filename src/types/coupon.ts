@@ -25,3 +25,10 @@ export interface CouponFormValues {
   usageLimit?: number;
   image?: FileList | null;
 }
+
+export interface CouponPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canToggleStatus: boolean;
+}

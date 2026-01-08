@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Product } from "@/data/products";
+import type { Product } from "@/data/products";
 import { useCartStore } from "@/lib/store/cart-store";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";

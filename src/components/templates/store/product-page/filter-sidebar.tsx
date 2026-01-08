@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { Slider } from "@/components/ui/slider";
 import { BRANDS, CATEGORIES, COLORS, SIZES } from "@/data/products";
-import { FilterState } from "@/lib/store/product-filters-store";
+import type { FilterState } from "@/lib/store/product-filters-store";
 import { cn } from "@/lib/utils";
 import { Star } from "lucide-react";
 

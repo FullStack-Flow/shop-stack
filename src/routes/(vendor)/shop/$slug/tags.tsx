@@ -1,10 +1,10 @@
-import { AddTagDialog } from "@/components/containers/vendors/tags/add-tag-dialog";
-import ShopTagsTemplate from "@/components/templates/vendor/shop-tags-template";
-import { mockTags } from "@/data/tags";
-import { Tag } from "@/types/tags";
-import { TagFormValues } from "@/types/tag-form";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { AddTagDialog } from "@/components/containers/shared/tags/add-tag-dialog";
+import ShopTagsTemplate from "@/components/templates/vendor/shop-tags-template";
+import { mockTags } from "@/data/tags";
+import type { TagFormValues } from "@/types/tag-form";
+import type { Tag } from "@/types/tags";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/tags")({
   component: TagsPage,

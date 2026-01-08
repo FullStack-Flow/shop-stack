@@ -1,9 +1,8 @@
-import AddAttributeDialog from "@/components/containers/vendors/attributes/add-attribute-dialog";
-import ShopAttributesTemplate from "@/components/templates/vendor/shop-attributes-template";
-import { mockAttributes } from "@/data/attributes";
-import { Attribute } from "@/types/attributes";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { ShopAttributesTemplate } from "@/components/templates/vendor/shop-attributes-template";
+import { mockAttributes } from "@/data/attributes";
+import type { Attribute, AttributeFormValues } from "@/types/attributes";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/attributes")({
   component: AttributePage,
@@ -11,19 +10,13 @@ export const Route = createFileRoute("/(vendor)/shop/$slug/attributes")({
 
 function AttributePage() {
   const [attributes, setAttributes] = useState<Attribute[]>(mockAttributes);
-  const [isAddAttributeDialogOpen, setIsAddAttributeDialogOpen] =
-    useState(false);
 
-  const handleAddAttribute = () => {
-    setIsAddAttributeDialogOpen(true);
-  };
-
-  const handleAddAttributeSubmit = (data: any) => {
+  const handleAddAttribute = (data: AttributeFormValues) => {
     const newAttribute: Attribute = {
       id: String(attributes.length + 1),
       name: data.name,
       slug: data.slug,
-      values: data.values.map((v: any, i: number) => ({
+      values: data.values.map((v, i) => ({
         ...v,
         id: `${attributes.length + 1}-${i}`,
       })),
@@ -33,17 +26,9 @@ function AttributePage() {
   };
 
   return (
-    <>
-      <ShopAttributesTemplate
-        attributes={attributes}
-        onAddAttribute={handleAddAttribute}
-      />
-
-      <AddAttributeDialog
-        open={isAddAttributeDialogOpen}
-        onOpenChange={setIsAddAttributeDialogOpen}
-        onSubmit={handleAddAttributeSubmit}
-      />
-    </>
+    <ShopAttributesTemplate
+      attributes={attributes}
+      onAddAttribute={handleAddAttribute}
+    />
   );
 }

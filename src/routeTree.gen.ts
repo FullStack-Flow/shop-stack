@@ -30,7 +30,20 @@ import { Route as vendorShopSlugIndexRouteImport } from './routes/(vendor)/shop/
 import { Route as storeLayoutStoreIndexRouteImport } from './routes/(store)/_layout/store/index'
 import { Route as storeLayoutProductIndexRouteImport } from './routes/(store)/_layout/product/index'
 import { Route as storeLayoutCategoryIndexRouteImport } from './routes/(store)/_layout/category/index'
+import { Route as adminAdminUsersIndexRouteImport } from './routes/(admin)/admin/users/index'
+import { Route as adminAdminTransactionsIndexRouteImport } from './routes/(admin)/admin/transactions/index'
 import { Route as adminAdminTenantsIndexRouteImport } from './routes/(admin)/admin/tenants/index'
+import { Route as adminAdminTaxesIndexRouteImport } from './routes/(admin)/admin/taxes/index'
+import { Route as adminAdminTagsIndexRouteImport } from './routes/(admin)/admin/tags/index'
+import { Route as adminAdminStaffIndexRouteImport } from './routes/(admin)/admin/staff/index'
+import { Route as adminAdminSettingsIndexRouteImport } from './routes/(admin)/admin/settings/index'
+import { Route as adminAdminReviewsIndexRouteImport } from './routes/(admin)/admin/reviews/index'
+import { Route as adminAdminProductsIndexRouteImport } from './routes/(admin)/admin/products/index'
+import { Route as adminAdminOrdersIndexRouteImport } from './routes/(admin)/admin/orders/index'
+import { Route as adminAdminCouponsIndexRouteImport } from './routes/(admin)/admin/coupons/index'
+import { Route as adminAdminCategoriesIndexRouteImport } from './routes/(admin)/admin/categories/index'
+import { Route as adminAdminBrandsIndexRouteImport } from './routes/(admin)/admin/brands/index'
+import { Route as adminAdminAttributesIndexRouteImport } from './routes/(admin)/admin/attributes/index'
 import { Route as vendorShopSlugTransactionsRouteImport } from './routes/(vendor)/shop/$slug/transactions'
 import { Route as vendorShopSlugTaxesRouteImport } from './routes/(vendor)/shop/$slug/taxes'
 import { Route as vendorShopSlugTagsRouteImport } from './routes/(vendor)/shop/$slug/tags'
@@ -155,11 +168,79 @@ const storeLayoutCategoryIndexRoute =
     path: '/category/',
     getParentRoute: () => storeLayoutRoute,
   } as any)
+const adminAdminUsersIndexRoute = adminAdminUsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminTransactionsIndexRoute =
+  adminAdminTransactionsIndexRouteImport.update({
+    id: '/transactions/',
+    path: '/transactions/',
+    getParentRoute: () => adminAdminRoute,
+  } as any)
 const adminAdminTenantsIndexRoute = adminAdminTenantsIndexRouteImport.update({
   id: '/tenants/',
   path: '/tenants/',
   getParentRoute: () => adminAdminRoute,
 } as any)
+const adminAdminTaxesIndexRoute = adminAdminTaxesIndexRouteImport.update({
+  id: '/taxes/',
+  path: '/taxes/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminTagsIndexRoute = adminAdminTagsIndexRouteImport.update({
+  id: '/tags/',
+  path: '/tags/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminStaffIndexRoute = adminAdminStaffIndexRouteImport.update({
+  id: '/staff/',
+  path: '/staff/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminSettingsIndexRoute = adminAdminSettingsIndexRouteImport.update({
+  id: '/settings/',
+  path: '/settings/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminReviewsIndexRoute = adminAdminReviewsIndexRouteImport.update({
+  id: '/reviews/',
+  path: '/reviews/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminProductsIndexRoute = adminAdminProductsIndexRouteImport.update({
+  id: '/products/',
+  path: '/products/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminOrdersIndexRoute = adminAdminOrdersIndexRouteImport.update({
+  id: '/orders/',
+  path: '/orders/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminCouponsIndexRoute = adminAdminCouponsIndexRouteImport.update({
+  id: '/coupons/',
+  path: '/coupons/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminCategoriesIndexRoute =
+  adminAdminCategoriesIndexRouteImport.update({
+    id: '/categories/',
+    path: '/categories/',
+    getParentRoute: () => adminAdminRoute,
+  } as any)
+const adminAdminBrandsIndexRoute = adminAdminBrandsIndexRouteImport.update({
+  id: '/brands/',
+  path: '/brands/',
+  getParentRoute: () => adminAdminRoute,
+} as any)
+const adminAdminAttributesIndexRoute =
+  adminAdminAttributesIndexRouteImport.update({
+    id: '/attributes/',
+    path: '/attributes/',
+    getParentRoute: () => adminAdminRoute,
+  } as any)
 const vendorShopSlugTransactionsRoute =
   vendorShopSlugTransactionsRouteImport.update({
     id: '/transactions',
@@ -284,7 +365,20 @@ export interface FileRoutesByFullPath {
   '/shop/$slug/tags': typeof vendorShopSlugTagsRoute
   '/shop/$slug/taxes': typeof vendorShopSlugTaxesRoute
   '/shop/$slug/transactions': typeof vendorShopSlugTransactionsRoute
+  '/admin/attributes': typeof adminAdminAttributesIndexRoute
+  '/admin/brands': typeof adminAdminBrandsIndexRoute
+  '/admin/categories': typeof adminAdminCategoriesIndexRoute
+  '/admin/coupons': typeof adminAdminCouponsIndexRoute
+  '/admin/orders': typeof adminAdminOrdersIndexRoute
+  '/admin/products': typeof adminAdminProductsIndexRoute
+  '/admin/reviews': typeof adminAdminReviewsIndexRoute
+  '/admin/settings': typeof adminAdminSettingsIndexRoute
+  '/admin/staff': typeof adminAdminStaffIndexRoute
+  '/admin/tags': typeof adminAdminTagsIndexRoute
+  '/admin/taxes': typeof adminAdminTaxesIndexRoute
   '/admin/tenants': typeof adminAdminTenantsIndexRoute
+  '/admin/transactions': typeof adminAdminTransactionsIndexRoute
+  '/admin/users': typeof adminAdminUsersIndexRoute
   '/category': typeof storeLayoutCategoryIndexRoute
   '/product': typeof storeLayoutProductIndexRoute
   '/store': typeof storeLayoutStoreIndexRoute
@@ -321,7 +415,20 @@ export interface FileRoutesByTo {
   '/shop/$slug/tags': typeof vendorShopSlugTagsRoute
   '/shop/$slug/taxes': typeof vendorShopSlugTaxesRoute
   '/shop/$slug/transactions': typeof vendorShopSlugTransactionsRoute
+  '/admin/attributes': typeof adminAdminAttributesIndexRoute
+  '/admin/brands': typeof adminAdminBrandsIndexRoute
+  '/admin/categories': typeof adminAdminCategoriesIndexRoute
+  '/admin/coupons': typeof adminAdminCouponsIndexRoute
+  '/admin/orders': typeof adminAdminOrdersIndexRoute
+  '/admin/products': typeof adminAdminProductsIndexRoute
+  '/admin/reviews': typeof adminAdminReviewsIndexRoute
+  '/admin/settings': typeof adminAdminSettingsIndexRoute
+  '/admin/staff': typeof adminAdminStaffIndexRoute
+  '/admin/tags': typeof adminAdminTagsIndexRoute
+  '/admin/taxes': typeof adminAdminTaxesIndexRoute
   '/admin/tenants': typeof adminAdminTenantsIndexRoute
+  '/admin/transactions': typeof adminAdminTransactionsIndexRoute
+  '/admin/users': typeof adminAdminUsersIndexRoute
   '/category': typeof storeLayoutCategoryIndexRoute
   '/product': typeof storeLayoutProductIndexRoute
   '/store': typeof storeLayoutStoreIndexRoute
@@ -363,7 +470,20 @@ export interface FileRoutesById {
   '/(vendor)/shop/$slug/tags': typeof vendorShopSlugTagsRoute
   '/(vendor)/shop/$slug/taxes': typeof vendorShopSlugTaxesRoute
   '/(vendor)/shop/$slug/transactions': typeof vendorShopSlugTransactionsRoute
+  '/(admin)/admin/attributes/': typeof adminAdminAttributesIndexRoute
+  '/(admin)/admin/brands/': typeof adminAdminBrandsIndexRoute
+  '/(admin)/admin/categories/': typeof adminAdminCategoriesIndexRoute
+  '/(admin)/admin/coupons/': typeof adminAdminCouponsIndexRoute
+  '/(admin)/admin/orders/': typeof adminAdminOrdersIndexRoute
+  '/(admin)/admin/products/': typeof adminAdminProductsIndexRoute
+  '/(admin)/admin/reviews/': typeof adminAdminReviewsIndexRoute
+  '/(admin)/admin/settings/': typeof adminAdminSettingsIndexRoute
+  '/(admin)/admin/staff/': typeof adminAdminStaffIndexRoute
+  '/(admin)/admin/tags/': typeof adminAdminTagsIndexRoute
+  '/(admin)/admin/taxes/': typeof adminAdminTaxesIndexRoute
   '/(admin)/admin/tenants/': typeof adminAdminTenantsIndexRoute
+  '/(admin)/admin/transactions/': typeof adminAdminTransactionsIndexRoute
+  '/(admin)/admin/users/': typeof adminAdminUsersIndexRoute
   '/(store)/_layout/category/': typeof storeLayoutCategoryIndexRoute
   '/(store)/_layout/product/': typeof storeLayoutProductIndexRoute
   '/(store)/_layout/store/': typeof storeLayoutStoreIndexRoute
@@ -404,7 +524,20 @@ export interface FileRouteTypes {
     | '/shop/$slug/tags'
     | '/shop/$slug/taxes'
     | '/shop/$slug/transactions'
+    | '/admin/attributes'
+    | '/admin/brands'
+    | '/admin/categories'
+    | '/admin/coupons'
+    | '/admin/orders'
+    | '/admin/products'
+    | '/admin/reviews'
+    | '/admin/settings'
+    | '/admin/staff'
+    | '/admin/tags'
+    | '/admin/taxes'
     | '/admin/tenants'
+    | '/admin/transactions'
+    | '/admin/users'
     | '/category'
     | '/product'
     | '/store'
@@ -441,7 +574,20 @@ export interface FileRouteTypes {
     | '/shop/$slug/tags'
     | '/shop/$slug/taxes'
     | '/shop/$slug/transactions'
+    | '/admin/attributes'
+    | '/admin/brands'
+    | '/admin/categories'
+    | '/admin/coupons'
+    | '/admin/orders'
+    | '/admin/products'
+    | '/admin/reviews'
+    | '/admin/settings'
+    | '/admin/staff'
+    | '/admin/tags'
+    | '/admin/taxes'
     | '/admin/tenants'
+    | '/admin/transactions'
+    | '/admin/users'
     | '/category'
     | '/product'
     | '/store'
@@ -482,7 +628,20 @@ export interface FileRouteTypes {
     | '/(vendor)/shop/$slug/tags'
     | '/(vendor)/shop/$slug/taxes'
     | '/(vendor)/shop/$slug/transactions'
+    | '/(admin)/admin/attributes/'
+    | '/(admin)/admin/brands/'
+    | '/(admin)/admin/categories/'
+    | '/(admin)/admin/coupons/'
+    | '/(admin)/admin/orders/'
+    | '/(admin)/admin/products/'
+    | '/(admin)/admin/reviews/'
+    | '/(admin)/admin/settings/'
+    | '/(admin)/admin/staff/'
+    | '/(admin)/admin/tags/'
+    | '/(admin)/admin/taxes/'
     | '/(admin)/admin/tenants/'
+    | '/(admin)/admin/transactions/'
+    | '/(admin)/admin/users/'
     | '/(store)/_layout/category/'
     | '/(store)/_layout/product/'
     | '/(store)/_layout/store/'
@@ -648,11 +807,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof storeLayoutCategoryIndexRouteImport
       parentRoute: typeof storeLayoutRoute
     }
+    '/(admin)/admin/users/': {
+      id: '/(admin)/admin/users/'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof adminAdminUsersIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/transactions/': {
+      id: '/(admin)/admin/transactions/'
+      path: '/transactions'
+      fullPath: '/admin/transactions'
+      preLoaderRoute: typeof adminAdminTransactionsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
     '/(admin)/admin/tenants/': {
       id: '/(admin)/admin/tenants/'
       path: '/tenants'
       fullPath: '/admin/tenants'
       preLoaderRoute: typeof adminAdminTenantsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/taxes/': {
+      id: '/(admin)/admin/taxes/'
+      path: '/taxes'
+      fullPath: '/admin/taxes'
+      preLoaderRoute: typeof adminAdminTaxesIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/tags/': {
+      id: '/(admin)/admin/tags/'
+      path: '/tags'
+      fullPath: '/admin/tags'
+      preLoaderRoute: typeof adminAdminTagsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/staff/': {
+      id: '/(admin)/admin/staff/'
+      path: '/staff'
+      fullPath: '/admin/staff'
+      preLoaderRoute: typeof adminAdminStaffIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/settings/': {
+      id: '/(admin)/admin/settings/'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof adminAdminSettingsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/reviews/': {
+      id: '/(admin)/admin/reviews/'
+      path: '/reviews'
+      fullPath: '/admin/reviews'
+      preLoaderRoute: typeof adminAdminReviewsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/products/': {
+      id: '/(admin)/admin/products/'
+      path: '/products'
+      fullPath: '/admin/products'
+      preLoaderRoute: typeof adminAdminProductsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/orders/': {
+      id: '/(admin)/admin/orders/'
+      path: '/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof adminAdminOrdersIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/coupons/': {
+      id: '/(admin)/admin/coupons/'
+      path: '/coupons'
+      fullPath: '/admin/coupons'
+      preLoaderRoute: typeof adminAdminCouponsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/categories/': {
+      id: '/(admin)/admin/categories/'
+      path: '/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof adminAdminCategoriesIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/brands/': {
+      id: '/(admin)/admin/brands/'
+      path: '/brands'
+      fullPath: '/admin/brands'
+      preLoaderRoute: typeof adminAdminBrandsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/attributes/': {
+      id: '/(admin)/admin/attributes/'
+      path: '/attributes'
+      fullPath: '/admin/attributes'
+      preLoaderRoute: typeof adminAdminAttributesIndexRouteImport
       parentRoute: typeof adminAdminRoute
     }
     '/(vendor)/shop/$slug/transactions': {
@@ -781,14 +1031,40 @@ interface adminAdminRouteChildren {
   adminAdminMyStoreRoute: typeof adminAdminMyStoreRoute
   adminAdminIndexRoute: typeof adminAdminIndexRoute
   adminAdminTenantsTenantIdRoute: typeof adminAdminTenantsTenantIdRoute
+  adminAdminAttributesIndexRoute: typeof adminAdminAttributesIndexRoute
+  adminAdminBrandsIndexRoute: typeof adminAdminBrandsIndexRoute
+  adminAdminCategoriesIndexRoute: typeof adminAdminCategoriesIndexRoute
+  adminAdminCouponsIndexRoute: typeof adminAdminCouponsIndexRoute
+  adminAdminOrdersIndexRoute: typeof adminAdminOrdersIndexRoute
+  adminAdminProductsIndexRoute: typeof adminAdminProductsIndexRoute
+  adminAdminReviewsIndexRoute: typeof adminAdminReviewsIndexRoute
+  adminAdminSettingsIndexRoute: typeof adminAdminSettingsIndexRoute
+  adminAdminStaffIndexRoute: typeof adminAdminStaffIndexRoute
+  adminAdminTagsIndexRoute: typeof adminAdminTagsIndexRoute
+  adminAdminTaxesIndexRoute: typeof adminAdminTaxesIndexRoute
   adminAdminTenantsIndexRoute: typeof adminAdminTenantsIndexRoute
+  adminAdminTransactionsIndexRoute: typeof adminAdminTransactionsIndexRoute
+  adminAdminUsersIndexRoute: typeof adminAdminUsersIndexRoute
 }
 
 const adminAdminRouteChildren: adminAdminRouteChildren = {
   adminAdminMyStoreRoute: adminAdminMyStoreRoute,
   adminAdminIndexRoute: adminAdminIndexRoute,
   adminAdminTenantsTenantIdRoute: adminAdminTenantsTenantIdRoute,
+  adminAdminAttributesIndexRoute: adminAdminAttributesIndexRoute,
+  adminAdminBrandsIndexRoute: adminAdminBrandsIndexRoute,
+  adminAdminCategoriesIndexRoute: adminAdminCategoriesIndexRoute,
+  adminAdminCouponsIndexRoute: adminAdminCouponsIndexRoute,
+  adminAdminOrdersIndexRoute: adminAdminOrdersIndexRoute,
+  adminAdminProductsIndexRoute: adminAdminProductsIndexRoute,
+  adminAdminReviewsIndexRoute: adminAdminReviewsIndexRoute,
+  adminAdminSettingsIndexRoute: adminAdminSettingsIndexRoute,
+  adminAdminStaffIndexRoute: adminAdminStaffIndexRoute,
+  adminAdminTagsIndexRoute: adminAdminTagsIndexRoute,
+  adminAdminTaxesIndexRoute: adminAdminTaxesIndexRoute,
   adminAdminTenantsIndexRoute: adminAdminTenantsIndexRoute,
+  adminAdminTransactionsIndexRoute: adminAdminTransactionsIndexRoute,
+  adminAdminUsersIndexRoute: adminAdminUsersIndexRoute,
 }
 
 const adminAdminRouteWithChildren = adminAdminRoute._addFileChildren(

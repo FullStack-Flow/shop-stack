@@ -1,9 +1,9 @@
 import DataTable from "@/components/base/data-table/data-table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { AdminTenant } from "@/types/tenant";
+import type { AdminTenant } from "@/types/tenant";
 import { Link } from "@tanstack/react-router";
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 
 interface AdminTenantTableProps {
   tenants: AdminTenant[];

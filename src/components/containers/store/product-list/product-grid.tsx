@@ -1,7 +1,7 @@
 import ProductCard from "@/components/base/products/product-card";
 import ProductGridSkeleton from "@/components/base/products/product-grid-skeleton";
 import ProductNotFound from "@/components/base/products/product-not-found";
-import { Product } from "@/data/products";
+import type { Product } from "@/data/products";
 
 interface ProductGridProps {
   products: Product[];

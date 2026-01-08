@@ -7,7 +7,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { VendorNavItem } from "@/types/vendor";
+import type { VendorNavItem } from "@/types/vendor";
 import { Link, useLocation } from "@tanstack/react-router";
 
 interface VendorNavMenuProps {

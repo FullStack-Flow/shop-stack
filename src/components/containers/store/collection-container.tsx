@@ -1,5 +1,5 @@
 import { useCartStore } from "@/lib/store/cart-store";
-import { Product, mockProducts as products } from "@/data/products";
+import { type Product, mockProducts as products } from "@/data/products";
 import { gridCellBorderClasses } from "@/lib/utils";
 import CollectionItem from "@/components/base/common/collection-item";
 

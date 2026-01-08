@@ -6,7 +6,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { cn } from "@/lib/utils";
-import { CategoryWithChildren } from "@/types/category-types";
+import type { CategoryWithChildren } from "@/types/category-types";
 import { Link, useParams } from "@tanstack/react-router";
 import { ChevronDown, ChevronRight, Circle } from "lucide-react";
 import { useState } from "react";

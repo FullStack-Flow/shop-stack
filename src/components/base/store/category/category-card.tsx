@@ -1,4 +1,4 @@
-import { Category } from "@/types/category-types";
+import type { Category } from "@/types/category-types";
 import CategoryCardList from "./category-card-list";
 import CategoryCardGrid from "./category-card-grid";
 

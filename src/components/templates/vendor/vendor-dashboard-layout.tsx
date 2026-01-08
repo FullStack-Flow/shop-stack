@@ -2,7 +2,7 @@ import VendorHeader from "@/components/base/vendors/vendor-header";
 import VendorDashboardSidebar from "@/components/containers/vendors/vendor-dashboard-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface VendorDashboardLayoutProps {
   children: ReactNode;

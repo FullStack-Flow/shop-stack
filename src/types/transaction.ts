@@ -10,3 +10,10 @@ export interface Transaction {
   paymentStatus: "paid" | "pending" | "failed" | "refunded";
   date: string;
 }
+
+export interface TransactionPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canRefund: boolean;
+}

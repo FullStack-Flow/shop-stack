@@ -1,5 +1,7 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { ShopProductsPageSkeleton } from "@/components/base/vendors/skeleton/shop-products-skeleton";
-import { AddProductDialog } from "@/components/containers/vendors/products/add-product-dialog";
+import { AddProductDialog } from "@/components/containers/shared/products/add-product-dialog";
 import ShopProductsTemplate from "@/components/templates/vendor/products/shop-products-template";
 import {
   mockAttributes,
@@ -10,8 +12,6 @@ import {
   mockTags,
   mockTaxes,
 } from "@/data/shop-products";
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/products")({
   component: ProductsPage,

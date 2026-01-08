@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Pencil, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
-import { AddressDialog, AddressFormValues } from "./address-dialog";
+import { AddressDialog, type AddressFormValues } from "./address-dialog";
 
 // Mock data type
 interface Address {

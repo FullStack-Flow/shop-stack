@@ -1,4 +1,4 @@
-import { Store } from "@/types/store-types";
+import type { Store } from "@/types/store-types";
 
 // Mock data for stores
 export const mockStores: Store[] = [

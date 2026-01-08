@@ -11,3 +11,10 @@ export interface Order {
   paymentStatus: "paid" | "unpaid" | "refunded";
   items: number;
 }
+
+export interface OrderPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canUpdateStatus: boolean;
+}

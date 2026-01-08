@@ -16,3 +16,10 @@ export interface TaxFormValues {
   zip?: string;
   priority: number;
 }
+
+export interface TaxPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canCreate: boolean;
+}

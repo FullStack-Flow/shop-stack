@@ -1,4 +1,4 @@
-import { AdminTenantDetailsProps } from "@/types/tenant";
+import type { AdminTenantDetailsProps } from "@/types/tenant";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CreditCard, ShoppingBag, Package, Users } from "lucide-react";
 

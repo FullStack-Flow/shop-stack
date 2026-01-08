@@ -1,5 +1,5 @@
+import type { ReactElement } from "react";
 import { cn } from "@/lib/utils";
-import { ReactElement } from "react";
 
 interface MarqueeProps {
   items: ReactElement[];
@@ -26,7 +26,6 @@ export default function Marquee({ items, className, speed }: MarqueeProps) {
           "marquee flex w-max min-w-full items-center gap-6 @5xl:py-10 @7xl:py-12 py-7.5",
           speedMap[speed ?? "normal"]
         )}
-        aria-label="Brand"
       >
         {[
           ...items.map((el) => ({ el, key: el.key ?? undefined })),

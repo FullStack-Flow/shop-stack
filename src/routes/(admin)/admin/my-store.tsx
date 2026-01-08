@@ -1,9 +1,9 @@
-import { MyShopsPageSkeleton } from "@/components/base/vendors/skeleton/shop-card-skeleton";
-import { AddShopDialog } from "@/components/containers/vendors/my-shop/add-shop-dialog";
-import MyStoreTemplate from "@/components/templates/admin/my-store-template";
-import { ShopFormValues } from "@/types/shop";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { MyShopsPageSkeleton } from "@/components/base/vendors/skeleton/shop-card-skeleton";
+import { AddShopDialog } from "@/components/containers/shared/shops/add-shop-dialog";
+import MyStoreTemplate from "@/components/templates/admin/my-store-template";
+import type { ShopFormValues } from "@/types/shop";
 
 export const Route = createFileRoute("/(admin)/admin/my-store")({
   component: AdminMyStorePage,

@@ -1,13 +1,13 @@
-import {
+import type {
   ColumnDef,
   ColumnFiltersState,
   OnChangeFn,
   PaginationState,
   SortingState,
 } from "@tanstack/react-table";
-import { FilterableColumn } from "./types";
+import type { FilterableColumn } from "./types";
 import { DataTableToolbar } from "./data-table-toolbar";
-import { DataTableCore, DataTableInstance } from "./data-table-core";
+import { DataTableCore, type DataTableInstance } from "./data-table-core";
 import { DataTablePagination } from "./data-table-pagination";
 import React from "react";
 import { DataTableSkeleton } from "./data-table-skeleton";
