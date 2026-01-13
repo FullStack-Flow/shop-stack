@@ -1,10 +1,10 @@
 import {
   FormTextareaField,
   FormTextField,
-} from "@/components/base/forms/form-field";
-import { PhoneInput } from "@/components/base/forms/phone-input";
-import { FieldGroup } from "@/components/ui/field";
-import type { ShippingAddressInput } from "@/lib/validators/shipping-address";
+} from '@/components/base/forms/form-field';
+import { PhoneInput } from '@/components/base/forms/phone-input';
+import { FieldGroup } from '@/components/ui/field';
+import type { ShippingAddressInput } from '@/lib/validators/shipping-address';
 
 interface ShippingAddressFieldsProps {
   form: {

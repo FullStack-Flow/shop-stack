@@ -1,5 +1,6 @@
-import VendorNavMenu from "@/components/base/vendors/vendor-nav-menu";
-import VendorUserMenu from "@/components/base/vendors/vendor-user-menu";
+import { Home, Store } from 'lucide-react';
+import VendorNavMenu from '@/components/base/vendors/vendor-nav-menu';
+import VendorUserMenu from '@/components/base/vendors/vendor-user-menu';
 import {
   Sidebar,
   SidebarContent,
@@ -9,30 +10,29 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar";
-import { VendorNavItem } from "@/types/vendor";
-import { Home, Store } from "lucide-react";
+} from '@/components/ui/sidebar';
+import type { VendorNavItem } from '@/types/vendor';
 
 export default function VendorDashboardSidebar() {
   const vendorNavItems: VendorNavItem[] = [
     {
-      title: "Dashboard",
-      href: "/dashboard",
+      title: 'Dashboard',
+      href: '/dashboard',
       icon: Home,
     },
     {
-      title: "My Shops",
-      href: "/my-shop",
+      title: 'My Shops',
+      href: '/my-shop',
       icon: Store,
-      badge: "5",
+      badge: '5',
     },
   ];
 
   const user = {
-    name: "Vendor",
-    email: "vendor@email.com",
-    avatar: "",
-    role: "vendor",
+    name: 'Vendor',
+    email: 'vendor@email.com',
+    avatar: '',
+    role: 'vendor',
   };
 
   return (

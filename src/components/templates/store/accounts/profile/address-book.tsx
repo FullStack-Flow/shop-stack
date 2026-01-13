@@ -1,13 +1,13 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { MapPin, Pencil, Plus, Trash2 } from "lucide-react";
-import { useState } from "react";
-import { AddressDialog, AddressFormValues } from "./address-dialog";
+import { MapPin, Pencil, Plus, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { AddressDialog, type AddressFormValues } from './address-dialog';
 
 // Mock data type
 interface Address {
   id: string;
-  type: "Billing" | "Shipping";
+  type: 'Billing' | 'Shipping';
   title: string;
   country: string;
   city: string;
@@ -20,25 +20,25 @@ interface Address {
 // Initial mock data
 const initialAddresses: Address[] = [
   {
-    id: "1",
-    type: "Billing",
-    title: "Home",
-    country: "United States",
-    city: "Kipnuk",
-    state: "AK",
-    zip: "99614",
-    street: "2231 Kidd Avenue",
+    id: '1',
+    type: 'Billing',
+    title: 'Home',
+    country: 'United States',
+    city: 'Kipnuk',
+    state: 'AK',
+    zip: '99614',
+    street: '2231 Kidd Avenue',
     isDefault: true,
   },
   {
-    id: "2",
-    type: "Shipping",
-    title: "Office",
-    country: "United States",
-    city: "Winchester",
-    state: "KY",
-    zip: "40391",
-    street: "2148 Straford Park",
+    id: '2',
+    type: 'Shipping',
+    title: 'Office',
+    country: 'United States',
+    city: 'Winchester',
+    state: 'KY',
+    zip: '40391',
+    street: '2148 Straford Park',
   },
 ];
 
@@ -97,7 +97,7 @@ export function AddressBook() {
             <div className="flex items-start justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Badge
-                  variant={address.type === "Billing" ? "default" : "secondary"}
+                  variant={address.type === 'Billing' ? 'default' : 'secondary'}
                   className="font-medium"
                 >
                   {address.type}

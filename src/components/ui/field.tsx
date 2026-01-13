@@ -1,28 +1,28 @@
-import { Slot } from "@radix-ui/react-slot";
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import { Slot } from '@radix-ui/react-slot';
+import * as React from 'react';
+import { cn } from '@/lib/utils';
 
 const Field = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
-    orientation?: "horizontal" | "vertical";
+    orientation?: 'horizontal' | 'vertical';
   }
->(({ className, orientation = "vertical", ...props }, ref) => {
+>(({ className, orientation = 'vertical', ...props }, ref) => {
   return (
     <div
       ref={ref}
       data-slot="field"
       data-orientation={orientation}
       className={cn(
-        "group/field flex flex-col gap-2",
-        orientation === "horizontal" && "flex-row items-center",
+        'group/field flex flex-col gap-2',
+        orientation === 'horizontal' && 'flex-row items-center',
         className
       )}
       {...props}
     />
   );
 });
-Field.displayName = "Field";
+Field.displayName = 'Field';
 
 const FieldGroup = React.forwardRef<
   HTMLDivElement,
@@ -32,12 +32,12 @@ const FieldGroup = React.forwardRef<
     <div
       ref={ref}
       data-slot="field-group"
-      className={cn("flex flex-col gap-5", className)}
+      className={cn('flex flex-col gap-5', className)}
       {...props}
     />
   );
 });
-FieldGroup.displayName = "FieldGroup";
+FieldGroup.displayName = 'FieldGroup';
 
 const FieldLabel = React.forwardRef<
   HTMLLabelElement,
@@ -46,13 +46,13 @@ const FieldLabel = React.forwardRef<
     required?: boolean;
   }
 >(({ className, asChild = false, required, children, ...props }, ref) => {
-  const Comp = asChild ? Slot : "label";
+  const Comp = asChild ? Slot : 'label';
   return (
     <Comp
       ref={ref}
       data-slot="field-label"
       className={cn(
-        "font-medium text-foreground text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive",
+        'font-medium text-foreground text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 group-data-[invalid=true]/field:text-destructive',
         className
       )}
       {...props}
@@ -62,7 +62,7 @@ const FieldLabel = React.forwardRef<
     </Comp>
   );
 });
-FieldLabel.displayName = "FieldLabel";
+FieldLabel.displayName = 'FieldLabel';
 
 const FieldDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -72,12 +72,12 @@ const FieldDescription = React.forwardRef<
     <p
       ref={ref}
       data-slot="field-description"
-      className={cn("text-muted-foreground text-sm", className)}
+      className={cn('text-muted-foreground text-sm', className)}
       {...props}
     />
   );
 });
-FieldDescription.displayName = "FieldDescription";
+FieldDescription.displayName = 'FieldDescription';
 
 const FieldError = React.forwardRef<
   HTMLParagraphElement,
@@ -87,10 +87,10 @@ const FieldError = React.forwardRef<
 >(({ className, errors, children, ...props }, ref) => {
   // Convert errors to string array
   const errorArray = Array.isArray(errors)
-    ? errors.filter((e): e is string => typeof e === "string")
+    ? errors.filter((e): e is string => typeof e === 'string')
     : [];
 
-  const body = errorArray.length > 0 ? errorArray.join(", ") : children;
+  const body = errorArray.length > 0 ? errorArray.join(', ') : children;
 
   if (!body) {
     return null;
@@ -100,13 +100,13 @@ const FieldError = React.forwardRef<
     <p
       ref={ref}
       data-slot="field-error"
-      className={cn("font-medium text-destructive text-sm", className)}
+      className={cn('font-medium text-destructive text-sm', className)}
       {...props}
     >
       {body}
     </p>
   );
 });
-FieldError.displayName = "FieldError";
+FieldError.displayName = 'FieldError';
 
 export { Field, FieldGroup, FieldLabel, FieldDescription, FieldError };

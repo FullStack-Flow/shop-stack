@@ -1,5 +1,5 @@
-import ShopCard from "@/components/base/vendors/my-shop/shop-card";
-import ShopHeader from "@/components/containers/vendors/my-shop/shop-header";
+import ShopCard from '@/components/base/vendors/my-shop/shop-card';
+import ShopHeader from '@/components/containers/vendors/my-shop/shop-header';
 
 interface Shop {
   id: string;
@@ -13,7 +13,7 @@ interface Shop {
   totalProducts: number;
   totalOrders: number;
   monthlyRevenue: string;
-  status: "active" | "pending";
+  status: 'active' | 'pending';
 }
 
 interface MyShopsTemplateProps {

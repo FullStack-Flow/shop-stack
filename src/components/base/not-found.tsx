@@ -1,13 +1,13 @@
-import { Link } from "@tanstack/react-router";
-import { FileQuestion, Home, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Link } from '@tanstack/react-router';
+import { FileQuestion, Home, RotateCcw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 
 export default function NotFound({ children }: { children?: React.ReactNode }) {
   return (

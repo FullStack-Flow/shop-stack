@@ -1,16 +1,16 @@
-import Navbar from "@/components/base/common/navbar";
-import { Button } from "@/components/ui/button";
-import { Link } from "@tanstack/react-router";
-import { Menu, ShoppingBag } from "lucide-react";
-import { ModeToggle } from "../provider/mode-toggle";
-import CartSheet from "@/components/containers/store/cart/cart-sheet";
-import { useCartStore } from "@/lib/store/cart-store";
-import { MobileMenu } from "./mobile-menu";
+import { Link } from '@tanstack/react-router';
+import { Menu, ShoppingBag } from 'lucide-react';
+import Navbar from '@/components/base/common/navbar';
+import CartSheet from '@/components/containers/store/cart/cart-sheet';
+import { Button } from '@/components/ui/button';
+import { useCartStore } from '@/lib/store/cart-store';
+import { ModeToggle } from '../provider/mode-toggle';
+import { MobileMenu } from './mobile-menu';
 
 const navigationItems = [
-  { to: "/", label: "Home" },
-  { to: "/product", label: "Products" },
-  { to: "/category", label: "Categories" },
+  { to: '/', label: 'Home' },
+  { to: '/product', label: 'Products' },
+  { to: '/category', label: 'Categories' },
 ];
 
 export default function Header() {

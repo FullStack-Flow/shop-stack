@@ -1,24 +1,24 @@
-import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
-import CategoryGrid from "@/components/containers/store/category/category-grid";
-import SidebarCategoryTree from "@/components/containers/store/category/sidebar-category-tree";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getRootCategories } from "@/lib/helper/categories";
+import { BreadcrumbNav } from '@/components/base/common/breadcrumb-nav';
+import CategoryGrid from '@/components/containers/store/category/category-grid';
+import SidebarCategoryTree from '@/components/containers/store/category/sidebar-category-tree';
+import { Separator } from '@/components/ui/separator';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { getRootCategories } from '@/lib/helper/categories';
 
 export default function CategoryTemplate() {
   const rootCategories = getRootCategories();
   const featuredCategories = rootCategories.filter((cat) => cat.featured);
 
   const cartSteps = [
-    { label: "Home", href: "/" },
-    { label: "Categories", isActive: true },
+    { label: 'Home', href: '/' },
+    { label: 'Categories', isActive: true },
   ] as const;
 
   return (
     <div className="@container container mx-auto px-4 py-8">
       <BreadcrumbNav items={cartSteps} className="mb-4" />
       <h1 className="mt-4 font-bold text-3xl tracking-tight">All Categories</h1>
-      <p className="mt-2 text-muted-foreground mb-8">
+      <p className="mt-2 mb-8 text-muted-foreground">
         Browse our wide range of product categories
       </p>
 

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { Link } from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router';
+import { cn } from '@/lib/utils';
 
 interface CopyrightProps {
   brand: string;
@@ -17,7 +17,7 @@ export default function Copyright({
   return (
     <div
       className={cn(
-        "flex w-full @6xl:flex-row flex-col items-start justify-between gap-4",
+        'flex w-full @6xl:flex-row flex-col items-start justify-between gap-4',
         className
       )}
     >

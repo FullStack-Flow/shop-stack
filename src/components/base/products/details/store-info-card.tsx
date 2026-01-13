@@ -37,7 +37,8 @@ export default function StoreInfoCard({
           <div className="flex-1 space-y-1">
             <div className="flex items-center gap-2">
               <Link
-                to={`/store/${store.slug}`}
+                to="/store/$slug"
+                params={{ slug: store.slug }}
                 className="font-semibold hover:underline"
               >
                 {store.name}
@@ -60,7 +61,9 @@ export default function StoreInfoCard({
           </div>
 
           <Button variant="ghost" size="default" asChild>
-            <Link to={`/store/${store.slug}`}>Visit Store</Link>
+            <Link to="/store/$slug" params={{ slug: store.slug }}>
+              Visit Store
+            </Link>
           </Button>
         </div>
       </CardContent>

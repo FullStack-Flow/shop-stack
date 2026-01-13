@@ -1,11 +1,11 @@
-import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
-import StoreFilterSidebar from "@/components/containers/store/storefront/store-filter-sidebar";
-import StoreList from "@/components/containers/store/storefront/store-list";
+import { BreadcrumbNav } from '@/components/base/common/breadcrumb-nav';
+import StoreFilterSidebar from '@/components/containers/store/storefront/store-filter-sidebar';
+import StoreList from '@/components/containers/store/storefront/store-list';
 
 export default function StoresListingTemplate() {
   const storesSteps = [
-    { label: "Home", href: "/" },
-    { label: "Stores", isActive: true },
+    { label: 'Home', href: '/' },
+    { label: 'Stores', isActive: true },
   ] as const;
   return (
     <div className="@container container mx-auto px-4 py-8 min-h-screen bg-background">

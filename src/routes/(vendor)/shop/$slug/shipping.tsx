@@ -1,12 +1,12 @@
-import { AddShippingDialog } from "@/components/containers/vendors/shipping/add-shipping-dialog";
-import ShopShippingTemplate from "@/components/templates/vendor/shop-shipping-template";
-import { mockShippingMethods } from "@/data/shipping";
-import { ShippingMethod } from "@/types/shipping";
-import { ShippingFormValues } from "@/types/shipping-form";
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import { AddShippingDialog } from '@/components/containers/shared/shipping/add-shipping-dialog';
+import ShopShippingTemplate from '@/components/templates/vendor/shop-shipping-template';
+import { mockShippingMethods } from '@/data/shipping';
+import type { ShippingMethod } from '@/types/shipping';
+import type { ShippingFormValues } from '@/types/shipping-form';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/shipping")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/shipping')({
   component: ShippingPage,
 });
 
@@ -29,14 +29,14 @@ function ShippingPage() {
     };
 
     setShippingMethods([...shippingMethods, newShippingMethod]);
-    console.log("Created shipping method:", newShippingMethod);
+    console.log('Created shipping method:', newShippingMethod);
   };
 
   return (
     <>
       <ShopShippingTemplate
         shippingMethods={shippingMethods}
-        onAddShipping={handleAddShipping}
+        onEditShipping={handleAddShipping}
       />
 
       <AddShippingDialog

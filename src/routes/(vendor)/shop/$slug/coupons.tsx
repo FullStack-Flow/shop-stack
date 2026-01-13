@@ -1,21 +1,15 @@
-import { AddCouponDialog } from "@/components/containers/vendors/coupons/add-coupon-dialog";
-import ShopCouponsTemplate from "@/components/templates/vendor/shop-coupons-template";
-import { mockCoupons } from "@/data/coupons";
-import { Coupon, CouponFormValues } from "@/types/coupon";
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute } from '@tanstack/react-router';
+import { useState } from 'react';
+import ShopCouponsTemplate from '@/components/templates/vendor/shop-coupons-template';
+import { mockCoupons } from '@/data/coupons';
+import type { Coupon, CouponFormValues } from '@/types/coupon';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/coupons")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/coupons')({
   component: CouponsPage,
 });
 
 function CouponsPage() {
   const [coupons, setCoupons] = useState<Coupon[]>(mockCoupons);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleAddCoupon = () => {
-    setIsDialogOpen(true);
-  };
 
   const handleCouponSubmit = (data: CouponFormValues) => {
     const newCoupon: Coupon = {
@@ -36,18 +30,10 @@ function CouponsPage() {
     };
 
     setCoupons([...coupons, newCoupon]);
-    console.log("Created coupon:", newCoupon);
+    console.log('Created coupon:', newCoupon);
   };
 
   return (
-    <>
-      <ShopCouponsTemplate coupons={coupons} onAddCoupon={handleAddCoupon} />
-
-      <AddCouponDialog
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-        onSubmit={handleCouponSubmit}
-      />
-    </>
+    <ShopCouponsTemplate coupons={coupons} onAddCoupon={handleCouponSubmit} />
   );
 }

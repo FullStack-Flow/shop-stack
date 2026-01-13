@@ -1,18 +1,10 @@
 import {
-  ErrorComponentProps,
+  type ErrorComponentProps,
   Link,
   rootRouteId,
   useMatch,
   useRouter,
-} from "@tanstack/react-router";
-import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+} from '@tanstack/react-router';
 import {
   AlertCircle,
   ChevronDown,
@@ -20,14 +12,22 @@ import {
   Home,
   RefreshCcw,
   RotateCcw,
-} from "lucide-react";
+} from 'lucide-react';
+import { useState } from 'react';
+import { Button } from '../ui/button';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../ui/card';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../ui/collapsible";
-import { Button } from "../ui/button";
-import { ScrollArea } from "../ui/scroll-area";
+} from '../ui/collapsible';
+import { ScrollArea } from '../ui/scroll-area';
 
 export function DefaultErrorComponent({ error }: ErrorComponentProps) {
   const router = useRouter();
@@ -41,7 +41,7 @@ export function DefaultErrorComponent({ error }: ErrorComponentProps) {
     Error instanceof Error ? error.message : JSON.stringify(error);
   const stackTrace = error instanceof Error ? error.stack : null;
 
-  console.error("DefaultErrorBoundary caught error:", error);
+  console.error('DefaultErrorBoundary caught error:', error);
 
   return (
     <div className="@container flex min-h-[50vh] min-w-0 flex-1 flex-col items-center justify-center p-4">

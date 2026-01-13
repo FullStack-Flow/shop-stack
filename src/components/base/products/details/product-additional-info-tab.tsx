@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 
 interface ProductAdditionalInfoTabProps {
   specifications: Record<string, string>;

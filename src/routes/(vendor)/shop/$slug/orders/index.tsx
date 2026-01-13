@@ -1,8 +1,8 @@
-import ShopOrdersTemplate from "@/components/templates/vendor/shop-orders-template";
-import { mockOrders } from "@/data/orders";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
+import ShopOrdersTemplate from '@/components/templates/vendor/shop-orders-template';
+import { mockOrders } from '@/data/orders';
 
-export const Route = createFileRoute("/(vendor)/shop/$slug/orders/")({
+export const Route = createFileRoute('/(vendor)/shop/$slug/orders/')({
   component: OrdersPage,
 });
 

@@ -1,14 +1,14 @@
-import ProductActions from "@/components/base/products/details/product-actions";
-import ProductHeader from "@/components/base/products/details/product-header";
-import ProductImageGallery from "@/components/base/products/details/product-image-gallery";
-import ProductPrice from "@/components/base/products/details/product-price";
-import { QuantitySelector } from "@/components/base/products/details/quantity-selector";
-import ShippingInfoSection from "@/components/base/products/details/shipping-info-section";
-import StoreInfoCard from "@/components/base/products/details/store-info-card";
-import { Product } from "@/data/products";
-import { useCartStore } from "@/lib/store/cart-store";
-import { useState } from "react";
-import { toast } from "sonner";
+import { useState } from 'react';
+import { toast } from 'sonner';
+import ProductActions from '@/components/base/products/details/product-actions';
+import ProductHeader from '@/components/base/products/details/product-header';
+import ProductImageGallery from '@/components/base/products/details/product-image-gallery';
+import ProductPrice from '@/components/base/products/details/product-price';
+import { QuantitySelector } from '@/components/base/products/details/quantity-selector';
+import ShippingInfoSection from '@/components/base/products/details/shipping-info-section';
+import StoreInfoCard from '@/components/base/products/details/store-info-card';
+import type { Product } from '@/data/products';
+import { useCartStore } from '@/lib/store/cart-store';
 
 interface ProductMainSectionProps {
   product: Product;
@@ -31,11 +31,11 @@ export default function ProductMainSection({
       quantity,
       maxQuantity: product.stock.quantity,
     });
-    toast.success("Added to cart");
+    toast.success('Added to cart');
   };
 
   const handleBuyNow = () => {
-    console.log("Buy now:", product.id, quantity);
+    console.log('Buy now:', product.id, quantity);
   };
 
   return (

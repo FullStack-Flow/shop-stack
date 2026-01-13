@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface CollectionItemProps {
   image: string;
@@ -21,7 +21,7 @@ export default function CollectionItem({
   onAddToCart,
 }: CollectionItemProps) {
   return (
-    <div className={cn("relativea border-dashed @6xl:p-[30px] p-5", className)}>
+    <div className={cn('relativea border-dashed @6xl:p-[30px] p-5', className)}>
       <div className="overflow-hidden rounded-t-2xl">
         <img
           src={image}
@@ -48,7 +48,7 @@ export default function CollectionItem({
       <div className="mt-3 space-y-3.5">
         <h4 className="font-medium font-mono text-lg">{title}</h4>
         <p className="font-mono text-muted-foreground text-sm">
-          Fit: <span className="font-medium text-body-80">{fit}</span> Price:{" "}
+          Fit: <span className="font-medium text-body-80">{fit}</span> Price:{' '}
           <span className="font-medium text-body-80">{price}</span>
         </p>
         <Button

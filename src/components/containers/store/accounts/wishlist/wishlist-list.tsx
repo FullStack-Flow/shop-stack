@@ -1,9 +1,9 @@
-import NotFound from "@/components/base/empty/notfound";
-import WishlistItemCard from "@/components/base/store/accounts/wishlist-item-card";
-import { Button } from "@/components/ui/button";
-import { mockWishlists } from "@/data/wishlist";
-import { Link } from "@tanstack/react-router";
-import { ShoppingBag } from "lucide-react";
+import { Link } from '@tanstack/react-router';
+import { ShoppingBag } from 'lucide-react';
+import NotFound from '@/components/base/empty/notfound';
+import WishlistItemCard from '@/components/base/store/accounts/wishlist-item-card';
+import { Button } from '@/components/ui/button';
+import { mockWishlists } from '@/data/wishlist';
 
 export default function WishlistList() {
   if (!mockWishlists) {

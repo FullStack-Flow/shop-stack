@@ -45,3 +45,10 @@ export interface CategoryOption {
   id: string;
   name: string;
 }
+
+export interface CategoryPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canToggleStatus: boolean;
+}

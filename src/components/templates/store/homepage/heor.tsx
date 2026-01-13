@@ -1,15 +1,15 @@
-import Heading from "@/components/base/common/heading";
-import Tags from "@/components/base/common/tags";
-import CounterBox from "@/components/containers/store/counter-box";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from 'lucide-react';
+import Heading from '@/components/base/common/heading';
+import Tags from '@/components/base/common/tags';
+import CounterBox from '@/components/containers/store/counter-box';
+import { Button } from '@/components/ui/button';
 
 export default function Hero() {
   const counters = [
-    { value: "1,500 +", label: "Fashion Products" },
-    { value: "50 +", label: "New arrivals every month" },
-    { value: "30%", label: "OFF on select items" },
-    { value: "95%", label: "Customer Satisfaction Rate" },
+    { value: '1,500 +', label: 'Fashion Products' },
+    { value: '50 +', label: 'New arrivals every month' },
+    { value: '30%', label: 'OFF on select items' },
+    { value: '95%', label: 'Customer Satisfaction Rate' },
   ];
   return (
     <section className="@container container mx-auto space-y-8 px-4 pt-[60px]">
@@ -40,7 +40,7 @@ export default function Hero() {
 
         <div className="grid @4xl:grid-cols-2 grid-cols-1 gap-8">
           <div className="space-y-8 @4xl:p-12 @6xl:p-[60px] @7xl:p-20 p-3 pt-14">
-            <Tags items={["All", "Mens", "Womens", "Kids"]} />
+            <Tags items={['All', 'Mens', 'Womens', 'Kids']} />
             <Heading
               title="ELEVATE YOUR STYLE WITH SHOPSTACK"
               subtitle="Explore a world of fashion at Shop.Stack, where trends meet affordability. Immerse yourself in the latest styles and seize exclusive promotions."

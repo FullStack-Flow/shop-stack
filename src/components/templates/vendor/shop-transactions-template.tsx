@@ -1,18 +1,28 @@
-import TransactionsHeader from "@/components/containers/vendors/transactions/transactions-header";
-import TransactionsTable from "@/components/containers/vendors/transactions/transactions-table";
-import { Transaction } from "@/types/transaction";
+import TransactionHeader from '@/components/containers/shared/transactions/transaction-header';
+import TransactionsTable from '@/components/containers/shared/transactions/transaction-table';
+import { VENDOR_TRANSACTION_PERMISSIONS } from '@/lib/config/transaction-permissions';
+import type { Transaction } from '@/types/transaction';
 
 interface ShopTransactionsTemplateProps {
   transactions: Transaction[];
+  onViewTransaction?: (transactionId: string) => void;
+  onRefundTransaction?: (transactionId: string) => void;
 }
 
 export default function ShopTransactionsTemplate({
   transactions,
+  onViewTransaction,
+  onRefundTransaction,
 }: ShopTransactionsTemplateProps) {
   return (
     <div className="space-y-6">
-      <TransactionsHeader />
-      <TransactionsTable transactions={transactions} />
+      <TransactionHeader role="vendor" />
+      <TransactionsTable
+        transactions={transactions}
+        permissions={VENDOR_TRANSACTION_PERMISSIONS}
+        onViewTransaction={onViewTransaction}
+        onRefundTransaction={onRefundTransaction}
+      />
     </div>
   );
 }

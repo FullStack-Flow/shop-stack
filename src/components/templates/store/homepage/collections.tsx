@@ -1,12 +1,12 @@
-import Section from "@/components/base/common/section";
-import CollectionContainer from "@/components/containers/store/collection-container";
-import { Button } from "@/components/ui/button";
-import StarSolidIcon from "@/components/ui/icons/star-solid";
-import { useState } from "react";
+import { useState } from 'react';
+import Section from '@/components/base/common/section';
+import CollectionContainer from '@/components/containers/store/collection-container';
+import { Button } from '@/components/ui/button';
+import StarSolidIcon from '@/components/ui/icons/star-solid';
 
 export default function Collections() {
-  const tabs = ["All", "Mens", "Womens", "Kids"] as const;
-  const [active, setActive] = useState<(typeof tabs)[number]>("Womens");
+  const tabs = ['All', 'Mens', 'Womens', 'Kids'] as const;
+  const [active, setActive] = useState<(typeof tabs)[number]>('Womens');
 
   return (
     <Section
@@ -21,7 +21,7 @@ export default function Collections() {
           {tabs.map((tab) => (
             <Button
               key={tab}
-              variant={active === tab ? "default" : "ghost"}
+              variant={active === tab ? 'default' : 'ghost'}
               className="@6xl:h-14 h-12 @6xl:px-6 px-4 py-3 text-lg"
               type="button"
               onClick={() => setActive(tab)}

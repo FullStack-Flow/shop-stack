@@ -1,8 +1,8 @@
-import StatsCard from "@/components/base/vendors/sates-card";
-import CustomerInsights from "@/components/containers/vendors/shop/customer-insights";
-import RecentOrders from "@/components/containers/vendors/shop/recent-orders";
-import SalesOverview from "@/components/containers/vendors/shop/sales-overview";
-import TopProducts from "@/components/containers/vendors/shop/top-products";
+import StatsCard from '@/components/base/vendors/sates-card';
+import CustomerInsights from '@/components/containers/vendors/shop/customer-insights';
+import RecentOrders from '@/components/containers/vendors/shop/recent-orders';
+import SalesOverview from '@/components/containers/vendors/shop/sales-overview';
+import TopProducts from '@/components/containers/vendors/shop/top-products';
 
 interface ShopDashboardTemplateProps {
   shopName: string;
@@ -11,7 +11,7 @@ interface ShopDashboardTemplateProps {
     value: string;
     change: string;
     icon: React.ComponentType<{ className?: string }>;
-    trend: "up" | "down" | "neutral";
+    trend: 'up' | 'down' | 'neutral';
   }>;
 }
 

@@ -1,7 +1,7 @@
-import WishlistTemplate from "@/components/templates/store/accounts/wishlist-template";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
+import WishlistTemplate from '@/components/templates/store/accounts/wishlist-template';
 
-export const Route = createFileRoute("/(store)/_layout/wishlist")({
+export const Route = createFileRoute('/(store)/_layout/wishlist')({
   component: RouteComponent,
 });
 

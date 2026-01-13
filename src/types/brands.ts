@@ -6,3 +6,9 @@ export interface Brand {
   logo?: string;
   description?: string;
 }
+
+export interface BrandPermissions {
+  canDelete?: boolean;
+  canEdit?: boolean;
+  canView?: boolean;
+}

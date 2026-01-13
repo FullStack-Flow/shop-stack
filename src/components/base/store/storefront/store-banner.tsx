@@ -1,9 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { useStoreFront } from "@/lib/store/store";
-import { cn } from "@/lib/utils";
-import { Store } from "@/types/store-types";
-import { CheckCircle2, Heart, Star } from "lucide-react";
+import { CheckCircle2, Heart, Star } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
+import { useStoreFront } from '@/lib/store/store';
+import { cn } from '@/lib/utils';
+import type { Store } from '@/types/store-types';
 
 interface StoreBannerProps {
   store: Store;
@@ -14,7 +14,7 @@ export default function StoreBanner({ store, className }: StoreBannerProps) {
   const { isFollowing, toggleFollow } = useStoreFront();
   const following = isFollowing(store.id);
   return (
-    <div className={cn("relative overflow-hidden rounded-xl", className)}>
+    <div className={cn('relative overflow-hidden rounded-xl', className)}>
       {/* Banner Image */}
       <div className="relative @2xl:h-64 h-48 overflow-hidden bg-muted">
         <img
@@ -63,13 +63,13 @@ export default function StoreBanner({ store, className }: StoreBannerProps) {
           {/* Action Buttons */}
           <div className="flex gap-2">
             <Button
-              variant={following ? "secondary" : "default"}
+              variant={following ? 'secondary' : 'default'}
               size="lg"
               onClick={() => toggleFollow(store.id)}
               className="gap-2"
             >
-              <Heart className={cn("size-4", following && "fill-current")} />
-              {following ? "Following" : "Follow"}
+              <Heart className={cn('size-4', following && 'fill-current')} />
+              {following ? 'Following' : 'Follow'}
             </Button>
           </div>
         </div>

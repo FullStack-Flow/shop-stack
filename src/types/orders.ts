@@ -7,7 +7,14 @@ export interface Order {
   };
   date: string;
   total: string;
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
-  paymentStatus: "paid" | "unpaid" | "refunded";
+  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  paymentStatus: 'paid' | 'unpaid' | 'refunded';
   items: number;
+}
+
+export interface OrderPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canUpdateStatus: boolean;
 }

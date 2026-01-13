@@ -1,4 +1,7 @@
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from '@radix-ui/react-avatar';
+import { useRouter } from '@tanstack/react-router';
+import { ChevronDown, LogOut, User } from 'lucide-react';
+import { AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,16 +9,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { Avatar } from "@radix-ui/react-avatar";
-import { useRouter } from "@tanstack/react-router";
-import { ChevronDown, LogOut, User } from "lucide-react";
+} from '@/components/ui/sidebar';
 
 interface VendorUser {
   name: string;
@@ -35,13 +35,13 @@ export default function VendorUserMenu({ user }: VendorUserMenuProps) {
   const handleSignOut = async () => {
     const currentPath = window.location.pathname + window.location.search;
     // await signOut();
-    router.navigate({ to: "/auth/sign-in", search: { redirect: currentPath } });
+    router.navigate({ to: '/auth/sign-in', search: { redirect: currentPath } });
   };
 
   const initials = user.name
-    .split(" ")
+    .split(' ')
     .map((n) => n[0])
-    .join("")
+    .join('')
     .toUpperCase()
     .slice(0, 2);
 
@@ -71,7 +71,7 @@ export default function VendorUserMenu({ user }: VendorUserMenuProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
+            side={isMobile ? 'bottom' : 'right'}
             align="end"
             sideOffset={4}
           >

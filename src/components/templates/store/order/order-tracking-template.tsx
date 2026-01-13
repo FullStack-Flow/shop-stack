@@ -1,11 +1,11 @@
-import OrderSearchForm from "@/components/base/store/order/order-search-form";
-import OrderStatusTimeline from "@/components/base/store/order/order-status-timeline";
-import OrderTrackingSummary from "@/components/containers/store/order/order-tracking-summary";
-import ShippingUpdatesList from "@/components/containers/store/order/shipping-updates-list";
-import TrackingDetailsCard from "@/components/containers/store/order/tracking-details-card";
-import { mockTrackingData } from "@/data/order-tracking";
-import { Package } from "lucide-react";
-import { useState } from "react";
+import { Package } from 'lucide-react';
+import { useState } from 'react';
+import OrderSearchForm from '@/components/base/store/order/order-search-form';
+import OrderStatusTimeline from '@/components/base/store/order/order-status-timeline';
+import OrderTrackingSummary from '@/components/containers/store/order/order-tracking-summary';
+import ShippingUpdatesList from '@/components/containers/store/order/shipping-updates-list';
+import TrackingDetailsCard from '@/components/containers/store/order/tracking-details-card';
+import { mockTrackingData } from '@/data/order-tracking';
 
 export default function OrderTrackingTemplate() {
   const [isSearching, setIsSearching] = useState(false);

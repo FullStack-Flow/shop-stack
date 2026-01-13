@@ -1,7 +1,7 @@
-import VendorDashboardLayout from "@/components/templates/vendor/vendor-dashboard-layout";
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet } from '@tanstack/react-router';
+import VendorDashboardLayout from '@/components/templates/vendor/vendor-dashboard-layout';
 
-export const Route = createFileRoute("/(vendor)/_layout")({
+export const Route = createFileRoute('/(vendor)/_layout')({
   component: VendorLayoutComponent,
 });
 

@@ -1,13 +1,13 @@
-import { CreditCard, User } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { CreditCard, User } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 interface OrderSummaryProps {
   orderId: string;
@@ -18,7 +18,7 @@ interface OrderSummaryProps {
     phone: string;
   };
   paymentMethod: string;
-  paymentStatus: "paid" | "unpaid" | "refunded";
+  paymentStatus: 'paid' | 'unpaid' | 'refunded';
   subtotal: number;
   shipping: number;
   tax: number;
@@ -70,16 +70,16 @@ export default function OrderSummary({
             <p className="text-muted-foreground text-sm">{paymentMethod}</p>
             <Badge
               variant={
-                paymentStatus === "paid"
-                  ? "outline"
-                  : paymentStatus === "refunded"
-                    ? "destructive"
-                    : "secondary"
+                paymentStatus === 'paid'
+                  ? 'outline'
+                  : paymentStatus === 'refunded'
+                    ? 'destructive'
+                    : 'secondary'
               }
               className={
-                paymentStatus === "paid"
-                  ? "border-green-500 text-green-600"
-                  : "capitalize"
+                paymentStatus === 'paid'
+                  ? 'border-green-500 text-green-600'
+                  : 'capitalize'
               }
             >
               {paymentStatus}

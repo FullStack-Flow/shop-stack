@@ -1,6 +1,6 @@
-import StoreBanner from "@/components/base/store/storefront/store-banner";
-import { StoreStats } from "@/components/base/store/storefront/store-stats";
-import { Store } from "@/types/store-types";
+import StoreBanner from '@/components/base/store/storefront/store-banner';
+import { StoreStats } from '@/components/base/store/storefront/store-stats';
+import type { Store } from '@/types/store-types';
 
 interface StoreHeaderProps {
   store: Store;

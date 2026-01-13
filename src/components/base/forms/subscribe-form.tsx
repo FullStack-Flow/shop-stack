@@ -1,18 +1,18 @@
-import { Button } from "@/components/ui/button";
-import { Field, FieldError } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { useForm } from "@tanstack/react-form";
-import { ArrowRight } from "lucide-react";
-import { z } from "zod";
+import { useForm } from '@tanstack/react-form';
+import { ArrowRight } from 'lucide-react';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
+import { Field, FieldError } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
 
 const schema = z.object({
-  email: z.email("Please enter a valid email address"),
+  email: z.email('Please enter a valid email address'),
 });
 
 export default function SubscribeForm() {
   const form = useForm({
     defaultValues: {
-      email: "",
+      email: '',
     },
     validators: {
       onSubmit: schema as any,
@@ -20,7 +20,7 @@ export default function SubscribeForm() {
     onSubmit: async ({ value }) => {
       // Prepare for future email implementation
       // eslint-disable-next-line no-console
-      console.log("newsletter-subscribe", value);
+      console.log('newsletter-subscribe', value);
     },
   });
 
@@ -40,7 +40,7 @@ export default function SubscribeForm() {
           const stringErrors = (
             field.state.meta.errors as Array<string | undefined>
           )
-            ?.filter((e): e is string => typeof e === "string")
+            ?.filter((e): e is string => typeof e === 'string')
             .map((e) => ({ message: e }));
           return (
             <Field
@@ -52,7 +52,7 @@ export default function SubscribeForm() {
                   id={field.name}
                   name={field.name}
                   type="email"
-                  value={(field.state.value as string) ?? ""}
+                  value={(field.state.value as string) ?? ''}
                   onBlur={field.handleBlur}
                   onChange={(e) =>
                     field.handleChange((e.target as HTMLInputElement).value)

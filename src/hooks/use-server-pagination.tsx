@@ -1,16 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query';
 import type {
   ColumnFiltersState,
   OnChangeFn,
   PaginationState,
   SortingState,
-} from "@tanstack/react-table";
-import { useMemo, useState } from "react";
+} from '@tanstack/react-table';
+import { useMemo, useState } from 'react';
 import type {
   DataTableContext,
   DataTableFetchParams,
   DataTableFetchResult,
-} from "@/components/base/data-table/types";
+} from '@/components/base/data-table/types';
 
 export type UseServerPaginationOptions<TData> = {
   fetcher: (
@@ -29,7 +29,7 @@ export function useServerPagination<TData>({
   const [pageSize, setPageSize] = useState(initialPageSize);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [globalFilter, setGlobalFilter] = useState("");
+  const [globalFilter, setGlobalFilter] = useState('');
 
   const params: DataTableFetchParams = useMemo(
     () => ({
@@ -44,7 +44,7 @@ export function useServerPagination<TData>({
   );
 
   const query = useQuery<DataTableFetchResult<TData>>({
-    queryKey: ["datatable", context, params],
+    queryKey: ['datatable', context, params],
     queryFn: () => fetcher(params),
     // Preserve previous page data while fetching the next
     placeholderData: (prev) => prev,
@@ -52,7 +52,7 @@ export function useServerPagination<TData>({
 
   const setPagination: OnChangeFn<PaginationState> = (updaterOrValue) => {
     const next =
-      typeof updaterOrValue === "function"
+      typeof updaterOrValue === 'function'
         ? updaterOrValue({ pageIndex, pageSize })
         : updaterOrValue;
     setPageIndex(next.pageIndex);

@@ -7,6 +7,13 @@ export interface Transaction {
   taxableAmount: string;
   discount: string;
   paymentGateway: string;
-  paymentStatus: "paid" | "pending" | "failed" | "refunded";
+  paymentStatus: 'paid' | 'pending' | 'failed' | 'refunded';
   date: string;
+}
+
+export interface TransactionPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canRefund: boolean;
 }

@@ -1,6 +1,6 @@
-import FeatureGridItem from "@/components/base/common/feature-grid-item";
-import { features } from "@/data/feature";
-import { gridCellBorderClasses } from "@/lib/utils";
+import FeatureGridItem from '@/components/base/common/feature-grid-item';
+import { features } from '@/data/feature';
+import { gridCellBorderClasses } from '@/lib/utils';
 
 export default function FeatureGridContainer() {
   const columns2 = 2;

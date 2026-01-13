@@ -1,8 +1,8 @@
-import ProductCardHorizontal from "@/components/base/products/details/product-card-horizontal";
-import { Button } from "@/components/ui/button";
-import { Product } from "@/data/products";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
+import ProductCardHorizontal from '@/components/base/products/details/product-card-horizontal';
+import { Button } from '@/components/ui/button';
+import type { Product } from '@/data/products';
 
 interface SimilarProductsSectionProps {
   products: Product[];
@@ -13,17 +13,17 @@ export default function SimilarProductsSection({
 }: SimilarProductsSectionProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = 300;
       const newScrollLeft =
-        direction === "left"
+        direction === 'left'
           ? scrollContainerRef.current.scrollLeft - scrollAmount
           : scrollContainerRef.current.scrollLeft + scrollAmount;
 
       scrollContainerRef.current.scrollTo({
         left: newScrollLeft,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -37,7 +37,7 @@ export default function SimilarProductsSection({
             variant="outline"
             size="icon"
             className="h-8 w-8 rounded-full"
-            onClick={() => scroll("left")}
+            onClick={() => scroll('left')}
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -45,7 +45,7 @@ export default function SimilarProductsSection({
             variant="outline"
             size="icon"
             className="h-8 w-8 rounded-full"
-            onClick={() => scroll("right")}
+            onClick={() => scroll('right')}
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
@@ -55,7 +55,7 @@ export default function SimilarProductsSection({
       <div
         ref={scrollContainerRef}
         className="scrollbar-hide flex gap-6 overflow-x-auto pb-4"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {products.map((product) => (
           <ProductCardHorizontal key={product.id} product={product} />

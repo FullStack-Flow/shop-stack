@@ -1,9 +1,9 @@
+import type { ColumnFiltersState, SortingState } from "@tanstack/react-table";
+import React from "react";
 import { DataTableCore } from "@/components/base/data-table/data-table-core";
 import { DataTablePagination } from "@/components/base/data-table/data-table-pagination";
 import { DataTableToolbar } from "@/components/base/data-table/data-table-toolbar";
-import { columns, Order } from "@/components/base/store/order/columns";
-import { ColumnFiltersState, SortingState } from "@tanstack/react-table";
-import React from "react";
+import { columns, type Order } from "@/components/base/store/order/columns";
 
 // Mock data
 const data: Order[] = [
@@ -68,6 +68,16 @@ export default function OrdersTable() {
       <DataTableToolbar
         globalFilter={globalFilter}
         onGlobalFilterChange={setGlobalFilter}
+        columnFilters={columnFilters}
+        onColumnFilterChange={(columnId, value) => {
+          setColumnFilters((prev) => {
+            const filtered = prev.filter((f) => f.id !== columnId);
+            if (value !== "" && value !== undefined && value !== null) {
+              filtered.push({ id: columnId, value });
+            }
+            return filtered;
+          });
+        }}
         allColumns={columns.map((col) => ({
           id: (col as any).accessorKey || (col as any).id,
           label: ((col as any).header as string) || (col as any).id,

@@ -1,6 +1,6 @@
-import PageHeader from "@/components/base/common/page-header";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus } from 'lucide-react';
+import PageHeader from '@/components/base/common/page-header';
+import { Button } from '@/components/ui/button';
 
 interface ProductHeaderProps {
   onAddProduct: () => void;
