@@ -1,40 +1,38 @@
-import { TanStackDevtools } from '@tanstack/react-devtools';
-import type { QueryClient } from '@tanstack/react-query';
+import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   HeadContent,
   Scripts,
-} from '@tanstack/react-router';
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
-import { Toaster } from 'sonner';
-import { ThemeProvider } from '@/components/base/provider/theme-provider';
-import appCss from '../styles.css?url';
+} from "@tanstack/react-router";
+import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/base/provider/theme-provider";
+import appCss from "../styles.css?url";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   {
     head: () => ({
       meta: [
         {
-          charSet: 'utf-8',
+          charSet: "utf-8",
         },
         {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1',
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
         },
         {
-          title: 'ShopStack Multi-tenant E-commerce',
+          title: "ShopStack Multi-tenant E-commerce",
         },
       ],
       links: [
         {
-          rel: 'stylesheet',
+          rel: "stylesheet",
           href: appCss,
         },
       ],
     }),
 
     shellComponent: RootDocument,
-  }
+  },
 );
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -48,7 +46,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           {children}
           <Toaster richColors closeButton position="top-right" />
         </ThemeProvider>
-        <TanStackDevtools
+        {/* <TanStackDevtools
           config={{
             position: 'bottom-right',
           }}
@@ -58,7 +56,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               render: <TanStackRouterDevtoolsPanel />,
             },
           ]}
-        />
+        /> */}
         <Scripts />
       </body>
     </html>

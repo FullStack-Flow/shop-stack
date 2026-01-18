@@ -1,9 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute } from "@tanstack/react-router";
+import z from "zod";
+import SignInPage from "@/components/templates/auth/sign-in-page";
 
-export const Route = createFileRoute('/auth/sign-in')({
-  component: RouteComponent,
+const signInSearchSchema = z.object({
+  redirectTo: z.string().optional(),
 });
 
-function RouteComponent() {
-  return <div>Hello "/auth/sign-in"!</div>;
-}
+export const Route = createFileRoute("/auth/sign-in")({
+  validateSearch: signInSearchSchema,
+  component: () => <SignInPage />,
+});
