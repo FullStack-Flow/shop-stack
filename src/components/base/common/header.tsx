@@ -7,6 +7,7 @@ import { useSession } from "@/lib/auth/auth-client";
 import { useCartStore } from "@/lib/store/cart-store";
 import { ModeToggle } from "../provider/mode-toggle";
 import { MobileMenu } from "./mobile-menu";
+import UserMenu from "./user-menu";
 
 const navigationItems = [
   { to: "/", label: "Home" },
@@ -18,6 +19,8 @@ export default function Header() {
   const { data } = useSession();
   const user = data?.user;
   const { totalItems, setIsOpen } = useCartStore();
+
+  console.log(user);
 
   return (
     <header className="@container sticky top-0 z-40 w-full border-b border-dashed bg-background backdrop-blur supports-filter:bg-background/80">
@@ -55,10 +58,15 @@ export default function Header() {
             <CartSheet />
 
             <ModeToggle />
+
             {user ? (
-              <Button variant="outline">Logout</Button>
+              <UserMenu user={user} />
             ) : (
-              <Button variant="outline">Login</Button>
+              <Link to="/auth/sign-in">
+                <Button variant="default" size="lg" type="button">
+                  Sign In
+                </Button>
+              </Link>
             )}
           </div>
 

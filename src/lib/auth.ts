@@ -1,12 +1,24 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { twoFactor } from "better-auth/plugins";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
-import { db } from "../db";
-import { account, session, user, verification } from "../db/schema/auth-schema";
+import { db } from "./db";
+import {
+  account,
+  session,
+  twoFactor as twoFactorTable,
+  user,
+  verification,
+} from "./db/schema/auth-schema";
+import { sendEmail } from "./email";
+import OtpEmail from "./emails/otp-email";
 
 export const auth = betterAuth({
   // Base path where auth routes are mounted
   basePath: "/api/auth",
+
+  // App name for TOTP issuer
+  appName: "Shop Stack",
 
   // Security-related configuration
   // Use a deterministic dev secret if env is missing to prevent runtime errors
@@ -77,6 +89,31 @@ export const auth = betterAuth({
   },
 
   plugins: [
+    twoFactor({
+      skipVerificationOnEnable: true,
+      otpOptions: {
+        async sendOTP({ user, otp }) {
+          try {
+            const result = await sendEmail({
+              to: user.email!,
+              subject: "Your OTP Code",
+              body: OtpEmail({
+                otp,
+                userName: user.name || user.email || "User",
+                expiresInMinutes: 5,
+              }),
+            });
+            console.log(
+              "Email sent successfully! Message ID:",
+              result.messageId,
+            );
+          } catch (error) {
+            console.error("Failed to send OTP email:", error);
+            throw new Error("Failed to send verification code");
+          }
+        },
+      },
+    }),
     tanstackStartCookies(), // make sure this is the last plugin in the array
   ],
 
@@ -88,7 +125,7 @@ export const auth = betterAuth({
       account,
       session,
       verification,
-      //   twoFactor: twoFactorTable,
+      twoFactor: twoFactorTable,
     },
   }),
 });
