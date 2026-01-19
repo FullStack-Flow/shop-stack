@@ -35,5 +35,26 @@ export const registerSchema = z
     message: "Passwords do not match",
   });
 
+// Vendor Registration Schema
+export const vendorRegisterSchema = z
+  .object({
+    // Personal info
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.email("Invalid email address"),
+    password: passwordSchema,
+    confirmPassword: z.string(),
+    // Store info
+    storeName: z.string().min(2, "Store name must be at least 2 characters"),
+    storeDescription: z.string().optional(),
+    contactPhone: z.string().optional(),
+    countryCode: z.string().optional().default("BD"),
+    address: z.string().optional(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "Passwords do not match",
+  });
+
 export type LoginInput = z.infer<typeof loginSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;
+export type VendorRegisterInput = z.infer<typeof vendorRegisterSchema>;

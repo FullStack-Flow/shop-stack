@@ -1,6 +1,6 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { twoFactor } from "better-auth/plugins";
+import { admin, twoFactor } from "better-auth/plugins";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
 import { db } from "./db";
 import {
@@ -89,6 +89,7 @@ export const auth = betterAuth({
   },
 
   plugins: [
+    admin({ defaultRole: "customer" }),
     twoFactor({
       skipVerificationOnEnable: true,
       otpOptions: {

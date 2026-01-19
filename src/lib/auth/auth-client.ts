@@ -1,4 +1,4 @@
-import { twoFactorClient } from "better-auth/plugins";
+import { adminClient, twoFactorClient } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 
 const baseURL =
@@ -9,7 +9,7 @@ const baseURL =
 
 export const authClient = createAuthClient({
   baseURL,
-  plugins: [twoFactorClient()],
+  plugins: [adminClient(), twoFactorClient()],
 });
 export const { signIn, signOut, signUp, useSession, getSession, twoFactor } =
   authClient;
