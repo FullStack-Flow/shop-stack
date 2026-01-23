@@ -16,12 +16,13 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { signOut } from "@/lib/auth/auth-client";
 
 interface VendorUser {
-  name: string;
-  email: string;
-  avatar?: string;
-  role?: string;
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  role?: string | null;
 }
 
 interface VendorUserMenuProps {
@@ -34,14 +35,14 @@ export default function VendorUserMenu({ user }: VendorUserMenuProps) {
 
   const handleSignOut = async () => {
     const currentPath = window.location.pathname + window.location.search;
-    // await signOut();
+    await signOut();
     router.navigate({
       to: "/auth/sign-in",
       search: { redirectTo: currentPath },
     });
   };
 
-  const initials = user.name
+  const initials = (user.name || "")
     .split(" ")
     .map((n) => n[0])
     .join("")
@@ -58,7 +59,10 @@ export default function VendorUserMenu({ user }: VendorUserMenuProps) {
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
               <Avatar className="size-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarImage
+                  src={user.image ?? undefined}
+                  alt={user.name ?? "User"}
+                />
                 <AvatarFallback className="rounded-lg">
                   {initials}
                 </AvatarFallback>
@@ -81,7 +85,10 @@ export default function VendorUserMenu({ user }: VendorUserMenuProps) {
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="size-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarImage
+                    src={user.image ?? undefined}
+                    alt={user.name ?? "User"}
+                  />
                   <AvatarFallback className="rounded-lg">
                     {initials}
                   </AvatarFallback>
