@@ -1,20 +1,26 @@
-import { Link } from '@tanstack/react-router';
-import { Menu, ShoppingBag } from 'lucide-react';
-import Navbar from '@/components/base/common/navbar';
-import CartSheet from '@/components/containers/store/cart/cart-sheet';
-import { Button } from '@/components/ui/button';
-import { useCartStore } from '@/lib/store/cart-store';
-import { ModeToggle } from '../provider/mode-toggle';
-import { MobileMenu } from './mobile-menu';
+import { Link } from "@tanstack/react-router";
+import { Menu, ShoppingBag } from "lucide-react";
+import Navbar from "@/components/base/common/navbar";
+import CartSheet from "@/components/containers/store/cart/cart-sheet";
+import { Button } from "@/components/ui/button";
+import { useSession } from "@/lib/auth/auth-client";
+import { useCartStore } from "@/lib/store/cart-store";
+import { ModeToggle } from "../provider/mode-toggle";
+import { MobileMenu } from "./mobile-menu";
+import UserMenu from "./user-menu";
 
 const navigationItems = [
-  { to: '/', label: 'Home' },
-  { to: '/product', label: 'Products' },
-  { to: '/category', label: 'Categories' },
+  { to: "/", label: "Home" },
+  { to: "/product", label: "Products" },
+  { to: "/category", label: "Categories" },
 ];
 
 export default function Header() {
+  const { data } = useSession();
+  const user = data?.user;
   const { totalItems, setIsOpen } = useCartStore();
+
+  console.log(user);
 
   return (
     <header className="@container sticky top-0 z-40 w-full border-b border-dashed bg-background backdrop-blur supports-filter:bg-background/80">
@@ -52,16 +58,16 @@ export default function Header() {
             <CartSheet />
 
             <ModeToggle />
-            {/* {user ? (
-              <Button variant="outline">Logout</Button>
+
+            {user ? (
+              <UserMenu user={user} />
             ) : (
-              <Button variant="outline">Login</Button>
-            )} */}
-            <Link to="/auth/sign-in">
-              <Button variant="default" size="lg" type="button">
-                Sign In
-              </Button>
-            </Link>
+              <Link to="/auth/sign-in">
+                <Button variant="default" size="lg" type="button">
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
 
           <div className="flex @6xl:hidden">
