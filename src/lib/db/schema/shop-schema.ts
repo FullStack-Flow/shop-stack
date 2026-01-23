@@ -66,6 +66,7 @@ export const shops = pgTable("shops", {
   phone: text("phone"),
   email: text("email"),
   enableNotifications: boolean("enable_notifications").default(false),
+  monthlyRevenue: text("monthlyRevenue"),
   status: text("status").default("pending"), // 'pending', 'active', 'suspended'
   rating: numeric("rating", { precision: 2, scale: 1 }).default("0.0"),
   totalProducts: integer("total_products").default(0),

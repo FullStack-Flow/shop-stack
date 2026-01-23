@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { Home, Store } from "lucide-react";
 import VendorNavMenu from "@/components/base/vendors/vendor-nav-menu";
@@ -13,11 +14,16 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { useShops } from "@/hooks/vendors/use-shops";
 import { useSession } from "@/lib/auth/auth-client";
 import type { VendorNavItem } from "@/types/vendor";
 
 export default function VendorDashboardSidebar() {
   const { data: session } = useSession();
+  const { shopsQueryOptions } = useShops();
+  const { data: shopData } = useQuery(shopsQueryOptions());
+  const shopCount = shopData?.shops?.length ?? 0;
+
   const user = session?.user;
 
   const vendorNavItems: VendorNavItem[] = [
@@ -30,7 +36,7 @@ export default function VendorDashboardSidebar() {
       title: "My Shops",
       href: "/my-shop",
       icon: Store,
-      badge: "5",
+      badge: shopCount > 0 ? shopCount : undefined,
     },
   ];
 
