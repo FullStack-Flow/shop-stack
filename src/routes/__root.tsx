@@ -8,7 +8,10 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/base/provider/theme-provider";
 import appCss from "../styles.css?url";
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+  isAdmin?: boolean;
+}>()(
   {
     head: () => ({
       meta: [

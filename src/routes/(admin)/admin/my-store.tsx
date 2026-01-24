@@ -1,75 +1,79 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import { MyShopsPageSkeleton } from '@/components/base/vendors/skeleton/shop-card-skeleton';
-import { AddShopDialog } from '@/components/containers/shared/shops/add-shop-dialog';
-import MyStoreTemplate from '@/components/templates/admin/my-store-template';
-import type { ShopFormValues } from '@/types/shop';
+import { createFileRoute } from "@tanstack/react-router";
+import { MyShopsPageSkeleton } from "@/components/base/vendors/skeleton/shop-card-skeleton";
+import { AddShopDialog } from "@/components/containers/shared/shops/add-shop-dialog";
+import MyShopsTemplate from "@/components/templates/vendor/my-shops-template";
+import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
+import {
+  useShops,
+  useTransformedShops,
+  vendorShopsQueryOptions,
+} from "@/hooks/vendors/use-shops";
+import type { ShopFormValues } from "@/types/shop";
 
-export const Route = createFileRoute('/(admin)/admin/my-store')({
+export const Route = createFileRoute("/(admin)/admin/my-store")({
   component: AdminMyStorePage,
-  loader: async () => {
-    // Simulate loading delay for skeleton demonstration
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  loader: async ({ context }) => {
+    await context.queryClient.ensureQueryData(vendorShopsQueryOptions());
     return {};
   },
   pendingComponent: MyShopsPageSkeleton,
 });
 
-const mockAdminShops = [
-  {
-    id: '1',
-    slug: 'official-shopstack-store',
-    name: 'Official ShopStack Store',
-    description:
-      'The official store for ShopStack merchandise and digital products.',
-    logo: '',
-    banner: '',
-    category: 'Merchandise',
-    rating: 5.0,
-    totalProducts: 24,
-    totalOrders: 156,
-    monthlyRevenue: '$3,450',
-    status: 'active' as const,
-  },
-];
-
 function AdminMyStorePage() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [shops, setShops] = useState(mockAdminShops);
+  const { createShop, isCreating } = useShops();
+  const { shops, vendorId: currentVendorId } = useTransformedShops({
+    filterByVendor: true,
+  });
 
-  const handleCreateShop = () => {
-    setIsDialogOpen(true);
-  };
+  // Use shared CRUD hook
+  const {
+    isDialogOpen,
+    setIsDialogOpen,
+    handleAdd: handleAddShop,
+    handleDialogClose,
+  } = useEntityCRUD<any>({
+    onDelete: async (_id) => {
+      // Delete logic if needed
+    },
+  });
 
-  const handleShopSubmit = (data: ShopFormValues) => {
-    console.log('New admin shop data:', data);
-    // Mock creation
-    const newShop = {
-      id: String(shops.length + 1),
-      slug: data.name.toLowerCase().replace(/\s+/g, '-'),
-      name: data.name,
-      description: data.description,
-      logo: '',
-      banner: '',
-      category: 'General', // Default
-      rating: 0,
-      totalProducts: 0,
-      totalOrders: 0,
-      monthlyRevenue: '$0',
-      status: 'active' as const,
-    };
-    setShops([...shops, newShop]);
-    setIsDialogOpen(false);
+  const handleShopSubmit = async (data: ShopFormValues) => {
+    try {
+      await createShop({
+        name: data.name,
+        slug: data.slug,
+        description: data.description,
+        logo: data.logo || undefined,
+        banner: data.banner || undefined,
+        address: data.address,
+        phone: data.phone,
+        email: data.email,
+        enableNotifications: data.enableNotification,
+      });
+      handleDialogClose();
+    } catch (error) {
+      console.error("Failed to create shop:", error);
+    }
   };
 
   return (
     <>
-      <MyStoreTemplate shops={shops} onAddShop={handleCreateShop} />
+      <MyShopsTemplate
+        shops={shops}
+        onCreateShop={handleAddShop}
+        currentVendorId={currentVendorId}
+        title="My Store"
+        description="Manage your own store directly from the admin panel."
+      />
 
       <AddShopDialog
         open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
+        onOpenChange={(open) => {
+          setIsDialogOpen(open);
+          if (!open) handleDialogClose();
+        }}
         onSubmit={handleShopSubmit}
+        isSubmitting={isCreating}
       />
     </>
   );

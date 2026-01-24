@@ -1,13 +1,16 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { MyShopsPageSkeleton } from "@/components/base/vendors/skeleton/shop-card-skeleton";
-import { AddShopDialog } from "@/components/containers/shared/shops/add-shop-dialog";
-import MyShopsTemplate from "@/components/templates/vendor/my-shops-template";
-import { useShops, vendorShopsQueryOptions } from "@/hooks/vendors/use-shops";
-import type { ShopFormValues } from "@/types/shop";
+import { createFileRoute } from '@tanstack/react-router';
+import { MyShopsPageSkeleton } from '@/components/base/vendors/skeleton/shop-card-skeleton';
+import { AddShopDialog } from '@/components/containers/shared/shops/add-shop-dialog';
+import MyShopsTemplate from '@/components/templates/vendor/my-shops-template';
+import { useEntityCRUD } from '@/hooks/common/use-entity-crud';
+import {
+  useShops,
+  useTransformedShops,
+  vendorShopsQueryOptions,
+} from '@/hooks/vendors/use-shops';
+import type { ShopFormValues } from '@/types/shop';
 
-export const Route = createFileRoute("/(vendor)/_layout/my-shop")({
+export const Route = createFileRoute('/(vendor)/_layout/my-shop')({
   component: MyShopPage,
   loader: async ({ context }) => {
     await context.queryClient.ensureQueryData(vendorShopsQueryOptions());
@@ -17,17 +20,19 @@ export const Route = createFileRoute("/(vendor)/_layout/my-shop")({
 });
 
 function MyShopPage() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { createShop, isCreating, shopsQueryOptions } = useShops();
+  const { createShop, isCreating } = useShops();
+  const { shops, vendorId: currentVendorId } = useTransformedShops();
 
-  // Fetch shops data
-  const { data } = useSuspenseQuery(shopsQueryOptions());
-  const shops = data?.shops ?? [];
-  const currentVendorId = data?.vendorId;
-
-  const handleCreateShop = () => {
-    setIsDialogOpen(true);
-  };
+  const {
+    isDialogOpen,
+    setIsDialogOpen,
+    handleAdd: handleAddShop,
+    handleDialogClose,
+  } = useEntityCRUD<any>({
+    onDelete: async (_id) => {
+      // Delete logic if needed
+    },
+  });
 
   const handleShopSubmit = async (data: ShopFormValues) => {
     try {
@@ -42,23 +47,26 @@ function MyShopPage() {
         email: data.email,
         enableNotifications: data.enableNotification,
       });
-      setIsDialogOpen(false);
+      handleDialogClose();
     } catch (error) {
       // Error is handled by the mutation's onError callback
-      console.error("Failed to create shop:", error);
+      console.error('Failed to create shop:', error);
     }
   };
   return (
     <>
       <MyShopsTemplate
         shops={shops}
-        onCreateShop={handleCreateShop}
+        onCreateShop={handleAddShop}
         currentVendorId={currentVendorId}
       />
 
       <AddShopDialog
         open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
+        onOpenChange={(open) => {
+          setIsDialogOpen(open);
+          if (!open) handleDialogClose();
+        }}
         onSubmit={handleShopSubmit}
         isSubmitting={isCreating}
       />
