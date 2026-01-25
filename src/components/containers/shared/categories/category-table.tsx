@@ -1,190 +1,66 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { Eye, EyeOff, MoreHorizontal } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { useMemo } from "react";
+import DataTable from "@/components/base/data-table/data-table";
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import { VENDOR_STATUS_OPTIONS } from "@/hooks/vendors/use-vendor-entity-fetchers";
+import type { NormalizedCategory } from "@/types/category-types";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
-import type { Category, CategoryPermissions } from '@/types/category-types';
+  type CategoryMutationState,
+  type CategoryTableActions,
+  createCategoryColumns,
+  getSharedCategoryFilters,
+} from "./category-table-columns";
 
-interface CategoryTableProps {
-  categories: Category[];
-  permissions?: CategoryPermissions;
-  onDeleteCategory?: (categoryId: string) => void;
-  onEditCategory?: (categoryId: string) => void;
-  onToggleStatus?: (categoryId: string, currentStatus: boolean) => void;
+interface VendorCategoryTableProps extends CategoryTableActions {
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<NormalizedCategory>>;
   className?: string;
+  mutationState?: CategoryMutationState;
+  isCategoryMutating?: (id: string) => boolean;
 }
 
-export default function CategoryTable({
-  categories,
-  permissions = {
-    canDelete: false,
-    canEdit: true,
-    canView: true,
-    canToggleStatus: false,
-  },
-  onDeleteCategory,
-  onEditCategory,
-  onToggleStatus,
+export default function VendorCategoryTable({
+  fetcher,
   className,
-}: CategoryTableProps) {
-  const columns: ColumnDef<Category>[] = [
-    {
-      accessorKey: 'id',
-      header: 'ID',
-      cell: ({ row }) => (
-        <div className="w-20 truncate text-muted-foreground text-xs">
-          {row.getValue('id')}
-        </div>
-      ),
-    },
-    {
-      accessorKey: 'name',
-      header: 'Name',
-      cell: ({ row }) => {
-        const level = row.original.level;
-        const indent = level > 0 ? level * 16 : 0;
+  onEdit,
+  onDelete,
+  mutationState,
+  isCategoryMutating,
+}: VendorCategoryTableProps) {
+  const columns = useMemo(() => {
+    const actions: CategoryTableActions = {
+      onEdit,
+      onDelete,
+    };
+    return createCategoryColumns({
+      mode: "vendor",
+      actions,
+      isCategoryMutating,
+      mutationState,
+    });
+  }, [onEdit, onDelete, isCategoryMutating, mutationState]);
 
-        return (
-          <div className="font-medium" style={{ paddingLeft: `${indent}px` }}>
-            {row.getValue('name')}
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: 'slug',
-      header: 'Slug',
-      cell: ({ row }) => (
-        <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono font-semibold text-sm">
-          {row.getValue('slug')}
-        </code>
-      ),
-    },
-    {
-      accessorKey: 'productCount',
-      header: 'Products',
-      cell: ({ row }) => (
-        <Badge variant="secondary">{row.getValue('productCount')}</Badge>
-      ),
-    },
-    {
-      accessorKey: 'level',
-      header: 'Level',
-      cell: ({ row }) => (
-        <div className="text-muted-foreground">L{row.getValue('level')}</div>
-      ),
-    },
-    {
-      accessorKey: 'isActive',
-      header: 'Status',
-      cell: ({ row }) => {
-        const isActive = row.getValue('isActive');
-        return (
-          <Badge variant={isActive ? 'default' : 'secondary'}>
-            {isActive ? 'Active' : 'Inactive'}
-          </Badge>
-        );
-      },
-    },
-    {
-      accessorKey: 'featured',
-      header: 'Featured',
-      cell: ({ row }) => {
-        const featured = row.getValue('featured');
-        return featured ? (
-          <Badge variant="outline">Featured</Badge>
-        ) : (
-          <span className="text-muted-foreground">-</span>
-        );
-      },
-    },
-    {
-      id: 'actions',
-      header: () => <div className="text-right">Actions</div>,
-      cell: ({ row }) => (
-        <div className="flex justify-end gap-2">
-          {permissions.canToggleStatus && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8"
-                    onClick={() =>
-                      onToggleStatus?.(row.original.id, row.original.isActive)
-                    }
-                  >
-                    {row.original.isActive ? (
-                      <EyeOff className="size-4" />
-                    ) : (
-                      <Eye className="size-4" />
-                    )}
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{row.original.isActive ? 'Deactivate' : 'Activate'}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="size-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem
-                onClick={() => navigator.clipboard.writeText(row.original.id)}
-              >
-                Copy ID
-              </DropdownMenuItem>
-              {permissions.canView && (
-                <DropdownMenuItem>View Details</DropdownMenuItem>
-              )}
-              {permissions.canEdit && (
-                <DropdownMenuItem
-                  onClick={() => onEditCategory?.(row.original.id)}
-                >
-                  Edit
-                </DropdownMenuItem>
-              )}
-              {permissions.canDelete && (
-                <>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={() => onDeleteCategory?.(row.original.id)}
-                    className="text-destructive"
-                  >
-                    Delete
-                  </DropdownMenuItem>
-                </>
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      ),
-    },
-  ];
+  const filterableColumns = useMemo(
+    () =>
+      getSharedCategoryFilters({
+        statusOptions: VENDOR_STATUS_OPTIONS,
+        includeFeatured: true, // Based on the original file
+      }),
+    [],
+  );
 
   return (
-    <DataTable columns={columns} data={categories} className={className} />
+    <DataTable
+      columns={columns}
+      server={{ fetcher }}
+      context="shop"
+      initialPageSize={10}
+      filterableColumns={filterableColumns}
+      globalFilterPlaceholder="Search categories..."
+      className={className}
+    />
   );
 }

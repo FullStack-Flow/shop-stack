@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import PageHeader from '@/components/base/common/page-header';
-import type { CategoryFormValues } from '@/types/category-types';
-import { AddCategoryDialog } from './add-category-dialog';
+import { Plus } from "lucide-react";
+import PageHeader from "@/components/base/common/page-header";
+import { Button } from "@/components/ui/button";
 
 export interface CategoryHeaderProps {
-  onAddCategory?: (data: CategoryFormValues) => void;
-  role?: 'admin' | 'vendor';
+  onAddCategory?: () => void;
+  role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -13,35 +12,27 @@ export interface CategoryHeaderProps {
 
 export default function CategoryHeader({
   onAddCategory,
-  role = 'vendor',
+  role = "vendor",
   showAddButton = true,
   children,
   className,
 }: CategoryHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddCategory = (data: CategoryFormValues) => {
-    onAddCategory?.(data);
-  };
-
   return (
     <PageHeader
       title="Categories"
       description={
-        role === 'admin'
-          ? 'Manage product categories across the platform'
-          : 'Manage your product categories and organization'
+        role === "admin"
+          ? "Manage product categories across the platform"
+          : "Manage your product categories and organization"
       }
       className={className}
     >
       {children}
-      {showAddButton && (
-        <AddCategoryDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddCategory}
-          role={role}
-        />
+      {showAddButton && onAddCategory && (
+        <Button onClick={onAddCategory}>
+          <Plus className="mr-2 h-4 w-4" />
+          Add Category
+        </Button>
       )}
     </PageHeader>
   );
