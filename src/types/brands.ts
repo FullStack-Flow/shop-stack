@@ -1,14 +1,9 @@
 import type { SQL } from "drizzle-orm";
+import type { Brand as BrandSchema } from "@/lib/db/schema/brand-schema";
 import type { PaginatedResponse } from "./api-response";
 
-export interface Brand {
-  id: string;
-  name: string;
-  slug: string;
-  website?: string;
-  logo?: string;
-  description?: string;
-}
+// Re-export Brand type from Drizzle schema as the single source of truth
+export type Brand = BrandSchema;
 
 export interface BrandPermissions {
   canDelete?: boolean;
@@ -21,7 +16,8 @@ export interface BatchedBrandRelations {
   shopsMap: Map<string, { id: string; name: string; slug: string }>;
 }
 
-export interface NormalizedBrand {
+// Consolidated BrandItem interface (removed duplicate NormalizedBrand)
+export interface BrandItem {
   id: string;
   shopId: string;
   shopName?: string | null;
@@ -41,7 +37,7 @@ export interface NormalizedBrand {
 /**
  * Shared brand list response type
  */
-export type BrandListResponse = PaginatedResponse<NormalizedBrand>;
+export type BrandListResponse = PaginatedResponse<BrandItem>;
 
 export interface BrandQueryOptions {
   baseConditions?: SQL[];
@@ -55,25 +51,10 @@ export interface BrandQueryOptions {
 }
 
 export interface BrandQueryResult {
-  data: NormalizedBrand[];
+  data: BrandItem[];
   total: number;
   limit: number;
   offset: number;
-}
-
-export interface BrandItem {
-  id: string;
-  shopId: string;
-  name: string;
-  slug: string;
-  description?: string | null;
-  logo?: string | null;
-  website?: string | null;
-  sortOrder: number;
-  isActive: boolean;
-  productCount: number;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface ListBrandsQuery {

@@ -8,7 +8,7 @@ import {
   booleanFilterTransform,
   createServerFetcher,
 } from "@/lib/helper/create-server-fetcher";
-import type { NormalizedBrand } from "@/types/brands";
+import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
 
 export const VENDOR_STATUS_OPTIONS = [
@@ -17,9 +17,9 @@ export const VENDOR_STATUS_OPTIONS = [
 ];
 
 export function createVendorCategoriesFetcher(
-  shopId: string,
+  shopId: string
 ): (
-  params: DataTableFetchParams,
+  params: DataTableFetchParams
 ) => Promise<DataTableFetchResult<NormalizedCategory>> {
   return createServerFetcher<NormalizedCategory, any>({
     fetchFn: async (query) => {
@@ -34,11 +34,9 @@ export function createVendorCategoriesFetcher(
 }
 
 export function createVendorBrandsFetcher(
-  shopId: string,
-): (
-  params: DataTableFetchParams,
-) => Promise<DataTableFetchResult<NormalizedBrand>> {
-  return createServerFetcher<NormalizedBrand, any>({
+  shopId: string
+): (params: DataTableFetchParams) => Promise<DataTableFetchResult<BrandItem>> {
+  return createServerFetcher<BrandItem, any>({
     fetchFn: async (query) => {
       const response = await getBrands({ data: { ...query, shopId } });
       return { data: response.data ?? [], total: response.total ?? 0 };

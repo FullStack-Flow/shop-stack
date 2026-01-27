@@ -5,16 +5,16 @@ import type {
 import BrandHeader from "@/components/containers/shared/brands/brand-header";
 import { VendorBrandTable } from "@/components/containers/shared/brands/brand-table";
 import type { BrandMutationState } from "@/components/containers/shared/brands/brand-table-columns";
-import type { NormalizedBrand } from "@/types/brands";
+import type { BrandItem } from "@/types/brands";
 
 interface ShopBrandsTemplateProps {
   fetcher: (
-    params: DataTableFetchParams,
-  ) => Promise<DataTableFetchResult<NormalizedBrand>>;
+    params: DataTableFetchParams
+  ) => Promise<DataTableFetchResult<BrandItem>>;
   onAddBrand: () => void;
-  onEditBrand?: (brand: NormalizedBrand) => void;
-  onDeleteBrand?: (brand: NormalizedBrand) => void;
-  onToggleActive?: (brand: NormalizedBrand) => void;
+  onEditBrand?: (brand: BrandItem) => void;
+  onDeleteBrand?: (brand: BrandItem) => void;
+  onToggleActive?: (brand: BrandItem) => void;
   mutationState?: BrandMutationState;
   isBrandMutating?: (id: string) => boolean;
 }

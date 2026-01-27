@@ -13,12 +13,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import type { NormalizedBrand } from "@/types/brands";
+import type { BrandItem } from "@/types/brands";
 
 export interface BrandTableActions {
-  onEdit?: (brand: NormalizedBrand) => void;
-  onDelete?: (brand: NormalizedBrand) => void;
-  onToggleActive?: (brand: NormalizedBrand) => void;
+  onEdit?: (brand: BrandItem) => void;
+  onDelete?: (brand: BrandItem) => void;
+  onToggleActive?: (brand: BrandItem) => void;
 }
 
 export interface BrandMutationState {
@@ -40,7 +40,7 @@ export const BRAND_STATUS_OPTIONS = [
   { label: "Inactive", value: "false" },
 ];
 
-export const getSharedBrandFilters = (): FilterableColumn<NormalizedBrand>[] => {
+export const getSharedBrandFilters = (): FilterableColumn<BrandItem>[] => {
   return [
     {
       id: "isActive",
@@ -57,7 +57,7 @@ export const createBrandColumns = ({
   actions,
   mutationState,
   isBrandMutating,
-}: BrandColumnConfig): ColumnDef<NormalizedBrand>[] => {
+}: BrandColumnConfig): ColumnDef<BrandItem>[] => {
   const isAdmin = mode === "admin";
 
   return [
@@ -94,7 +94,9 @@ export const createBrandColumns = ({
         const isMutating = isBrandMutating?.(row.original.id) ?? false;
         return (
           <div className={cn("font-medium", isMutating && "opacity-60")}>
-            {isMutating && <Loader2 className="inline h-3 w-3 animate-spin mr-1" />}
+            {isMutating && (
+              <Loader2 className="inline h-3 w-3 animate-spin mr-1" />
+            )}
             {row.getValue("name")}
           </div>
         );
@@ -136,7 +138,7 @@ export const createBrandColumns = ({
           {
             accessorKey: "shopName",
             header: "Shop",
-            cell: ({ row }: { row: { original: NormalizedBrand } }) => (
+            cell: ({ row }: { row: { original: BrandItem } }) => (
               <div className="text-muted-foreground text-sm">
                 {row.original.shopName || "-"}
               </div>

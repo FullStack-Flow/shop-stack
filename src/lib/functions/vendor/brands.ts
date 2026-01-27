@@ -51,7 +51,7 @@ export const getBrandById = createServerFn({ method: "GET" })
   .inputValidator(
     vendorBrandsQuerySchema
       .pick({ shopId: true })
-      .extend({ id: vendorBrandsQuerySchema.shape.shopId }),
+      .extend({ id: vendorBrandsQuerySchema.shape.shopId })
   )
   .handler(async ({ context, data }) => {
     const userId = context.session.user.id;
@@ -105,7 +105,7 @@ export const createBrand = createServerFn({ method: "POST" })
 
     if (existingBrand) {
       throw new Error(
-        "A brand with this slug already exists in this shop. Please choose a different name or slug.",
+        "A brand with this slug already exists in this shop. Please choose a different name or slug."
       );
     }
 
@@ -226,7 +226,7 @@ export const deleteBrand = createServerFn({ method: "POST" })
   .inputValidator(
     vendorBrandsQuerySchema
       .pick({ shopId: true })
-      .extend({ id: vendorBrandsQuerySchema.shape.shopId }),
+      .extend({ id: vendorBrandsQuerySchema.shape.shopId })
   )
   .handler(async ({ context, data }) => {
     const userId = context.session.user.id;
@@ -235,8 +235,6 @@ export const deleteBrand = createServerFn({ method: "POST" })
     // Verify shop access (vendor ownership or admin)
     await requireShopAccess(userId, shopId);
 
-    // OPTIMIZATION: Parallel fetch - brand exists and actual product count
-    // FIXME: After Product API Implementation
     const existingBrand = await db.query.brands.findFirst({
       where: and(eq(brands.id, id), eq(brands.shopId, shopId)),
     });
@@ -245,18 +243,12 @@ export const deleteBrand = createServerFn({ method: "POST" })
       throw new Error("Brand not found.");
     }
 
-    // TODO: Check actual product count from products table after Product API implementation
-    // For now, we'll skip this check since products table doesn't exist yet
-    // const productCountResult = await db
-    //   .select({ count: count() })
-    //   .from(products)
-    //   .where(eq(products.brandId, id));
-    // const actualProductCount = productCountResult[0]?.count ?? 0;
-    // if (actualProductCount > 0) {
-    //   throw new Error(
-    //     "Cannot delete a brand that has products. Please reassign products first.",
-    //   );
-    // }
+    const productCount = existingBrand.productCount ?? 0;
+    if (productCount > 0) {
+      throw new Error(
+        `Cannot delete brand "${existingBrand.name}" with ${productCount} associated products. Please reassign products first.`
+      );
+    }
 
     // Delete the brand
     await db.delete(brands).where(eq(brands.id, id));

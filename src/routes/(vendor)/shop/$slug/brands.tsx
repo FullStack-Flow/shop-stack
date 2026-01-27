@@ -9,7 +9,7 @@ import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
 import { useBrands } from "@/hooks/vendors/use-brands";
 import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
 import { createVendorBrandsFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
-import type { BrandFormValues, NormalizedBrand } from "@/types/brands";
+import type { BrandFormValues, BrandItem } from "@/types/brands";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/brands")({
   component: BrandsPage,
@@ -45,7 +45,7 @@ function BrandsPage() {
     handleDelete: handleDeleteBrand,
     confirmDelete,
     handleDialogClose,
-  } = useEntityCRUD<NormalizedBrand>({
+  } = useEntityCRUD<BrandItem>({
     onDelete: async (id) => {
       await deleteBrand(id);
     },
