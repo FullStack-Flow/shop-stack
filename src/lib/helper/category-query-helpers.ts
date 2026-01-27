@@ -90,59 +90,31 @@ export async function batchFetchCategoryRelations(
   ] as string[];
   const shopIds = [...new Set(categoryList.map((c) => c.shopId))];
 
-  // Build parallel queries
-  const queries: Promise<any>[] = [
-    // 1. Fetch parent names
+  const parentRecords =
     parentIds.length > 0
-      ? db
+      ? await db
           .select({ id: categories.id, name: categories.name })
           .from(categories)
           .where(inArray(categories.id, parentIds))
-      : Promise.resolve([]),
+      : [];
 
-    // 2. Fetch product counts for all categories
-    // db
-    //   .select({
-    //     categoryId: products.categoryId,
-    //     count: count(),
-    //   })
-    //   .from(products)
-    //   .where(inArray(products.categoryId, categoryIds))
-    //   .groupBy(products.categoryId),
-    Promise.resolve([]),
-  ];
+  const shopRecords =
+    options.includeShopInfo && shopIds.length > 0
+      ? await db
+          .select({
+            id: shops.id,
+            name: shops.name,
+            slug: shops.slug,
+          })
+          .from(shops)
+          .where(inArray(shops.id, shopIds))
+      : [];
 
-  // 3. Optionally fetch shop info
-  if (options.includeShopInfo && shopIds.length > 0) {
-    queries.push(
-      db
-        .select({
-          id: shops.id,
-          name: shops.name,
-          slug: shops.slug,
-        })
-        .from(shops)
-        .where(inArray(shops.id, shopIds))
-    );
-  } else {
-    queries.push(Promise.resolve([]));
-  }
+  const productCountsMap = new Map<string, number>();
 
-  // Execute all queries in parallel
-  const [parentRecords, productCountRecords, shopRecords] =
-    await Promise.all(queries);
-
-  // Build lookup maps
   const parentNamesMap = new Map<string, string>();
   for (const parent of parentRecords) {
     parentNamesMap.set(parent.id, parent.name);
-  }
-
-  const productCountsMap = new Map<string, number>();
-  for (const pc of productCountRecords) {
-    if (pc.categoryId) {
-      productCountsMap.set(pc.categoryId, pc.count);
-    }
   }
 
   const shopsMap = new Map<

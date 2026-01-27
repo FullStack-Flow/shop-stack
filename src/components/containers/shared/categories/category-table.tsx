@@ -22,7 +22,7 @@ interface VendorCategoryTableProps extends CategoryTableActions {
   isCategoryMutating?: (id: string) => boolean;
 }
 
-export default function VendorCategoryTable({
+export function VendorCategoryTable({
   fetcher,
   className,
   onEdit,
@@ -47,7 +47,7 @@ export default function VendorCategoryTable({
     () =>
       getSharedCategoryFilters({
         statusOptions: VENDOR_STATUS_OPTIONS,
-        includeFeatured: true, // Based on the original file
+        includeFeatured: true,
       }),
     []
   );
@@ -64,3 +64,65 @@ export default function VendorCategoryTable({
     />
   );
 }
+
+interface AdminCategoryTableProps extends CategoryTableActions {
+  categories: NormalizedCategory[];
+  className?: string;
+  mutationState?: CategoryMutationState;
+  isCategoryMutating?: (id: string) => boolean;
+}
+
+export function AdminCategoryTable({
+  categories,
+  className,
+  onEdit,
+  onDelete,
+  onToggleActive,
+  onToggleFeatured,
+  mutationState,
+  isCategoryMutating,
+}: AdminCategoryTableProps) {
+  const columns = useMemo(() => {
+    const actions: CategoryTableActions = {
+      onEdit,
+      onDelete,
+      onToggleActive,
+      onToggleFeatured,
+    };
+    return createCategoryColumns({
+      mode: "admin",
+      actions,
+      isCategoryMutating,
+      mutationState,
+    });
+  }, [
+    onEdit,
+    onDelete,
+    onToggleActive,
+    onToggleFeatured,
+    isCategoryMutating,
+    mutationState,
+  ]);
+
+  const filterableColumns = useMemo(
+    () =>
+      getSharedCategoryFilters({
+        statusOptions: VENDOR_STATUS_OPTIONS,
+        includeFeatured: true,
+      }),
+    []
+  );
+
+  return (
+    <DataTable
+      columns={columns}
+      data={categories}
+      initialPageSize={10}
+      filterableColumns={filterableColumns}
+      globalFilterPlaceholder="Search categories..."
+      className={className}
+    />
+  );
+}
+
+export default VendorCategoryTable;

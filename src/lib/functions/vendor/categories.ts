@@ -309,41 +309,31 @@ export const deleteCategory = createServerFn({ method: "POST" })
     // Verify shop access (vendor ownership or admin)
     await requireShopAccess(userId, shopId);
 
-    // OPTIMIZATION: Parallel fetch - category exists, children count, and actual product count
-    // FIXME: productCountResult
-    const [existingCategory, childrenCount] = await Promise.all([
-      db.query.categories.findFirst({
-        where: and(eq(categories.id, id), eq(categories.shopId, shopId)),
-      }),
-      db
-        .select({ count: count() })
-        .from(categories)
-        .where(eq(categories.parentId, id)),
-      // db
-      //   .select({ count: count() })
-      //   .from(products)
-      //   .where(eq(products.categoryId, id)),
-    ]);
+    const existingCategory = await db.query.categories.findFirst({
+      where: and(eq(categories.id, id), eq(categories.shopId, shopId)),
+    });
 
     if (!existingCategory) {
       throw new Error("Category not found.");
     }
 
-    // Check if category has children
+    const productCount = existingCategory.productCount ?? 0;
+    if (productCount > 0) {
+      throw new Error(
+        `Cannot delete category "${existingCategory.name}" with ${productCount} associated products. Please reassign products first.`
+      );
+    }
+
+    const childrenCount = await db
+      .select({ count: count() })
+      .from(categories)
+      .where(eq(categories.parentId, id));
+
     if (childrenCount[0]?.count > 0) {
       throw new Error(
         "Cannot delete a category that has subcategories. Please delete or reassign subcategories first."
       );
     }
-
-    // Check actual product count from products table (not the potentially stale denormalized value)
-    // TODO: We need implement this one after Product CURD
-    // const actualProductCount = productCountResult[0]?.count ?? 0;
-    // if (actualProductCount > 0) {
-    //   throw new Error(
-    //     "Cannot delete a category that has products. Please reassign products first.",
-    //   );
-    // }
 
     // Delete the category
     await db.delete(categories).where(eq(categories.id, id));

@@ -8,1123 +8,1123 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as AuthVendorSignUpRouteImport } from "./routes/auth/vendor-sign-up";
-import { Route as AuthSignUpRouteImport } from "./routes/auth/sign-up";
-import { Route as AuthSignInRouteImport } from "./routes/auth/sign-in";
-import { Route as vendorLayoutRouteImport } from "./routes/(vendor)/_layout";
-import { Route as storeLayoutRouteImport } from "./routes/(store)/_layout";
-import { Route as adminForbidenRouteImport } from "./routes/(admin)/forbiden";
-import { Route as adminAdminRouteImport } from "./routes/(admin)/admin";
-import { Route as storeLayoutIndexRouteImport } from "./routes/(store)/_layout/index";
-import { Route as adminAdminIndexRouteImport } from "./routes/(admin)/admin/index";
-import { Route as ApiAuthSplatRouteImport } from "./routes/api/auth/$";
-import { Route as vendorShopSlugRouteImport } from "./routes/(vendor)/shop/$slug";
-import { Route as vendorLayoutMyShopRouteImport } from "./routes/(vendor)/_layout/my-shop";
-import { Route as vendorLayoutDashboardRouteImport } from "./routes/(vendor)/_layout/dashboard";
-import { Route as storeLayoutWishlistRouteImport } from "./routes/(store)/_layout/wishlist";
-import { Route as storeLayoutProfileRouteImport } from "./routes/(store)/_layout/profile";
-import { Route as storeLayoutOrdersRouteImport } from "./routes/(store)/_layout/orders";
-import { Route as storeLayoutOrderTrackingRouteImport } from "./routes/(store)/_layout/order-tracking";
-import { Route as storeLayoutOrderConfirmationRouteImport } from "./routes/(store)/_layout/order-confirmation";
-import { Route as storeLayoutCheckoutRouteImport } from "./routes/(store)/_layout/checkout";
-import { Route as storeLayoutCartRouteImport } from "./routes/(store)/_layout/cart";
-import { Route as adminAdminMyStoreRouteImport } from "./routes/(admin)/admin/my-store";
-import { Route as vendorShopSlugIndexRouteImport } from "./routes/(vendor)/shop/$slug/index";
-import { Route as storeLayoutStoreIndexRouteImport } from "./routes/(store)/_layout/store/index";
-import { Route as storeLayoutProductIndexRouteImport } from "./routes/(store)/_layout/product/index";
-import { Route as storeLayoutCategoryIndexRouteImport } from "./routes/(store)/_layout/category/index";
-import { Route as adminAdminUsersIndexRouteImport } from "./routes/(admin)/admin/users/index";
-import { Route as adminAdminTransactionsIndexRouteImport } from "./routes/(admin)/admin/transactions/index";
-import { Route as adminAdminTenantsIndexRouteImport } from "./routes/(admin)/admin/tenants/index";
-import { Route as adminAdminTaxesIndexRouteImport } from "./routes/(admin)/admin/taxes/index";
-import { Route as adminAdminTagsIndexRouteImport } from "./routes/(admin)/admin/tags/index";
-import { Route as adminAdminStaffIndexRouteImport } from "./routes/(admin)/admin/staff/index";
-import { Route as adminAdminSettingsIndexRouteImport } from "./routes/(admin)/admin/settings/index";
-import { Route as adminAdminReviewsIndexRouteImport } from "./routes/(admin)/admin/reviews/index";
-import { Route as adminAdminProductsIndexRouteImport } from "./routes/(admin)/admin/products/index";
-import { Route as adminAdminOrdersIndexRouteImport } from "./routes/(admin)/admin/orders/index";
-import { Route as adminAdminCouponsIndexRouteImport } from "./routes/(admin)/admin/coupons/index";
-import { Route as adminAdminCategoriesIndexRouteImport } from "./routes/(admin)/admin/categories/index";
-import { Route as adminAdminBrandsIndexRouteImport } from "./routes/(admin)/admin/brands/index";
-import { Route as adminAdminAttributesIndexRouteImport } from "./routes/(admin)/admin/attributes/index";
-import { Route as vendorShopSlugTransactionsRouteImport } from "./routes/(vendor)/shop/$slug/transactions";
-import { Route as vendorShopSlugTaxesRouteImport } from "./routes/(vendor)/shop/$slug/taxes";
-import { Route as vendorShopSlugTagsRouteImport } from "./routes/(vendor)/shop/$slug/tags";
-import { Route as vendorShopSlugStaffRouteImport } from "./routes/(vendor)/shop/$slug/staff";
-import { Route as vendorShopSlugShippingRouteImport } from "./routes/(vendor)/shop/$slug/shipping";
-import { Route as vendorShopSlugReviewsRouteImport } from "./routes/(vendor)/shop/$slug/reviews";
-import { Route as vendorShopSlugProductsRouteImport } from "./routes/(vendor)/shop/$slug/products";
-import { Route as vendorShopSlugCouponsRouteImport } from "./routes/(vendor)/shop/$slug/coupons";
-import { Route as vendorShopSlugCategoriesRouteImport } from "./routes/(vendor)/shop/$slug/categories";
-import { Route as vendorShopSlugBrandsRouteImport } from "./routes/(vendor)/shop/$slug/brands";
-import { Route as vendorShopSlugAttributesRouteImport } from "./routes/(vendor)/shop/$slug/attributes";
-import { Route as storeLayoutStoreSlugRouteImport } from "./routes/(store)/_layout/store/$slug";
-import { Route as storeLayoutProductProductIdRouteImport } from "./routes/(store)/_layout/product/$productId";
-import { Route as storeLayoutCategorySlugRouteImport } from "./routes/(store)/_layout/category/$slug";
-import { Route as adminAdminTenantsTenantIdRouteImport } from "./routes/(admin)/admin/tenants/$tenantId";
-import { Route as vendorShopSlugOrdersIndexRouteImport } from "./routes/(vendor)/shop/$slug/orders/index";
-import { Route as vendorShopSlugOrdersOrderIdRouteImport } from "./routes/(vendor)/shop/$slug/orders/$orderId";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthVendorSignUpRouteImport } from './routes/auth/vendor-sign-up'
+import { Route as AuthSignUpRouteImport } from './routes/auth/sign-up'
+import { Route as AuthSignInRouteImport } from './routes/auth/sign-in'
+import { Route as vendorLayoutRouteImport } from './routes/(vendor)/_layout'
+import { Route as storeLayoutRouteImport } from './routes/(store)/_layout'
+import { Route as adminForbidenRouteImport } from './routes/(admin)/forbiden'
+import { Route as adminAdminRouteImport } from './routes/(admin)/admin'
+import { Route as storeLayoutIndexRouteImport } from './routes/(store)/_layout/index'
+import { Route as adminAdminIndexRouteImport } from './routes/(admin)/admin/index'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as vendorShopSlugRouteImport } from './routes/(vendor)/shop/$slug'
+import { Route as vendorLayoutMyShopRouteImport } from './routes/(vendor)/_layout/my-shop'
+import { Route as vendorLayoutDashboardRouteImport } from './routes/(vendor)/_layout/dashboard'
+import { Route as storeLayoutWishlistRouteImport } from './routes/(store)/_layout/wishlist'
+import { Route as storeLayoutProfileRouteImport } from './routes/(store)/_layout/profile'
+import { Route as storeLayoutOrdersRouteImport } from './routes/(store)/_layout/orders'
+import { Route as storeLayoutOrderTrackingRouteImport } from './routes/(store)/_layout/order-tracking'
+import { Route as storeLayoutOrderConfirmationRouteImport } from './routes/(store)/_layout/order-confirmation'
+import { Route as storeLayoutCheckoutRouteImport } from './routes/(store)/_layout/checkout'
+import { Route as storeLayoutCartRouteImport } from './routes/(store)/_layout/cart'
+import { Route as adminAdminMyStoreRouteImport } from './routes/(admin)/admin/my-store'
+import { Route as vendorShopSlugIndexRouteImport } from './routes/(vendor)/shop/$slug/index'
+import { Route as storeLayoutStoreIndexRouteImport } from './routes/(store)/_layout/store/index'
+import { Route as storeLayoutProductIndexRouteImport } from './routes/(store)/_layout/product/index'
+import { Route as storeLayoutCategoryIndexRouteImport } from './routes/(store)/_layout/category/index'
+import { Route as adminAdminUsersIndexRouteImport } from './routes/(admin)/admin/users/index'
+import { Route as adminAdminTransactionsIndexRouteImport } from './routes/(admin)/admin/transactions/index'
+import { Route as adminAdminTenantsIndexRouteImport } from './routes/(admin)/admin/tenants/index'
+import { Route as adminAdminTaxesIndexRouteImport } from './routes/(admin)/admin/taxes/index'
+import { Route as adminAdminTagsIndexRouteImport } from './routes/(admin)/admin/tags/index'
+import { Route as adminAdminStaffIndexRouteImport } from './routes/(admin)/admin/staff/index'
+import { Route as adminAdminSettingsIndexRouteImport } from './routes/(admin)/admin/settings/index'
+import { Route as adminAdminReviewsIndexRouteImport } from './routes/(admin)/admin/reviews/index'
+import { Route as adminAdminProductsIndexRouteImport } from './routes/(admin)/admin/products/index'
+import { Route as adminAdminOrdersIndexRouteImport } from './routes/(admin)/admin/orders/index'
+import { Route as adminAdminCouponsIndexRouteImport } from './routes/(admin)/admin/coupons/index'
+import { Route as adminAdminCategoriesIndexRouteImport } from './routes/(admin)/admin/categories/index'
+import { Route as adminAdminBrandsIndexRouteImport } from './routes/(admin)/admin/brands/index'
+import { Route as adminAdminAttributesIndexRouteImport } from './routes/(admin)/admin/attributes/index'
+import { Route as vendorShopSlugTransactionsRouteImport } from './routes/(vendor)/shop/$slug/transactions'
+import { Route as vendorShopSlugTaxesRouteImport } from './routes/(vendor)/shop/$slug/taxes'
+import { Route as vendorShopSlugTagsRouteImport } from './routes/(vendor)/shop/$slug/tags'
+import { Route as vendorShopSlugStaffRouteImport } from './routes/(vendor)/shop/$slug/staff'
+import { Route as vendorShopSlugShippingRouteImport } from './routes/(vendor)/shop/$slug/shipping'
+import { Route as vendorShopSlugReviewsRouteImport } from './routes/(vendor)/shop/$slug/reviews'
+import { Route as vendorShopSlugProductsRouteImport } from './routes/(vendor)/shop/$slug/products'
+import { Route as vendorShopSlugCouponsRouteImport } from './routes/(vendor)/shop/$slug/coupons'
+import { Route as vendorShopSlugCategoriesRouteImport } from './routes/(vendor)/shop/$slug/categories'
+import { Route as vendorShopSlugBrandsRouteImport } from './routes/(vendor)/shop/$slug/brands'
+import { Route as vendorShopSlugAttributesRouteImport } from './routes/(vendor)/shop/$slug/attributes'
+import { Route as storeLayoutStoreSlugRouteImport } from './routes/(store)/_layout/store/$slug'
+import { Route as storeLayoutProductProductIdRouteImport } from './routes/(store)/_layout/product/$productId'
+import { Route as storeLayoutCategorySlugRouteImport } from './routes/(store)/_layout/category/$slug'
+import { Route as adminAdminTenantsTenantIdRouteImport } from './routes/(admin)/admin/tenants/$tenantId'
+import { Route as vendorShopSlugOrdersIndexRouteImport } from './routes/(vendor)/shop/$slug/orders/index'
+import { Route as vendorShopSlugOrdersOrderIdRouteImport } from './routes/(vendor)/shop/$slug/orders/$orderId'
 
 const AuthVendorSignUpRoute = AuthVendorSignUpRouteImport.update({
-  id: "/auth/vendor-sign-up",
-  path: "/auth/vendor-sign-up",
+  id: '/auth/vendor-sign-up',
+  path: '/auth/vendor-sign-up',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const AuthSignUpRoute = AuthSignUpRouteImport.update({
-  id: "/auth/sign-up",
-  path: "/auth/sign-up",
+  id: '/auth/sign-up',
+  path: '/auth/sign-up',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const AuthSignInRoute = AuthSignInRouteImport.update({
-  id: "/auth/sign-in",
-  path: "/auth/sign-in",
+  id: '/auth/sign-in',
+  path: '/auth/sign-in',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const vendorLayoutRoute = vendorLayoutRouteImport.update({
-  id: "/(vendor)/_layout",
+  id: '/(vendor)/_layout',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const storeLayoutRoute = storeLayoutRouteImport.update({
-  id: "/(store)/_layout",
+  id: '/(store)/_layout',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const adminForbidenRoute = adminForbidenRouteImport.update({
-  id: "/(admin)/forbiden",
-  path: "/forbiden",
+  id: '/(admin)/forbiden',
+  path: '/forbiden',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const adminAdminRoute = adminAdminRouteImport.update({
-  id: "/(admin)/admin",
-  path: "/admin",
+  id: '/(admin)/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const storeLayoutIndexRoute = storeLayoutIndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const adminAdminIndexRoute = adminAdminIndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
-  id: "/api/auth/$",
-  path: "/api/auth/$",
+  id: '/api/auth/$',
+  path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const vendorShopSlugRoute = vendorShopSlugRouteImport.update({
-  id: "/(vendor)/shop/$slug",
-  path: "/shop/$slug",
+  id: '/(vendor)/shop/$slug',
+  path: '/shop/$slug',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const vendorLayoutMyShopRoute = vendorLayoutMyShopRouteImport.update({
-  id: "/my-shop",
-  path: "/my-shop",
+  id: '/my-shop',
+  path: '/my-shop',
   getParentRoute: () => vendorLayoutRoute,
-} as any);
+} as any)
 const vendorLayoutDashboardRoute = vendorLayoutDashboardRouteImport.update({
-  id: "/dashboard",
-  path: "/dashboard",
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => vendorLayoutRoute,
-} as any);
+} as any)
 const storeLayoutWishlistRoute = storeLayoutWishlistRouteImport.update({
-  id: "/wishlist",
-  path: "/wishlist",
+  id: '/wishlist',
+  path: '/wishlist',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const storeLayoutProfileRoute = storeLayoutProfileRouteImport.update({
-  id: "/profile",
-  path: "/profile",
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const storeLayoutOrdersRoute = storeLayoutOrdersRouteImport.update({
-  id: "/orders",
-  path: "/orders",
+  id: '/orders',
+  path: '/orders',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const storeLayoutOrderTrackingRoute =
   storeLayoutOrderTrackingRouteImport.update({
-    id: "/order-tracking",
-    path: "/order-tracking",
+    id: '/order-tracking',
+    path: '/order-tracking',
     getParentRoute: () => storeLayoutRoute,
-  } as any);
+  } as any)
 const storeLayoutOrderConfirmationRoute =
   storeLayoutOrderConfirmationRouteImport.update({
-    id: "/order-confirmation",
-    path: "/order-confirmation",
+    id: '/order-confirmation',
+    path: '/order-confirmation',
     getParentRoute: () => storeLayoutRoute,
-  } as any);
+  } as any)
 const storeLayoutCheckoutRoute = storeLayoutCheckoutRouteImport.update({
-  id: "/checkout",
-  path: "/checkout",
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const storeLayoutCartRoute = storeLayoutCartRouteImport.update({
-  id: "/cart",
-  path: "/cart",
+  id: '/cart',
+  path: '/cart',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const adminAdminMyStoreRoute = adminAdminMyStoreRouteImport.update({
-  id: "/my-store",
-  path: "/my-store",
+  id: '/my-store',
+  path: '/my-store',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const vendorShopSlugIndexRoute = vendorShopSlugIndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const storeLayoutStoreIndexRoute = storeLayoutStoreIndexRouteImport.update({
-  id: "/store/",
-  path: "/store/",
+  id: '/store/',
+  path: '/store/',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const storeLayoutProductIndexRoute = storeLayoutProductIndexRouteImport.update({
-  id: "/product/",
-  path: "/product/",
+  id: '/product/',
+  path: '/product/',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const storeLayoutCategoryIndexRoute =
   storeLayoutCategoryIndexRouteImport.update({
-    id: "/category/",
-    path: "/category/",
+    id: '/category/',
+    path: '/category/',
     getParentRoute: () => storeLayoutRoute,
-  } as any);
+  } as any)
 const adminAdminUsersIndexRoute = adminAdminUsersIndexRouteImport.update({
-  id: "/users/",
-  path: "/users/",
+  id: '/users/',
+  path: '/users/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminTransactionsIndexRoute =
   adminAdminTransactionsIndexRouteImport.update({
-    id: "/transactions/",
-    path: "/transactions/",
+    id: '/transactions/',
+    path: '/transactions/',
     getParentRoute: () => adminAdminRoute,
-  } as any);
+  } as any)
 const adminAdminTenantsIndexRoute = adminAdminTenantsIndexRouteImport.update({
-  id: "/tenants/",
-  path: "/tenants/",
+  id: '/tenants/',
+  path: '/tenants/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminTaxesIndexRoute = adminAdminTaxesIndexRouteImport.update({
-  id: "/taxes/",
-  path: "/taxes/",
+  id: '/taxes/',
+  path: '/taxes/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminTagsIndexRoute = adminAdminTagsIndexRouteImport.update({
-  id: "/tags/",
-  path: "/tags/",
+  id: '/tags/',
+  path: '/tags/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminStaffIndexRoute = adminAdminStaffIndexRouteImport.update({
-  id: "/staff/",
-  path: "/staff/",
+  id: '/staff/',
+  path: '/staff/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminSettingsIndexRoute = adminAdminSettingsIndexRouteImport.update({
-  id: "/settings/",
-  path: "/settings/",
+  id: '/settings/',
+  path: '/settings/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminReviewsIndexRoute = adminAdminReviewsIndexRouteImport.update({
-  id: "/reviews/",
-  path: "/reviews/",
+  id: '/reviews/',
+  path: '/reviews/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminProductsIndexRoute = adminAdminProductsIndexRouteImport.update({
-  id: "/products/",
-  path: "/products/",
+  id: '/products/',
+  path: '/products/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminOrdersIndexRoute = adminAdminOrdersIndexRouteImport.update({
-  id: "/orders/",
-  path: "/orders/",
+  id: '/orders/',
+  path: '/orders/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminCouponsIndexRoute = adminAdminCouponsIndexRouteImport.update({
-  id: "/coupons/",
-  path: "/coupons/",
+  id: '/coupons/',
+  path: '/coupons/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminCategoriesIndexRoute =
   adminAdminCategoriesIndexRouteImport.update({
-    id: "/categories/",
-    path: "/categories/",
+    id: '/categories/',
+    path: '/categories/',
     getParentRoute: () => adminAdminRoute,
-  } as any);
+  } as any)
 const adminAdminBrandsIndexRoute = adminAdminBrandsIndexRouteImport.update({
-  id: "/brands/",
-  path: "/brands/",
+  id: '/brands/',
+  path: '/brands/',
   getParentRoute: () => adminAdminRoute,
-} as any);
+} as any)
 const adminAdminAttributesIndexRoute =
   adminAdminAttributesIndexRouteImport.update({
-    id: "/attributes/",
-    path: "/attributes/",
+    id: '/attributes/',
+    path: '/attributes/',
     getParentRoute: () => adminAdminRoute,
-  } as any);
+  } as any)
 const vendorShopSlugTransactionsRoute =
   vendorShopSlugTransactionsRouteImport.update({
-    id: "/transactions",
-    path: "/transactions",
+    id: '/transactions',
+    path: '/transactions',
     getParentRoute: () => vendorShopSlugRoute,
-  } as any);
+  } as any)
 const vendorShopSlugTaxesRoute = vendorShopSlugTaxesRouteImport.update({
-  id: "/taxes",
-  path: "/taxes",
+  id: '/taxes',
+  path: '/taxes',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugTagsRoute = vendorShopSlugTagsRouteImport.update({
-  id: "/tags",
-  path: "/tags",
+  id: '/tags',
+  path: '/tags',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugStaffRoute = vendorShopSlugStaffRouteImport.update({
-  id: "/staff",
-  path: "/staff",
+  id: '/staff',
+  path: '/staff',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugShippingRoute = vendorShopSlugShippingRouteImport.update({
-  id: "/shipping",
-  path: "/shipping",
+  id: '/shipping',
+  path: '/shipping',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugReviewsRoute = vendorShopSlugReviewsRouteImport.update({
-  id: "/reviews",
-  path: "/reviews",
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugProductsRoute = vendorShopSlugProductsRouteImport.update({
-  id: "/products",
-  path: "/products",
+  id: '/products',
+  path: '/products',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugCouponsRoute = vendorShopSlugCouponsRouteImport.update({
-  id: "/coupons",
-  path: "/coupons",
+  id: '/coupons',
+  path: '/coupons',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugCategoriesRoute =
   vendorShopSlugCategoriesRouteImport.update({
-    id: "/categories",
-    path: "/categories",
+    id: '/categories',
+    path: '/categories',
     getParentRoute: () => vendorShopSlugRoute,
-  } as any);
+  } as any)
 const vendorShopSlugBrandsRoute = vendorShopSlugBrandsRouteImport.update({
-  id: "/brands",
-  path: "/brands",
+  id: '/brands',
+  path: '/brands',
   getParentRoute: () => vendorShopSlugRoute,
-} as any);
+} as any)
 const vendorShopSlugAttributesRoute =
   vendorShopSlugAttributesRouteImport.update({
-    id: "/attributes",
-    path: "/attributes",
+    id: '/attributes',
+    path: '/attributes',
     getParentRoute: () => vendorShopSlugRoute,
-  } as any);
+  } as any)
 const storeLayoutStoreSlugRoute = storeLayoutStoreSlugRouteImport.update({
-  id: "/store/$slug",
-  path: "/store/$slug",
+  id: '/store/$slug',
+  path: '/store/$slug',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const storeLayoutProductProductIdRoute =
   storeLayoutProductProductIdRouteImport.update({
-    id: "/product/$productId",
-    path: "/product/$productId",
+    id: '/product/$productId',
+    path: '/product/$productId',
     getParentRoute: () => storeLayoutRoute,
-  } as any);
+  } as any)
 const storeLayoutCategorySlugRoute = storeLayoutCategorySlugRouteImport.update({
-  id: "/category/$slug",
-  path: "/category/$slug",
+  id: '/category/$slug',
+  path: '/category/$slug',
   getParentRoute: () => storeLayoutRoute,
-} as any);
+} as any)
 const adminAdminTenantsTenantIdRoute =
   adminAdminTenantsTenantIdRouteImport.update({
-    id: "/tenants/$tenantId",
-    path: "/tenants/$tenantId",
+    id: '/tenants/$tenantId',
+    path: '/tenants/$tenantId',
     getParentRoute: () => adminAdminRoute,
-  } as any);
+  } as any)
 const vendorShopSlugOrdersIndexRoute =
   vendorShopSlugOrdersIndexRouteImport.update({
-    id: "/orders/",
-    path: "/orders/",
+    id: '/orders/',
+    path: '/orders/',
     getParentRoute: () => vendorShopSlugRoute,
-  } as any);
+  } as any)
 const vendorShopSlugOrdersOrderIdRoute =
   vendorShopSlugOrdersOrderIdRouteImport.update({
-    id: "/orders/$orderId",
-    path: "/orders/$orderId",
+    id: '/orders/$orderId',
+    path: '/orders/$orderId',
     getParentRoute: () => vendorShopSlugRoute,
-  } as any);
+  } as any)
 
 export interface FileRoutesByFullPath {
-  "/admin": typeof adminAdminRouteWithChildren;
-  "/forbiden": typeof adminForbidenRoute;
-  "/auth/sign-in": typeof AuthSignInRoute;
-  "/auth/sign-up": typeof AuthSignUpRoute;
-  "/auth/vendor-sign-up": typeof AuthVendorSignUpRoute;
-  "/admin/my-store": typeof adminAdminMyStoreRoute;
-  "/cart": typeof storeLayoutCartRoute;
-  "/checkout": typeof storeLayoutCheckoutRoute;
-  "/order-confirmation": typeof storeLayoutOrderConfirmationRoute;
-  "/order-tracking": typeof storeLayoutOrderTrackingRoute;
-  "/orders": typeof storeLayoutOrdersRoute;
-  "/profile": typeof storeLayoutProfileRoute;
-  "/wishlist": typeof storeLayoutWishlistRoute;
-  "/dashboard": typeof vendorLayoutDashboardRoute;
-  "/my-shop": typeof vendorLayoutMyShopRoute;
-  "/shop/$slug": typeof vendorShopSlugRouteWithChildren;
-  "/api/auth/$": typeof ApiAuthSplatRoute;
-  "/admin/": typeof adminAdminIndexRoute;
-  "/": typeof storeLayoutIndexRoute;
-  "/admin/tenants/$tenantId": typeof adminAdminTenantsTenantIdRoute;
-  "/category/$slug": typeof storeLayoutCategorySlugRoute;
-  "/product/$productId": typeof storeLayoutProductProductIdRoute;
-  "/store/$slug": typeof storeLayoutStoreSlugRoute;
-  "/shop/$slug/attributes": typeof vendorShopSlugAttributesRoute;
-  "/shop/$slug/brands": typeof vendorShopSlugBrandsRoute;
-  "/shop/$slug/categories": typeof vendorShopSlugCategoriesRoute;
-  "/shop/$slug/coupons": typeof vendorShopSlugCouponsRoute;
-  "/shop/$slug/products": typeof vendorShopSlugProductsRoute;
-  "/shop/$slug/reviews": typeof vendorShopSlugReviewsRoute;
-  "/shop/$slug/shipping": typeof vendorShopSlugShippingRoute;
-  "/shop/$slug/staff": typeof vendorShopSlugStaffRoute;
-  "/shop/$slug/tags": typeof vendorShopSlugTagsRoute;
-  "/shop/$slug/taxes": typeof vendorShopSlugTaxesRoute;
-  "/shop/$slug/transactions": typeof vendorShopSlugTransactionsRoute;
-  "/admin/attributes": typeof adminAdminAttributesIndexRoute;
-  "/admin/brands": typeof adminAdminBrandsIndexRoute;
-  "/admin/categories": typeof adminAdminCategoriesIndexRoute;
-  "/admin/coupons": typeof adminAdminCouponsIndexRoute;
-  "/admin/orders": typeof adminAdminOrdersIndexRoute;
-  "/admin/products": typeof adminAdminProductsIndexRoute;
-  "/admin/reviews": typeof adminAdminReviewsIndexRoute;
-  "/admin/settings": typeof adminAdminSettingsIndexRoute;
-  "/admin/staff": typeof adminAdminStaffIndexRoute;
-  "/admin/tags": typeof adminAdminTagsIndexRoute;
-  "/admin/taxes": typeof adminAdminTaxesIndexRoute;
-  "/admin/tenants": typeof adminAdminTenantsIndexRoute;
-  "/admin/transactions": typeof adminAdminTransactionsIndexRoute;
-  "/admin/users": typeof adminAdminUsersIndexRoute;
-  "/category": typeof storeLayoutCategoryIndexRoute;
-  "/product": typeof storeLayoutProductIndexRoute;
-  "/store": typeof storeLayoutStoreIndexRoute;
-  "/shop/$slug/": typeof vendorShopSlugIndexRoute;
-  "/shop/$slug/orders/$orderId": typeof vendorShopSlugOrdersOrderIdRoute;
-  "/shop/$slug/orders": typeof vendorShopSlugOrdersIndexRoute;
+  '/admin': typeof adminAdminRouteWithChildren
+  '/forbiden': typeof adminForbidenRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/auth/sign-up': typeof AuthSignUpRoute
+  '/auth/vendor-sign-up': typeof AuthVendorSignUpRoute
+  '/admin/my-store': typeof adminAdminMyStoreRoute
+  '/cart': typeof storeLayoutCartRoute
+  '/checkout': typeof storeLayoutCheckoutRoute
+  '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
+  '/order-tracking': typeof storeLayoutOrderTrackingRoute
+  '/orders': typeof storeLayoutOrdersRoute
+  '/profile': typeof storeLayoutProfileRoute
+  '/wishlist': typeof storeLayoutWishlistRoute
+  '/dashboard': typeof vendorLayoutDashboardRoute
+  '/my-shop': typeof vendorLayoutMyShopRoute
+  '/shop/$slug': typeof vendorShopSlugRouteWithChildren
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/admin/': typeof adminAdminIndexRoute
+  '/': typeof storeLayoutIndexRoute
+  '/admin/tenants/$tenantId': typeof adminAdminTenantsTenantIdRoute
+  '/category/$slug': typeof storeLayoutCategorySlugRoute
+  '/product/$productId': typeof storeLayoutProductProductIdRoute
+  '/store/$slug': typeof storeLayoutStoreSlugRoute
+  '/shop/$slug/attributes': typeof vendorShopSlugAttributesRoute
+  '/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
+  '/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
+  '/shop/$slug/coupons': typeof vendorShopSlugCouponsRoute
+  '/shop/$slug/products': typeof vendorShopSlugProductsRoute
+  '/shop/$slug/reviews': typeof vendorShopSlugReviewsRoute
+  '/shop/$slug/shipping': typeof vendorShopSlugShippingRoute
+  '/shop/$slug/staff': typeof vendorShopSlugStaffRoute
+  '/shop/$slug/tags': typeof vendorShopSlugTagsRoute
+  '/shop/$slug/taxes': typeof vendorShopSlugTaxesRoute
+  '/shop/$slug/transactions': typeof vendorShopSlugTransactionsRoute
+  '/admin/attributes': typeof adminAdminAttributesIndexRoute
+  '/admin/brands': typeof adminAdminBrandsIndexRoute
+  '/admin/categories': typeof adminAdminCategoriesIndexRoute
+  '/admin/coupons': typeof adminAdminCouponsIndexRoute
+  '/admin/orders': typeof adminAdminOrdersIndexRoute
+  '/admin/products': typeof adminAdminProductsIndexRoute
+  '/admin/reviews': typeof adminAdminReviewsIndexRoute
+  '/admin/settings': typeof adminAdminSettingsIndexRoute
+  '/admin/staff': typeof adminAdminStaffIndexRoute
+  '/admin/tags': typeof adminAdminTagsIndexRoute
+  '/admin/taxes': typeof adminAdminTaxesIndexRoute
+  '/admin/tenants': typeof adminAdminTenantsIndexRoute
+  '/admin/transactions': typeof adminAdminTransactionsIndexRoute
+  '/admin/users': typeof adminAdminUsersIndexRoute
+  '/category': typeof storeLayoutCategoryIndexRoute
+  '/product': typeof storeLayoutProductIndexRoute
+  '/store': typeof storeLayoutStoreIndexRoute
+  '/shop/$slug/': typeof vendorShopSlugIndexRoute
+  '/shop/$slug/orders/$orderId': typeof vendorShopSlugOrdersOrderIdRoute
+  '/shop/$slug/orders': typeof vendorShopSlugOrdersIndexRoute
 }
 export interface FileRoutesByTo {
-  "/forbiden": typeof adminForbidenRoute;
-  "/auth/sign-in": typeof AuthSignInRoute;
-  "/auth/sign-up": typeof AuthSignUpRoute;
-  "/auth/vendor-sign-up": typeof AuthVendorSignUpRoute;
-  "/admin/my-store": typeof adminAdminMyStoreRoute;
-  "/cart": typeof storeLayoutCartRoute;
-  "/checkout": typeof storeLayoutCheckoutRoute;
-  "/order-confirmation": typeof storeLayoutOrderConfirmationRoute;
-  "/order-tracking": typeof storeLayoutOrderTrackingRoute;
-  "/orders": typeof storeLayoutOrdersRoute;
-  "/profile": typeof storeLayoutProfileRoute;
-  "/wishlist": typeof storeLayoutWishlistRoute;
-  "/dashboard": typeof vendorLayoutDashboardRoute;
-  "/my-shop": typeof vendorLayoutMyShopRoute;
-  "/api/auth/$": typeof ApiAuthSplatRoute;
-  "/admin": typeof adminAdminIndexRoute;
-  "/": typeof storeLayoutIndexRoute;
-  "/admin/tenants/$tenantId": typeof adminAdminTenantsTenantIdRoute;
-  "/category/$slug": typeof storeLayoutCategorySlugRoute;
-  "/product/$productId": typeof storeLayoutProductProductIdRoute;
-  "/store/$slug": typeof storeLayoutStoreSlugRoute;
-  "/shop/$slug/attributes": typeof vendorShopSlugAttributesRoute;
-  "/shop/$slug/brands": typeof vendorShopSlugBrandsRoute;
-  "/shop/$slug/categories": typeof vendorShopSlugCategoriesRoute;
-  "/shop/$slug/coupons": typeof vendorShopSlugCouponsRoute;
-  "/shop/$slug/products": typeof vendorShopSlugProductsRoute;
-  "/shop/$slug/reviews": typeof vendorShopSlugReviewsRoute;
-  "/shop/$slug/shipping": typeof vendorShopSlugShippingRoute;
-  "/shop/$slug/staff": typeof vendorShopSlugStaffRoute;
-  "/shop/$slug/tags": typeof vendorShopSlugTagsRoute;
-  "/shop/$slug/taxes": typeof vendorShopSlugTaxesRoute;
-  "/shop/$slug/transactions": typeof vendorShopSlugTransactionsRoute;
-  "/admin/attributes": typeof adminAdminAttributesIndexRoute;
-  "/admin/brands": typeof adminAdminBrandsIndexRoute;
-  "/admin/categories": typeof adminAdminCategoriesIndexRoute;
-  "/admin/coupons": typeof adminAdminCouponsIndexRoute;
-  "/admin/orders": typeof adminAdminOrdersIndexRoute;
-  "/admin/products": typeof adminAdminProductsIndexRoute;
-  "/admin/reviews": typeof adminAdminReviewsIndexRoute;
-  "/admin/settings": typeof adminAdminSettingsIndexRoute;
-  "/admin/staff": typeof adminAdminStaffIndexRoute;
-  "/admin/tags": typeof adminAdminTagsIndexRoute;
-  "/admin/taxes": typeof adminAdminTaxesIndexRoute;
-  "/admin/tenants": typeof adminAdminTenantsIndexRoute;
-  "/admin/transactions": typeof adminAdminTransactionsIndexRoute;
-  "/admin/users": typeof adminAdminUsersIndexRoute;
-  "/category": typeof storeLayoutCategoryIndexRoute;
-  "/product": typeof storeLayoutProductIndexRoute;
-  "/store": typeof storeLayoutStoreIndexRoute;
-  "/shop/$slug": typeof vendorShopSlugIndexRoute;
-  "/shop/$slug/orders/$orderId": typeof vendorShopSlugOrdersOrderIdRoute;
-  "/shop/$slug/orders": typeof vendorShopSlugOrdersIndexRoute;
+  '/forbiden': typeof adminForbidenRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/auth/sign-up': typeof AuthSignUpRoute
+  '/auth/vendor-sign-up': typeof AuthVendorSignUpRoute
+  '/admin/my-store': typeof adminAdminMyStoreRoute
+  '/cart': typeof storeLayoutCartRoute
+  '/checkout': typeof storeLayoutCheckoutRoute
+  '/order-confirmation': typeof storeLayoutOrderConfirmationRoute
+  '/order-tracking': typeof storeLayoutOrderTrackingRoute
+  '/orders': typeof storeLayoutOrdersRoute
+  '/profile': typeof storeLayoutProfileRoute
+  '/wishlist': typeof storeLayoutWishlistRoute
+  '/dashboard': typeof vendorLayoutDashboardRoute
+  '/my-shop': typeof vendorLayoutMyShopRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/admin': typeof adminAdminIndexRoute
+  '/': typeof storeLayoutIndexRoute
+  '/admin/tenants/$tenantId': typeof adminAdminTenantsTenantIdRoute
+  '/category/$slug': typeof storeLayoutCategorySlugRoute
+  '/product/$productId': typeof storeLayoutProductProductIdRoute
+  '/store/$slug': typeof storeLayoutStoreSlugRoute
+  '/shop/$slug/attributes': typeof vendorShopSlugAttributesRoute
+  '/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
+  '/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
+  '/shop/$slug/coupons': typeof vendorShopSlugCouponsRoute
+  '/shop/$slug/products': typeof vendorShopSlugProductsRoute
+  '/shop/$slug/reviews': typeof vendorShopSlugReviewsRoute
+  '/shop/$slug/shipping': typeof vendorShopSlugShippingRoute
+  '/shop/$slug/staff': typeof vendorShopSlugStaffRoute
+  '/shop/$slug/tags': typeof vendorShopSlugTagsRoute
+  '/shop/$slug/taxes': typeof vendorShopSlugTaxesRoute
+  '/shop/$slug/transactions': typeof vendorShopSlugTransactionsRoute
+  '/admin/attributes': typeof adminAdminAttributesIndexRoute
+  '/admin/brands': typeof adminAdminBrandsIndexRoute
+  '/admin/categories': typeof adminAdminCategoriesIndexRoute
+  '/admin/coupons': typeof adminAdminCouponsIndexRoute
+  '/admin/orders': typeof adminAdminOrdersIndexRoute
+  '/admin/products': typeof adminAdminProductsIndexRoute
+  '/admin/reviews': typeof adminAdminReviewsIndexRoute
+  '/admin/settings': typeof adminAdminSettingsIndexRoute
+  '/admin/staff': typeof adminAdminStaffIndexRoute
+  '/admin/tags': typeof adminAdminTagsIndexRoute
+  '/admin/taxes': typeof adminAdminTaxesIndexRoute
+  '/admin/tenants': typeof adminAdminTenantsIndexRoute
+  '/admin/transactions': typeof adminAdminTransactionsIndexRoute
+  '/admin/users': typeof adminAdminUsersIndexRoute
+  '/category': typeof storeLayoutCategoryIndexRoute
+  '/product': typeof storeLayoutProductIndexRoute
+  '/store': typeof storeLayoutStoreIndexRoute
+  '/shop/$slug': typeof vendorShopSlugIndexRoute
+  '/shop/$slug/orders/$orderId': typeof vendorShopSlugOrdersOrderIdRoute
+  '/shop/$slug/orders': typeof vendorShopSlugOrdersIndexRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  "/(admin)/admin": typeof adminAdminRouteWithChildren;
-  "/(admin)/forbiden": typeof adminForbidenRoute;
-  "/(store)/_layout": typeof storeLayoutRouteWithChildren;
-  "/(vendor)/_layout": typeof vendorLayoutRouteWithChildren;
-  "/auth/sign-in": typeof AuthSignInRoute;
-  "/auth/sign-up": typeof AuthSignUpRoute;
-  "/auth/vendor-sign-up": typeof AuthVendorSignUpRoute;
-  "/(admin)/admin/my-store": typeof adminAdminMyStoreRoute;
-  "/(store)/_layout/cart": typeof storeLayoutCartRoute;
-  "/(store)/_layout/checkout": typeof storeLayoutCheckoutRoute;
-  "/(store)/_layout/order-confirmation": typeof storeLayoutOrderConfirmationRoute;
-  "/(store)/_layout/order-tracking": typeof storeLayoutOrderTrackingRoute;
-  "/(store)/_layout/orders": typeof storeLayoutOrdersRoute;
-  "/(store)/_layout/profile": typeof storeLayoutProfileRoute;
-  "/(store)/_layout/wishlist": typeof storeLayoutWishlistRoute;
-  "/(vendor)/_layout/dashboard": typeof vendorLayoutDashboardRoute;
-  "/(vendor)/_layout/my-shop": typeof vendorLayoutMyShopRoute;
-  "/(vendor)/shop/$slug": typeof vendorShopSlugRouteWithChildren;
-  "/api/auth/$": typeof ApiAuthSplatRoute;
-  "/(admin)/admin/": typeof adminAdminIndexRoute;
-  "/(store)/_layout/": typeof storeLayoutIndexRoute;
-  "/(admin)/admin/tenants/$tenantId": typeof adminAdminTenantsTenantIdRoute;
-  "/(store)/_layout/category/$slug": typeof storeLayoutCategorySlugRoute;
-  "/(store)/_layout/product/$productId": typeof storeLayoutProductProductIdRoute;
-  "/(store)/_layout/store/$slug": typeof storeLayoutStoreSlugRoute;
-  "/(vendor)/shop/$slug/attributes": typeof vendorShopSlugAttributesRoute;
-  "/(vendor)/shop/$slug/brands": typeof vendorShopSlugBrandsRoute;
-  "/(vendor)/shop/$slug/categories": typeof vendorShopSlugCategoriesRoute;
-  "/(vendor)/shop/$slug/coupons": typeof vendorShopSlugCouponsRoute;
-  "/(vendor)/shop/$slug/products": typeof vendorShopSlugProductsRoute;
-  "/(vendor)/shop/$slug/reviews": typeof vendorShopSlugReviewsRoute;
-  "/(vendor)/shop/$slug/shipping": typeof vendorShopSlugShippingRoute;
-  "/(vendor)/shop/$slug/staff": typeof vendorShopSlugStaffRoute;
-  "/(vendor)/shop/$slug/tags": typeof vendorShopSlugTagsRoute;
-  "/(vendor)/shop/$slug/taxes": typeof vendorShopSlugTaxesRoute;
-  "/(vendor)/shop/$slug/transactions": typeof vendorShopSlugTransactionsRoute;
-  "/(admin)/admin/attributes/": typeof adminAdminAttributesIndexRoute;
-  "/(admin)/admin/brands/": typeof adminAdminBrandsIndexRoute;
-  "/(admin)/admin/categories/": typeof adminAdminCategoriesIndexRoute;
-  "/(admin)/admin/coupons/": typeof adminAdminCouponsIndexRoute;
-  "/(admin)/admin/orders/": typeof adminAdminOrdersIndexRoute;
-  "/(admin)/admin/products/": typeof adminAdminProductsIndexRoute;
-  "/(admin)/admin/reviews/": typeof adminAdminReviewsIndexRoute;
-  "/(admin)/admin/settings/": typeof adminAdminSettingsIndexRoute;
-  "/(admin)/admin/staff/": typeof adminAdminStaffIndexRoute;
-  "/(admin)/admin/tags/": typeof adminAdminTagsIndexRoute;
-  "/(admin)/admin/taxes/": typeof adminAdminTaxesIndexRoute;
-  "/(admin)/admin/tenants/": typeof adminAdminTenantsIndexRoute;
-  "/(admin)/admin/transactions/": typeof adminAdminTransactionsIndexRoute;
-  "/(admin)/admin/users/": typeof adminAdminUsersIndexRoute;
-  "/(store)/_layout/category/": typeof storeLayoutCategoryIndexRoute;
-  "/(store)/_layout/product/": typeof storeLayoutProductIndexRoute;
-  "/(store)/_layout/store/": typeof storeLayoutStoreIndexRoute;
-  "/(vendor)/shop/$slug/": typeof vendorShopSlugIndexRoute;
-  "/(vendor)/shop/$slug/orders/$orderId": typeof vendorShopSlugOrdersOrderIdRoute;
-  "/(vendor)/shop/$slug/orders/": typeof vendorShopSlugOrdersIndexRoute;
+  __root__: typeof rootRouteImport
+  '/(admin)/admin': typeof adminAdminRouteWithChildren
+  '/(admin)/forbiden': typeof adminForbidenRoute
+  '/(store)/_layout': typeof storeLayoutRouteWithChildren
+  '/(vendor)/_layout': typeof vendorLayoutRouteWithChildren
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/auth/sign-up': typeof AuthSignUpRoute
+  '/auth/vendor-sign-up': typeof AuthVendorSignUpRoute
+  '/(admin)/admin/my-store': typeof adminAdminMyStoreRoute
+  '/(store)/_layout/cart': typeof storeLayoutCartRoute
+  '/(store)/_layout/checkout': typeof storeLayoutCheckoutRoute
+  '/(store)/_layout/order-confirmation': typeof storeLayoutOrderConfirmationRoute
+  '/(store)/_layout/order-tracking': typeof storeLayoutOrderTrackingRoute
+  '/(store)/_layout/orders': typeof storeLayoutOrdersRoute
+  '/(store)/_layout/profile': typeof storeLayoutProfileRoute
+  '/(store)/_layout/wishlist': typeof storeLayoutWishlistRoute
+  '/(vendor)/_layout/dashboard': typeof vendorLayoutDashboardRoute
+  '/(vendor)/_layout/my-shop': typeof vendorLayoutMyShopRoute
+  '/(vendor)/shop/$slug': typeof vendorShopSlugRouteWithChildren
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/(admin)/admin/': typeof adminAdminIndexRoute
+  '/(store)/_layout/': typeof storeLayoutIndexRoute
+  '/(admin)/admin/tenants/$tenantId': typeof adminAdminTenantsTenantIdRoute
+  '/(store)/_layout/category/$slug': typeof storeLayoutCategorySlugRoute
+  '/(store)/_layout/product/$productId': typeof storeLayoutProductProductIdRoute
+  '/(store)/_layout/store/$slug': typeof storeLayoutStoreSlugRoute
+  '/(vendor)/shop/$slug/attributes': typeof vendorShopSlugAttributesRoute
+  '/(vendor)/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
+  '/(vendor)/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
+  '/(vendor)/shop/$slug/coupons': typeof vendorShopSlugCouponsRoute
+  '/(vendor)/shop/$slug/products': typeof vendorShopSlugProductsRoute
+  '/(vendor)/shop/$slug/reviews': typeof vendorShopSlugReviewsRoute
+  '/(vendor)/shop/$slug/shipping': typeof vendorShopSlugShippingRoute
+  '/(vendor)/shop/$slug/staff': typeof vendorShopSlugStaffRoute
+  '/(vendor)/shop/$slug/tags': typeof vendorShopSlugTagsRoute
+  '/(vendor)/shop/$slug/taxes': typeof vendorShopSlugTaxesRoute
+  '/(vendor)/shop/$slug/transactions': typeof vendorShopSlugTransactionsRoute
+  '/(admin)/admin/attributes/': typeof adminAdminAttributesIndexRoute
+  '/(admin)/admin/brands/': typeof adminAdminBrandsIndexRoute
+  '/(admin)/admin/categories/': typeof adminAdminCategoriesIndexRoute
+  '/(admin)/admin/coupons/': typeof adminAdminCouponsIndexRoute
+  '/(admin)/admin/orders/': typeof adminAdminOrdersIndexRoute
+  '/(admin)/admin/products/': typeof adminAdminProductsIndexRoute
+  '/(admin)/admin/reviews/': typeof adminAdminReviewsIndexRoute
+  '/(admin)/admin/settings/': typeof adminAdminSettingsIndexRoute
+  '/(admin)/admin/staff/': typeof adminAdminStaffIndexRoute
+  '/(admin)/admin/tags/': typeof adminAdminTagsIndexRoute
+  '/(admin)/admin/taxes/': typeof adminAdminTaxesIndexRoute
+  '/(admin)/admin/tenants/': typeof adminAdminTenantsIndexRoute
+  '/(admin)/admin/transactions/': typeof adminAdminTransactionsIndexRoute
+  '/(admin)/admin/users/': typeof adminAdminUsersIndexRoute
+  '/(store)/_layout/category/': typeof storeLayoutCategoryIndexRoute
+  '/(store)/_layout/product/': typeof storeLayoutProductIndexRoute
+  '/(store)/_layout/store/': typeof storeLayoutStoreIndexRoute
+  '/(vendor)/shop/$slug/': typeof vendorShopSlugIndexRoute
+  '/(vendor)/shop/$slug/orders/$orderId': typeof vendorShopSlugOrdersOrderIdRoute
+  '/(vendor)/shop/$slug/orders/': typeof vendorShopSlugOrdersIndexRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
+  fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | "/admin"
-    | "/forbiden"
-    | "/auth/sign-in"
-    | "/auth/sign-up"
-    | "/auth/vendor-sign-up"
-    | "/admin/my-store"
-    | "/cart"
-    | "/checkout"
-    | "/order-confirmation"
-    | "/order-tracking"
-    | "/orders"
-    | "/profile"
-    | "/wishlist"
-    | "/dashboard"
-    | "/my-shop"
-    | "/shop/$slug"
-    | "/api/auth/$"
-    | "/admin/"
-    | "/"
-    | "/admin/tenants/$tenantId"
-    | "/category/$slug"
-    | "/product/$productId"
-    | "/store/$slug"
-    | "/shop/$slug/attributes"
-    | "/shop/$slug/brands"
-    | "/shop/$slug/categories"
-    | "/shop/$slug/coupons"
-    | "/shop/$slug/products"
-    | "/shop/$slug/reviews"
-    | "/shop/$slug/shipping"
-    | "/shop/$slug/staff"
-    | "/shop/$slug/tags"
-    | "/shop/$slug/taxes"
-    | "/shop/$slug/transactions"
-    | "/admin/attributes"
-    | "/admin/brands"
-    | "/admin/categories"
-    | "/admin/coupons"
-    | "/admin/orders"
-    | "/admin/products"
-    | "/admin/reviews"
-    | "/admin/settings"
-    | "/admin/staff"
-    | "/admin/tags"
-    | "/admin/taxes"
-    | "/admin/tenants"
-    | "/admin/transactions"
-    | "/admin/users"
-    | "/category"
-    | "/product"
-    | "/store"
-    | "/shop/$slug/"
-    | "/shop/$slug/orders/$orderId"
-    | "/shop/$slug/orders";
-  fileRoutesByTo: FileRoutesByTo;
+    | '/admin'
+    | '/forbiden'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/auth/vendor-sign-up'
+    | '/admin/my-store'
+    | '/cart'
+    | '/checkout'
+    | '/order-confirmation'
+    | '/order-tracking'
+    | '/orders'
+    | '/profile'
+    | '/wishlist'
+    | '/dashboard'
+    | '/my-shop'
+    | '/shop/$slug'
+    | '/api/auth/$'
+    | '/admin/'
+    | '/'
+    | '/admin/tenants/$tenantId'
+    | '/category/$slug'
+    | '/product/$productId'
+    | '/store/$slug'
+    | '/shop/$slug/attributes'
+    | '/shop/$slug/brands'
+    | '/shop/$slug/categories'
+    | '/shop/$slug/coupons'
+    | '/shop/$slug/products'
+    | '/shop/$slug/reviews'
+    | '/shop/$slug/shipping'
+    | '/shop/$slug/staff'
+    | '/shop/$slug/tags'
+    | '/shop/$slug/taxes'
+    | '/shop/$slug/transactions'
+    | '/admin/attributes'
+    | '/admin/brands'
+    | '/admin/categories'
+    | '/admin/coupons'
+    | '/admin/orders'
+    | '/admin/products'
+    | '/admin/reviews'
+    | '/admin/settings'
+    | '/admin/staff'
+    | '/admin/tags'
+    | '/admin/taxes'
+    | '/admin/tenants'
+    | '/admin/transactions'
+    | '/admin/users'
+    | '/category'
+    | '/product'
+    | '/store'
+    | '/shop/$slug/'
+    | '/shop/$slug/orders/$orderId'
+    | '/shop/$slug/orders'
+  fileRoutesByTo: FileRoutesByTo
   to:
-    | "/forbiden"
-    | "/auth/sign-in"
-    | "/auth/sign-up"
-    | "/auth/vendor-sign-up"
-    | "/admin/my-store"
-    | "/cart"
-    | "/checkout"
-    | "/order-confirmation"
-    | "/order-tracking"
-    | "/orders"
-    | "/profile"
-    | "/wishlist"
-    | "/dashboard"
-    | "/my-shop"
-    | "/api/auth/$"
-    | "/admin"
-    | "/"
-    | "/admin/tenants/$tenantId"
-    | "/category/$slug"
-    | "/product/$productId"
-    | "/store/$slug"
-    | "/shop/$slug/attributes"
-    | "/shop/$slug/brands"
-    | "/shop/$slug/categories"
-    | "/shop/$slug/coupons"
-    | "/shop/$slug/products"
-    | "/shop/$slug/reviews"
-    | "/shop/$slug/shipping"
-    | "/shop/$slug/staff"
-    | "/shop/$slug/tags"
-    | "/shop/$slug/taxes"
-    | "/shop/$slug/transactions"
-    | "/admin/attributes"
-    | "/admin/brands"
-    | "/admin/categories"
-    | "/admin/coupons"
-    | "/admin/orders"
-    | "/admin/products"
-    | "/admin/reviews"
-    | "/admin/settings"
-    | "/admin/staff"
-    | "/admin/tags"
-    | "/admin/taxes"
-    | "/admin/tenants"
-    | "/admin/transactions"
-    | "/admin/users"
-    | "/category"
-    | "/product"
-    | "/store"
-    | "/shop/$slug"
-    | "/shop/$slug/orders/$orderId"
-    | "/shop/$slug/orders";
+    | '/forbiden'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/auth/vendor-sign-up'
+    | '/admin/my-store'
+    | '/cart'
+    | '/checkout'
+    | '/order-confirmation'
+    | '/order-tracking'
+    | '/orders'
+    | '/profile'
+    | '/wishlist'
+    | '/dashboard'
+    | '/my-shop'
+    | '/api/auth/$'
+    | '/admin'
+    | '/'
+    | '/admin/tenants/$tenantId'
+    | '/category/$slug'
+    | '/product/$productId'
+    | '/store/$slug'
+    | '/shop/$slug/attributes'
+    | '/shop/$slug/brands'
+    | '/shop/$slug/categories'
+    | '/shop/$slug/coupons'
+    | '/shop/$slug/products'
+    | '/shop/$slug/reviews'
+    | '/shop/$slug/shipping'
+    | '/shop/$slug/staff'
+    | '/shop/$slug/tags'
+    | '/shop/$slug/taxes'
+    | '/shop/$slug/transactions'
+    | '/admin/attributes'
+    | '/admin/brands'
+    | '/admin/categories'
+    | '/admin/coupons'
+    | '/admin/orders'
+    | '/admin/products'
+    | '/admin/reviews'
+    | '/admin/settings'
+    | '/admin/staff'
+    | '/admin/tags'
+    | '/admin/taxes'
+    | '/admin/tenants'
+    | '/admin/transactions'
+    | '/admin/users'
+    | '/category'
+    | '/product'
+    | '/store'
+    | '/shop/$slug'
+    | '/shop/$slug/orders/$orderId'
+    | '/shop/$slug/orders'
   id:
-    | "__root__"
-    | "/(admin)/admin"
-    | "/(admin)/forbiden"
-    | "/(store)/_layout"
-    | "/(vendor)/_layout"
-    | "/auth/sign-in"
-    | "/auth/sign-up"
-    | "/auth/vendor-sign-up"
-    | "/(admin)/admin/my-store"
-    | "/(store)/_layout/cart"
-    | "/(store)/_layout/checkout"
-    | "/(store)/_layout/order-confirmation"
-    | "/(store)/_layout/order-tracking"
-    | "/(store)/_layout/orders"
-    | "/(store)/_layout/profile"
-    | "/(store)/_layout/wishlist"
-    | "/(vendor)/_layout/dashboard"
-    | "/(vendor)/_layout/my-shop"
-    | "/(vendor)/shop/$slug"
-    | "/api/auth/$"
-    | "/(admin)/admin/"
-    | "/(store)/_layout/"
-    | "/(admin)/admin/tenants/$tenantId"
-    | "/(store)/_layout/category/$slug"
-    | "/(store)/_layout/product/$productId"
-    | "/(store)/_layout/store/$slug"
-    | "/(vendor)/shop/$slug/attributes"
-    | "/(vendor)/shop/$slug/brands"
-    | "/(vendor)/shop/$slug/categories"
-    | "/(vendor)/shop/$slug/coupons"
-    | "/(vendor)/shop/$slug/products"
-    | "/(vendor)/shop/$slug/reviews"
-    | "/(vendor)/shop/$slug/shipping"
-    | "/(vendor)/shop/$slug/staff"
-    | "/(vendor)/shop/$slug/tags"
-    | "/(vendor)/shop/$slug/taxes"
-    | "/(vendor)/shop/$slug/transactions"
-    | "/(admin)/admin/attributes/"
-    | "/(admin)/admin/brands/"
-    | "/(admin)/admin/categories/"
-    | "/(admin)/admin/coupons/"
-    | "/(admin)/admin/orders/"
-    | "/(admin)/admin/products/"
-    | "/(admin)/admin/reviews/"
-    | "/(admin)/admin/settings/"
-    | "/(admin)/admin/staff/"
-    | "/(admin)/admin/tags/"
-    | "/(admin)/admin/taxes/"
-    | "/(admin)/admin/tenants/"
-    | "/(admin)/admin/transactions/"
-    | "/(admin)/admin/users/"
-    | "/(store)/_layout/category/"
-    | "/(store)/_layout/product/"
-    | "/(store)/_layout/store/"
-    | "/(vendor)/shop/$slug/"
-    | "/(vendor)/shop/$slug/orders/$orderId"
-    | "/(vendor)/shop/$slug/orders/";
-  fileRoutesById: FileRoutesById;
+    | '__root__'
+    | '/(admin)/admin'
+    | '/(admin)/forbiden'
+    | '/(store)/_layout'
+    | '/(vendor)/_layout'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/auth/vendor-sign-up'
+    | '/(admin)/admin/my-store'
+    | '/(store)/_layout/cart'
+    | '/(store)/_layout/checkout'
+    | '/(store)/_layout/order-confirmation'
+    | '/(store)/_layout/order-tracking'
+    | '/(store)/_layout/orders'
+    | '/(store)/_layout/profile'
+    | '/(store)/_layout/wishlist'
+    | '/(vendor)/_layout/dashboard'
+    | '/(vendor)/_layout/my-shop'
+    | '/(vendor)/shop/$slug'
+    | '/api/auth/$'
+    | '/(admin)/admin/'
+    | '/(store)/_layout/'
+    | '/(admin)/admin/tenants/$tenantId'
+    | '/(store)/_layout/category/$slug'
+    | '/(store)/_layout/product/$productId'
+    | '/(store)/_layout/store/$slug'
+    | '/(vendor)/shop/$slug/attributes'
+    | '/(vendor)/shop/$slug/brands'
+    | '/(vendor)/shop/$slug/categories'
+    | '/(vendor)/shop/$slug/coupons'
+    | '/(vendor)/shop/$slug/products'
+    | '/(vendor)/shop/$slug/reviews'
+    | '/(vendor)/shop/$slug/shipping'
+    | '/(vendor)/shop/$slug/staff'
+    | '/(vendor)/shop/$slug/tags'
+    | '/(vendor)/shop/$slug/taxes'
+    | '/(vendor)/shop/$slug/transactions'
+    | '/(admin)/admin/attributes/'
+    | '/(admin)/admin/brands/'
+    | '/(admin)/admin/categories/'
+    | '/(admin)/admin/coupons/'
+    | '/(admin)/admin/orders/'
+    | '/(admin)/admin/products/'
+    | '/(admin)/admin/reviews/'
+    | '/(admin)/admin/settings/'
+    | '/(admin)/admin/staff/'
+    | '/(admin)/admin/tags/'
+    | '/(admin)/admin/taxes/'
+    | '/(admin)/admin/tenants/'
+    | '/(admin)/admin/transactions/'
+    | '/(admin)/admin/users/'
+    | '/(store)/_layout/category/'
+    | '/(store)/_layout/product/'
+    | '/(store)/_layout/store/'
+    | '/(vendor)/shop/$slug/'
+    | '/(vendor)/shop/$slug/orders/$orderId'
+    | '/(vendor)/shop/$slug/orders/'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  adminAdminRoute: typeof adminAdminRouteWithChildren;
-  adminForbidenRoute: typeof adminForbidenRoute;
-  storeLayoutRoute: typeof storeLayoutRouteWithChildren;
-  vendorLayoutRoute: typeof vendorLayoutRouteWithChildren;
-  AuthSignInRoute: typeof AuthSignInRoute;
-  AuthSignUpRoute: typeof AuthSignUpRoute;
-  AuthVendorSignUpRoute: typeof AuthVendorSignUpRoute;
-  vendorShopSlugRoute: typeof vendorShopSlugRouteWithChildren;
-  ApiAuthSplatRoute: typeof ApiAuthSplatRoute;
+  adminAdminRoute: typeof adminAdminRouteWithChildren
+  adminForbidenRoute: typeof adminForbidenRoute
+  storeLayoutRoute: typeof storeLayoutRouteWithChildren
+  vendorLayoutRoute: typeof vendorLayoutRouteWithChildren
+  AuthSignInRoute: typeof AuthSignInRoute
+  AuthSignUpRoute: typeof AuthSignUpRoute
+  AuthVendorSignUpRoute: typeof AuthVendorSignUpRoute
+  vendorShopSlugRoute: typeof vendorShopSlugRouteWithChildren
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/auth/vendor-sign-up": {
-      id: "/auth/vendor-sign-up";
-      path: "/auth/vendor-sign-up";
-      fullPath: "/auth/vendor-sign-up";
-      preLoaderRoute: typeof AuthVendorSignUpRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/auth/sign-up": {
-      id: "/auth/sign-up";
-      path: "/auth/sign-up";
-      fullPath: "/auth/sign-up";
-      preLoaderRoute: typeof AuthSignUpRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/auth/sign-in": {
-      id: "/auth/sign-in";
-      path: "/auth/sign-in";
-      fullPath: "/auth/sign-in";
-      preLoaderRoute: typeof AuthSignInRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/(vendor)/_layout": {
-      id: "/(vendor)/_layout";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof vendorLayoutRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/(store)/_layout": {
-      id: "/(store)/_layout";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof storeLayoutRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/(admin)/forbiden": {
-      id: "/(admin)/forbiden";
-      path: "/forbiden";
-      fullPath: "/forbiden";
-      preLoaderRoute: typeof adminForbidenRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/(admin)/admin": {
-      id: "/(admin)/admin";
-      path: "/admin";
-      fullPath: "/admin";
-      preLoaderRoute: typeof adminAdminRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/(store)/_layout/": {
-      id: "/(store)/_layout/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof storeLayoutIndexRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(admin)/admin/": {
-      id: "/(admin)/admin/";
-      path: "/";
-      fullPath: "/admin/";
-      preLoaderRoute: typeof adminAdminIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/api/auth/$": {
-      id: "/api/auth/$";
-      path: "/api/auth/$";
-      fullPath: "/api/auth/$";
-      preLoaderRoute: typeof ApiAuthSplatRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/(vendor)/shop/$slug": {
-      id: "/(vendor)/shop/$slug";
-      path: "/shop/$slug";
-      fullPath: "/shop/$slug";
-      preLoaderRoute: typeof vendorShopSlugRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/(vendor)/_layout/my-shop": {
-      id: "/(vendor)/_layout/my-shop";
-      path: "/my-shop";
-      fullPath: "/my-shop";
-      preLoaderRoute: typeof vendorLayoutMyShopRouteImport;
-      parentRoute: typeof vendorLayoutRoute;
-    };
-    "/(vendor)/_layout/dashboard": {
-      id: "/(vendor)/_layout/dashboard";
-      path: "/dashboard";
-      fullPath: "/dashboard";
-      preLoaderRoute: typeof vendorLayoutDashboardRouteImport;
-      parentRoute: typeof vendorLayoutRoute;
-    };
-    "/(store)/_layout/wishlist": {
-      id: "/(store)/_layout/wishlist";
-      path: "/wishlist";
-      fullPath: "/wishlist";
-      preLoaderRoute: typeof storeLayoutWishlistRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/profile": {
-      id: "/(store)/_layout/profile";
-      path: "/profile";
-      fullPath: "/profile";
-      preLoaderRoute: typeof storeLayoutProfileRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/orders": {
-      id: "/(store)/_layout/orders";
-      path: "/orders";
-      fullPath: "/orders";
-      preLoaderRoute: typeof storeLayoutOrdersRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/order-tracking": {
-      id: "/(store)/_layout/order-tracking";
-      path: "/order-tracking";
-      fullPath: "/order-tracking";
-      preLoaderRoute: typeof storeLayoutOrderTrackingRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/order-confirmation": {
-      id: "/(store)/_layout/order-confirmation";
-      path: "/order-confirmation";
-      fullPath: "/order-confirmation";
-      preLoaderRoute: typeof storeLayoutOrderConfirmationRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/checkout": {
-      id: "/(store)/_layout/checkout";
-      path: "/checkout";
-      fullPath: "/checkout";
-      preLoaderRoute: typeof storeLayoutCheckoutRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/cart": {
-      id: "/(store)/_layout/cart";
-      path: "/cart";
-      fullPath: "/cart";
-      preLoaderRoute: typeof storeLayoutCartRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(admin)/admin/my-store": {
-      id: "/(admin)/admin/my-store";
-      path: "/my-store";
-      fullPath: "/admin/my-store";
-      preLoaderRoute: typeof adminAdminMyStoreRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(vendor)/shop/$slug/": {
-      id: "/(vendor)/shop/$slug/";
-      path: "/";
-      fullPath: "/shop/$slug/";
-      preLoaderRoute: typeof vendorShopSlugIndexRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(store)/_layout/store/": {
-      id: "/(store)/_layout/store/";
-      path: "/store";
-      fullPath: "/store";
-      preLoaderRoute: typeof storeLayoutStoreIndexRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/product/": {
-      id: "/(store)/_layout/product/";
-      path: "/product";
-      fullPath: "/product";
-      preLoaderRoute: typeof storeLayoutProductIndexRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/category/": {
-      id: "/(store)/_layout/category/";
-      path: "/category";
-      fullPath: "/category";
-      preLoaderRoute: typeof storeLayoutCategoryIndexRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(admin)/admin/users/": {
-      id: "/(admin)/admin/users/";
-      path: "/users";
-      fullPath: "/admin/users";
-      preLoaderRoute: typeof adminAdminUsersIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/transactions/": {
-      id: "/(admin)/admin/transactions/";
-      path: "/transactions";
-      fullPath: "/admin/transactions";
-      preLoaderRoute: typeof adminAdminTransactionsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/tenants/": {
-      id: "/(admin)/admin/tenants/";
-      path: "/tenants";
-      fullPath: "/admin/tenants";
-      preLoaderRoute: typeof adminAdminTenantsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/taxes/": {
-      id: "/(admin)/admin/taxes/";
-      path: "/taxes";
-      fullPath: "/admin/taxes";
-      preLoaderRoute: typeof adminAdminTaxesIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/tags/": {
-      id: "/(admin)/admin/tags/";
-      path: "/tags";
-      fullPath: "/admin/tags";
-      preLoaderRoute: typeof adminAdminTagsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/staff/": {
-      id: "/(admin)/admin/staff/";
-      path: "/staff";
-      fullPath: "/admin/staff";
-      preLoaderRoute: typeof adminAdminStaffIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/settings/": {
-      id: "/(admin)/admin/settings/";
-      path: "/settings";
-      fullPath: "/admin/settings";
-      preLoaderRoute: typeof adminAdminSettingsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/reviews/": {
-      id: "/(admin)/admin/reviews/";
-      path: "/reviews";
-      fullPath: "/admin/reviews";
-      preLoaderRoute: typeof adminAdminReviewsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/products/": {
-      id: "/(admin)/admin/products/";
-      path: "/products";
-      fullPath: "/admin/products";
-      preLoaderRoute: typeof adminAdminProductsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/orders/": {
-      id: "/(admin)/admin/orders/";
-      path: "/orders";
-      fullPath: "/admin/orders";
-      preLoaderRoute: typeof adminAdminOrdersIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/coupons/": {
-      id: "/(admin)/admin/coupons/";
-      path: "/coupons";
-      fullPath: "/admin/coupons";
-      preLoaderRoute: typeof adminAdminCouponsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/categories/": {
-      id: "/(admin)/admin/categories/";
-      path: "/categories";
-      fullPath: "/admin/categories";
-      preLoaderRoute: typeof adminAdminCategoriesIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/brands/": {
-      id: "/(admin)/admin/brands/";
-      path: "/brands";
-      fullPath: "/admin/brands";
-      preLoaderRoute: typeof adminAdminBrandsIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(admin)/admin/attributes/": {
-      id: "/(admin)/admin/attributes/";
-      path: "/attributes";
-      fullPath: "/admin/attributes";
-      preLoaderRoute: typeof adminAdminAttributesIndexRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(vendor)/shop/$slug/transactions": {
-      id: "/(vendor)/shop/$slug/transactions";
-      path: "/transactions";
-      fullPath: "/shop/$slug/transactions";
-      preLoaderRoute: typeof vendorShopSlugTransactionsRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/taxes": {
-      id: "/(vendor)/shop/$slug/taxes";
-      path: "/taxes";
-      fullPath: "/shop/$slug/taxes";
-      preLoaderRoute: typeof vendorShopSlugTaxesRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/tags": {
-      id: "/(vendor)/shop/$slug/tags";
-      path: "/tags";
-      fullPath: "/shop/$slug/tags";
-      preLoaderRoute: typeof vendorShopSlugTagsRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/staff": {
-      id: "/(vendor)/shop/$slug/staff";
-      path: "/staff";
-      fullPath: "/shop/$slug/staff";
-      preLoaderRoute: typeof vendorShopSlugStaffRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/shipping": {
-      id: "/(vendor)/shop/$slug/shipping";
-      path: "/shipping";
-      fullPath: "/shop/$slug/shipping";
-      preLoaderRoute: typeof vendorShopSlugShippingRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/reviews": {
-      id: "/(vendor)/shop/$slug/reviews";
-      path: "/reviews";
-      fullPath: "/shop/$slug/reviews";
-      preLoaderRoute: typeof vendorShopSlugReviewsRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/products": {
-      id: "/(vendor)/shop/$slug/products";
-      path: "/products";
-      fullPath: "/shop/$slug/products";
-      preLoaderRoute: typeof vendorShopSlugProductsRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/coupons": {
-      id: "/(vendor)/shop/$slug/coupons";
-      path: "/coupons";
-      fullPath: "/shop/$slug/coupons";
-      preLoaderRoute: typeof vendorShopSlugCouponsRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/categories": {
-      id: "/(vendor)/shop/$slug/categories";
-      path: "/categories";
-      fullPath: "/shop/$slug/categories";
-      preLoaderRoute: typeof vendorShopSlugCategoriesRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/brands": {
-      id: "/(vendor)/shop/$slug/brands";
-      path: "/brands";
-      fullPath: "/shop/$slug/brands";
-      preLoaderRoute: typeof vendorShopSlugBrandsRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/attributes": {
-      id: "/(vendor)/shop/$slug/attributes";
-      path: "/attributes";
-      fullPath: "/shop/$slug/attributes";
-      preLoaderRoute: typeof vendorShopSlugAttributesRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(store)/_layout/store/$slug": {
-      id: "/(store)/_layout/store/$slug";
-      path: "/store/$slug";
-      fullPath: "/store/$slug";
-      preLoaderRoute: typeof storeLayoutStoreSlugRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/product/$productId": {
-      id: "/(store)/_layout/product/$productId";
-      path: "/product/$productId";
-      fullPath: "/product/$productId";
-      preLoaderRoute: typeof storeLayoutProductProductIdRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(store)/_layout/category/$slug": {
-      id: "/(store)/_layout/category/$slug";
-      path: "/category/$slug";
-      fullPath: "/category/$slug";
-      preLoaderRoute: typeof storeLayoutCategorySlugRouteImport;
-      parentRoute: typeof storeLayoutRoute;
-    };
-    "/(admin)/admin/tenants/$tenantId": {
-      id: "/(admin)/admin/tenants/$tenantId";
-      path: "/tenants/$tenantId";
-      fullPath: "/admin/tenants/$tenantId";
-      preLoaderRoute: typeof adminAdminTenantsTenantIdRouteImport;
-      parentRoute: typeof adminAdminRoute;
-    };
-    "/(vendor)/shop/$slug/orders/": {
-      id: "/(vendor)/shop/$slug/orders/";
-      path: "/orders";
-      fullPath: "/shop/$slug/orders";
-      preLoaderRoute: typeof vendorShopSlugOrdersIndexRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
-    "/(vendor)/shop/$slug/orders/$orderId": {
-      id: "/(vendor)/shop/$slug/orders/$orderId";
-      path: "/orders/$orderId";
-      fullPath: "/shop/$slug/orders/$orderId";
-      preLoaderRoute: typeof vendorShopSlugOrdersOrderIdRouteImport;
-      parentRoute: typeof vendorShopSlugRoute;
-    };
+    '/auth/vendor-sign-up': {
+      id: '/auth/vendor-sign-up'
+      path: '/auth/vendor-sign-up'
+      fullPath: '/auth/vendor-sign-up'
+      preLoaderRoute: typeof AuthVendorSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/sign-up': {
+      id: '/auth/sign-up'
+      path: '/auth/sign-up'
+      fullPath: '/auth/sign-up'
+      preLoaderRoute: typeof AuthSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/sign-in': {
+      id: '/auth/sign-in'
+      path: '/auth/sign-in'
+      fullPath: '/auth/sign-in'
+      preLoaderRoute: typeof AuthSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(vendor)/_layout': {
+      id: '/(vendor)/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof vendorLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(store)/_layout': {
+      id: '/(store)/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof storeLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(admin)/forbiden': {
+      id: '/(admin)/forbiden'
+      path: '/forbiden'
+      fullPath: '/forbiden'
+      preLoaderRoute: typeof adminForbidenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(admin)/admin': {
+      id: '/(admin)/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof adminAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(store)/_layout/': {
+      id: '/(store)/_layout/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof storeLayoutIndexRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(admin)/admin/': {
+      id: '/(admin)/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof adminAdminIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(vendor)/shop/$slug': {
+      id: '/(vendor)/shop/$slug'
+      path: '/shop/$slug'
+      fullPath: '/shop/$slug'
+      preLoaderRoute: typeof vendorShopSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(vendor)/_layout/my-shop': {
+      id: '/(vendor)/_layout/my-shop'
+      path: '/my-shop'
+      fullPath: '/my-shop'
+      preLoaderRoute: typeof vendorLayoutMyShopRouteImport
+      parentRoute: typeof vendorLayoutRoute
+    }
+    '/(vendor)/_layout/dashboard': {
+      id: '/(vendor)/_layout/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof vendorLayoutDashboardRouteImport
+      parentRoute: typeof vendorLayoutRoute
+    }
+    '/(store)/_layout/wishlist': {
+      id: '/(store)/_layout/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof storeLayoutWishlistRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/profile': {
+      id: '/(store)/_layout/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof storeLayoutProfileRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/orders': {
+      id: '/(store)/_layout/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof storeLayoutOrdersRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/order-tracking': {
+      id: '/(store)/_layout/order-tracking'
+      path: '/order-tracking'
+      fullPath: '/order-tracking'
+      preLoaderRoute: typeof storeLayoutOrderTrackingRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/order-confirmation': {
+      id: '/(store)/_layout/order-confirmation'
+      path: '/order-confirmation'
+      fullPath: '/order-confirmation'
+      preLoaderRoute: typeof storeLayoutOrderConfirmationRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/checkout': {
+      id: '/(store)/_layout/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof storeLayoutCheckoutRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/cart': {
+      id: '/(store)/_layout/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof storeLayoutCartRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(admin)/admin/my-store': {
+      id: '/(admin)/admin/my-store'
+      path: '/my-store'
+      fullPath: '/admin/my-store'
+      preLoaderRoute: typeof adminAdminMyStoreRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(vendor)/shop/$slug/': {
+      id: '/(vendor)/shop/$slug/'
+      path: '/'
+      fullPath: '/shop/$slug/'
+      preLoaderRoute: typeof vendorShopSlugIndexRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(store)/_layout/store/': {
+      id: '/(store)/_layout/store/'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof storeLayoutStoreIndexRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/product/': {
+      id: '/(store)/_layout/product/'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof storeLayoutProductIndexRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/category/': {
+      id: '/(store)/_layout/category/'
+      path: '/category'
+      fullPath: '/category'
+      preLoaderRoute: typeof storeLayoutCategoryIndexRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(admin)/admin/users/': {
+      id: '/(admin)/admin/users/'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof adminAdminUsersIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/transactions/': {
+      id: '/(admin)/admin/transactions/'
+      path: '/transactions'
+      fullPath: '/admin/transactions'
+      preLoaderRoute: typeof adminAdminTransactionsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/tenants/': {
+      id: '/(admin)/admin/tenants/'
+      path: '/tenants'
+      fullPath: '/admin/tenants'
+      preLoaderRoute: typeof adminAdminTenantsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/taxes/': {
+      id: '/(admin)/admin/taxes/'
+      path: '/taxes'
+      fullPath: '/admin/taxes'
+      preLoaderRoute: typeof adminAdminTaxesIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/tags/': {
+      id: '/(admin)/admin/tags/'
+      path: '/tags'
+      fullPath: '/admin/tags'
+      preLoaderRoute: typeof adminAdminTagsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/staff/': {
+      id: '/(admin)/admin/staff/'
+      path: '/staff'
+      fullPath: '/admin/staff'
+      preLoaderRoute: typeof adminAdminStaffIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/settings/': {
+      id: '/(admin)/admin/settings/'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof adminAdminSettingsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/reviews/': {
+      id: '/(admin)/admin/reviews/'
+      path: '/reviews'
+      fullPath: '/admin/reviews'
+      preLoaderRoute: typeof adminAdminReviewsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/products/': {
+      id: '/(admin)/admin/products/'
+      path: '/products'
+      fullPath: '/admin/products'
+      preLoaderRoute: typeof adminAdminProductsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/orders/': {
+      id: '/(admin)/admin/orders/'
+      path: '/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof adminAdminOrdersIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/coupons/': {
+      id: '/(admin)/admin/coupons/'
+      path: '/coupons'
+      fullPath: '/admin/coupons'
+      preLoaderRoute: typeof adminAdminCouponsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/categories/': {
+      id: '/(admin)/admin/categories/'
+      path: '/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof adminAdminCategoriesIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/brands/': {
+      id: '/(admin)/admin/brands/'
+      path: '/brands'
+      fullPath: '/admin/brands'
+      preLoaderRoute: typeof adminAdminBrandsIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(admin)/admin/attributes/': {
+      id: '/(admin)/admin/attributes/'
+      path: '/attributes'
+      fullPath: '/admin/attributes'
+      preLoaderRoute: typeof adminAdminAttributesIndexRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(vendor)/shop/$slug/transactions': {
+      id: '/(vendor)/shop/$slug/transactions'
+      path: '/transactions'
+      fullPath: '/shop/$slug/transactions'
+      preLoaderRoute: typeof vendorShopSlugTransactionsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/taxes': {
+      id: '/(vendor)/shop/$slug/taxes'
+      path: '/taxes'
+      fullPath: '/shop/$slug/taxes'
+      preLoaderRoute: typeof vendorShopSlugTaxesRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/tags': {
+      id: '/(vendor)/shop/$slug/tags'
+      path: '/tags'
+      fullPath: '/shop/$slug/tags'
+      preLoaderRoute: typeof vendorShopSlugTagsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/staff': {
+      id: '/(vendor)/shop/$slug/staff'
+      path: '/staff'
+      fullPath: '/shop/$slug/staff'
+      preLoaderRoute: typeof vendorShopSlugStaffRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/shipping': {
+      id: '/(vendor)/shop/$slug/shipping'
+      path: '/shipping'
+      fullPath: '/shop/$slug/shipping'
+      preLoaderRoute: typeof vendorShopSlugShippingRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/reviews': {
+      id: '/(vendor)/shop/$slug/reviews'
+      path: '/reviews'
+      fullPath: '/shop/$slug/reviews'
+      preLoaderRoute: typeof vendorShopSlugReviewsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/products': {
+      id: '/(vendor)/shop/$slug/products'
+      path: '/products'
+      fullPath: '/shop/$slug/products'
+      preLoaderRoute: typeof vendorShopSlugProductsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/coupons': {
+      id: '/(vendor)/shop/$slug/coupons'
+      path: '/coupons'
+      fullPath: '/shop/$slug/coupons'
+      preLoaderRoute: typeof vendorShopSlugCouponsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/categories': {
+      id: '/(vendor)/shop/$slug/categories'
+      path: '/categories'
+      fullPath: '/shop/$slug/categories'
+      preLoaderRoute: typeof vendorShopSlugCategoriesRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/brands': {
+      id: '/(vendor)/shop/$slug/brands'
+      path: '/brands'
+      fullPath: '/shop/$slug/brands'
+      preLoaderRoute: typeof vendorShopSlugBrandsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/attributes': {
+      id: '/(vendor)/shop/$slug/attributes'
+      path: '/attributes'
+      fullPath: '/shop/$slug/attributes'
+      preLoaderRoute: typeof vendorShopSlugAttributesRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(store)/_layout/store/$slug': {
+      id: '/(store)/_layout/store/$slug'
+      path: '/store/$slug'
+      fullPath: '/store/$slug'
+      preLoaderRoute: typeof storeLayoutStoreSlugRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/product/$productId': {
+      id: '/(store)/_layout/product/$productId'
+      path: '/product/$productId'
+      fullPath: '/product/$productId'
+      preLoaderRoute: typeof storeLayoutProductProductIdRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/category/$slug': {
+      id: '/(store)/_layout/category/$slug'
+      path: '/category/$slug'
+      fullPath: '/category/$slug'
+      preLoaderRoute: typeof storeLayoutCategorySlugRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(admin)/admin/tenants/$tenantId': {
+      id: '/(admin)/admin/tenants/$tenantId'
+      path: '/tenants/$tenantId'
+      fullPath: '/admin/tenants/$tenantId'
+      preLoaderRoute: typeof adminAdminTenantsTenantIdRouteImport
+      parentRoute: typeof adminAdminRoute
+    }
+    '/(vendor)/shop/$slug/orders/': {
+      id: '/(vendor)/shop/$slug/orders/'
+      path: '/orders'
+      fullPath: '/shop/$slug/orders'
+      preLoaderRoute: typeof vendorShopSlugOrdersIndexRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
+    '/(vendor)/shop/$slug/orders/$orderId': {
+      id: '/(vendor)/shop/$slug/orders/$orderId'
+      path: '/orders/$orderId'
+      fullPath: '/shop/$slug/orders/$orderId'
+      preLoaderRoute: typeof vendorShopSlugOrdersOrderIdRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
   }
 }
 
 interface adminAdminRouteChildren {
-  adminAdminMyStoreRoute: typeof adminAdminMyStoreRoute;
-  adminAdminIndexRoute: typeof adminAdminIndexRoute;
-  adminAdminTenantsTenantIdRoute: typeof adminAdminTenantsTenantIdRoute;
-  adminAdminAttributesIndexRoute: typeof adminAdminAttributesIndexRoute;
-  adminAdminBrandsIndexRoute: typeof adminAdminBrandsIndexRoute;
-  adminAdminCategoriesIndexRoute: typeof adminAdminCategoriesIndexRoute;
-  adminAdminCouponsIndexRoute: typeof adminAdminCouponsIndexRoute;
-  adminAdminOrdersIndexRoute: typeof adminAdminOrdersIndexRoute;
-  adminAdminProductsIndexRoute: typeof adminAdminProductsIndexRoute;
-  adminAdminReviewsIndexRoute: typeof adminAdminReviewsIndexRoute;
-  adminAdminSettingsIndexRoute: typeof adminAdminSettingsIndexRoute;
-  adminAdminStaffIndexRoute: typeof adminAdminStaffIndexRoute;
-  adminAdminTagsIndexRoute: typeof adminAdminTagsIndexRoute;
-  adminAdminTaxesIndexRoute: typeof adminAdminTaxesIndexRoute;
-  adminAdminTenantsIndexRoute: typeof adminAdminTenantsIndexRoute;
-  adminAdminTransactionsIndexRoute: typeof adminAdminTransactionsIndexRoute;
-  adminAdminUsersIndexRoute: typeof adminAdminUsersIndexRoute;
+  adminAdminMyStoreRoute: typeof adminAdminMyStoreRoute
+  adminAdminIndexRoute: typeof adminAdminIndexRoute
+  adminAdminTenantsTenantIdRoute: typeof adminAdminTenantsTenantIdRoute
+  adminAdminAttributesIndexRoute: typeof adminAdminAttributesIndexRoute
+  adminAdminBrandsIndexRoute: typeof adminAdminBrandsIndexRoute
+  adminAdminCategoriesIndexRoute: typeof adminAdminCategoriesIndexRoute
+  adminAdminCouponsIndexRoute: typeof adminAdminCouponsIndexRoute
+  adminAdminOrdersIndexRoute: typeof adminAdminOrdersIndexRoute
+  adminAdminProductsIndexRoute: typeof adminAdminProductsIndexRoute
+  adminAdminReviewsIndexRoute: typeof adminAdminReviewsIndexRoute
+  adminAdminSettingsIndexRoute: typeof adminAdminSettingsIndexRoute
+  adminAdminStaffIndexRoute: typeof adminAdminStaffIndexRoute
+  adminAdminTagsIndexRoute: typeof adminAdminTagsIndexRoute
+  adminAdminTaxesIndexRoute: typeof adminAdminTaxesIndexRoute
+  adminAdminTenantsIndexRoute: typeof adminAdminTenantsIndexRoute
+  adminAdminTransactionsIndexRoute: typeof adminAdminTransactionsIndexRoute
+  adminAdminUsersIndexRoute: typeof adminAdminUsersIndexRoute
 }
 
 const adminAdminRouteChildren: adminAdminRouteChildren = {
@@ -1145,27 +1145,27 @@ const adminAdminRouteChildren: adminAdminRouteChildren = {
   adminAdminTenantsIndexRoute: adminAdminTenantsIndexRoute,
   adminAdminTransactionsIndexRoute: adminAdminTransactionsIndexRoute,
   adminAdminUsersIndexRoute: adminAdminUsersIndexRoute,
-};
+}
 
 const adminAdminRouteWithChildren = adminAdminRoute._addFileChildren(
-  adminAdminRouteChildren
-);
+  adminAdminRouteChildren,
+)
 
 interface storeLayoutRouteChildren {
-  storeLayoutCartRoute: typeof storeLayoutCartRoute;
-  storeLayoutCheckoutRoute: typeof storeLayoutCheckoutRoute;
-  storeLayoutOrderConfirmationRoute: typeof storeLayoutOrderConfirmationRoute;
-  storeLayoutOrderTrackingRoute: typeof storeLayoutOrderTrackingRoute;
-  storeLayoutOrdersRoute: typeof storeLayoutOrdersRoute;
-  storeLayoutProfileRoute: typeof storeLayoutProfileRoute;
-  storeLayoutWishlistRoute: typeof storeLayoutWishlistRoute;
-  storeLayoutIndexRoute: typeof storeLayoutIndexRoute;
-  storeLayoutCategorySlugRoute: typeof storeLayoutCategorySlugRoute;
-  storeLayoutProductProductIdRoute: typeof storeLayoutProductProductIdRoute;
-  storeLayoutStoreSlugRoute: typeof storeLayoutStoreSlugRoute;
-  storeLayoutCategoryIndexRoute: typeof storeLayoutCategoryIndexRoute;
-  storeLayoutProductIndexRoute: typeof storeLayoutProductIndexRoute;
-  storeLayoutStoreIndexRoute: typeof storeLayoutStoreIndexRoute;
+  storeLayoutCartRoute: typeof storeLayoutCartRoute
+  storeLayoutCheckoutRoute: typeof storeLayoutCheckoutRoute
+  storeLayoutOrderConfirmationRoute: typeof storeLayoutOrderConfirmationRoute
+  storeLayoutOrderTrackingRoute: typeof storeLayoutOrderTrackingRoute
+  storeLayoutOrdersRoute: typeof storeLayoutOrdersRoute
+  storeLayoutProfileRoute: typeof storeLayoutProfileRoute
+  storeLayoutWishlistRoute: typeof storeLayoutWishlistRoute
+  storeLayoutIndexRoute: typeof storeLayoutIndexRoute
+  storeLayoutCategorySlugRoute: typeof storeLayoutCategorySlugRoute
+  storeLayoutProductProductIdRoute: typeof storeLayoutProductProductIdRoute
+  storeLayoutStoreSlugRoute: typeof storeLayoutStoreSlugRoute
+  storeLayoutCategoryIndexRoute: typeof storeLayoutCategoryIndexRoute
+  storeLayoutProductIndexRoute: typeof storeLayoutProductIndexRoute
+  storeLayoutStoreIndexRoute: typeof storeLayoutStoreIndexRoute
 }
 
 const storeLayoutRouteChildren: storeLayoutRouteChildren = {
@@ -1183,41 +1183,41 @@ const storeLayoutRouteChildren: storeLayoutRouteChildren = {
   storeLayoutCategoryIndexRoute: storeLayoutCategoryIndexRoute,
   storeLayoutProductIndexRoute: storeLayoutProductIndexRoute,
   storeLayoutStoreIndexRoute: storeLayoutStoreIndexRoute,
-};
+}
 
 const storeLayoutRouteWithChildren = storeLayoutRoute._addFileChildren(
-  storeLayoutRouteChildren
-);
+  storeLayoutRouteChildren,
+)
 
 interface vendorLayoutRouteChildren {
-  vendorLayoutDashboardRoute: typeof vendorLayoutDashboardRoute;
-  vendorLayoutMyShopRoute: typeof vendorLayoutMyShopRoute;
+  vendorLayoutDashboardRoute: typeof vendorLayoutDashboardRoute
+  vendorLayoutMyShopRoute: typeof vendorLayoutMyShopRoute
 }
 
 const vendorLayoutRouteChildren: vendorLayoutRouteChildren = {
   vendorLayoutDashboardRoute: vendorLayoutDashboardRoute,
   vendorLayoutMyShopRoute: vendorLayoutMyShopRoute,
-};
+}
 
 const vendorLayoutRouteWithChildren = vendorLayoutRoute._addFileChildren(
-  vendorLayoutRouteChildren
-);
+  vendorLayoutRouteChildren,
+)
 
 interface vendorShopSlugRouteChildren {
-  vendorShopSlugAttributesRoute: typeof vendorShopSlugAttributesRoute;
-  vendorShopSlugBrandsRoute: typeof vendorShopSlugBrandsRoute;
-  vendorShopSlugCategoriesRoute: typeof vendorShopSlugCategoriesRoute;
-  vendorShopSlugCouponsRoute: typeof vendorShopSlugCouponsRoute;
-  vendorShopSlugProductsRoute: typeof vendorShopSlugProductsRoute;
-  vendorShopSlugReviewsRoute: typeof vendorShopSlugReviewsRoute;
-  vendorShopSlugShippingRoute: typeof vendorShopSlugShippingRoute;
-  vendorShopSlugStaffRoute: typeof vendorShopSlugStaffRoute;
-  vendorShopSlugTagsRoute: typeof vendorShopSlugTagsRoute;
-  vendorShopSlugTaxesRoute: typeof vendorShopSlugTaxesRoute;
-  vendorShopSlugTransactionsRoute: typeof vendorShopSlugTransactionsRoute;
-  vendorShopSlugIndexRoute: typeof vendorShopSlugIndexRoute;
-  vendorShopSlugOrdersOrderIdRoute: typeof vendorShopSlugOrdersOrderIdRoute;
-  vendorShopSlugOrdersIndexRoute: typeof vendorShopSlugOrdersIndexRoute;
+  vendorShopSlugAttributesRoute: typeof vendorShopSlugAttributesRoute
+  vendorShopSlugBrandsRoute: typeof vendorShopSlugBrandsRoute
+  vendorShopSlugCategoriesRoute: typeof vendorShopSlugCategoriesRoute
+  vendorShopSlugCouponsRoute: typeof vendorShopSlugCouponsRoute
+  vendorShopSlugProductsRoute: typeof vendorShopSlugProductsRoute
+  vendorShopSlugReviewsRoute: typeof vendorShopSlugReviewsRoute
+  vendorShopSlugShippingRoute: typeof vendorShopSlugShippingRoute
+  vendorShopSlugStaffRoute: typeof vendorShopSlugStaffRoute
+  vendorShopSlugTagsRoute: typeof vendorShopSlugTagsRoute
+  vendorShopSlugTaxesRoute: typeof vendorShopSlugTaxesRoute
+  vendorShopSlugTransactionsRoute: typeof vendorShopSlugTransactionsRoute
+  vendorShopSlugIndexRoute: typeof vendorShopSlugIndexRoute
+  vendorShopSlugOrdersOrderIdRoute: typeof vendorShopSlugOrdersOrderIdRoute
+  vendorShopSlugOrdersIndexRoute: typeof vendorShopSlugOrdersIndexRoute
 }
 
 const vendorShopSlugRouteChildren: vendorShopSlugRouteChildren = {
@@ -1235,11 +1235,11 @@ const vendorShopSlugRouteChildren: vendorShopSlugRouteChildren = {
   vendorShopSlugIndexRoute: vendorShopSlugIndexRoute,
   vendorShopSlugOrdersOrderIdRoute: vendorShopSlugOrdersOrderIdRoute,
   vendorShopSlugOrdersIndexRoute: vendorShopSlugOrdersIndexRoute,
-};
+}
 
 const vendorShopSlugRouteWithChildren = vendorShopSlugRoute._addFileChildren(
-  vendorShopSlugRouteChildren
-);
+  vendorShopSlugRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   adminAdminRoute: adminAdminRouteWithChildren,
@@ -1251,16 +1251,16 @@ const rootRouteChildren: RootRouteChildren = {
   AuthVendorSignUpRoute: AuthVendorSignUpRoute,
   vendorShopSlugRoute: vendorShopSlugRouteWithChildren,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
-import type { getRouter } from "./router.tsx";
-import type { createStart } from "@tanstack/react-start";
-declare module "@tanstack/react-start" {
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
   interface Register {
-    ssr: true;
-    router: Awaited<ReturnType<typeof getRouter>>;
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
   }
 }

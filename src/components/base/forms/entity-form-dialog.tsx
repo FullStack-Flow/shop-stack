@@ -157,20 +157,11 @@ export function EntityFormDialog<T extends Record<string, any>>({
       );
     }
 
-    const handleChange = field.autoGenerateSlug
-      ? (e: React.ChangeEvent<HTMLInputElement>) => {
-          const value = e.target.value;
-          if (typeof value === "string") {
-            form.setFieldValue(
-              "slug",
-              value.toLowerCase().replace(/\s+/g, "-")
-            );
-          }
-        }
-      : undefined;
+    const fieldSchema = validationSchema?.shape[field.name];
 
     return (
       <Field
+        key={field.name}
         form={form}
         name={field.name}
         label={field.label}
@@ -179,13 +170,24 @@ export function EntityFormDialog<T extends Record<string, any>>({
         required={field.required}
         as={field.type === "textarea" ? "textarea" : undefined}
         onBlur={
-          validationSchema && field.name in validationSchema.shape
+          fieldSchema
             ? field.required
-              ? validateField(validationSchema.shape[field.name])
-              : validateOptionalField(validationSchema.shape[field.name])
+              ? validateField(fieldSchema)
+              : validateOptionalField(fieldSchema)
             : undefined
         }
-        onChange={handleChange}
+        onChange={
+          field.autoGenerateSlug
+            ? ({ value }: { value: string }) => {
+                if (typeof value === "string") {
+                  form.setFieldValue(
+                    "slug",
+                    value.toLowerCase().replace(/\s+/g, "-")
+                  );
+                }
+              }
+            : undefined
+        }
       />
     );
   };
