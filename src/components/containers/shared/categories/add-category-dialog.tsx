@@ -1,6 +1,5 @@
 import { useForm } from "@tanstack/react-form";
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
-import "@uploadcare/react-uploader/core.css";
 import { Form } from "@/components/base/forms/form";
 import { Field } from "@/components/base/forms/form-field";
 import { Button } from "@/components/ui/button";

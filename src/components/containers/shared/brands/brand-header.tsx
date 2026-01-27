@@ -1,16 +1,10 @@
-import { useState } from 'react';
-import PageHeader from '@/components/base/common/page-header';
-import { AddBrandDialog } from './add-brand-dialog';
+import { Plus } from "lucide-react";
+import PageHeader from "@/components/base/common/page-header";
+import { Button } from "@/components/ui/button";
 
 export interface BrandHeaderProps {
-  onAddBrand?: (data: {
-    name: string;
-    slug: string;
-    website?: string;
-    description?: string;
-    logo?: string;
-  }) => void;
-  role?: 'admin' | 'vendor';
+  onAddBrand?: () => void;
+  role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -18,41 +12,27 @@ export interface BrandHeaderProps {
 
 export default function BrandHeader({
   onAddBrand,
-  role = 'vendor',
+  role = "vendor",
   showAddButton = true,
   children,
   className,
 }: BrandHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddBrand = (data: {
-    name: string;
-    slug: string;
-    website?: string;
-    description?: string;
-    logo?: string;
-  }) => {
-    onAddBrand?.(data);
-  };
-
   return (
     <PageHeader
       title="Brands"
       description={
-        role === 'admin'
-          ? 'Manage product brands across the platform'
-          : 'Manage the brands associated with your shop'
+        role === "admin"
+          ? "Manage product Brands across the platform"
+          : "Manage your product Brands and organization"
       }
       className={className}
     >
       {children}
-      {showAddButton && (
-        <AddBrandDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddBrand}
-          role={role}
-        />
+      {showAddButton && onAddBrand && (
+        <Button onClick={onAddBrand}>
+          <Plus className="mr-2 h-4 w-4" />
+          Add Brand
+        </Button>
       )}
     </PageHeader>
   );
