@@ -5,6 +5,7 @@ import type {
 import { getAttributes } from "@/lib/functions/vendor/attribute";
 import { getBrands } from "@/lib/functions/vendor/brands";
 import { getCategories } from "@/lib/functions/vendor/categories";
+import { getTags } from "@/lib/functions/vendor/tag";
 import {
   booleanFilterTransform,
   createServerFetcher,
@@ -12,6 +13,7 @@ import {
 import type { AttributeItem } from "@/types/attributes";
 import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
+import type { TagItem } from "@/types/tags";
 
 export const VENDOR_STATUS_OPTIONS = [
   { label: "Active", value: "true" },
@@ -62,6 +64,25 @@ export function createVendorAttributesFetcher(
     },
     sortFieldMap: { name: "name", createdAt: "createdAt" },
     filterFieldMap: { isActive: "isActive", type: "type" },
+    defaultQuery: { sortBy: "sortOrder", sortDirection: "asc" },
+    transformFilters: booleanFilterTransform,
+  });
+}
+
+export function createVendorTagsFetcher(
+  shopId: string,
+): (params: DataTableFetchParams) => Promise<DataTableFetchResult<TagItem>> {
+  return createServerFetcher<TagItem, any>({
+    fetchFn: async (query) => {
+      const response = await getTags({ data: { ...query, shopId } });
+      return { data: response.data ?? [], total: response.total ?? 0 };
+    },
+    sortFieldMap: {
+      name: "name",
+      createdAt: "createdAt",
+      productCount: "productCount",
+    },
+    filterFieldMap: { isActive: "isActive" },
     defaultQuery: { sortBy: "sortOrder", sortDirection: "asc" },
     transformFilters: booleanFilterTransform,
   });

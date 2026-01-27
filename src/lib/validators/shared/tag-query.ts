@@ -1,7 +1,7 @@
 /**
- * Shared Brand Query Validators
+ * Shared Tag Query Validators
  *
- * Composable Zod schemas for brand queries.
+ * Composable Zod schemas for tag queries.
  * Uses base-query for common schemas to ensure DRY compliance.
  */
 
@@ -32,7 +32,7 @@ export type { SortDirection } from "./base-query";
 // Entity-Specific Enums
 // ============================================================================
 
-export const brandSortByEnum = zod.enum([
+export const tagSortByEnum = zod.enum([
   "name",
   "createdAt",
   "sortOrder",
@@ -43,7 +43,7 @@ export const brandSortByEnum = zod.enum([
 // Entity-Specific Filter Fields
 // ============================================================================
 
-export const brandFilterFields = {
+export const tagFilterFields = {
   ...isActiveField,
 };
 
@@ -52,7 +52,7 @@ export const brandFilterFields = {
 // ============================================================================
 
 const sortFields = {
-  sortBy: brandSortByEnum.optional().default("sortOrder"),
+  sortBy: tagSortByEnum.optional().default("sortOrder"),
   sortDirection: sortDirectionEnum.optional().default("asc"),
 };
 
@@ -60,9 +60,9 @@ const sortFields = {
 // Get by ID/Slug Schemas (using factory functions)
 // ============================================================================
 
-export const getBrandByIdSchema = createGetByIdSchema("Brand");
+export const getTagByIdSchema = createGetByIdSchema("Tag");
 
-export const getBrandBySlugSchema = createGetBySlugSchema("Brand");
+export const getTagBySlugSchema = createGetBySlugSchema("Tag");
 
 // ============================================================================
 // Composed Query Schemas
@@ -71,32 +71,30 @@ export const getBrandBySlugSchema = createGetBySlugSchema("Brand");
 /**
  * Store Front Query Schema
  * - Public access (no auth)
- * - Limited filters (customer-facing only)
- * - Only active brands
+ * - Only active tags
  */
-export const storeBrandsQuerySchema = zod.object({
+export const storeTagsQuerySchema = zod.object({
   ...paginationFields,
   limit: paginationFields.limit.default(STORE_DEFAULT_LIMIT),
   ...sortFields,
   ...searchFields,
-  ...brandFilterFields,
-  ...storeIsActiveField,
   ...shopSlugFields,
   ...optionalShopIdField,
+  ...storeIsActiveField,
 });
 
 /**
  * Admin Query Schema
  * - Admin auth required
  * - Full filter access
- * - Can see all brands across all shops
+ * - Can see all tags across all shops
  */
-export const adminBrandsQuerySchema = zod.object({
+export const adminTagsQuerySchema = zod.object({
   ...paginationFields,
   limit: paginationFields.limit.default(ADMIN_DEFAULT_LIMIT),
   ...sortFields,
   ...searchFields,
-  ...brandFilterFields,
+  ...tagFilterFields,
   ...optionalShopIdField,
   ...optionalVendorIdField,
 });
@@ -106,54 +104,32 @@ export const adminBrandsQuerySchema = zod.object({
  * - Vendor auth required
  * - Shop ID is required (scoped to their shop)
  */
-export const vendorBrandsQuerySchema = zod.object({
+export const vendorTagsQuerySchema = zod.object({
   ...shopScopeFields,
   ...paginationFields,
   limit: paginationFields.limit.default(VENDOR_DEFAULT_LIMIT),
   ...sortFields,
   ...searchFields,
-  ...brandFilterFields,
+  ...tagFilterFields,
 });
 
 // ============================================================================
 // Action Schemas (using factory functions)
 // ============================================================================
 
-export const toggleBrandActiveSchema = createToggleActiveSchema("Brand");
+export const toggleTagActiveSchema = createToggleActiveSchema("Tag");
 
-export const deleteBrandSchema = createDeleteSchema("Brand");
-
-// ============================================================================
-// Entity Schemas
-// ============================================================================
+export const deleteTagSchema = createDeleteSchema("Tag");
 
 /**
- * Full Brand Entity Schema (Response)
+ * Schema for creating a new tag (Vendor)
  */
-export const brandSchema = zod.object({
-  id: zod.string(),
-  shopId: zod.string(),
-  name: zod.string(),
-  slug: zod.string(),
-  description: zod.string().optional().nullable(),
-  logo: zod.string().optional().nullable(),
-  website: zod.string().optional().nullable(),
-  sortOrder: zod.number().default(0),
-  isActive: zod.boolean().default(true),
-  productCount: zod.number().default(0),
-  createdAt: zod.string(),
-  updatedAt: zod.string(),
-});
-
-/**
- * Schema for creating a new brand
- */
-export const createBrandSchema = zod.object({
+export const createTagSchema = zod.object({
   shopId: zod.string().min(1, "Shop ID is required"),
   name: zod
     .string()
-    .min(2, "Brand name must be at least 2 characters")
-    .max(100, "Brand name must be at most 100 characters"),
+    .min(2, "Tag name must be at least 2 characters")
+    .max(100, "Tag name must be at most 100 characters"),
   slug: zod
     .string()
     .min(2, "Slug must be at least 2 characters")
@@ -166,23 +142,22 @@ export const createBrandSchema = zod.object({
   description: zod
     .string()
     .max(500, "Description must be at most 500 characters")
-    .optional(),
-  logo: zod.string().optional(),
-  website: zod.string().optional(),
+    .optional()
+    .nullable(),
   sortOrder: zod.coerce.number().min(0).optional().default(0),
   isActive: zod.boolean().optional().default(true),
 });
 
 /**
- * Schema for updating an existing brand
+ * Schema for updating an existing tag (Vendor)
  */
-export const updateBrandSchema = zod.object({
-  id: zod.string().min(1, "Brand ID is required"),
+export const updateTagSchema = zod.object({
+  id: zod.string().min(1, "Tag ID is required"),
   shopId: zod.string().min(1, "Shop ID is required"),
   name: zod
     .string()
-    .min(2, "Brand name must be at least 2 characters")
-    .max(100, "Brand name must be at most 100 characters")
+    .min(2, "Tag name must be at least 2 characters")
+    .max(100, "Tag name must be at most 100 characters")
     .optional(),
   slug: zod
     .string()
@@ -193,9 +168,11 @@ export const updateBrandSchema = zod.object({
       "Slug must be lowercase with hyphens only",
     )
     .optional(),
-  description: zod.string().max(500).optional().nullable(),
-  logo: zod.string().optional().nullable(),
-  website: zod.string().optional().nullable(),
+  description: zod
+    .string()
+    .max(500, "Description must be at most 500 characters")
+    .optional()
+    .nullable(),
   sortOrder: zod.coerce.number().min(0).optional(),
   isActive: zod.boolean().optional(),
 });
@@ -204,11 +181,10 @@ export const updateBrandSchema = zod.object({
 // Type Exports
 // ============================================================================
 
-export type BrandSortBy = zod.infer<typeof brandSortByEnum>;
-export type Brand = zod.infer<typeof brandSchema>;
-export type CreateBrandInput = zod.infer<typeof createBrandSchema>;
-export type UpdateBrandInput = zod.infer<typeof updateBrandSchema>;
+export type TagSortBy = zod.infer<typeof tagSortByEnum>;
+export type CreateTagInput = zod.infer<typeof createTagSchema>;
+export type UpdateTagInput = zod.infer<typeof updateTagSchema>;
 
-export type StoreBrandsQuery = zod.infer<typeof storeBrandsQuerySchema>;
-export type AdminBrandsQuery = zod.infer<typeof adminBrandsQuerySchema>;
-export type VendorBrandsQuery = zod.infer<typeof vendorBrandsQuerySchema>;
+export type StoreTagsQuery = zod.infer<typeof storeTagsQuerySchema>;
+export type AdminTagsQuery = zod.infer<typeof adminTagsQuerySchema>;
+export type VendorTagsQuery = zod.infer<typeof vendorTagsQuerySchema>;
