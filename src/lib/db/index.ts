@@ -1,5 +1,11 @@
 import { type NeonQueryFunction, neon } from "@neondatabase/serverless";
 import { drizzle, type NeonHttpDatabase } from "drizzle-orm/neon-http";
+import {
+  attributes,
+  attributesRelations,
+  attributeValues,
+  attributeValuesRelations,
+} from "./schema/attribute-schema";
 import { user } from "./schema/auth-schema";
 import { brands } from "./schema/brand-schema";
 import { categories } from "./schema/category-schema";
@@ -11,6 +17,10 @@ const schema = {
   shops,
   categories,
   brands,
+  attributes,
+  attributeValues,
+  attributesRelations,
+  attributeValuesRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server
@@ -22,7 +32,7 @@ function getSql() {
     const url = process.env.DATABASE_URL;
     if (!url) {
       throw new Error(
-        "DATABASE_URL environment variable is not set. Please check your .env file."
+        "DATABASE_URL environment variable is not set. Please check your .env file.",
       );
     }
     sqlClient = neon(url);

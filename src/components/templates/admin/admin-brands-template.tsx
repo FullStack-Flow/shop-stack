@@ -1,6 +1,5 @@
+import AdminBrandsTable from "@/components/containers/admin/brands/admin-brands-table";
 import BrandHeader from "@/components/containers/shared/brands/brand-header";
-import BrandTable from "@/components/containers/shared/brands/brand-table";
-import { ADMIN_BRAND_PERMISSIONS } from "@/lib/config/brand-permissions";
 import type { Brand } from "@/types/brands";
 
 interface AdminBrandsTemplateProps {
@@ -22,12 +21,11 @@ export default function AdminBrandsTemplate({
 }: AdminBrandsTemplateProps) {
   return (
     <div className="space-y-6">
-      <BrandHeader onAddBrand={onAddBrand} role="admin" />
-      <BrandTable
-        brands={brands}
-        permissions={ADMIN_BRAND_PERMISSIONS}
-        onDeleteBrand={onDeleteBrand}
+      <BrandHeader
+        onAddBrand={() => onAddBrand({ name: "", slug: "" })}
+        role="admin"
       />
+      <AdminBrandsTable brands={brands} onDelete={onDeleteBrand} />
     </div>
   );
 }

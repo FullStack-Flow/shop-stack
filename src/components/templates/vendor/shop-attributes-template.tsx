@@ -1,17 +1,33 @@
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
 import AttributeHeader from "@/components/containers/shared/attributes/attribute-header";
 import AttributeTable from "@/components/containers/shared/attributes/attribute-table";
-import { VENDOR_ATTRIBUTE_PERMISSIONS } from "@/lib/config/attribute-permissions";
-import type { Attribute, AttributeFormValues } from "@/types/attributes";
+import type {
+  AttributeMutationState,
+  AttributeTableActions,
+} from "@/components/containers/shared/attributes/attribute-table-columns";
+import type { AttributeItem } from "@/types/attributes";
 
-interface ShopAttributesTemplateProps {
-  attributes: Attribute[];
-  onAddAttribute?: (data: AttributeFormValues) => void;
+interface ShopAttributesTemplateProps extends AttributeTableActions {
+  fetcher: (
+    params: DataTableFetchParams
+  ) => Promise<DataTableFetchResult<AttributeItem>>;
+  mutationState?: AttributeMutationState;
+  isAttributeMutating?: (id: string) => boolean;
+  onAddAttribute?: () => void;
   showAddButton?: boolean;
 }
 
 export function ShopAttributesTemplate({
-  attributes,
+  fetcher,
   onAddAttribute,
+  onEdit,
+  onDelete,
+  onToggleActive,
+  mutationState,
+  isAttributeMutating,
   showAddButton = true,
 }: ShopAttributesTemplateProps) {
   return (
@@ -22,8 +38,13 @@ export function ShopAttributesTemplate({
         showAddButton={showAddButton}
       />
       <AttributeTable
-        attributes={attributes}
-        permissions={VENDOR_ATTRIBUTE_PERMISSIONS}
+        fetcher={fetcher}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        onToggleActive={onToggleActive}
+        mutationState={mutationState}
+        isAttributeMutating={isAttributeMutating}
+        mode="vendor"
       />
     </div>
   );
