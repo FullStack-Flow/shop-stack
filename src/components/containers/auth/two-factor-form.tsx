@@ -61,7 +61,7 @@ export function TwoFactorForm({ onSuccess, onCancel }: TwoFactorFormProps) {
         // If unauthorized, tell user to try signing in again
         if (error.status === 401) {
           toast.error(
-            "Session expired. Please cancel and try signing in again.",
+            "Session expired. Please cancel and try signing in again."
           );
         } else {
           toast.error(error.message || "Failed to send code");

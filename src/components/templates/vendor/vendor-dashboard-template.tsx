@@ -1,6 +1,6 @@
-import StatsCard from '@/components/base/vendors/sates-card';
-import DashboardChart from '@/components/containers/vendors/dashboard-chart';
-import RecentSales from '@/components/containers/vendors/recent-sales';
+import StatsCard from "@/components/base/vendors/sates-card";
+import DashboardChart from "@/components/containers/vendors/dashboard-chart";
+import RecentSales from "@/components/containers/vendors/recent-sales";
 
 interface VendorDashboardTemplateProps {
   stats: Array<{

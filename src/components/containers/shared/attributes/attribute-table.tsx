@@ -1,8 +1,8 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
+import DataTable from "@/components/base/data-table/data-table";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,18 +10,18 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
+} from "@/components/ui/tooltip";
 import type {
   Attribute,
   AttributePermissions,
   AttributeValue,
-} from '@/types/attributes';
+} from "@/types/attributes";
 
 interface AttributeTableProps {
   attributes: Attribute[];
@@ -40,32 +40,32 @@ export default function AttributeTable({
 }: AttributeTableProps) {
   const columns: ColumnDef<Attribute>[] = [
     {
-      accessorKey: 'id',
-      header: 'ID',
+      accessorKey: "id",
+      header: "ID",
       cell: ({ row }) => (
         <div className="w-20 truncate text-muted-foreground text-xs">
-          {row.getValue('id')}
+          {row.getValue("id")}
         </div>
       ),
     },
     {
-      accessorKey: 'name',
-      header: 'Name',
+      accessorKey: "name",
+      header: "Name",
       cell: ({ row }) => (
-        <div className="font-medium">{row.getValue('name')}</div>
+        <div className="font-medium">{row.getValue("name")}</div>
       ),
     },
     {
-      accessorKey: 'values',
-      header: 'Values',
+      accessorKey: "values",
+      header: "Values",
       cell: ({ row }) => {
-        const values = row.getValue('values') as AttributeValue[];
+        const values = row.getValue("values") as AttributeValue[];
         const type = row.original.type;
 
         return (
           <div className="flex flex-wrap gap-1">
             {values.slice(0, 5).map((val) => {
-              if (type === 'color') {
+              if (type === "color") {
                 return (
                   <TooltipProvider key={val.id}>
                     <Tooltip>
@@ -83,14 +83,14 @@ export default function AttributeTable({
                 );
               }
 
-              if (type === 'image') {
+              if (type === "image") {
                 return (
                   <TooltipProvider key={val.id}>
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <div className="size-8 overflow-hidden rounded-md border bg-muted">
                           <img
-                            src={val.value || '/placeholder.svg'}
+                            src={val.value || "/placeholder.svg"}
                             alt={val.name}
                             className="h-full w-full object-cover"
                           />
@@ -120,16 +120,16 @@ export default function AttributeTable({
       },
     },
     {
-      accessorKey: 'slug',
-      header: 'Slug',
+      accessorKey: "slug",
+      header: "Slug",
       cell: ({ row }) => (
         <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono font-semibold text-sm">
-          {row.getValue('slug')}
+          {row.getValue("slug")}
         </code>
       ),
     },
     {
-      id: 'actions',
+      id: "actions",
       header: () => <div className="text-right">Actions</div>,
       cell: ({ row }) => (
         <div className="flex justify-end">

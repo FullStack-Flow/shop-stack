@@ -26,7 +26,7 @@ function CategoriesPage() {
 
   const fetcher = useMemo(
     () => createVendorCategoriesFetcher(shopId),
-    [shopId],
+    [shopId]
   );
 
   const {
@@ -44,7 +44,7 @@ function CategoriesPage() {
       offset: 0,
       sortBy: "sortOrder",
       sortDirection: "asc",
-    }),
+    })
   );
 
   const {

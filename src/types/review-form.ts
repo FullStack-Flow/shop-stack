@@ -4,5 +4,5 @@ export interface ReviewFormValues {
   customerAvatar?: FileList | null;
   rating: number;
   comment: string;
-  status: 'published' | 'pending' | 'rejected';
+  status: "published" | "pending" | "rejected";
 }

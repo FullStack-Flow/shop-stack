@@ -1,6 +1,6 @@
-import { useForm } from '@tanstack/react-form';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
+import { useForm } from "@tanstack/react-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,22 +8,22 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Field, FieldError, FieldLabel } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Textarea } from '@/components/ui/textarea';
+} from "@/components/ui/dialog";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Textarea } from "@/components/ui/textarea";
 
 // Define the address schema
 const addressSchema = z.object({
-  type: z.enum(['Billing', 'Shipping']),
-  title: z.string().min(1, 'Title is required'),
-  country: z.string().min(1, 'Country is required'),
-  city: z.string().min(1, 'City is required'),
-  state: z.string().min(1, 'State is required'),
-  zip: z.string().min(1, 'ZIP Code is required'),
-  street: z.string().min(1, 'Street address is required'),
+  type: z.enum(["Billing", "Shipping"]),
+  title: z.string().min(1, "Title is required"),
+  country: z.string().min(1, "Country is required"),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
+  zip: z.string().min(1, "ZIP Code is required"),
+  street: z.string().min(1, "Street address is required"),
 });
 
 export type AddressFormValues = z.infer<typeof addressSchema>;
@@ -43,13 +43,13 @@ export function AddressDialog({
 }: AddressDialogProps) {
   const form = useForm({
     defaultValues: initialData || {
-      type: 'Billing',
-      title: '',
-      country: '',
-      city: '',
-      state: '',
-      zip: '',
-      street: '',
+      type: "Billing",
+      title: "",
+      country: "",
+      city: "",
+      state: "",
+      zip: "",
+      street: "",
     },
     validators: {
       onSubmit: addressSchema,
@@ -69,12 +69,12 @@ export function AddressDialog({
       <DialogContent className="@2xl:max-w-150">
         <DialogHeader className="space-y-3">
           <DialogTitle className="text-2xl">
-            {initialData ? 'Edit Address' : 'Add New Address'}
+            {initialData ? "Edit Address" : "Add New Address"}
           </DialogTitle>
           <DialogDescription className="text-base">
             {initialData
-              ? 'Update your address details below.'
-              : 'Enter the details for your new address.'}
+              ? "Update your address details below."
+              : "Enter the details for your new address."}
           </DialogDescription>
         </DialogHeader>
 
@@ -95,7 +95,7 @@ export function AddressDialog({
                   <RadioGroup
                     value={field.state.value}
                     onValueChange={(val) =>
-                      field.handleChange(val as 'Billing' | 'Shipping')
+                      field.handleChange(val as "Billing" | "Shipping")
                     }
                     className="flex gap-6 pt-2"
                   >
@@ -291,7 +291,7 @@ export function AddressDialog({
               Cancel
             </Button>
             <Button type="submit" className="min-w-35">
-              {initialData ? 'Update Address' : 'Add Address'}
+              {initialData ? "Update Address" : "Add Address"}
             </Button>
           </DialogFooter>
         </form>

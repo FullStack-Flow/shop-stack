@@ -1,7 +1,7 @@
-import AttributeHeader from '@/components/containers/shared/attributes/attribute-header';
-import AttributeTable from '@/components/containers/shared/attributes/attribute-table';
-import { VENDOR_ATTRIBUTE_PERMISSIONS } from '@/lib/config/attribute-permissions';
-import type { Attribute, AttributeFormValues } from '@/types/attributes';
+import AttributeHeader from "@/components/containers/shared/attributes/attribute-header";
+import AttributeTable from "@/components/containers/shared/attributes/attribute-table";
+import { VENDOR_ATTRIBUTE_PERMISSIONS } from "@/lib/config/attribute-permissions";
+import type { Attribute, AttributeFormValues } from "@/types/attributes";
 
 interface ShopAttributesTemplateProps {
   attributes: Attribute[];

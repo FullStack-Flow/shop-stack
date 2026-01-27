@@ -1,15 +1,15 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { Eye, MoreHorizontal, RefreshCcw, Trash2 } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { Eye, MoreHorizontal, RefreshCcw, Trash2 } from "lucide-react";
+import DataTable from "@/components/base/data-table/data-table";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import type { Transaction, TransactionPermissions } from '@/types/transaction';
+} from "@/components/ui/dropdown-menu";
+import type { Transaction, TransactionPermissions } from "@/types/transaction";
 
 interface TransactionsTableProps {
   transactions: Transaction[];
@@ -35,18 +35,18 @@ export default function TransactionsTable({
 }: TransactionsTableProps) {
   const columns: ColumnDef<Transaction>[] = [
     {
-      accessorKey: 'trackingNumber',
-      header: 'Tracking Number',
+      accessorKey: "trackingNumber",
+      header: "Tracking Number",
       cell: ({ row }) => {
-        const trackingNumber = row.getValue('trackingNumber') as string;
+        const trackingNumber = row.getValue("trackingNumber") as string;
         return <div className="font-mono text-sm">{trackingNumber}</div>;
       },
     },
     {
-      accessorKey: 'totalPrice',
-      header: 'Total Price',
+      accessorKey: "totalPrice",
+      header: "Total Price",
       cell: ({ row }) => {
-        const totalPrice = row.getValue('totalPrice') as string;
+        const totalPrice = row.getValue("totalPrice") as string;
         return (
           <div className="font-medium">
             ${parseFloat(totalPrice).toFixed(2)}
@@ -55,30 +55,30 @@ export default function TransactionsTable({
       },
     },
     {
-      accessorKey: 'paymentGateway',
-      header: 'Payment Gateway',
+      accessorKey: "paymentGateway",
+      header: "Payment Gateway",
       cell: ({ row }) => {
-        const gateway = row.getValue('paymentGateway') as string;
+        const gateway = row.getValue("paymentGateway") as string;
         return <Badge variant="outline">{gateway}</Badge>;
       },
     },
     {
-      accessorKey: 'paymentStatus',
-      header: 'Status',
+      accessorKey: "paymentStatus",
+      header: "Status",
       cell: ({ row }) => {
-        const status = row.getValue('paymentStatus') as string;
+        const status = row.getValue("paymentStatus") as string;
         return (
           <Badge
             variant={
-              status === 'paid'
-                ? 'default'
-                : status === 'pending'
-                  ? 'secondary'
-                  : status === 'failed'
-                    ? 'destructive'
-                    : 'outline'
+              status === "paid"
+                ? "default"
+                : status === "pending"
+                  ? "secondary"
+                  : status === "failed"
+                    ? "destructive"
+                    : "outline"
             }
-            className={status === 'paid' ? 'bg-green-500' : ''}
+            className={status === "paid" ? "bg-green-500" : ""}
           >
             {status}
           </Badge>
@@ -86,15 +86,15 @@ export default function TransactionsTable({
       },
     },
     {
-      accessorKey: 'date',
-      header: 'Date',
+      accessorKey: "date",
+      header: "Date",
       cell: ({ row }) => {
-        const date = row.getValue('date') as string;
+        const date = row.getValue("date") as string;
         return <div className="text-muted-foreground">{date}</div>;
       },
     },
     {
-      id: 'actions',
+      id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
         const transaction = row.original;
@@ -117,7 +117,7 @@ export default function TransactionsTable({
                 </DropdownMenuItem>
               )}
               {permissions.canRefund &&
-                transaction.paymentStatus === 'paid' && (
+                transaction.paymentStatus === "paid" && (
                   <DropdownMenuItem
                     onClick={() => onRefundTransaction?.(transaction.id)}
                   >

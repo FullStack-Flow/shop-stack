@@ -1,4 +1,4 @@
-import CounterItemComponent from '@/components/base/common/counter-item';
+import CounterItemComponent from "@/components/base/common/counter-item";
 
 interface CounterItem {
   label: string;

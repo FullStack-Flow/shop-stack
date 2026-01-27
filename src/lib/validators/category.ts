@@ -52,7 +52,7 @@ export const createCategorySchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only",
+      "Slug must be lowercase with hyphens only"
     )
     .optional(),
   description: z
@@ -84,7 +84,7 @@ export const updateCategorySchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only",
+      "Slug must be lowercase with hyphens only"
     )
     .optional(),
   description: z.string().max(500).optional().nullable(),

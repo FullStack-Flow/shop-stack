@@ -7,7 +7,7 @@ export interface Transaction {
   taxableAmount: string;
   discount: string;
   paymentGateway: string;
-  paymentStatus: 'paid' | 'pending' | 'failed' | 'refunded';
+  paymentStatus: "paid" | "pending" | "failed" | "refunded";
   date: string;
 }
 

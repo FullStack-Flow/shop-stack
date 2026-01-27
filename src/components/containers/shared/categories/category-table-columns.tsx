@@ -119,7 +119,7 @@ export const createCategoryColumns = ({
           <div
             className={cn(
               "flex items-center gap-2",
-              isMutating && "opacity-60",
+              isMutating && "opacity-60"
             )}
           >
             {isMutating && <Loader2 className="h-3 w-3 animate-spin" />}

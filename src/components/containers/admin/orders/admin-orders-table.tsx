@@ -1,7 +1,7 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
+import DataTable from "@/components/base/data-table/data-table";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,37 +9,37 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import type { Order } from '@/types/orders';
+} from "@/components/ui/tooltip";
+import type { Order } from "@/types/orders";
 
 const columns: ColumnDef<Order>[] = [
   {
-    accessorKey: 'id',
-    header: 'ID',
+    accessorKey: "id",
+    header: "ID",
     cell: ({ row }) => (
       <div className="w-20 truncate text-muted-foreground text-xs">
-        {row.getValue('id')}
+        {row.getValue("id")}
       </div>
     ),
   },
   {
-    accessorKey: 'orderNumber',
-    header: 'Order #',
+    accessorKey: "orderNumber",
+    header: "Order #",
     cell: ({ row }) => (
-      <div className="font-mono text-sm">{row.getValue('orderNumber')}</div>
+      <div className="font-mono text-sm">{row.getValue("orderNumber")}</div>
     ),
   },
   {
-    accessorKey: 'customer',
-    header: 'Customer',
+    accessorKey: "customer",
+    header: "Customer",
     cell: ({ row }) => {
-      const customer = row.getValue('customer') as {
+      const customer = row.getValue("customer") as {
         name: string;
         email: string;
       };
@@ -52,31 +52,31 @@ const columns: ColumnDef<Order>[] = [
     },
   },
   {
-    accessorKey: 'date',
-    header: 'Date',
+    accessorKey: "date",
+    header: "Date",
     cell: ({ row }) => {
-      const date = new Date(row.getValue('date'));
+      const date = new Date(row.getValue("date"));
       return <div className="text-sm">{date.toLocaleDateString()}</div>;
     },
   },
   {
-    accessorKey: 'total',
-    header: 'Total',
+    accessorKey: "total",
+    header: "Total",
     cell: ({ row }) => (
-      <div className="font-medium">{row.getValue('total')}</div>
+      <div className="font-medium">{row.getValue("total")}</div>
     ),
   },
   {
-    accessorKey: 'status',
-    header: 'Status',
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => {
-      const status = row.getValue('status') as string;
+      const status = row.getValue("status") as string;
       const statusColors = {
-        pending: 'bg-yellow-100 text-yellow-800',
-        processing: 'bg-blue-100 text-blue-800',
-        shipped: 'bg-purple-100 text-purple-800',
-        delivered: 'bg-green-100 text-green-800',
-        cancelled: 'bg-red-100 text-red-800',
+        pending: "bg-yellow-100 text-yellow-800",
+        processing: "bg-blue-100 text-blue-800",
+        shipped: "bg-purple-100 text-purple-800",
+        delivered: "bg-green-100 text-green-800",
+        cancelled: "bg-red-100 text-red-800",
       };
       return (
         <div className="text-sm">
@@ -90,14 +90,14 @@ const columns: ColumnDef<Order>[] = [
     },
   },
   {
-    accessorKey: 'paymentStatus',
-    header: 'Payment',
+    accessorKey: "paymentStatus",
+    header: "Payment",
     cell: ({ row }) => {
-      const paymentStatus = row.getValue('paymentStatus') as string;
+      const paymentStatus = row.getValue("paymentStatus") as string;
       const paymentColors = {
-        paid: 'bg-green-100 text-green-800',
-        unpaid: 'bg-yellow-100 text-yellow-800',
-        refunded: 'bg-gray-100 text-gray-800',
+        paid: "bg-green-100 text-green-800",
+        unpaid: "bg-yellow-100 text-yellow-800",
+        refunded: "bg-gray-100 text-gray-800",
       };
       return (
         <div className="text-sm">
@@ -111,15 +111,15 @@ const columns: ColumnDef<Order>[] = [
     },
   },
   {
-    accessorKey: 'items',
-    header: 'Items',
+    accessorKey: "items",
+    header: "Items",
     cell: ({ row }) => (
-      <div className="text-center">{row.getValue('items')}</div>
+      <div className="text-center">{row.getValue("items")}</div>
     ),
   },
   {
-    id: 'actions',
-    header: 'Actions',
+    id: "actions",
+    header: "Actions",
     cell: ({ row }) => {
       const order = row.original;
 

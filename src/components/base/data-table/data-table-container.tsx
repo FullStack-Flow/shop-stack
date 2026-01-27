@@ -4,13 +4,13 @@ import type {
   OnChangeFn,
   PaginationState,
   SortingState,
-} from '@tanstack/react-table';
-import React from 'react';
-import { DataTableCore, type DataTableInstance } from './data-table-core';
-import { DataTablePagination } from './data-table-pagination';
-import { DataTableSkeleton } from './data-table-skeleton';
-import { DataTableToolbar } from './data-table-toolbar';
-import type { FilterableColumn } from './types';
+} from "@tanstack/react-table";
+import React from "react";
+import { DataTableCore, type DataTableInstance } from "./data-table-core";
+import { DataTablePagination } from "./data-table-pagination";
+import { DataTableSkeleton } from "./data-table-skeleton";
+import { DataTableToolbar } from "./data-table-toolbar";
+import type { FilterableColumn } from "./types";
 
 type TemplateProps<TData, TValue> = {
   title?: string;
@@ -73,14 +73,14 @@ export function DataTableContainer<TData, TValue>({
       return columns.map((col, idx) => {
         const id = (col as any).id ?? `column_${idx}`;
         const label =
-          typeof col.header === 'string' ? (col.header as string) : id;
+          typeof col.header === "string" ? (col.header as string) : id;
         return { id, label, visible: true, toggle: () => {} };
       });
     }
     return table.getAllLeafColumns().map((col) => {
       const id = col.id;
       const header = col.columnDef.header;
-      const label = typeof header === 'string' ? header : id;
+      const label = typeof header === "string" ? header : id;
       return {
         id,
         label,
@@ -97,7 +97,7 @@ export function DataTableContainer<TData, TValue>({
         // Remove existing filter for this column
         const filtered = prev.filter((f) => f.id !== columnId);
         // Add new filter if value is not empty
-        if (value !== '' && value !== undefined && value !== null) {
+        if (value !== "" && value !== undefined && value !== null) {
           filtered.push({ id: columnId, value });
         }
         return filtered;

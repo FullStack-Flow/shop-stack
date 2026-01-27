@@ -23,7 +23,7 @@ export type DataTableFetchResult<TData> = {
 
 export interface DataTableServer<TData> {
   fetcher: (
-    params: DataTableFetchParams,
+    params: DataTableFetchParams
   ) => Promise<DataTableFetchResult<TData>>;
 }
 

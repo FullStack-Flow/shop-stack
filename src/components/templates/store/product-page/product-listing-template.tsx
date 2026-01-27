@@ -1,10 +1,10 @@
-import ActiveFilterChips from '@/components/base/products/active-filter-chips';
-import SearchBar from '@/components/base/products/searchbar';
-import SortDropdown from '@/components/base/products/sort-dropdown';
-import ProductGrid from '@/components/containers/store/product-list/product-grid';
-import { useProductFilters } from '@/lib/store/product-filters-store';
-import FilterSidebar from './filter-sidebar';
-import MobileFilterDrawer from './mobile-filter-drawer';
+import ActiveFilterChips from "@/components/base/products/active-filter-chips";
+import SearchBar from "@/components/base/products/searchbar";
+import SortDropdown from "@/components/base/products/sort-dropdown";
+import ProductGrid from "@/components/containers/store/product-list/product-grid";
+import { useProductFilters } from "@/lib/store/product-filters-store";
+import FilterSidebar from "./filter-sidebar";
+import MobileFilterDrawer from "./mobile-filter-drawer";
 
 export default function ProductListingTemplate() {
   const {
@@ -30,7 +30,7 @@ export default function ProductListingTemplate() {
             <div className="w-full @4xl:w-[300px] order-1 @4xl:order-2">
               <SearchBar
                 value={filters.search}
-                onChange={(val) => updateFilter('search', val)}
+                onChange={(val) => updateFilter("search", val)}
                 className="max-w-none"
               />
             </div>
@@ -43,7 +43,7 @@ export default function ProductListingTemplate() {
               />
               <SortDropdown
                 value={filters.sort}
-                onChange={(val) => updateFilter('sort', val)}
+                onChange={(val) => updateFilter("sort", val)}
                 className="flex-1 @4xl:w-[180px]"
               />
             </div>

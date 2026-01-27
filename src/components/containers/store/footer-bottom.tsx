@@ -1,4 +1,4 @@
-import Copyright from '@/components/base/common/copyright';
+import Copyright from "@/components/base/common/copyright";
 
 export default function FooterBottom() {
   return (
@@ -6,8 +6,8 @@ export default function FooterBottom() {
       <Copyright
         brand="ShopStack"
         legalLinks={[
-          { label: 'Terms & Conditions', to: '/terms' },
-          { label: 'Privacy Policy', to: '/privacy' },
+          { label: "Terms & Conditions", to: "/terms" },
+          { label: "Privacy Policy", to: "/privacy" },
         ]}
       />
     </div>

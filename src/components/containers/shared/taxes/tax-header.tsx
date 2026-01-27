@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import PageHeader from '@/components/base/common/page-header';
-import type { TaxFormValues } from '@/types/taxes';
-import { AddTaxDialog } from './add-tax-dialog';
+import { useState } from "react";
+import PageHeader from "@/components/base/common/page-header";
+import type { TaxFormValues } from "@/types/taxes";
+import { AddTaxDialog } from "./add-tax-dialog";
 
 export interface TaxHeaderProps {
   onAddTax?: (data: TaxFormValues) => void;
-  role?: 'admin' | 'vendor';
+  role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -13,7 +13,7 @@ export interface TaxHeaderProps {
 
 export default function TaxHeader({
   onAddTax,
-  role = 'vendor',
+  role = "vendor",
   showAddButton = true,
   children,
   className,
@@ -28,9 +28,9 @@ export default function TaxHeader({
     <PageHeader
       title="Taxes"
       description={
-        role === 'admin'
-          ? 'Manage platform-wide tax rates and configurations'
-          : 'Manage your tax rates and configurations'
+        role === "admin"
+          ? "Manage platform-wide tax rates and configurations"
+          : "Manage your tax rates and configurations"
       }
       className={className}
     >

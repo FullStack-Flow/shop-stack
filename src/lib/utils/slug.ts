@@ -31,7 +31,7 @@ export function generateSlug(
   } = {}
 ): string {
   const {
-    separator = '-',
+    separator = "-",
     unique = true,
     suffixLength = 6,
     customSuffix,
@@ -39,14 +39,14 @@ export function generateSlug(
 
   // Normalize the string (remove accents, etc.)
   let slug = name
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9\s-]/g, '') // Remove special chars
+    .replace(/[^a-z0-9\s-]/g, "") // Remove special chars
     .replace(/[\s_]+/g, separator) // Replace spaces/underscores with separator
-    .replace(new RegExp(`${separator}+`, 'g'), separator) // Remove consecutive separators
-    .replace(new RegExp(`^${separator}|${separator}$`, 'g'), ''); // Trim separators
+    .replace(new RegExp(`${separator}+`, "g"), separator) // Remove consecutive separators
+    .replace(new RegExp(`^${separator}|${separator}$`, "g"), ""); // Trim separators
 
   // Add suffix for uniqueness
   if (customSuffix) {
@@ -94,7 +94,7 @@ export function sanitizeSlug(slug: string): string {
   return slug
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9-]/g, '-')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+    .replace(/[^a-z0-9-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 }

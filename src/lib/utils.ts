@@ -1,5 +1,5 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -15,10 +15,10 @@ export function gridCellBorderClasses(
   const left6 = index % columns3 !== 0;
   return twMerge(
     clsx(
-      'border-dashed border-r-0 border-b-0',
-      includeTop ? 'border-t-2' : 'border-t-0',
-      left4 ? '@4xl:border-l-2' : '@4xl:border-l-0',
-      left6 ? '@6xl:border-l-2' : '@6xl:border-l-0'
+      "border-dashed border-r-0 border-b-0",
+      includeTop ? "border-t-2" : "border-t-0",
+      left4 ? "@4xl:border-l-2" : "@4xl:border-l-0",
+      left6 ? "@6xl:border-l-2" : "@6xl:border-l-0"
     )
   );
 }

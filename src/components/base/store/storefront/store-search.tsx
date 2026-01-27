@@ -1,7 +1,7 @@
-import { Search } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import type { StoreFilters } from '@/types/store-types';
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import type { StoreFilters } from "@/types/store-types";
 
 interface StoreSearchProps {
   filters: StoreFilters;

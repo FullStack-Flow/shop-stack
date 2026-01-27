@@ -59,7 +59,7 @@ export function normalizeShop(
   shop: typeof shops.$inferSelect,
   vendor: typeof vendors.$inferSelect | null,
   owner: typeof user.$inferSelect | null,
-  productCount: number,
+  productCount: number
 ): NormalizedShop {
   return {
     id: shop.id,
@@ -95,7 +95,7 @@ export function normalizeShop(
 }
 
 export async function getProductCountsForShops(
-  shopIds: string[],
+  shopIds: string[]
 ): Promise<Map<string, number>> {
   if (shopIds.length === 0) {
     return new Map();

@@ -38,7 +38,7 @@ export const getVendorShops = createServerFn({ method: "GET" })
     } else {
       if (!vendor) {
         throw new Error(
-          "Vendor Profile not found. Please complete vendor registration.",
+          "Vendor Profile not found. Please complete vendor registration."
         );
       }
 
@@ -147,7 +147,7 @@ export const createShop = createServerFn({ method: "POST" })
 
     if (!vendor) {
       throw new Error(
-        "Vendor profile not found. Please complete vendor registration.",
+        "Vendor profile not found. Please complete vendor registration."
       );
     }
 
@@ -169,7 +169,7 @@ export const createShop = createServerFn({ method: "POST" })
 
     if (existingShop) {
       throw new Error(
-        "A shop with this slug already exists. Please choose a different name or slug.",
+        "A shop with this slug already exists. Please choose a different name or slug."
       );
     }
 

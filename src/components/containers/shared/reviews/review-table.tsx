@@ -1,9 +1,9 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal, Plus, Star } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal, Plus, Star } from "lucide-react";
+import DataTable from "@/components/base/data-table/data-table";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,13 +11,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import type { Review, ReviewPermissions } from '@/types/review';
+} from "@/components/ui/dropdown-menu";
+import type { Review, ReviewPermissions } from "@/types/review";
 
 interface ReviewTableProps {
   reviews: Review[];
   permissions?: ReviewPermissions;
-  onUpdateStatus?: (reviewId: string, newStatus: Review['status']) => void;
+  onUpdateStatus?: (reviewId: string, newStatus: Review["status"]) => void;
   onDeleteReview?: (reviewId: string) => void;
   onAddReview?: () => void;
   className?: string;
@@ -25,14 +25,14 @@ interface ReviewTableProps {
 
 const getStatusBadgeVariant = (status: string) => {
   switch (status) {
-    case 'published':
-      return 'default';
-    case 'pending':
-      return 'secondary';
-    case 'rejected':
-      return 'destructive';
+    case "published":
+      return "default";
+    case "pending":
+      return "secondary";
+    case "rejected":
+      return "destructive";
     default:
-      return 'outline';
+      return "outline";
   }
 };
 
@@ -43,7 +43,7 @@ const StarRating = ({ rating }: { rating: number }) => {
         <Star
           key={star}
           className={`size-4 ${
-            star <= rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'
+            star <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
           }`}
         />
       ))}
@@ -67,12 +67,12 @@ export default function ReviewTable({
 }: ReviewTableProps) {
   const columns: ColumnDef<Review>[] = [
     {
-      accessorKey: 'productImage',
-      header: 'Product',
+      accessorKey: "productImage",
+      header: "Product",
       cell: ({ row }) => (
         <Avatar className="h-9 w-9 rounded-md border">
           <AvatarImage
-            src={row.getValue('productImage')}
+            src={row.getValue("productImage")}
             alt={row.original.productName}
           />
           <AvatarFallback className="rounded-md uppercase">
@@ -82,17 +82,17 @@ export default function ReviewTable({
       ),
     },
     {
-      accessorKey: 'productName',
-      header: 'Product Name',
+      accessorKey: "productName",
+      header: "Product Name",
       cell: ({ row }) => (
-        <div className="font-medium">{row.getValue('productName')}</div>
+        <div className="font-medium">{row.getValue("productName")}</div>
       ),
     },
     {
-      accessorKey: 'customerName',
-      header: 'Customer',
+      accessorKey: "customerName",
+      header: "Customer",
       cell: ({ row }) => {
-        const customerName = row.getValue('customerName') as string;
+        const customerName = row.getValue("customerName") as string;
         const customerAvatar = row.original.customerAvatar;
         return (
           <div className="flex items-center gap-2">
@@ -100,9 +100,9 @@ export default function ReviewTable({
               <AvatarImage src={customerAvatar} alt={customerName} />
               <AvatarFallback className="text-xs">
                 {customerName
-                  .split(' ')
+                  .split(" ")
                   .map((n) => n[0])
-                  .join('')
+                  .join("")
                   .toUpperCase()}
               </AvatarFallback>
             </Avatar>
@@ -112,42 +112,42 @@ export default function ReviewTable({
       },
     },
     {
-      accessorKey: 'rating',
-      header: 'Rating',
-      cell: ({ row }) => <StarRating rating={row.getValue('rating')} />,
+      accessorKey: "rating",
+      header: "Rating",
+      cell: ({ row }) => <StarRating rating={row.getValue("rating")} />,
     },
     {
-      accessorKey: 'comment',
-      header: 'Comment',
+      accessorKey: "comment",
+      header: "Comment",
       cell: ({ row }) => (
         <div className="max-w-md truncate text-sm">
-          {row.getValue('comment')}
+          {row.getValue("comment")}
         </div>
       ),
     },
     {
-      accessorKey: 'date',
-      header: 'Date',
+      accessorKey: "date",
+      header: "Date",
       cell: ({ row }) => (
         <div className="text-muted-foreground text-sm">
-          {new Date(row.getValue('date')).toLocaleDateString()}
+          {new Date(row.getValue("date")).toLocaleDateString()}
         </div>
       ),
     },
     {
-      accessorKey: 'status',
-      header: 'Status',
+      accessorKey: "status",
+      header: "Status",
       cell: ({ row }) => (
         <Badge
-          variant={getStatusBadgeVariant(row.getValue('status'))}
+          variant={getStatusBadgeVariant(row.getValue("status"))}
           className="text-xs"
         >
-          {row.getValue('status')}
+          {row.getValue("status")}
         </Badge>
       ),
     },
     {
-      id: 'actions',
+      id: "actions",
       header: () => <div className="text-right">Actions</div>,
       cell: ({ row }) => (
         <div className="flex justify-end">
@@ -170,11 +170,11 @@ export default function ReviewTable({
                 <DropdownMenuItem>View Details</DropdownMenuItem>
               )}
               {permissions.canUpdateStatus &&
-                row.original.status === 'pending' && (
+                row.original.status === "pending" && (
                   <>
                     <DropdownMenuItem
                       onClick={() =>
-                        onUpdateStatus?.(row.original.id, 'published')
+                        onUpdateStatus?.(row.original.id, "published")
                       }
                       className="text-green-600"
                     >
@@ -182,7 +182,7 @@ export default function ReviewTable({
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() =>
-                        onUpdateStatus?.(row.original.id, 'rejected')
+                        onUpdateStatus?.(row.original.id, "rejected")
                       }
                       className="text-destructive"
                     >

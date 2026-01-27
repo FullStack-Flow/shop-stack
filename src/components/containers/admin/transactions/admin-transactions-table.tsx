@@ -1,7 +1,7 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
+import DataTable from "@/components/base/data-table/data-table";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,56 +9,56 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import type { Transaction } from '@/types/transaction';
+} from "@/components/ui/tooltip";
+import type { Transaction } from "@/types/transaction";
 
 const columns: ColumnDef<Transaction>[] = [
   {
-    accessorKey: 'id',
-    header: 'ID',
+    accessorKey: "id",
+    header: "ID",
     cell: ({ row }) => (
       <div className="w-20 truncate text-muted-foreground text-xs">
-        {row.getValue('id')}
+        {row.getValue("id")}
       </div>
     ),
   },
   {
-    accessorKey: 'trackingNumber',
-    header: 'Tracking Number',
+    accessorKey: "trackingNumber",
+    header: "Tracking Number",
     cell: ({ row }) => (
-      <div className="font-mono text-sm">{row.getValue('trackingNumber')}</div>
+      <div className="font-mono text-sm">{row.getValue("trackingNumber")}</div>
     ),
   },
   {
-    accessorKey: 'totalPrice',
-    header: 'Total',
+    accessorKey: "totalPrice",
+    header: "Total",
     cell: ({ row }) => (
-      <div className="font-medium">{row.getValue('totalPrice')}</div>
+      <div className="font-medium">{row.getValue("totalPrice")}</div>
     ),
   },
   {
-    accessorKey: 'paymentGateway',
-    header: 'Payment Method',
+    accessorKey: "paymentGateway",
+    header: "Payment Method",
     cell: ({ row }) => (
-      <div className="text-sm">{row.getValue('paymentGateway')}</div>
+      <div className="text-sm">{row.getValue("paymentGateway")}</div>
     ),
   },
   {
-    accessorKey: 'paymentStatus',
-    header: 'Status',
+    accessorKey: "paymentStatus",
+    header: "Status",
     cell: ({ row }) => {
-      const status = row.getValue('paymentStatus') as string;
+      const status = row.getValue("paymentStatus") as string;
       const statusColors = {
-        paid: 'bg-green-100 text-green-800',
-        pending: 'bg-yellow-100 text-yellow-800',
-        failed: 'bg-red-100 text-red-800',
-        refunded: 'bg-gray-100 text-gray-800',
+        paid: "bg-green-100 text-green-800",
+        pending: "bg-yellow-100 text-yellow-800",
+        failed: "bg-red-100 text-red-800",
+        refunded: "bg-gray-100 text-gray-800",
       };
       return (
         <div className="text-sm">
@@ -72,16 +72,16 @@ const columns: ColumnDef<Transaction>[] = [
     },
   },
   {
-    accessorKey: 'date',
-    header: 'Date',
+    accessorKey: "date",
+    header: "Date",
     cell: ({ row }) => {
-      const date = new Date(row.getValue('date'));
+      const date = new Date(row.getValue("date"));
       return <div className="text-sm">{date.toLocaleDateString()}</div>;
     },
   },
   {
-    id: 'actions',
-    header: 'Actions',
+    id: "actions",
+    header: "Actions",
     cell: ({ row }) => {
       const transaction = row.original;
 

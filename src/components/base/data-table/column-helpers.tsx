@@ -1,6 +1,6 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import * as React from 'react';
-import { Checkbox } from '@/components/ui/checkbox';
+import type { ColumnDef } from "@tanstack/react-table";
+import * as React from "react";
+import { Checkbox } from "@/components/ui/checkbox";
 
 function IndeterminateCheckbox(
   props: React.ComponentProps<typeof Checkbox> & { indeterminate?: boolean }
@@ -9,7 +9,7 @@ function IndeterminateCheckbox(
   const ref = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
     if (ref.current) {
-      const input = ref.current.querySelector('input');
+      const input = ref.current.querySelector("input");
       if (input) {
         input.indeterminate = !!indeterminate;
       }
@@ -21,7 +21,7 @@ function IndeterminateCheckbox(
 /** Create a checkbox selection column. */
 export function createSelectionColumn<TData>(): ColumnDef<TData> {
   return {
-    id: 'select',
+    id: "select",
     header: ({ table }) => (
       <IndeterminateCheckbox
         aria-label="Select all"
@@ -48,12 +48,12 @@ export function createSelectionColumn<TData>(): ColumnDef<TData> {
 /** Utility to format currency values */
 export function formatCurrency(
   amount: number,
-  currency = 'USD',
-  locale = 'en-US'
+  currency = "USD",
+  locale = "en-US"
 ) {
   try {
     return new Intl.NumberFormat(locale, {
-      style: 'currency',
+      style: "currency",
       currency,
     }).format(amount);
   } catch {

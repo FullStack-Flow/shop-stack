@@ -1,5 +1,5 @@
-import { useForm } from '@tanstack/react-form';
-import { Button } from '@/components/ui/button';
+import { useForm } from "@tanstack/react-form";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,21 +7,21 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import type { TagFormValues } from '@/types/tag-form';
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import type { TagFormValues } from "@/types/tag-form";
 
 // Helper function to safely get string errors from field meta
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === 'string');
+  return errors.filter((error): error is string => typeof error === "string");
 }
 
 interface AddTagDialogProps {
@@ -37,8 +37,8 @@ export function AddTagDialog({
 }: AddTagDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: '',
-      description: '',
+      name: "",
+      description: "",
     },
     onSubmit: async ({ value }) => {
       onSubmit(value);
@@ -138,7 +138,7 @@ export function AddTagDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? 'Adding...' : 'Add Tag'}
+                  {isSubmitting ? "Adding..." : "Add Tag"}
                 </Button>
               )}
             </form.Subscribe>

@@ -16,7 +16,7 @@
 import type {
   DataTableFetchParams,
   DataTableFetchResult,
-} from '@/components/base/data-table/types';
+} from "@/components/base/data-table/types";
 
 // ============================================================================
 // Types
@@ -50,7 +50,7 @@ export interface BaseServerQuery {
   limit?: number;
   offset?: number;
   sortBy?: string;
-  sortDirection?: 'asc' | 'desc';
+  sortDirection?: "asc" | "desc";
   search?: string;
   [key: string]: unknown;
 }
@@ -150,7 +150,7 @@ export function createServerFetcher<TData, TQuery extends BaseServerQuery>(
       const sortCol = sorting[0];
       const mappedField = sortFieldMap[sortCol.id] ?? sortCol.id;
       baseQuery.sortBy = mappedField;
-      baseQuery.sortDirection = sortCol.desc ? 'desc' : 'asc';
+      baseQuery.sortDirection = sortCol.desc ? "desc" : "asc";
     }
 
     // 3. Handle global search
@@ -209,9 +209,9 @@ export function booleanFilterTransform(
 ): Record<string, unknown> {
   const result: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(filters)) {
-    if (value === 'true') {
+    if (value === "true") {
       result[key] = true;
-    } else if (value === 'false') {
+    } else if (value === "false") {
       result[key] = false;
     } else {
       result[key] = value;

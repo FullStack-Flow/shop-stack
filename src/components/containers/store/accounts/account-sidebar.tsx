@@ -1,22 +1,22 @@
-import { Link, useLocation } from '@tanstack/react-router';
-import { Heart, LogOut, Package, User } from 'lucide-react';
-import { Button, buttonVariants } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Link, useLocation } from "@tanstack/react-router";
+import { Heart, LogOut, Package, User } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const sidebarItems = [
   {
-    title: 'Profile',
-    href: '/profile',
+    title: "Profile",
+    href: "/profile",
     icon: User,
   },
   {
-    title: 'My Orders',
-    href: '/orders',
+    title: "My Orders",
+    href: "/orders",
     icon: Package,
   },
   {
-    title: 'My Wishlists',
-    href: '/wishlist',
+    title: "My Wishlists",
+    href: "/wishlist",
     icon: Heart,
   },
 ];
@@ -38,11 +38,11 @@ export default function AccountSidebar() {
                 key={item.href}
                 to={item.href}
                 className={cn(
-                  buttonVariants({ variant: 'ghost', size: 'lg' }),
-                  'w-full justify-start',
+                  buttonVariants({ variant: "ghost", size: "lg" }),
+                  "w-full justify-start",
                   pathname === item.href
-                    ? 'border-transparent bg-accent text-accent-foreground'
-                    : 'border-transparent text-muted-foreground'
+                    ? "border-transparent bg-accent text-accent-foreground"
+                    : "border-transparent text-muted-foreground"
                 )}
               >
                 <item.icon className="size-4" />

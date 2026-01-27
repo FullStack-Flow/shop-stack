@@ -1,6 +1,6 @@
-import ProductHeader from '@/components/containers/vendors/products/product-header';
-import ProductTable from '@/components/containers/vendors/products/product-table';
-import type { Product } from '@/types/products';
+import ProductHeader from "@/components/containers/vendors/products/product-header";
+import ProductTable from "@/components/containers/vendors/products/product-table";
+import type { Product } from "@/types/products";
 
 interface ShopProductsTemplateProps {
   products: Product[];

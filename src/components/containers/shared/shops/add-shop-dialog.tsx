@@ -51,7 +51,7 @@ export function AddShopDialog({
       await formApi.validateAllFields("change");
 
       const hasErrors = Object.values(formApi.state.fieldMeta).some(
-        (meta) => meta?.errors && meta.errors.length > 0,
+        (meta) => meta?.errors && meta.errors.length > 0
       );
 
       if (hasErrors) {

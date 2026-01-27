@@ -5,7 +5,7 @@ export interface Product {
   shop: string;
   price: string;
   stock: number;
-  status: 'active' | 'out_of_stock';
+  status: "active" | "out_of_stock";
   image: string;
   productType: string;
   category?: string;

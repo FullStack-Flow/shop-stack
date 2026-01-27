@@ -1,6 +1,6 @@
-import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useCartStore } from '@/lib/store/cart-store';
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useCartStore } from "@/lib/store/cart-store";
 
 export default function ShippingMethodSelector() {
   const { shippingMethod, setShippingMethod } = useCartStore();
@@ -11,7 +11,7 @@ export default function ShippingMethodSelector() {
       <RadioGroup
         value={shippingMethod}
         onValueChange={(value) =>
-          setShippingMethod(value as 'free' | 'express')
+          setShippingMethod(value as "free" | "express")
         }
         className="grid gap-4"
       >

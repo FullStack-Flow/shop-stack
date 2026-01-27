@@ -83,7 +83,7 @@ export const useCategoryMutations = (shopId: string) => {
     },
     onSuccess: (result) => {
       toast.success(
-        `Category "${result.category?.name}" created successfully!`,
+        `Category "${result.category?.name}" created successfully!`
       );
       invalidateCategories();
     },
@@ -100,7 +100,7 @@ export const useCategoryMutations = (shopId: string) => {
     },
     onSuccess: (result) => {
       toast.success(
-        `Category "${result.category?.name}" updated successfully!`,
+        `Category "${result.category?.name}" updated successfully!`
       );
       invalidateCategories();
       // Also invalidate specific category query

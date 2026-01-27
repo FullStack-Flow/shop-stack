@@ -1,8 +1,8 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { Eye, EyeOff, MoreHorizontal } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { Eye, EyeOff, MoreHorizontal } from "lucide-react";
+import DataTable from "@/components/base/data-table/data-table";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,8 +10,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import type { Coupon, CouponPermissions } from '@/types/coupon';
+} from "@/components/ui/dropdown-menu";
+import type { Coupon, CouponPermissions } from "@/types/coupon";
 
 interface CouponTableProps {
   coupons: Coupon[];
@@ -37,79 +37,79 @@ export default function CouponTable({
 }: CouponTableProps) {
   const columns: ColumnDef<Coupon>[] = [
     {
-      accessorKey: 'id',
-      header: 'ID',
+      accessorKey: "id",
+      header: "ID",
       cell: ({ row }) => (
         <div className="w-20 truncate text-muted-foreground text-xs">
-          {row.getValue('id')}
+          {row.getValue("id")}
         </div>
       ),
     },
     {
-      accessorKey: 'code',
-      header: 'Code',
+      accessorKey: "code",
+      header: "Code",
       cell: ({ row }) => (
-        <div className="font-mono font-semibold">{row.getValue('code')}</div>
+        <div className="font-mono font-semibold">{row.getValue("code")}</div>
       ),
     },
     {
-      accessorKey: 'description',
-      header: 'Description',
+      accessorKey: "description",
+      header: "Description",
       cell: ({ row }) => (
-        <div className="text-sm">{row.getValue('description')}</div>
+        <div className="text-sm">{row.getValue("description")}</div>
       ),
     },
     {
-      accessorKey: 'type',
-      header: 'Type',
+      accessorKey: "type",
+      header: "Type",
       cell: ({ row }) => {
-        const type = row.getValue('type') as string;
+        const type = row.getValue("type") as string;
         return (
           <Badge variant="outline">
-            {type === 'percentage'
-              ? '%'
-              : type === 'fixed'
-                ? '$'
-                : 'Free Shipping'}
+            {type === "percentage"
+              ? "%"
+              : type === "fixed"
+                ? "$"
+                : "Free Shipping"}
           </Badge>
         );
       },
     },
     {
-      accessorKey: 'discountAmount',
-      header: 'Discount',
+      accessorKey: "discountAmount",
+      header: "Discount",
       cell: ({ row }) => {
         const type = row.original.type;
-        const amount = row.getValue('discountAmount') as number;
+        const amount = row.getValue("discountAmount") as number;
         return (
           <span className="font-medium">
-            {type === 'percentage' ? `${amount}%` : `$${amount}`}
+            {type === "percentage" ? `${amount}%` : `$${amount}`}
           </span>
         );
       },
     },
     {
-      accessorKey: 'usageCount',
-      header: 'Usage',
+      accessorKey: "usageCount",
+      header: "Usage",
       cell: ({ row }) => {
-        const usageCount = row.getValue('usageCount') as number;
+        const usageCount = row.getValue("usageCount") as number;
         const usageLimit = row.original.usageLimit;
         return (
           <div className="text-sm">
-            {usageCount} {usageLimit ? `/ ${usageLimit}` : '(unlimited)'}
+            {usageCount} {usageLimit ? `/ ${usageLimit}` : "(unlimited)"}
           </div>
         );
       },
     },
     {
-      accessorKey: 'status',
-      header: 'Status',
+      accessorKey: "status",
+      header: "Status",
       cell: ({ row }) => {
-        const status = row.getValue('status') as string;
+        const status = row.getValue("status") as string;
         const variants = {
-          active: 'default',
-          expired: 'secondary',
-          inactive: 'destructive',
+          active: "default",
+          expired: "secondary",
+          inactive: "destructive",
         } as const;
         return (
           <Badge variant={variants[status as keyof typeof variants]}>
@@ -119,20 +119,20 @@ export default function CouponTable({
       },
     },
     {
-      accessorKey: 'activeTo',
-      header: 'Expires',
+      accessorKey: "activeTo",
+      header: "Expires",
       cell: ({ row }) => {
-        const date = new Date(row.getValue('activeTo'));
+        const date = new Date(row.getValue("activeTo"));
         const isExpired = date < new Date();
         return (
-          <span className={isExpired ? 'text-destructive' : ''}>
+          <span className={isExpired ? "text-destructive" : ""}>
             {date.toLocaleDateString()}
           </span>
         );
       },
     },
     {
-      id: 'actions',
+      id: "actions",
       header: () => <div className="text-right">Actions</div>,
       cell: ({ row }) => (
         <div className="flex justify-end gap-2">
@@ -145,7 +145,7 @@ export default function CouponTable({
                 onToggleStatus?.(row.original.id, row.original.status)
               }
             >
-              {row.original.status === 'active' ? (
+              {row.original.status === "active" ? (
                 <EyeOff className="size-4" />
               ) : (
                 <Eye className="size-4" />

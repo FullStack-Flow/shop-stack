@@ -1,7 +1,7 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,39 +9,39 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 
 export type Order = {
   id: string;
   date: string;
-  status: 'Delivered' | 'Processing' | 'Cancelled';
+  status: "Delivered" | "Processing" | "Cancelled";
   total: number;
   items: number;
 };
 
 export const columns: ColumnDef<Order>[] = [
   {
-    accessorKey: 'id',
-    header: 'Order ID',
-    cell: ({ row }) => <div className="font-medium">{row.getValue('id')}</div>,
+    accessorKey: "id",
+    header: "Order ID",
+    cell: ({ row }) => <div className="font-medium">{row.getValue("id")}</div>,
   },
   {
-    accessorKey: 'date',
-    header: 'Date',
+    accessorKey: "date",
+    header: "Date",
   },
   {
-    accessorKey: 'status',
-    header: 'Status',
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => {
-      const status = row.getValue('status') as string;
+      const status = row.getValue("status") as string;
       return (
         <Badge
           variant={
-            status === 'Delivered'
-              ? 'secondary'
-              : status === 'Processing'
-                ? 'default'
-                : 'destructive'
+            status === "Delivered"
+              ? "secondary"
+              : status === "Processing"
+                ? "default"
+                : "destructive"
           }
         >
           {status}
@@ -50,19 +50,19 @@ export const columns: ColumnDef<Order>[] = [
     },
   },
   {
-    accessorKey: 'total',
-    header: 'Total',
+    accessorKey: "total",
+    header: "Total",
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('total'));
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      const amount = parseFloat(row.getValue("total"));
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
       }).format(amount);
       return <div className="font-medium">{formatted}</div>;
     },
   },
   {
-    id: 'actions',
+    id: "actions",
     cell: ({ row }) => {
       const order = row.original;
 

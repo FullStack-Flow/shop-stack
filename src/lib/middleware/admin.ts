@@ -37,5 +37,5 @@ export const adminMiddleware = createMiddleware().server(
     return next({
       context: { session, headers: request.headers, isAdmin },
     });
-  },
+  }
 );

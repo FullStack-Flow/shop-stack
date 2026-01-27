@@ -1,10 +1,10 @@
-import { Star, ThumbsUp } from 'lucide-react';
-import { useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
-import type { StoreReview } from '@/types/store-types';
+import { Star, ThumbsUp } from "lucide-react";
+import { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import type { StoreReview } from "@/types/store-types";
 
 interface StoreReviewsProps {
   rating: number;
@@ -14,47 +14,47 @@ interface StoreReviewsProps {
 // Mock reviews data
 const mockReviews: StoreReview[] = [
   {
-    id: '1',
-    storeId: '1',
-    userName: 'Sarah Johnson',
-    userAvatar: 'https://i.pravatar.cc/150?img=1',
+    id: "1",
+    storeId: "1",
+    userName: "Sarah Johnson",
+    userAvatar: "https://i.pravatar.cc/150?img=1",
     rating: 5,
     comment:
-      'Excellent store! Fast shipping and great quality products. Will definitely shop here again.',
-    date: '2024-01-15',
+      "Excellent store! Fast shipping and great quality products. Will definitely shop here again.",
+    date: "2024-01-15",
     helpful: 12,
   },
   {
-    id: '2',
-    storeId: '1',
-    userName: 'Michael Chen',
-    userAvatar: 'https://i.pravatar.cc/150?img=2',
+    id: "2",
+    storeId: "1",
+    userName: "Michael Chen",
+    userAvatar: "https://i.pravatar.cc/150?img=2",
     rating: 4,
     comment:
-      'Good selection of products and reasonable prices. Customer service was helpful.',
-    date: '2024-01-10',
+      "Good selection of products and reasonable prices. Customer service was helpful.",
+    date: "2024-01-10",
     helpful: 8,
   },
   {
-    id: '3',
-    storeId: '1',
-    userName: 'Emily Rodriguez',
-    userAvatar: 'https://i.pravatar.cc/150?img=3',
+    id: "3",
+    storeId: "1",
+    userName: "Emily Rodriguez",
+    userAvatar: "https://i.pravatar.cc/150?img=3",
     rating: 5,
     comment:
-      'Amazing experience! The products are exactly as described and arrived quickly.',
-    date: '2024-01-05',
+      "Amazing experience! The products are exactly as described and arrived quickly.",
+    date: "2024-01-05",
     helpful: 15,
   },
   {
-    id: '4',
-    storeId: '1',
-    userName: 'David Kim',
-    userAvatar: 'https://i.pravatar.cc/150?img=4',
+    id: "4",
+    storeId: "1",
+    userName: "David Kim",
+    userAvatar: "https://i.pravatar.cc/150?img=4",
     rating: 3,
     comment:
-      'Products are good but shipping took longer than expected. Otherwise satisfied.',
-    date: '2023-12-28',
+      "Products are good but shipping took longer than expected. Otherwise satisfied.",
+    date: "2023-12-28",
     helpful: 5,
   },
 ];
@@ -84,8 +84,8 @@ export function StoreReviews({ rating, reviewCount }: StoreReviewsProps) {
                     key={i}
                     className={`size-5 ${
                       i < Math.floor(rating)
-                        ? 'fill-yellow-400 text-yellow-400'
-                        : 'text-muted-foreground'
+                        ? "fill-yellow-400 text-yellow-400"
+                        : "text-muted-foreground"
                     }`}
                   />
                 ))}
@@ -131,9 +131,9 @@ export function StoreReviews({ rating, reviewCount }: StoreReviewsProps) {
                     />
                     <AvatarFallback>
                       {review.userName
-                        .split(' ')
+                        .split(" ")
                         .map((n) => n[0])
-                        .join('')}
+                        .join("")}
                     </AvatarFallback>
                   </Avatar>
 
@@ -149,17 +149,17 @@ export function StoreReviews({ rating, reviewCount }: StoreReviewsProps) {
                                 key={i}
                                 className={`size-3.5 ${
                                   i < review.rating
-                                    ? 'fill-yellow-400 text-yellow-400'
-                                    : 'text-muted-foreground'
+                                    ? "fill-yellow-400 text-yellow-400"
+                                    : "text-muted-foreground"
                                 }`}
                               />
                             ))}
                           </div>
                           <span className="text-muted-foreground text-xs">
-                            {new Date(review.date).toLocaleDateString('en-US', {
-                              month: 'long',
-                              day: 'numeric',
-                              year: 'numeric',
+                            {new Date(review.date).toLocaleDateString("en-US", {
+                              month: "long",
+                              day: "numeric",
+                              year: "numeric",
                             })}
                           </span>
                         </div>

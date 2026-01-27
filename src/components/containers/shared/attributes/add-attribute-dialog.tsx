@@ -1,4 +1,4 @@
-import { useForm } from '@tanstack/react-form';
+import { useForm } from "@tanstack/react-form";
 import {
   Check,
   ImageIcon,
@@ -6,8 +6,8 @@ import {
   Plus,
   Trash2,
   TypeIcon,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -15,37 +15,37 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
-import getFieldErrors from '@/lib/helper/field-errors';
-import { cn } from '@/lib/utils';
-import type { AttributeFormValues, AttributeValue } from '@/types/attributes';
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import getFieldErrors from "@/lib/helper/field-errors";
+import { cn } from "@/lib/utils";
+import type { AttributeFormValues, AttributeValue } from "@/types/attributes";
 
 interface AddAttributeDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (data: AttributeFormValues) => void;
-  role?: 'admin' | 'vendor';
+  role?: "admin" | "vendor";
 }
 
 export function AddAttributeDialog({
   open,
   onOpenChange,
   onSubmit,
-  role = 'vendor',
+  role = "vendor",
 }: AddAttributeDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: '',
-      slug: '',
-      type: 'select' as AttributeFormValues['type'],
+      name: "",
+      slug: "",
+      type: "select" as AttributeFormValues["type"],
       values: [] as AttributeValue[],
     },
     onSubmit: async ({ value }) => {
@@ -57,8 +57,8 @@ export function AddAttributeDialog({
 
   const typeOptions = [
     {
-      value: 'color',
-      label: 'Color',
+      value: "color",
+      label: "Color",
       icon: Palette,
       preview: (
         <div className="flex gap-1">
@@ -69,8 +69,8 @@ export function AddAttributeDialog({
       ),
     },
     {
-      value: 'image',
-      label: 'Image',
+      value: "image",
+      label: "Image",
       icon: ImageIcon,
       preview: (
         <div className="flex gap-1">
@@ -81,8 +81,8 @@ export function AddAttributeDialog({
       ),
     },
     {
-      value: 'label',
-      label: 'Label',
+      value: "label",
+      label: "Label",
       icon: TypeIcon,
       preview: (
         <div className="flex gap-1">
@@ -96,8 +96,8 @@ export function AddAttributeDialog({
       ),
     },
     {
-      value: 'select',
-      label: 'Select',
+      value: "select",
+      label: "Select",
       icon: Check,
       preview: <div className="h-4 w-12 rounded border bg-white" />,
     },
@@ -109,9 +109,9 @@ export function AddAttributeDialog({
         <DialogHeader>
           <DialogTitle>Add New Attribute</DialogTitle>
           <DialogDescription>
-            {role === 'admin'
-              ? 'Create a new attribute to define product variations across the platform.'
-              : 'Create a new attribute to define product variations for your shop.'}
+            {role === "admin"
+              ? "Create a new attribute to define product variations across the platform."
+              : "Create a new attribute to define product variations for your shop."}
           </DialogDescription>
         </DialogHeader>
 
@@ -140,8 +140,8 @@ export function AddAttributeDialog({
                         onChange={(e) => {
                           field.handleChange(e.target.value);
                           form.setFieldValue(
-                            'slug',
-                            e.target.value.toLowerCase().replace(/\s+/g, '-')
+                            "slug",
+                            e.target.value.toLowerCase().replace(/\s+/g, "-")
                           );
                         }}
                         placeholder="e.g. Color, Size, Material"
@@ -192,14 +192,14 @@ export function AddAttributeDialog({
                         <div
                           key={option.value}
                           className={cn(
-                            'cursor-pointer rounded-lg border-2 p-4 transition-all hover:bg-muted/50',
+                            "cursor-pointer rounded-lg border-2 p-4 transition-all hover:bg-muted/50",
                             field.state.value === option.value
-                              ? 'border-primary bg-primary/5'
-                              : 'border-muted bg-transparent'
+                              ? "border-primary bg-primary/5"
+                              : "border-muted bg-transparent"
                           )}
                           onClick={() => field.handleChange(option.value)}
                           onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
+                            if (e.key === "Enter" || e.key === " ") {
                               field.handleChange(option.value);
                             }
                           }}
@@ -247,10 +247,10 @@ export function AddAttributeDialog({
                         size="sm"
                         onClick={() =>
                           field.pushValue({
-                            name: '',
-                            slug: '',
-                            value: '',
-                            id: '',
+                            name: "",
+                            slug: "",
+                            value: "",
+                            id: "",
                           })
                         }
                       >
@@ -284,7 +284,7 @@ export function AddAttributeDialog({
                                         `values[${i}].slug`,
                                         e.target.value
                                           .toLowerCase()
-                                          .replace(/\s+/g, '-')
+                                          .replace(/\s+/g, "-")
                                       );
                                     }}
                                     placeholder="Name"
@@ -323,7 +323,7 @@ export function AddAttributeDialog({
                             selector={(state) => state.values.type}
                             children={(type) => (
                               <>
-                                {type === 'color' && (
+                                {type === "color" && (
                                   <div className="sm:col-span-3">
                                     <form.Field name={`values[${i}].value`}>
                                       {(subField) => (
@@ -340,7 +340,7 @@ export function AddAttributeDialog({
                                               id={`value-color-picker-${i}`}
                                               value={
                                                 subField.state.value ||
-                                                '#000000'
+                                                "#000000"
                                               }
                                               onChange={(e) =>
                                                 subField.handleChange(
@@ -368,7 +368,7 @@ export function AddAttributeDialog({
                                   </div>
                                 )}
 
-                                {type === 'image' && (
+                                {type === "image" && (
                                   <div className="sm:col-span-3">
                                     <form.Field name={`values[${i}].value`}>
                                       {(subField) => (

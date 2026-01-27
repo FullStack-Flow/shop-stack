@@ -106,7 +106,7 @@ export const auth = betterAuth({
             });
             console.log(
               "Email sent successfully! Message ID:",
-              result.messageId,
+              result.messageId
             );
           } catch (error) {
             console.error("Failed to send OTP email:", error);

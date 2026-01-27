@@ -1,15 +1,15 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import { Edit, MoreHorizontal, Trash2 } from 'lucide-react';
-import DataTable from '@/components/base/data-table/data-table';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import type { ColumnDef } from "@tanstack/react-table";
+import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
+import DataTable from "@/components/base/data-table/data-table";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import type { Taxes as Tax, TaxPermissions } from '@/types/taxes';
+} from "@/components/ui/dropdown-menu";
+import type { Taxes as Tax, TaxPermissions } from "@/types/taxes";
 
 interface TaxesTableProps {
   taxes: Tax[];
@@ -33,54 +33,54 @@ export default function TaxesTable({
 }: TaxesTableProps) {
   const columns: ColumnDef<Tax>[] = [
     {
-      accessorKey: 'name',
-      header: 'Name',
+      accessorKey: "name",
+      header: "Name",
       cell: ({ row }) => {
-        return <div className="font-medium">{row.getValue('name')}</div>;
+        return <div className="font-medium">{row.getValue("name")}</div>;
       },
     },
     {
-      accessorKey: 'rate',
-      header: 'Rate',
+      accessorKey: "rate",
+      header: "Rate",
       cell: ({ row }) => {
-        const rate = row.getValue('rate') as number;
+        const rate = row.getValue("rate") as number;
         return <Badge variant="outline">{rate}%</Badge>;
       },
     },
     {
-      accessorKey: 'country',
-      header: 'Country',
+      accessorKey: "country",
+      header: "Country",
       cell: ({ row }) => {
-        const country = row.getValue('country') as string;
+        const country = row.getValue("country") as string;
         return <Badge variant="outline">{country}</Badge>;
       },
     },
     {
-      accessorKey: 'state',
-      header: 'State',
+      accessorKey: "state",
+      header: "State",
       cell: ({ row }) => {
-        const state = row.getValue('state') as string;
-        return <div className="text-muted-foreground">{state || '—'}</div>;
+        const state = row.getValue("state") as string;
+        return <div className="text-muted-foreground">{state || "—"}</div>;
       },
     },
     {
-      accessorKey: 'zip',
-      header: 'ZIP Code',
+      accessorKey: "zip",
+      header: "ZIP Code",
       cell: ({ row }) => {
-        const zip = row.getValue('zip') as string;
-        return <div className="text-muted-foreground">{zip || '—'}</div>;
+        const zip = row.getValue("zip") as string;
+        return <div className="text-muted-foreground">{zip || "—"}</div>;
       },
     },
     {
-      accessorKey: 'priority',
-      header: 'Priority',
+      accessorKey: "priority",
+      header: "Priority",
       cell: ({ row }) => {
-        const priority = row.getValue('priority') as number;
+        const priority = row.getValue("priority") as number;
         return <Badge variant="secondary">{priority}</Badge>;
       },
     },
     {
-      id: 'actions',
+      id: "actions",
       enableHiding: false,
       cell: ({ row }) => {
         const tax = row.original;

@@ -1,7 +1,7 @@
-import ShippingHeader from '@/components/containers/shared/shipping/shipping-header';
-import ShippingTable from '@/components/containers/shared/shipping/shipping-table';
-import { VENDOR_SHIPPING_PERMISSIONS } from '@/lib/config/shipping-permissions';
-import type { ShippingMethod } from '@/types/shipping';
+import ShippingHeader from "@/components/containers/shared/shipping/shipping-header";
+import ShippingTable from "@/components/containers/shared/shipping/shipping-table";
+import { VENDOR_SHIPPING_PERMISSIONS } from "@/lib/config/shipping-permissions";
+import type { ShippingMethod } from "@/types/shipping";
 
 interface ShopShippingTemplateProps {
   shippingMethods: ShippingMethod[];

@@ -7,7 +7,7 @@ export const shopSchema = z.object({
     .min(2, "Slug must be at least 2 characters")
     .regex(
       /^[a-z0-9-]+$/,
-      "Slug can only contain lowercase letters, numbers, and hyphens",
+      "Slug can only contain lowercase letters, numbers, and hyphens"
     ),
   description: z.string().optional(),
   address: z.string().min(5, "Address must be at least 5 characters"),
@@ -32,7 +32,7 @@ export const createShopSchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only",
+      "Slug must be lowercase with hyphens only"
     ),
   description: z
     .string()
@@ -60,7 +60,7 @@ export const updateShopSchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only",
+      "Slug must be lowercase with hyphens only"
     )
     .optional(),
   description: z.string().max(500).optional(),

@@ -1,4 +1,4 @@
-import type { OrderPermissions } from '@/types/orders';
+import type { OrderPermissions } from "@/types/orders";
 
 export const ADMIN_ORDER_PERMISSIONS: OrderPermissions = {
   canDelete: true,

@@ -1,7 +1,7 @@
-import { useForm } from '@tanstack/react-form';
-import { Check, ChevronsUpDown, Plus, Trash2, X } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { useForm } from "@tanstack/react-form";
+import { Check, ChevronsUpDown, Plus, Trash2, X } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -9,7 +9,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
+} from "@/components/ui/command";
 import {
   Dialog,
   DialogContent,
@@ -17,28 +17,28 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 export interface ProductFormValues {
   name: string;
@@ -68,7 +68,7 @@ interface AddProductDialogProps {
 
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === 'string');
+  return errors.filter((error): error is string => typeof error === "string");
 }
 
 export function AddProductDialog({
@@ -84,16 +84,16 @@ export function AddProductDialog({
 }: AddProductDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: '',
-      sku: '',
-      price: '',
-      stock: '',
-      description: '',
-      categoryId: '',
-      brandId: '',
+      name: "",
+      sku: "",
+      price: "",
+      stock: "",
+      description: "",
+      categoryId: "",
+      brandId: "",
       tagIds: [],
       attributes: [],
-      taxId: '',
+      taxId: "",
       shippingMethodIds: [],
     } as ProductFormValues,
     onSubmit: async ({ value, formApi }) => {
@@ -317,14 +317,14 @@ export function AddProductDialog({
                             variant="outline"
                             role="combobox"
                             className={cn(
-                              'w-full justify-between',
+                              "w-full justify-between",
                               !field.state.value.length &&
-                                'text-muted-foreground'
+                                "text-muted-foreground"
                             )}
                           >
                             {field.state.value.length > 0
                               ? `${field.state.value.length} methods selected`
-                              : 'Select shipping methods'}
+                              : "Select shipping methods"}
                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                           </Button>
                         </PopoverTrigger>
@@ -350,10 +350,10 @@ export function AddProductDialog({
                                   >
                                     <Check
                                       className={cn(
-                                        'mr-2 h-4 w-4',
+                                        "mr-2 h-4 w-4",
                                         field.state.value.includes(method.id)
-                                          ? 'opacity-100'
-                                          : 'opacity-0'
+                                          ? "opacity-100"
+                                          : "opacity-0"
                                       )}
                                     />
                                     {method.name} (${method.price})
@@ -410,13 +410,13 @@ export function AddProductDialog({
                           variant="outline"
                           role="combobox"
                           className={cn(
-                            'w-full justify-between',
-                            !field.state.value.length && 'text-muted-foreground'
+                            "w-full justify-between",
+                            !field.state.value.length && "text-muted-foreground"
                           )}
                         >
                           {field.state.value.length > 0
                             ? `${field.state.value.length} tags selected`
-                            : 'Select tags'}
+                            : "Select tags"}
                           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                         </Button>
                       </PopoverTrigger>
@@ -440,10 +440,10 @@ export function AddProductDialog({
                                 >
                                   <Check
                                     className={cn(
-                                      'mr-2 h-4 w-4',
+                                      "mr-2 h-4 w-4",
                                       field.state.value.includes(tag.id)
-                                        ? 'opacity-100'
-                                        : 'opacity-0'
+                                        ? "opacity-100"
+                                        : "opacity-0"
                                     )}
                                   />
                                   {tag.name}
@@ -508,7 +508,7 @@ export function AddProductDialog({
                     variant="outline"
                     size="sm"
                     onClick={() =>
-                      form.pushFieldValue('attributes', { name: '', value: '' })
+                      form.pushFieldValue("attributes", { name: "", value: "" })
                     }
                   >
                     <Plus className="mr-2 h-4 w-4" />
@@ -528,9 +528,9 @@ export function AddProductDialog({
                           variant="outline"
                           className="cursor-pointer hover:bg-accent"
                           onClick={() =>
-                            form.pushFieldValue('attributes', {
+                            form.pushFieldValue("attributes", {
                               name: attr.name,
-                              value: '',
+                              value: "",
                             })
                           }
                         >
@@ -579,7 +579,7 @@ export function AddProductDialog({
                               variant="ghost"
                               size="icon"
                               onClick={() =>
-                                form.removeFieldValue('attributes', i)
+                                form.removeFieldValue("attributes", i)
                               }
                             >
                               <Trash2 className="h-4 w-4 text-destructive" />
@@ -607,7 +607,7 @@ export function AddProductDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? 'Creating...' : 'Add Product'}
+                  {isSubmitting ? "Creating..." : "Add Product"}
                 </Button>
               )}
             </form.Subscribe>

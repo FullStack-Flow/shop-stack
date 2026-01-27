@@ -12,8 +12,8 @@ import {
   type SortingState,
   type Table as TanTable,
   useReactTable,
-} from '@tanstack/react-table';
-import * as React from 'react';
+} from "@tanstack/react-table";
+import * as React from "react";
 import {
   Table,
   TableBody,
@@ -21,8 +21,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
 type CoreProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[];
@@ -106,7 +106,7 @@ export function DataTableCore<TData, TValue>({
 
   return (
     <div
-      className={cn('w-full overflow-x-auto rounded-md border', className)}
+      className={cn("w-full overflow-x-auto rounded-md border", className)}
       role="region"
       aria-label="Data table"
     >
@@ -132,7 +132,7 @@ export function DataTableCore<TData, TValue>({
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
-                data-state={row.getIsSelected() && 'selected'}
+                data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>

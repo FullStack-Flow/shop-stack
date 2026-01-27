@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import AdminTagsTemplate from '@/components/templates/admin/admin-tags-template';
-import { mockTags } from '@/data/tags';
-import type { Tag } from '@/types/tags';
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import AdminTagsTemplate from "@/components/templates/admin/admin-tags-template";
+import { mockTags } from "@/data/tags";
+import type { Tag } from "@/types/tags";
 
-export const Route = createFileRoute('/(admin)/admin/tags/')({
+export const Route = createFileRoute("/(admin)/admin/tags/")({
   component: AdminTagsPage,
 });
 
@@ -15,7 +15,7 @@ function AdminTagsPage() {
     const newTag: Tag = {
       id: Date.now().toString(),
       name: newTagData.name,
-      slug: newTagData.name.toLowerCase().replace(/\s+/g, '-'),
+      slug: newTagData.name.toLowerCase().replace(/\s+/g, "-"),
       description: newTagData.description,
       productCount: 0,
     };

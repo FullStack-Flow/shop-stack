@@ -1,16 +1,16 @@
-import { Plus } from 'lucide-react';
-import { useState } from 'react';
-import { AddOrderDialog } from '@/components/containers/shared/orders/add-order-dialog';
-import OrderHeader from '@/components/containers/shared/orders/order-header';
-import OrderTable from '@/components/containers/shared/orders/order-table';
-import { Button } from '@/components/ui/button';
-import { ADMIN_ORDER_PERMISSIONS } from '@/lib/config/order-permissions';
-import type { Order } from '@/types/orders';
+import { Plus } from "lucide-react";
+import { useState } from "react";
+import { AddOrderDialog } from "@/components/containers/shared/orders/add-order-dialog";
+import OrderHeader from "@/components/containers/shared/orders/order-header";
+import OrderTable from "@/components/containers/shared/orders/order-table";
+import { Button } from "@/components/ui/button";
+import { ADMIN_ORDER_PERMISSIONS } from "@/lib/config/order-permissions";
+import type { Order } from "@/types/orders";
 
 interface AdminOrdersTemplateProps {
   orders: Order[];
   onAddOrder: (
-    data: Omit<Order, 'id' | 'date' | 'customer'> & {
+    data: Omit<Order, "id" | "date" | "customer"> & {
       customerName: string;
       customerEmail: string;
     }
@@ -26,7 +26,7 @@ export default function AdminOrdersTemplate({
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
 
   const handleUpdateStatus = (orderId: string, newStatus: string) => {
-    console.log('Update status for order:', orderId, 'to:', newStatus);
+    console.log("Update status for order:", orderId, "to:", newStatus);
   };
 
   return (

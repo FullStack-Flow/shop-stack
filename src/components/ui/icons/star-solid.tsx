@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import type * as React from "react";
 
 const StarSolidIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg

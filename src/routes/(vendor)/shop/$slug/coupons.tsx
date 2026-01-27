@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import ShopCouponsTemplate from '@/components/templates/vendor/shop-coupons-template';
-import { mockCoupons } from '@/data/coupons';
-import type { Coupon, CouponFormValues } from '@/types/coupon';
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import ShopCouponsTemplate from "@/components/templates/vendor/shop-coupons-template";
+import { mockCoupons } from "@/data/coupons";
+import type { Coupon, CouponFormValues } from "@/types/coupon";
 
-export const Route = createFileRoute('/(vendor)/shop/$slug/coupons')({
+export const Route = createFileRoute("/(vendor)/shop/$slug/coupons")({
   component: CouponsPage,
 });
 
@@ -30,7 +30,7 @@ function CouponsPage() {
     };
 
     setCoupons([...coupons, newCoupon]);
-    console.log('Created coupon:', newCoupon);
+    console.log("Created coupon:", newCoupon);
   };
 
   return (

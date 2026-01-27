@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import type * as React from "react";
 
 const BallCircleIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
@@ -15,7 +15,7 @@ const BallCircleIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
         x="0"
         y="-246"
         maskUnits="userSpaceOnUse"
-        style={{ maskType: 'luminance' }}
+        style={{ maskType: "luminance" }}
       >
         <path fill="#fff" d="M524-246H0v524h524z"></path>
       </mask>

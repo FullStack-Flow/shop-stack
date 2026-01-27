@@ -1,8 +1,8 @@
-import { Plus } from 'lucide-react';
-import ShopCard from '@/components/base/vendors/my-shop/shop-card';
-import ShopHeader from '@/components/containers/vendors/my-shop/shop-header';
-import { Button } from '@/components/ui/button';
-import type { Shop } from '@/lib/db/schema/shop-schema';
+import { Plus } from "lucide-react";
+import ShopCard from "@/components/base/vendors/my-shop/shop-card";
+import ShopHeader from "@/components/containers/vendors/my-shop/shop-header";
+import { Button } from "@/components/ui/button";
+import type { Shop } from "@/lib/db/schema/shop-schema";
 
 interface MyShopsTemplateProps {
   shops: Shop[];

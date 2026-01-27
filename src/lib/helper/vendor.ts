@@ -34,7 +34,7 @@ export const verifyShopOwnership = async (shopId: string, vendorId: string) => {
 
 export const verifyShopAccess = async (
   userId: string,
-  shopId: string,
+  shopId: string
 ): Promise<ShopAccessResult> => {
   // Check if user is admin first
   const isAdmin = await isUserAdmin(userId);
@@ -78,7 +78,7 @@ export const verifyShopAccess = async (
 
 export const requireShopAccess = async (
   userId: string,
-  shopId: string,
+  shopId: string
 ): Promise<ShopAccessResult> => {
   const access = await verifyShopAccess(userId, shopId);
 

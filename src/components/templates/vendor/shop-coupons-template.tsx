@@ -1,7 +1,7 @@
-import CouponHeader from '@/components/containers/shared/coupons/coupon-header';
-import CouponTable from '@/components/containers/shared/coupons/coupon-table';
-import { VENDOR_COUPON_PERMISSIONS } from '@/lib/config/coupon-permissions';
-import type { Coupon, CouponFormValues } from '@/types/coupon';
+import CouponHeader from "@/components/containers/shared/coupons/coupon-header";
+import CouponTable from "@/components/containers/shared/coupons/coupon-table";
+import { VENDOR_COUPON_PERMISSIONS } from "@/lib/config/coupon-permissions";
+import type { Coupon, CouponFormValues } from "@/types/coupon";
 
 interface ShopCouponsTemplateProps {
   coupons: Coupon[];

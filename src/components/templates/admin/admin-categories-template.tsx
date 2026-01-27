@@ -1,7 +1,7 @@
-import CategoryHeader from '@/components/containers/shared/categories/category-header';
-import CategoryTable from '@/components/containers/shared/categories/category-table';
-import { ADMIN_CATEGORY_PERMISSIONS } from '@/lib/config/category-permissions';
-import type { Category, CategoryFormValues } from '@/types/category-types';
+import CategoryHeader from "@/components/containers/shared/categories/category-header";
+import CategoryTable from "@/components/containers/shared/categories/category-table";
+import { ADMIN_CATEGORY_PERMISSIONS } from "@/lib/config/category-permissions";
+import type { Category, CategoryFormValues } from "@/types/category-types";
 
 interface AdminCategoriesTemplateProps {
   categories: Category[];

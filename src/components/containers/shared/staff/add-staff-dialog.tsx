@@ -1,5 +1,5 @@
-import { useForm } from '@tanstack/react-form';
-import { Button } from '@/components/ui/button';
+import { useForm } from "@tanstack/react-form";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,27 +7,27 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import type { StaffFormValues } from '@/types/staff';
+} from "@/components/ui/select";
+import type { StaffFormValues } from "@/types/staff";
 
 // Helper function to safely get string errors from field meta
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === 'string');
+  return errors.filter((error): error is string => typeof error === "string");
 }
 
 interface AddStaffDialogProps {
@@ -43,10 +43,10 @@ export function AddStaffDialog({
 }: AddStaffDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: '',
-      email: '',
-      role: 'staff' as 'admin' | 'manager' | 'staff',
-      status: 'invited' as 'active' | 'invited' | 'inactive',
+      name: "",
+      email: "",
+      role: "staff" as "admin" | "manager" | "staff",
+      status: "invited" as "active" | "invited" | "inactive",
       avatar: null as FileList | null,
     },
     onSubmit: async ({ value }) => {
@@ -141,7 +141,7 @@ export function AddStaffDialog({
                         value={field.state.value}
                         onValueChange={(value) =>
                           field.handleChange(
-                            value as 'admin' | 'manager' | 'staff'
+                            value as "admin" | "manager" | "staff"
                           )
                         }
                       >
@@ -169,7 +169,7 @@ export function AddStaffDialog({
                         value={field.state.value}
                         onValueChange={(value) =>
                           field.handleChange(
-                            value as 'active' | 'invited' | 'inactive'
+                            value as "active" | "invited" | "inactive"
                           )
                         }
                       >
@@ -232,7 +232,7 @@ export function AddStaffDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? 'Adding...' : 'Add Staff Member'}
+                  {isSubmitting ? "Adding..." : "Add Staff Member"}
                 </Button>
               )}
             </form.Subscribe>

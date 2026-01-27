@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface ReviewFormCtaProps {
   onReviewClick: () => void;
@@ -11,7 +11,7 @@ export default function ReviewFormCta({
   className,
 }: ReviewFormCtaProps) {
   return (
-    <div className={cn('rounded-lg border bg-muted/30 p-6', className)}>
+    <div className={cn("rounded-lg border bg-muted/30 p-6", className)}>
       <h3 className="font-semibold text-foreground text-lg">
         Review this product
       </h3>

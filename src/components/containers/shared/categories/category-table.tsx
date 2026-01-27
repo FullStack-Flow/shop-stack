@@ -15,7 +15,7 @@ import {
 
 interface VendorCategoryTableProps extends CategoryTableActions {
   fetcher: (
-    params: DataTableFetchParams,
+    params: DataTableFetchParams
   ) => Promise<DataTableFetchResult<NormalizedCategory>>;
   className?: string;
   mutationState?: CategoryMutationState;
@@ -49,7 +49,7 @@ export default function VendorCategoryTable({
         statusOptions: VENDOR_STATUS_OPTIONS,
         includeFeatured: true, // Based on the original file
       }),
-    [],
+    []
   );
 
   return (

@@ -1,6 +1,6 @@
-import { Link } from '@tanstack/react-router';
-import type { LucideIcon } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Link } from "@tanstack/react-router";
+import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ShippingInfoItemProps {
   icon: LucideIcon;
@@ -18,7 +18,7 @@ export default function ShippingInfoItem({
   className,
 }: ShippingInfoItemProps) {
   return (
-    <div className={cn('flex items-start gap-3', className)}>
+    <div className={cn("flex items-start gap-3", className)}>
       <div className="rounded-full bg-muted p-2">
         <Icon className="h-4 w-4 text-muted-foreground" />
       </div>

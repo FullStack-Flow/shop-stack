@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export interface CartItem {
   id: string;
@@ -13,7 +13,7 @@ export interface CartItem {
   maxQuantity?: number;
 }
 
-type ShippingMethod = 'free' | 'express';
+type ShippingMethod = "free" | "express";
 
 interface CartState {
   items: CartItem[];
@@ -22,7 +22,7 @@ interface CartState {
   subtotal: number;
   shippingMethod: ShippingMethod;
   shippingCost: number;
-  addItem: (item: Omit<CartItem, 'id'>) => void;
+  addItem: (item: Omit<CartItem, "id">) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
@@ -48,12 +48,12 @@ export const useCartStore = create<CartState>()(
       isOpen: false,
       totalItems: 0,
       subtotal: 0,
-      shippingMethod: 'free',
+      shippingMethod: "free",
       shippingCost: 0,
       addItem: (item) => {
         const currentItems = get().items;
         // Create a unique ID based on product ID and variants
-        const itemId = `${item.productId}-${item.color || ''}-${item.size || ''}`;
+        const itemId = `${item.productId}-${item.color || ""}-${item.size || ""}`;
 
         const existingItem = currentItems.find((i) => i.id === itemId);
         let newItems: CartItem[];
@@ -93,12 +93,12 @@ export const useCartStore = create<CartState>()(
       setIsOpen: (isOpen) => set({ isOpen }),
       toggleOpen: () => set({ isOpen: !get().isOpen }),
       setShippingMethod: (method) => {
-        const shippingCost = method === 'express' ? 9 : 0;
+        const shippingCost = method === "express" ? 9 : 0;
         set({ shippingMethod: method, shippingCost });
       },
     }),
     {
-      name: 'cart-storage',
+      name: "cart-storage",
       partialize: (state) => ({ items: state.items }),
       onRehydrateStorage: () => (state) => {
         if (state) {

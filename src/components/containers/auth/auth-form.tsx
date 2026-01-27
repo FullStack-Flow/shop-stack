@@ -41,7 +41,7 @@ export default function AuthForm({
       await formApi.validateAllFields("change");
 
       const hasErrors = Object.values(formApi.state.fieldMeta).some(
-        (meta) => meta?.errors && meta.errors.length > 0,
+        (meta) => meta?.errors && meta.errors.length > 0
       );
 
       if (hasErrors) {
@@ -71,7 +71,7 @@ export default function AuthForm({
               if (otpRes.error) {
                 console.error("Failed to send OTP:", otpRes.error);
                 toast.error(
-                  "Failed to send verification code. Please try again.",
+                  "Failed to send verification code. Please try again."
                 );
                 return;
               }
@@ -102,7 +102,7 @@ export default function AuthForm({
         }
       } catch (error) {
         toast.error(
-          error instanceof Error ? error.message : "An error occurred",
+          error instanceof Error ? error.message : "An error occurred"
         );
       } finally {
         setLoading(false);
@@ -157,7 +157,7 @@ export default function AuthForm({
           onBlur={validateField(
             mode === "sign-in"
               ? loginSchema.shape.password
-              : registerSchema.shape.password,
+              : registerSchema.shape.password
           )}
           onChange={
             mode === "sign-in"

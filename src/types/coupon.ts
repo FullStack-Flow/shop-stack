@@ -3,12 +3,12 @@ export interface Coupon {
   image: string;
   code: string;
   description: string;
-  type: 'percentage' | 'fixed' | 'free_shipping';
+  type: "percentage" | "fixed" | "free_shipping";
   discountAmount: number;
   minimumCartAmount: number;
   activeFrom: string;
   activeTo: string;
-  status: 'active' | 'expired' | 'inactive';
+  status: "active" | "expired" | "inactive";
   usageLimit?: number;
   usageCount: number;
 }
@@ -16,12 +16,12 @@ export interface Coupon {
 export interface CouponFormValues {
   code: string;
   description: string;
-  type: 'percentage' | 'fixed' | 'free_shipping';
+  type: "percentage" | "fixed" | "free_shipping";
   discountAmount: number;
   minimumCartAmount: number;
   activeFrom: string;
   activeTo: string;
-  status: 'active' | 'expired' | 'inactive';
+  status: "active" | "expired" | "inactive";
   usageLimit?: number;
   image?: FileList | null;
 }

@@ -26,7 +26,7 @@ interface UseEntityCRUDReturn<T extends { id: string }> {
 }
 
 export function useEntityCRUD<T extends { id: string }>(
-  options: UseEntityCRUDOptions<T>,
+  options: UseEntityCRUDOptions<T>
 ): UseEntityCRUDReturn<T> {
   const { onDelete } = options;
 

@@ -1,10 +1,10 @@
-import { Link } from '@tanstack/react-router';
-import { Bell, Search, Settings } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { SidebarTrigger } from '@/components/ui/sidebar';
-import { cn } from '@/lib/utils';
-import { ModeToggle } from '../provider/mode-toggle';
+import { Link } from "@tanstack/react-router";
+import { Bell, Search, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
+import { ModeToggle } from "../provider/mode-toggle";
 
 interface VendorHeaderProps {
   title?: string;
@@ -13,14 +13,14 @@ interface VendorHeaderProps {
 }
 
 export default function VendorHeader({
-  title = 'Dashboard',
+  title = "Dashboard",
   showSearch = true,
   className,
 }: VendorHeaderProps) {
   return (
     <header
       className={cn(
-        'sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6',
+        "sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6",
         className
       )}
     >

@@ -53,8 +53,8 @@ export const getAdminShops = createServerFn({ method: "GET" })
         or(
           ilike(shops.name, `%${search}%`),
           ilike(shops.slug, `%${search}%`),
-          ilike(shops.email, `%${search}%`),
-        )!,
+          ilike(shops.email, `%${search}%`)
+        )!
       );
     }
 
@@ -115,8 +115,8 @@ export const getAdminShops = createServerFn({ method: "GET" })
           shop,
           vendor,
           owner,
-          productCountMap.get(shop.id) ?? shop.totalProducts ?? 0,
-        ),
+          productCountMap.get(shop.id) ?? shop.totalProducts ?? 0
+        )
     );
 
     return {

@@ -1,7 +1,7 @@
-import TagHeader from '@/components/containers/shared/tags/tag-header';
-import TagsTable from '@/components/containers/shared/tags/tag-table';
-import { VENDOR_TAG_PERMISSIONS } from '@/lib/config/tag-permissions';
-import type { Tag } from '@/types/tags';
+import TagHeader from "@/components/containers/shared/tags/tag-header";
+import TagsTable from "@/components/containers/shared/tags/tag-table";
+import { VENDOR_TAG_PERMISSIONS } from "@/lib/config/tag-permissions";
+import type { Tag } from "@/types/tags";
 
 interface ShopTagsTemplateProps {
   tags: Tag[];

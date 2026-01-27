@@ -1,16 +1,16 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { MyShopsPageSkeleton } from '@/components/base/vendors/skeleton/shop-card-skeleton';
-import { AddShopDialog } from '@/components/containers/shared/shops/add-shop-dialog';
-import MyShopsTemplate from '@/components/templates/vendor/my-shops-template';
-import { useEntityCRUD } from '@/hooks/common/use-entity-crud';
+import { createFileRoute } from "@tanstack/react-router";
+import { MyShopsPageSkeleton } from "@/components/base/vendors/skeleton/shop-card-skeleton";
+import { AddShopDialog } from "@/components/containers/shared/shops/add-shop-dialog";
+import MyShopsTemplate from "@/components/templates/vendor/my-shops-template";
+import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
 import {
   useShops,
   useTransformedShops,
   vendorShopsQueryOptions,
-} from '@/hooks/vendors/use-shops';
-import type { ShopFormValues } from '@/types/shop';
+} from "@/hooks/vendors/use-shops";
+import type { ShopFormValues } from "@/types/shop";
 
-export const Route = createFileRoute('/(vendor)/_layout/my-shop')({
+export const Route = createFileRoute("/(vendor)/_layout/my-shop")({
   component: MyShopPage,
   loader: async ({ context }) => {
     await context.queryClient.ensureQueryData(vendorShopsQueryOptions());
@@ -50,7 +50,7 @@ function MyShopPage() {
       handleDialogClose();
     } catch (error) {
       // Error is handled by the mutation's onError callback
-      console.error('Failed to create shop:', error);
+      console.error("Failed to create shop:", error);
     }
   };
   return (

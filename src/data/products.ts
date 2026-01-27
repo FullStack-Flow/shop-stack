@@ -73,60 +73,60 @@ export interface Product {
 }
 
 export const CATEGORIES = {
-  Clothing: ['T-Shirts', 'Jeans', 'Jackets', 'Dresses', 'Activewear'],
-  Electronics: ['Smartphones', 'Laptops', 'Headphones', 'Accessories'],
-  Home: ['Furniture', 'Decor', 'Kitchen', 'Bedding'],
-  Footwear: ['Sneakers', 'Boots', 'Sandals', 'Formal'],
+  Clothing: ["T-Shirts", "Jeans", "Jackets", "Dresses", "Activewear"],
+  Electronics: ["Smartphones", "Laptops", "Headphones", "Accessories"],
+  Home: ["Furniture", "Decor", "Kitchen", "Bedding"],
+  Footwear: ["Sneakers", "Boots", "Sandals", "Formal"],
 };
 
 export const BRANDS = [
-  'Nike',
-  'Adidas',
-  'Apple',
-  'Samsung',
-  'Sony',
-  'Zara',
-  'H&M',
+  "Nike",
+  "Adidas",
+  "Apple",
+  "Samsung",
+  "Sony",
+  "Zara",
+  "H&M",
   "Levi's",
-  'Uniqlo',
-  'Dyson',
-  'Bose',
+  "Uniqlo",
+  "Dyson",
+  "Bose",
 ];
 
 export const COLORS = [
-  'Black',
-  'White',
-  'Red',
-  'Blue',
-  'Green',
-  'Yellow',
-  'Purple',
-  'Pink',
-  'Grey',
-  'Beige',
+  "Black",
+  "White",
+  "Red",
+  "Blue",
+  "Green",
+  "Yellow",
+  "Purple",
+  "Pink",
+  "Grey",
+  "Beige",
 ];
 
-export const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+export const SIZES = ["XS", "S", "M", "L", "XL", "XXL"];
 
 const ADJECTIVES = [
-  'Premium',
-  'Classic',
-  'Modern',
-  'Elegant',
-  'Durable',
-  'Lightweight',
-  'Comfortable',
-  'Stylish',
+  "Premium",
+  "Classic",
+  "Modern",
+  "Elegant",
+  "Durable",
+  "Lightweight",
+  "Comfortable",
+  "Stylish",
 ];
 const NOUNS = [
-  'Runner',
-  'Basic',
-  'Pro',
-  'Max',
-  'Air',
-  'Ultra',
-  'Essential',
-  'Signature',
+  "Runner",
+  "Basic",
+  "Pro",
+  "Max",
+  "Air",
+  "Ultra",
+  "Essential",
+  "Signature",
 ];
 
 const getRandomInt = (min: number, max: number) =>
@@ -143,10 +143,10 @@ const generateReviews = (count: number): Review[] => {
   return Array.from({ length: count }).map((_, i) => ({
     id: `rev-${i}`,
     userName: getRandomItem([
-      'John Doe',
-      'Jane Smith',
-      'Alice Johnson',
-      'Bob Brown',
+      "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
     ]),
     userAvatar: `https://i.pravatar.cc/150?u=${getRandomInt(1, 1000)}`,
     date: new Date(
@@ -154,11 +154,11 @@ const generateReviews = (count: number): Review[] => {
     ).toLocaleDateString(),
     rating: getRandomInt(3, 5),
     comment: getRandomItem([
-      'Great product! Highly recommended.',
-      'Good value for money.',
-      'Excellent quality and fast shipping.',
-      'Satisfied with the purchase.',
-      'Could be better, but decent for the price.',
+      "Great product! Highly recommended.",
+      "Good value for money.",
+      "Excellent quality and fast shipping.",
+      "Satisfied with the purchase.",
+      "Could be better, but decent for the price.",
     ]),
   }));
 };
@@ -171,7 +171,7 @@ const generateProducts = (count: number): Product[] => {
     const subcategory = getRandomItem(CATEGORIES[categoryKey]);
     const brand = getRandomItem(BRANDS);
     const name = `${brand} ${getRandomItem(ADJECTIVES)} ${subcategory} ${getRandomItem(NOUNS)}`;
-    const slug = name.toLowerCase().replace(/ /g, '-');
+    const slug = name.toLowerCase().replace(/ /g, "-");
 
     const priceVal = getRandomInt(20, 500);
     const hasDiscount = Math.random() > 0.7;
@@ -209,7 +209,7 @@ const generateProducts = (count: number): Product[] => {
       price: {
         current: priceVal,
         original: originalPrice,
-        currency: '$',
+        currency: "$",
         discountPercentage: discountPercent,
       },
       images: [
@@ -258,37 +258,37 @@ const generateProducts = (count: number): Product[] => {
         rating: 4.8,
         reviewCount: 1250,
         isVerified: true,
-        memberSince: '2020',
+        memberSince: "2020",
       },
       shipping: {
         freeShipping: Math.random() > 0.3,
-        deliveryTime: '3-5 business days',
+        deliveryTime: "3-5 business days",
         policy:
-          '30-day return policy. Buyer pays return shipping unless item is defective.',
+          "30-day return policy. Buyer pays return shipping unless item is defective.",
       },
       specifications: {
         Brand: brand,
         Model: `M-${getRandomInt(1000, 9999)}`,
         Material: getRandomItem([
-          'Cotton',
-          'Polyester',
-          'Leather',
-          'Metal',
-          'Plastic',
+          "Cotton",
+          "Polyester",
+          "Leather",
+          "Metal",
+          "Plastic",
         ]),
         Weight: `${getRandomInt(100, 1000)}g`,
-        Origin: 'Imported',
+        Origin: "Imported",
       },
       isOnSale: hasDiscount,
       similarProducts: [], // Populated after generation to avoid infinite recursion issues during init
       breadcrumbs: [
-        { label: 'Home', href: '/' },
+        { label: "Home", href: "/" },
         { label: categoryKey, href: `/category/${categoryKey.toLowerCase()}` },
         {
           label: subcategory,
           href: `/category/${categoryKey.toLowerCase()}/${subcategory.toLowerCase()}`,
         },
-        { label: name, href: '#' },
+        { label: name, href: "#" },
       ],
       // Legacy fields
       brand,

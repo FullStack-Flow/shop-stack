@@ -1,6 +1,6 @@
-import { format } from 'date-fns';
-import { Calendar, Package, Star, Users } from 'lucide-react';
-import type { StoreStats as StoreStatsType } from '@/types/store-types';
+import { format } from "date-fns";
+import { Calendar, Package, Star, Users } from "lucide-react";
+import type { StoreStats as StoreStatsType } from "@/types/store-types";
 
 interface StoreStatsProps {
   stats: StoreStatsType;
@@ -8,35 +8,35 @@ interface StoreStatsProps {
 }
 
 export function StoreStats({ stats, className }: StoreStatsProps) {
-  const formattedDate = format(stats.memberSince, 'MMMM yyyy');
+  const formattedDate = format(stats.memberSince, "MMMM yyyy");
 
   const statsData = [
     {
       icon: Package,
-      label: 'Products',
+      label: "Products",
       value: stats.totalProducts.toLocaleString(),
-      color: 'text-blue-500',
+      color: "text-blue-500",
     },
     {
       icon: Users,
-      label: 'Followers',
+      label: "Followers",
       value:
         stats.followers >= 1000
           ? `${(stats.followers / 1000).toFixed(1)}k`
           : stats.followers.toString(),
-      color: 'text-green-500',
+      color: "text-green-500",
     },
     {
       icon: Star,
-      label: 'Rating',
+      label: "Rating",
       value: stats.rating.toFixed(1),
-      color: 'text-yellow-500',
+      color: "text-yellow-500",
     },
     {
       icon: Calendar,
-      label: 'Member Since',
+      label: "Member Since",
       value: formattedDate,
-      color: 'text-purple-500',
+      color: "text-purple-500",
     },
   ];
 

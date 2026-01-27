@@ -68,7 +68,7 @@ export const getCategoryById = createServerFn({ method: "GET" })
   .inputValidator(
     vendorCategoriesQuerySchema
       .pick({ shopId: true })
-      .extend({ id: vendorCategoriesQuerySchema.shape.shopId }),
+      .extend({ id: vendorCategoriesQuerySchema.shape.shopId })
   )
   .handler(async ({ context, data }) => {
     const userId = context.session.user.id;
@@ -122,7 +122,7 @@ export const createCategory = createServerFn({ method: "POST" })
 
     if (existingCategory) {
       throw new Error(
-        "A category with this slug already exists in this shop. Please choose a different name or slug.",
+        "A category with this slug already exists in this shop. Please choose a different name or slug."
       );
     }
 
@@ -206,13 +206,13 @@ export const updateCategory = createServerFn({ method: "POST" })
       const slugExists = await db.query.categories.findFirst({
         where: and(
           eq(categories.shopId, shopId),
-          eq(categories.slug, updateData.slug),
+          eq(categories.slug, updateData.slug)
         ),
       });
 
       if (slugExists) {
         throw new Error(
-          "A category with this slug already exists in this shop.",
+          "A category with this slug already exists in this shop."
         );
       }
     }
@@ -282,7 +282,7 @@ export const updateCategory = createServerFn({ method: "POST" })
       updatedCategory,
       {
         includeShopInfo: false,
-      },
+      }
     );
 
     return {
@@ -300,7 +300,7 @@ export const deleteCategory = createServerFn({ method: "POST" })
   .inputValidator(
     vendorCategoriesQuerySchema
       .pick({ shopId: true })
-      .extend({ id: vendorCategoriesQuerySchema.shape.shopId }),
+      .extend({ id: vendorCategoriesQuerySchema.shape.shopId })
   )
   .handler(async ({ context, data }) => {
     const userId = context.session.user.id;
@@ -332,7 +332,7 @@ export const deleteCategory = createServerFn({ method: "POST" })
     // Check if category has children
     if (childrenCount[0]?.count > 0) {
       throw new Error(
-        "Cannot delete a category that has subcategories. Please delete or reassign subcategories first.",
+        "Cannot delete a category that has subcategories. Please delete or reassign subcategories first."
       );
     }
 

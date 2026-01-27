@@ -40,7 +40,7 @@ export default function VendorSignUpForm({ onSuccess }: VendorSignUpFormProps) {
       await formApi.validateAllFields("change");
 
       const hasErrors = Object.values(formApi.state.fieldMeta).some(
-        (meta) => meta?.errors && meta.errors.length > 0,
+        (meta) => meta?.errors && meta.errors.length > 0
       );
 
       if (hasErrors) {
@@ -140,7 +140,7 @@ export default function VendorSignUpForm({ onSuccess }: VendorSignUpFormProps) {
               label="Password"
               onBlur={validateField(vendorRegisterSchema.shape.password)}
               onChange={validateOptionalField(
-                vendorRegisterSchema.shape.password,
+                vendorRegisterSchema.shape.password
               )}
               type={showPassword ? "text" : "password"}
               placeholder="8+ chars, strong password"
@@ -234,7 +234,7 @@ export default function VendorSignUpForm({ onSuccess }: VendorSignUpFormProps) {
               label="Store Name"
               onBlur={validateField(vendorRegisterSchema.shape.storeName)}
               onChange={validateOptionalField(
-                vendorRegisterSchema.shape.storeName,
+                vendorRegisterSchema.shape.storeName
               )}
               placeholder="My Awesome Store"
               description="This will be displayed to customers."

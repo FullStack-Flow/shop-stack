@@ -1,10 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import AdminBrandsTemplate from '@/components/templates/admin/admin-brands-template';
-import { mockBrands } from '@/data/brand';
-import type { Brand } from '@/types/brands';
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import AdminBrandsTemplate from "@/components/templates/admin/admin-brands-template";
+import { mockBrands } from "@/data/brand";
+import type { Brand } from "@/types/brands";
 
-export const Route = createFileRoute('/(admin)/admin/brands/')({
+export const Route = createFileRoute("/(admin)/admin/brands/")({
   component: AdminBrandsPage,
 });
 

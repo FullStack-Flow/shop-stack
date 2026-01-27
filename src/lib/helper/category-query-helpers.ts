@@ -26,7 +26,7 @@ export function buildCategoryFilterConditions(
   options: Omit<
     CategoryQueryOptions,
     "limit" | "offset" | "sortBy" | "sortDirection"
-  >,
+  >
 ): SQL[] {
   const conditions: SQL[] = [];
 
@@ -41,8 +41,8 @@ export function buildCategoryFilterConditions(
       or(
         ilike(categories.name, `%${options.search}%`),
         ilike(categories.slug, `%${options.search}%`),
-        ilike(categories.description, `%${options.search}%`),
-      ) as any,
+        ilike(categories.description, `%${options.search}%`)
+      ) as any
     );
   }
 
@@ -74,7 +74,7 @@ export async function batchFetchCategoryRelations(
   categoryList: (typeof categories.$inferSelect)[],
   options: {
     includeShopInfo?: boolean;
-  } = {},
+  } = {}
 ): Promise<BatchedCategoryRelations> {
   if (categoryIds.length === 0) {
     return {
@@ -122,7 +122,7 @@ export async function batchFetchCategoryRelations(
           slug: shops.slug,
         })
         .from(shops)
-        .where(inArray(shops.id, shopIds)),
+        .where(inArray(shops.id, shopIds))
     );
   } else {
     queries.push(Promise.resolve([]));
@@ -165,7 +165,7 @@ export function normalizeCategory(
   relations: BatchedCategoryRelations,
   options: {
     includeShopInfo?: boolean;
-  } = {},
+  } = {}
 ): NormalizedCategory {
   // Get parent name
   const parentName = category.parentId
@@ -210,7 +210,7 @@ export function normalizeCategory(
 }
 
 export async function executeCategoryQuery(
-  options: CategoryQueryOptions,
+  options: CategoryQueryOptions
 ): Promise<CategoryQueryResult> {
   const limit = options.limit ?? 10;
   const offset = options.offset ?? 0;
@@ -265,14 +265,14 @@ export async function executeCategoryQuery(
     categoryList,
     {
       includeShopInfo: options.includeShopInfo,
-    },
+    }
   );
 
   // Normalize all categories
   const normalizedCategories = categoryList.map((category) =>
     normalizeCategory(category, relations, {
       includeShopInfo: options.includeShopInfo,
-    }),
+    })
   );
 
   return {
@@ -287,14 +287,14 @@ export async function fetchCategoryWithRelations(
   category: typeof categories.$inferSelect,
   options: {
     includeShopInfo?: boolean;
-  } = {},
+  } = {}
 ): Promise<NormalizedCategory> {
   const relations = await batchFetchCategoryRelations(
     [category.id],
     [category],
     {
       includeShopInfo: options.includeShopInfo,
-    },
+    }
   );
 
   return normalizeCategory(category, relations, options);

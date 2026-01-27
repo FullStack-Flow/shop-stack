@@ -6,7 +6,7 @@
  * Supports loading state for async delete operations.
  */
 
-import { Loader2 } from 'lucide-react';
+import { Loader2 } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,7 +16,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
+} from "@/components/ui/alert-dialog";
 
 interface ConfirmDeleteDialogProps {
   open: boolean;
@@ -33,7 +33,7 @@ export function ConfirmDeleteDialog({
   onOpenChange,
   onConfirm,
   itemName,
-  entityType = 'item',
+  entityType = "item",
   isDeleting = false,
 }: ConfirmDeleteDialogProps) {
   // Prevent closing while deleting
@@ -48,9 +48,9 @@ export function ConfirmDeleteDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete the{' '}
+            This action cannot be undone. This will permanently delete the{" "}
             {entityType}
-            {itemName ? ` "${itemName}"` : ''} and remove it from our servers.
+            {itemName ? ` "${itemName}"` : ""} and remove it from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -66,7 +66,7 @@ export function ConfirmDeleteDialog({
                 Deleting...
               </span>
             ) : (
-              'Delete'
+              "Delete"
             )}
           </AlertDialogAction>
         </AlertDialogFooter>

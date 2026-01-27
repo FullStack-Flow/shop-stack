@@ -1,9 +1,9 @@
-import { Link } from '@tanstack/react-router';
-import type { ColumnDef } from '@tanstack/react-table';
-import DataTable from '@/components/base/data-table/data-table';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import type { AdminTenant } from '@/types/tenant';
+import { Link } from "@tanstack/react-router";
+import type { ColumnDef } from "@tanstack/react-table";
+import DataTable from "@/components/base/data-table/data-table";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import type { AdminTenant } from "@/types/tenant";
 
 interface AdminTenantTableProps {
   tenants: AdminTenant[];
@@ -16,20 +16,20 @@ export default function AdminTenantTable({
 }: AdminTenantTableProps) {
   const columns: ColumnDef<AdminTenant>[] = [
     {
-      accessorKey: 'id',
-      header: 'ID',
+      accessorKey: "id",
+      header: "ID",
       cell: ({ row }) => (
         <div className="w-20 truncate text-muted-foreground text-xs">
-          {row.getValue('id')}
+          {row.getValue("id")}
         </div>
       ),
     },
     {
-      accessorKey: 'name',
-      header: 'Store Name',
+      accessorKey: "name",
+      header: "Store Name",
       cell: ({ row }) => (
         <div>
-          <div className="font-medium">{row.getValue('name')}</div>
+          <div className="font-medium">{row.getValue("name")}</div>
           <div className="text-muted-foreground text-xs">
             {row.original.slug}
           </div>
@@ -37,11 +37,11 @@ export default function AdminTenantTable({
       ),
     },
     {
-      accessorKey: 'ownerName',
-      header: 'Owner',
+      accessorKey: "ownerName",
+      header: "Owner",
       cell: ({ row }) => (
         <div>
-          <div className="font-medium text-sm">{row.getValue('ownerName')}</div>
+          <div className="font-medium text-sm">{row.getValue("ownerName")}</div>
           <div className="text-muted-foreground text-xs">
             {row.original.ownerEmail}
           </div>
@@ -49,10 +49,10 @@ export default function AdminTenantTable({
       ),
     },
     {
-      accessorKey: 'plan',
-      header: 'Plan',
+      accessorKey: "plan",
+      header: "Plan",
       cell: ({ row }) => {
-        const plan = row.getValue('plan') as AdminTenant['plan'];
+        const plan = row.getValue("plan") as AdminTenant["plan"];
         return (
           <Badge variant="outline" className="capitalize">
             {plan}
@@ -61,18 +61,18 @@ export default function AdminTenantTable({
       },
     },
     {
-      accessorKey: 'status',
-      header: 'Status',
+      accessorKey: "status",
+      header: "Status",
       cell: ({ row }) => {
-        const status = row.getValue('status') as AdminTenant['status'];
+        const status = row.getValue("status") as AdminTenant["status"];
         return (
           <Badge
             variant={
-              status === 'active'
-                ? 'default'
-                : status === 'suspended'
-                  ? 'destructive'
-                  : 'secondary'
+              status === "active"
+                ? "default"
+                : status === "suspended"
+                  ? "destructive"
+                  : "secondary"
             }
             className="capitalize"
           >
@@ -82,23 +82,23 @@ export default function AdminTenantTable({
       },
     },
     {
-      accessorKey: 'productCount',
-      header: 'Products',
+      accessorKey: "productCount",
+      header: "Products",
       cell: ({ row }) => (
-        <div className="text-center">{row.getValue('productCount')}</div>
+        <div className="text-center">{row.getValue("productCount")}</div>
       ),
     },
     {
-      accessorKey: 'joinedDate',
-      header: 'Joined',
+      accessorKey: "joinedDate",
+      header: "Joined",
       cell: ({ row }) => (
         <div className="text-muted-foreground text-xs">
-          {new Date(row.getValue('joinedDate')).toLocaleDateString()}
+          {new Date(row.getValue("joinedDate")).toLocaleDateString()}
         </div>
       ),
     },
     {
-      id: 'actions',
+      id: "actions",
       header: () => <div className="text-right">Actions</div>,
       cell: ({ row }) => (
         <div className="text-right">

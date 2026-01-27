@@ -1,5 +1,5 @@
-import { useForm } from '@tanstack/react-form';
-import { Button } from '@/components/ui/button';
+import { useForm } from "@tanstack/react-form";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,21 +7,21 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import type { ShippingFormValues } from '@/types/shipping-form';
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import type { ShippingFormValues } from "@/types/shipping-form";
 
 // Helper function to safely get string errors from field meta
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === 'string');
+  return errors.filter((error): error is string => typeof error === "string");
 }
 
 interface AddShippingDialogProps {
@@ -37,10 +37,10 @@ export function AddShippingDialog({
 }: AddShippingDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: '',
+      name: "",
       price: 0,
-      duration: '',
-      description: '',
+      duration: "",
+      description: "",
     },
     onSubmit: async ({ value }) => {
       onSubmit(value);
@@ -199,7 +199,7 @@ export function AddShippingDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? 'Adding...' : 'Add Shipping Method'}
+                  {isSubmitting ? "Adding..." : "Add Shipping Method"}
                 </Button>
               )}
             </form.Subscribe>
