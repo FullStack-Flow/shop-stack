@@ -1,4 +1,4 @@
-import { createEntityHeader } from "../entity-header";
+import { createEntityHeader } from "@/components/base/common/entity-header";
 
 export const TagHeader = createEntityHeader({
   entityName: "Tag",
@@ -8,4 +8,4 @@ export const TagHeader = createEntityHeader({
 });
 
 export default TagHeader;
-export type { EntityHeaderProps as TagHeaderProps } from "../entity-header";
+export type { EntityHeaderProps as TagHeaderProps } from "@/components/base/common/entity-header";

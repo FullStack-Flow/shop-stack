@@ -1,4 +1,4 @@
-import { createEntityHeader } from "../entity-header";
+import { createEntityHeader } from "@/components/base/common/entity-header";
 
 export const TaxHeader = createEntityHeader({
   entityName: "Tax Rate",
@@ -8,4 +8,4 @@ export const TaxHeader = createEntityHeader({
 });
 
 export default TaxHeader;
-export type { EntityHeaderProps as TaxHeaderProps } from "../entity-header";
+export type { EntityHeaderProps as TaxHeaderProps } from "@/components/base/common/entity-header";

@@ -1,4 +1,4 @@
-import { createEntityHeader } from "../entity-header";
+import { createEntityHeader } from "@/components/base/common/entity-header";
 
 export const CategoryHeader = createEntityHeader({
   entityName: "Category",
@@ -8,4 +8,4 @@ export const CategoryHeader = createEntityHeader({
 });
 
 export default CategoryHeader;
-export type { EntityHeaderProps as CategoryHeaderProps } from "../entity-header";
+export type { EntityHeaderProps as CategoryHeaderProps } from "@/components/base/common/entity-header";
