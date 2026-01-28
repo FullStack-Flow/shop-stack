@@ -11,6 +11,7 @@ import { brands } from "./schema/brand-schema";
 import { categories } from "./schema/category-schema";
 import { shops, vendors } from "./schema/shop-schema";
 import { tags, tagsRelations } from "./schema/tags-schema";
+import { taxRates, taxRatesRelations } from "./schema/tax-schema";
 
 const schema = {
   user,
@@ -24,6 +25,8 @@ const schema = {
   attributeValuesRelations,
   tags,
   tagsRelations,
+  taxRates,
+  taxRatesRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server

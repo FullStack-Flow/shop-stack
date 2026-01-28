@@ -1,120 +1,67 @@
-import type { ColumnDef } from "@tanstack/react-table";
-import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
+import { useMemo } from "react";
 import DataTable from "@/components/base/data-table/data-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import type { TaxRateItem } from "@/types/taxes";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { Taxes as Tax, TaxPermissions } from "@/types/taxes";
+  createTaxTableColumns,
+  type TaxMutationState,
+} from "./tax-table-columns";
 
-interface TaxesTableProps {
-  taxes: Tax[];
-  permissions?: TaxPermissions;
-  onEditTax?: (taxId: string) => void;
-  onDeleteTax?: (taxId: string) => void;
+interface TaxTableProps {
+  taxes?: TaxRateItem[];
+  fetcher?: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<TaxRateItem>>;
+  onDelete?: (taxRate: TaxRateItem) => void;
+  onEdit?: (taxRate: TaxRateItem) => void;
+  onToggleActive?: (taxRate: TaxRateItem) => void;
+  isMutating?: (id: string) => boolean;
+  mutationState?: TaxMutationState;
   className?: string;
+  mode?: "vendor" | "customer";
 }
 
-export default function TaxesTable({
+export function TaxTable({
   taxes,
-  permissions = {
-    canDelete: true,
-    canEdit: true,
-    canView: true,
-    canCreate: true,
-  },
-  onEditTax,
-  onDeleteTax,
+  fetcher,
+  onDelete,
+  onEdit,
+  onToggleActive,
+  isMutating,
+  mutationState,
   className,
-}: TaxesTableProps) {
-  const columns: ColumnDef<Tax>[] = [
-    {
-      accessorKey: "name",
-      header: "Name",
-      cell: ({ row }) => {
-        return <div className="font-medium">{row.getValue("name")}</div>;
+  mode = "vendor",
+}: TaxTableProps) {
+  const columns = useMemo(() => {
+    return createTaxTableColumns({
+      mode,
+      actions: {
+        onDelete,
+        onEdit,
+        onToggleActive,
       },
-    },
-    {
-      accessorKey: "rate",
-      header: "Rate",
-      cell: ({ row }) => {
-        const rate = row.getValue("rate") as number;
-        return <Badge variant="outline">{rate}%</Badge>;
-      },
-    },
-    {
-      accessorKey: "country",
-      header: "Country",
-      cell: ({ row }) => {
-        const country = row.getValue("country") as string;
-        return <Badge variant="outline">{country}</Badge>;
-      },
-    },
-    {
-      accessorKey: "state",
-      header: "State",
-      cell: ({ row }) => {
-        const state = row.getValue("state") as string;
-        return <div className="text-muted-foreground">{state || "—"}</div>;
-      },
-    },
-    {
-      accessorKey: "zip",
-      header: "ZIP Code",
-      cell: ({ row }) => {
-        const zip = row.getValue("zip") as string;
-        return <div className="text-muted-foreground">{zip || "—"}</div>;
-      },
-    },
-    {
-      accessorKey: "priority",
-      header: "Priority",
-      cell: ({ row }) => {
-        const priority = row.getValue("priority") as number;
-        return <Badge variant="secondary">{priority}</Badge>;
-      },
-    },
-    {
-      id: "actions",
-      enableHiding: false,
-      cell: ({ row }) => {
-        const tax = row.original;
+      mutationState,
+      isMutating,
+    });
+  }, [mode, onDelete, onEdit, onToggleActive, mutationState, isMutating]);
 
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {permissions.canEdit && (
-                <DropdownMenuItem onClick={() => onEditTax?.(tax.id)}>
-                  <Edit className="mr-2 h-4 w-4" />
-                  Edit
-                </DropdownMenuItem>
-              )}
-              {permissions.canDelete && (
-                <DropdownMenuItem
-                  onClick={() => onDeleteTax?.(tax.id)}
-                  className="text-destructive"
-                >
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  Delete
-                </DropdownMenuItem>
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        );
-      },
-    },
-  ];
+  if (fetcher) {
+    return (
+      <DataTable
+        columns={columns}
+        server={{ fetcher }}
+        context="shop"
+        initialPageSize={10}
+        globalFilterPlaceholder="Search tax rates..."
+        className={className}
+      />
+    );
+  }
 
-  return <DataTable columns={columns} data={taxes} className={className} />;
+  return (
+    <DataTable columns={columns} data={taxes || []} className={className} />
+  );
 }

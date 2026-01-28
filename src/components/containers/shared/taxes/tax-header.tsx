@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { Plus } from "lucide-react";
 import PageHeader from "@/components/base/common/page-header";
-import type { TaxFormValues } from "@/types/taxes";
-import { AddTaxDialog } from "./add-tax-dialog";
+import { Button } from "@/components/ui/button";
 
 export interface TaxHeaderProps {
-  onAddTax?: (data: TaxFormValues) => void;
+  onAddTax?: () => void;
   role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
@@ -13,34 +12,27 @@ export interface TaxHeaderProps {
 
 export default function TaxHeader({
   onAddTax,
-  role = "vendor",
-  showAddButton = true,
+  role,
+  showAddButton,
   children,
   className,
 }: TaxHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddTax = (data: TaxFormValues) => {
-    onAddTax?.(data);
-  };
-
   return (
     <PageHeader
-      title="Taxes"
+      title="Tax Rates"
       description={
         role === "admin"
-          ? "Manage platform-wide tax rates and configurations"
-          : "Manage your tax rates and configurations"
+          ? "Manage tax rates across the platform"
+          : "Manage your tax rates"
       }
       className={className}
     >
       {children}
-      {showAddButton && (
-        <AddTaxDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddTax}
-        />
+      {showAddButton && onAddTax && (
+        <Button onClick={onAddTax}>
+          <Plus className="mr-2 h-4 w-4" />
+          Add Tax Rate
+        </Button>
       )}
     </PageHeader>
   );

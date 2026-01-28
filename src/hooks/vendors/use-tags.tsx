@@ -4,7 +4,6 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { toast } from "sonner";
-import type { z as zod } from "zod";
 import {
   createTag,
   deleteTag,
@@ -13,13 +12,10 @@ import {
   updateTag,
 } from "@/lib/functions/vendor/tag";
 import type {
-  createTagSchema,
-  updateTagSchema,
+  CreateTagInput,
+  UpdateTagInput,
 } from "@/lib/validators/shared/tag-query";
 import type { ListTagsQuery } from "@/types/tags";
-
-type CreateTagInput = zod.infer<typeof createTagSchema>;
-type UpdateTagInput = zod.infer<typeof updateTagSchema>;
 
 export const vendorTagsKeys = {
   all: (shopId: string) => ["vendor", "tags", shopId] as const,

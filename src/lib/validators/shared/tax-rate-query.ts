@@ -1,7 +1,7 @@
 /**
- * Shared Tag Query Validators
+ * Shared Tax Rate Query Validators
  *
- * Composable z schemas for tag queries.
+ * Composable z schemas for tax rate queries.
  * Uses base-query for common schemas to ensure DRY compliance.
  */
 
@@ -10,18 +10,14 @@ import {
   ADMIN_DEFAULT_LIMIT,
   createDeleteSchema,
   createGetByIdSchema,
-  createGetBySlugSchema,
   createToggleActiveSchema,
   isActiveField,
   optionalShopIdField,
   optionalVendorIdField,
   paginationFields,
-  STORE_DEFAULT_LIMIT,
   searchFields,
   shopScopeFields,
-  shopSlugFields,
   sortDirectionEnum,
-  storeIsActiveField,
   VENDOR_DEFAULT_LIMIT,
 } from "./base-query";
 
@@ -32,19 +28,20 @@ export type { SortDirection } from "./base-query";
 // Entity-Specific Enums
 // ============================================================================
 
-export const tagSortByEnum = z.enum([
+export const taxRateSortByEnum = z.enum([
   "name",
+  "rate",
+  "priority",
   "createdAt",
-  "sortOrder",
-  "productCount",
 ]);
 
 // ============================================================================
 // Entity-Specific Filter Fields
 // ============================================================================
 
-export const tagFilterFields = {
+export const taxRateFilterFields = {
   ...isActiveField,
+  country: z.string().optional(),
 };
 
 // ============================================================================
@@ -52,49 +49,32 @@ export const tagFilterFields = {
 // ============================================================================
 
 const sortFields = {
-  sortBy: tagSortByEnum.optional().default("sortOrder"),
+  sortBy: taxRateSortByEnum.optional().default("priority"),
   sortDirection: sortDirectionEnum.optional().default("asc"),
 };
 
 // ============================================================================
-// Get by ID/Slug Schemas (using factory functions)
+// Get by ID Schema (using factory functions)
 // ============================================================================
 
-export const getTagByIdSchema = createGetByIdSchema("Tag");
-
-export const getTagBySlugSchema = createGetBySlugSchema("Tag");
+export const getTaxRateByIdSchema = createGetByIdSchema("TaxRate");
 
 // ============================================================================
 // Composed Query Schemas
 // ============================================================================
 
 /**
- * Store Front Query Schema
- * - Public access (no auth)
- * - Only active tags
- */
-export const storeTagsQuerySchema = z.object({
-  ...paginationFields,
-  limit: paginationFields.limit.default(STORE_DEFAULT_LIMIT),
-  ...sortFields,
-  ...searchFields,
-  ...shopSlugFields,
-  ...optionalShopIdField,
-  ...storeIsActiveField,
-});
-
-/**
  * Admin Query Schema
  * - Admin auth required
  * - Full filter access
- * - Can see all tags across all shops
+ * - Can see all tax rates across all shops
  */
-export const adminTagsQuerySchema = z.object({
+export const adminTaxRatesQuerySchema = z.object({
   ...paginationFields,
   limit: paginationFields.limit.default(ADMIN_DEFAULT_LIMIT),
   ...sortFields,
   ...searchFields,
-  ...tagFilterFields,
+  ...taxRateFilterFields,
   ...optionalShopIdField,
   ...optionalVendorIdField,
 });
@@ -104,87 +84,100 @@ export const adminTagsQuerySchema = z.object({
  * - Vendor auth required
  * - Shop ID is required (scoped to their shop)
  */
-export const vendorTagsQuerySchema = z.object({
+export const vendorTaxRatesQuerySchema = z.object({
   ...shopScopeFields,
   ...paginationFields,
   limit: paginationFields.limit.default(VENDOR_DEFAULT_LIMIT),
   ...sortFields,
   ...searchFields,
-  ...tagFilterFields,
+  ...taxRateFilterFields,
 });
 
 // ============================================================================
 // Action Schemas (using factory functions)
 // ============================================================================
 
-export const toggleTagActiveSchema = createToggleActiveSchema("Tag");
+export const toggleTaxRateActiveSchema = createToggleActiveSchema("TaxRate");
 
-export const deleteTagSchema = createDeleteSchema("Tag");
+export const deleteTaxRateSchema = createDeleteSchema("TaxRate");
 
 /**
- * Schema for creating a new tag (Vendor)
+ * Schema for creating a new tax rate (Vendor)
  */
-export const createTagSchema = z.object({
+export const createTaxRateSchema = z.object({
   shopId: z.string().min(1, "Shop ID is required"),
   name: z
     .string()
-    .min(2, "Tag name must be at least 2 characters")
-    .max(100, "Tag name must be at most 100 characters"),
-  slug: z
+    .min(2, "Tax rate name must be at least 2 characters")
+    .max(100, "Tax rate name must be at most 100 characters"),
+  rate: z.coerce
+    .number({ message: "Tax rate is required" })
+    .min(0.01, "Tax rate must be between 0.01 and 100")
+    .max(100, "Tax rate must be between 0.01 and 100"),
+  country: z
     .string()
-    .min(2, "Slug must be at least 2 characters")
-    .max(100, "Slug must be at most 100 characters")
-    .regex(
-      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only",
-    )
-    .optional(),
-  description: z
+    .min(2, "Country code is required")
+    .max(2, "Country code must be 2 characters"),
+  state: z
     .string()
-    .max(500, "Description must be at most 500 characters")
+    .max(50, "State must be at most 50 characters")
     .optional()
     .nullable(),
-  sortOrder: z.coerce.number().min(0).optional().default(0),
+  zip: z
+    .string()
+    .max(20, "ZIP code must be at most 20 characters")
+    .optional()
+    .nullable(),
+  priority: z.coerce
+    .number({ message: "Priority is required" })
+    .min(1, "Priority must be at least 1"),
   isActive: z.boolean().optional().default(true),
+  isCompound: z.boolean().optional().default(false),
 });
 
 /**
- * Schema for updating an existing tag (Vendor)
+ * Schema for updating an existing tax rate (Vendor)
  */
-export const updateTagSchema = z.object({
-  id: z.string().min(1, "Tag ID is required"),
+export const updateTaxRateSchema = z.object({
+  id: z.string().min(1, "Tax rate ID is required"),
   shopId: z.string().min(1, "Shop ID is required"),
   name: z
     .string()
-    .min(2, "Tag name must be at least 2 characters")
-    .max(100, "Tag name must be at most 100 characters")
+    .min(2, "Tax rate name must be at least 2 characters")
+    .max(100, "Tax rate name must be at most 100 characters")
     .optional(),
-  slug: z
-    .string()
-    .min(2, "Slug must be at least 2 characters")
-    .max(100, "Slug must be at most 100 characters")
-    .regex(
-      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only",
-    )
+  rate: z.coerce
+    .number()
+    .min(0.01, "Tax rate must be between 0.01 and 100")
+    .max(100, "Tax rate must be between 0.01 and 100")
     .optional(),
-  description: z
+  country: z
     .string()
-    .max(500, "Description must be at most 500 characters")
+    .min(2, "Country code is required")
+    .max(2, "Country code must be 2 characters")
+    .optional(),
+  state: z
+    .string()
+    .max(50, "State must be at most 50 characters")
     .optional()
     .nullable(),
-  sortOrder: z.coerce.number().min(0).optional(),
+  zip: z
+    .string()
+    .max(20, "ZIP code must be at most 20 characters")
+    .optional()
+    .nullable(),
+  priority: z.coerce.number().min(1, "Priority must be at least 1").optional(),
   isActive: z.boolean().optional(),
+  isCompound: z.boolean().optional(),
 });
 
 // ============================================================================
 // Type Exports
 // ============================================================================
 
-export type TagSortBy = z.infer<typeof tagSortByEnum>;
-export type CreateTagInput = z.infer<typeof createTagSchema>;
-export type UpdateTagInput = z.infer<typeof updateTagSchema>;
+export type TaxRateSortBy = z.infer<typeof taxRateSortByEnum>;
+export type CreateTaxRateInput = z.infer<typeof createTaxRateSchema>;
+export type UpdateTaxRateInput = z.infer<typeof updateTaxRateSchema>;
 
-export type StoreTagsQuery = z.infer<typeof storeTagsQuerySchema>;
-export type AdminTagsQuery = z.infer<typeof adminTagsQuerySchema>;
-export type VendorTagsQuery = z.infer<typeof vendorTagsQuerySchema>;
+export type AdminTaxRatesQuery = z.infer<typeof adminTaxRatesQuerySchema>;
+export type VendorTaxRatesQuery = z.infer<typeof vendorTaxRatesQuerySchema>;
