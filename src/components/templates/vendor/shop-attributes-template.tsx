@@ -12,35 +12,36 @@ import type { AttributeItem } from "@/types/attributes";
 
 interface ShopAttributesTemplateProps extends AttributeTableActions {
   fetcher: (
-    params: DataTableFetchParams
+    params: DataTableFetchParams,
   ) => Promise<DataTableFetchResult<AttributeItem>>;
+  onAddAttribute: () => void;
+  onEditAttribute?: (attribute: AttributeItem) => void;
+  onDeleteAttribute?: (attribute: AttributeItem) => void;
+  onToggleActive?: (attribute: AttributeItem) => void;
   mutationState?: AttributeMutationState;
   isAttributeMutating?: (id: string) => boolean;
-  onAddAttribute?: () => void;
-  showAddButton?: boolean;
 }
 
 export function ShopAttributesTemplate({
   fetcher,
   onAddAttribute,
-  onEdit,
-  onDelete,
+  onEditAttribute,
+  onDeleteAttribute,
   onToggleActive,
   mutationState,
   isAttributeMutating,
-  showAddButton = true,
 }: ShopAttributesTemplateProps) {
   return (
     <div className="space-y-6">
       <AttributeHeader
         onAddAttribute={onAddAttribute}
         role="vendor"
-        showAddButton={showAddButton}
+        showAddButton={true}
       />
       <AttributeTable
         fetcher={fetcher}
-        onEdit={onEdit}
-        onDelete={onDelete}
+        onEdit={onEditAttribute}
+        onDelete={onDeleteAttribute}
         onToggleActive={onToggleActive}
         mutationState={mutationState}
         isAttributeMutating={isAttributeMutating}

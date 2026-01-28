@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { Plus } from "lucide-react";
 import PageHeader from "@/components/base/common/page-header";
-import type { AttributeFormValues } from "@/types/attributes";
-import { AddAttributeDialog } from "./add-attribute-dialog";
+import { Button } from "@/components/ui/button";
 
 export interface AttributeHeaderProps {
-  onAddAttribute?: (data: AttributeFormValues) => void;
+  onAddAttribute?: () => void;
   role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
@@ -18,30 +17,22 @@ export default function AttributeHeader({
   children,
   className,
 }: AttributeHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddAttribute = (data: AttributeFormValues) => {
-    onAddAttribute?.(data);
-  };
-
   return (
     <PageHeader
-      title="Attributes"
+      title="Attribute"
       description={
         role === "admin"
-          ? "Manage product attributes across the platform"
-          : "Manage product attributes and variations for your shop"
+          ? "Manage product Attribute across the platform"
+          : "Manage your product Attribute and organization"
       }
       className={className}
     >
       {children}
-      {showAddButton && (
-        <AddAttributeDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddAttribute}
-          role={role}
-        />
+      {showAddButton && onAddAttribute && (
+        <Button onClick={onAddAttribute} size="lg">
+          <Plus className="mr-2 h-4 w-4" />
+          Add Attribute
+        </Button>
       )}
     </PageHeader>
   );

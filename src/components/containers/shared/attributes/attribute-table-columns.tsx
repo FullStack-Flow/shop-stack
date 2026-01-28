@@ -124,7 +124,7 @@ export const createAttributeColumns = ({
       accessorKey: "values",
       header: "Values",
       cell: ({ row }) => {
-        const values = row.original.values;
+        const values = row.original.values || [];
         const type = row.original.type;
 
         return (

@@ -17,11 +17,11 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
-type ToolbarProps = {
+type ToolbarProps<TData> = {
   title?: string;
   globalFilter: string;
   onGlobalFilterChange: (value: string) => void;
-  filterableColumns?: FilterableColumn[];
+  filterableColumns?: FilterableColumn<TData>[];
   columnFilters: { id: string; value: unknown }[];
   onColumnFilterChange: (columnId: string, value: unknown) => void;
   /** Column visibility toggles */
@@ -37,7 +37,7 @@ type ToolbarProps = {
   onRefresh?: () => void;
 };
 
-export function DataTableToolbar({
+export function DataTableToolbar<TData>({
   title,
   globalFilter,
   onGlobalFilterChange,
@@ -49,7 +49,7 @@ export function DataTableToolbar({
   className,
   placeholder,
   onRefresh,
-}: ToolbarProps) {
+}: ToolbarProps<TData>) {
   // Get current filter value for a column
   const getFilterValue = (columnId: string): string => {
     const filter = columnFilters.find((f) => f.id === columnId);
@@ -99,7 +99,7 @@ export function DataTableToolbar({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All {column.label}</SelectItem>
-                  {column.options?.map((option) => (
+                  {column.options?.map((option: { label: string; value: string }) => (
                     <SelectItem key={option.value} value={option.value}>
                       {option.label}
                     </SelectItem>

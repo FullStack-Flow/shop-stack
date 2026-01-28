@@ -27,7 +27,7 @@ type TemplateProps<TData, TValue> = {
   onColumnFiltersChange: OnChangeFn<ColumnFiltersState>;
   globalFilter: string;
   onGlobalFilterChange: OnChangeFn<string>;
-  filterableColumns?: FilterableColumn[];
+  filterableColumns?: FilterableColumn<TData>[];
   globalFilterPlaceholder?: string;
   isFetching?: boolean;
   enableRowSelection?: boolean;
