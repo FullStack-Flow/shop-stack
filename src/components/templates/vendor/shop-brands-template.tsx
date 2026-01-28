@@ -9,7 +9,7 @@ import type { BrandItem } from "@/types/brands";
 
 interface ShopBrandsTemplateProps {
   fetcher: (
-    params: DataTableFetchParams
+    params: DataTableFetchParams,
   ) => Promise<DataTableFetchResult<BrandItem>>;
   onAddBrand: () => void;
   onEditBrand?: (brand: BrandItem) => void;
@@ -30,7 +30,7 @@ export function ShopBrandsTemplate({
 }: ShopBrandsTemplateProps) {
   return (
     <div className="space-y-6">
-      <BrandHeader onAddBrand={onAddBrand} />
+      <BrandHeader onAdd={onAddBrand} />
       <VendorBrandTable
         fetcher={fetcher}
         onEdit={onEditBrand}

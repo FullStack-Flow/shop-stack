@@ -19,10 +19,7 @@ export default function AdminAttributesTemplate({
 
   return (
     <div className="space-y-6">
-      <AttributeHeader
-        onAddAttribute={() => setIsAddDialogOpen(true)}
-        role="admin"
-      />
+      <AttributeHeader onAdd={() => setIsAddDialogOpen(true)} role="admin" />
       <AddAttributeDialog
         open={isAddDialogOpen}
         onOpenChange={setIsAddDialogOpen}

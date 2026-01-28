@@ -34,7 +34,7 @@ export function ShopAttributesTemplate({
   return (
     <div className="space-y-6">
       <AttributeHeader
-        onAddAttribute={onAddAttribute}
+        onAdd={onAddAttribute}
         role="vendor"
         showAddButton={true}
       />

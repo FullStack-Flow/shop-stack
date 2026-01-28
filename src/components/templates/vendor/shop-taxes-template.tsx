@@ -32,11 +32,7 @@ export function ShopTaxesTemplate({
 }: ShopTaxesTemplateProps) {
   return (
     <div className="space-y-6">
-      <TaxHeader
-        onAddTax={onAddTax}
-        role="vendor"
-        showAddButton={showAddButton}
-      />
+      <TaxHeader onAdd={onAddTax} role="vendor" showAddButton={showAddButton} />
       <TaxTable
         fetcher={fetcher}
         onEdit={onEdit}

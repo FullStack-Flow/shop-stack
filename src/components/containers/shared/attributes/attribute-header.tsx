@@ -1,39 +1,12 @@
-import { Plus } from "lucide-react";
-import PageHeader from "@/components/base/common/page-header";
-import { Button } from "@/components/ui/button";
+import { createEntityHeader } from "../entity-header";
 
-export interface AttributeHeaderProps {
-  onAddAttribute?: () => void;
-  role?: "admin" | "vendor";
-  showAddButton?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-}
+export const AttributeHeader = createEntityHeader({
+  entityName: "Attribute",
+  entityNamePlural: "Attributes",
+  adminDescription: "Manage product Attribute across the platform",
+  vendorDescription: "Manage your product Attribute and organization",
+  addButtonSize: "lg",
+});
 
-export default function AttributeHeader({
-  onAddAttribute,
-  role = "vendor",
-  showAddButton = true,
-  children,
-  className,
-}: AttributeHeaderProps) {
-  return (
-    <PageHeader
-      title="Attribute"
-      description={
-        role === "admin"
-          ? "Manage product Attribute across the platform"
-          : "Manage your product Attribute and organization"
-      }
-      className={className}
-    >
-      {children}
-      {showAddButton && onAddAttribute && (
-        <Button onClick={onAddAttribute} size="lg">
-          <Plus className="mr-2 h-4 w-4" />
-          Add Attribute
-        </Button>
-      )}
-    </PageHeader>
-  );
-}
+export default AttributeHeader;
+export type { EntityHeaderProps as AttributeHeaderProps } from "../entity-header";

@@ -21,7 +21,7 @@ export default function AdminTaxesTemplate({
 
   return (
     <div className="flex flex-col gap-6">
-      <TaxHeader>
+      <TaxHeader role="admin" showAddButton={false}>
         <AddTaxDialog
           open={isAddDialogOpen}
           onOpenChange={setIsAddDialogOpen}

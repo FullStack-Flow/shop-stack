@@ -25,7 +25,7 @@ export default function AdminCategoriesTemplate({
 }: AdminCategoriesTemplateProps) {
   return (
     <div className="space-y-6">
-      <CategoryHeader onAddCategory={onOpenAddDialog} role="admin" />
+      <CategoryHeader onAdd={onOpenAddDialog} role="admin" />
       <AdminCategoryTable
         categories={categories}
         onToggleActive={(category) =>

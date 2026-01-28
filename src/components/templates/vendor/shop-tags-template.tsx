@@ -32,11 +32,7 @@ export function ShopTagsTemplate({
 }: ShopTagsTemplateProps) {
   return (
     <div className="space-y-6">
-      <TagHeader
-        onAddTag={onAddTag}
-        role="vendor"
-        showAddButton={showAddButton}
-      />
+      <TagHeader onAdd={onAddTag} role="vendor" showAddButton={showAddButton} />
       <TagTable
         fetcher={fetcher}
         onEdit={onEdit}

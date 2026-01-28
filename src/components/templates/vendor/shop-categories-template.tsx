@@ -9,7 +9,7 @@ import type { NormalizedCategory } from "@/types/category-types";
 
 interface ShopCategoriesTemplateProps {
   fetcher: (
-    params: DataTableFetchParams
+    params: DataTableFetchParams,
   ) => Promise<DataTableFetchResult<NormalizedCategory>>;
   onAddCategory: () => void;
   onEditCategory: (category: NormalizedCategory) => void;
@@ -28,7 +28,7 @@ export default function ShopCategoriesTemplate({
 }: ShopCategoriesTemplateProps) {
   return (
     <div className="space-y-6">
-      <CategoryHeader onAddCategory={onAddCategory} />
+      <CategoryHeader onAdd={onAddCategory} />
       <VendorCategoryTable
         fetcher={fetcher}
         onEdit={onEditCategory}
