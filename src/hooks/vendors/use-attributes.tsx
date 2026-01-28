@@ -12,15 +12,10 @@ import {
   updateAttribute,
 } from "@/lib/functions/vendor/attribute";
 import type {
-  createAttributeSchema,
-  updateAttributeSchema,
+  CreateAttributeInput,
+  UpdateAttributeInput,
 } from "@/lib/validators/shared/attribute-query";
 import type { ListAttributesQuery } from "@/types/attributes";
-
-type CreateAttributeInput = zod.infer<typeof createAttributeSchema>;
-type UpdateAttributeInput = zod.infer<typeof updateAttributeSchema>;
-
-import type { z as zod } from "zod";
 
 export const vendorAttributesKeys = {
   all: (shopId: string) => ["vendor", "attributes", shopId] as const,

@@ -206,6 +206,8 @@ export const updateAttributeSchema = z.object({
 
 export type AttributeType = z.infer<typeof attributeTypeEnum>;
 export type AttributeSortBy = z.infer<typeof attributeSortByEnum>;
+export type CreateAttributeInput = z.infer<typeof createAttributeSchema>;
+export type UpdateAttributeInput = z.infer<typeof updateAttributeSchema>;
 
 export type StoreAttributesQuery = z.infer<typeof storeAttributesQuerySchema>;
 export type AdminAttributesQuery = z.infer<typeof adminAttributesQuerySchema>;
