@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { Plus } from "lucide-react";
 import PageHeader from "@/components/base/common/page-header";
-import type { TagFormValues } from "@/types/tags";
-import { AddTagDialog } from "./add-tag-dialog";
+import { Button } from "@/components/ui/button";
 
 export interface TagHeaderProps {
-  onAddTag?: (data: TagFormValues) => void;
+  onAddTag?: () => void;
   role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
@@ -18,29 +17,22 @@ export default function TagHeader({
   children,
   className,
 }: TagHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddTag = (data: TagFormValues) => {
-    onAddTag?.(data);
-  };
-
   return (
     <PageHeader
       title="Tags"
       description={
         role === "admin"
-          ? "Manage product tags across the platform"
-          : "Manage product tags for your shop"
+          ? "Manage tags across the platform"
+          : "Manage your tags"
       }
       className={className}
     >
       {children}
-      {showAddButton && (
-        <AddTagDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddTag}
-        />
+      {showAddButton && onAddTag && (
+        <Button onClick={onAddTag}>
+          <Plus className="mr-2 h-4 w-4" />
+          Add Tag
+        </Button>
       )}
     </PageHeader>
   );
