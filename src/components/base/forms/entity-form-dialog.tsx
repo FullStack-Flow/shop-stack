@@ -1,6 +1,8 @@
 import { useForm } from "@tanstack/react-form";
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
+import { X } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { toast } from "sonner";
 import type { z } from "zod";
 import { Form } from "@/components/base/forms/form";
 import { Field } from "@/components/base/forms/form-field";
@@ -32,6 +34,7 @@ export interface EntityFormField {
   label?: string;
   type?: "text" | "textarea" | "url" | "file" | "select" | "custom";
   required?: boolean;
+  multiple?: boolean;
   placeholder?: string;
   description?: string;
   defaultValue?: unknown;
@@ -79,14 +82,16 @@ export function EntityFormDialog<T extends Record<string, any>>({
   contentClassName,
 }: EntityFormDialogProps<T>) {
   const isEditing = Boolean(initialValues);
-  const defaultValues = fields.reduce(
-    (acc, field) => {
-      acc[field.name] =
-        initialValues?.[field.name] ?? field.defaultValue ?? "";
-      return acc;
-    },
-    {} as Record<string, any>
-  );
+  const defaultValues = {
+    ...fields.reduce(
+      (acc, field) => {
+        acc[field.name] = field.defaultValue ?? "";
+        return acc;
+      },
+      {} as Record<string, any>,
+    ),
+    ...(initialValues || {}),
+  };
 
   const form = useForm({
     defaultValues,
@@ -95,11 +100,16 @@ export function EntityFormDialog<T extends Record<string, any>>({
         await formApi.validateAllFields("blur");
         await formApi.validateAllFields("change");
 
-        const hasErrors = Object.values(formApi.state.fieldMeta).some(
-          (meta) => meta?.errors && meta.errors.length > 0
-        );
+        const errors = Object.entries(formApi.state.fieldMeta)
+          .filter(([_key, meta]) => meta?.errors && meta.errors.length > 0)
+          .map(([key, meta]) => ({
+            field: key,
+            errors: meta?.errors,
+          }));
 
-        if (hasErrors) {
+        if (errors.length > 0) {
+          console.error("Form validation failed:", errors);
+          toast.error("Please fix the errors in the form before submitting.");
           return;
         }
       }
@@ -115,11 +125,14 @@ export function EntityFormDialog<T extends Record<string, any>>({
   useEffect(() => {
     if (open && !prevOpenRef.current) {
       if (initialValues) {
+        Object.entries(initialValues).forEach(([key, value]) => {
+          form.setFieldValue(key as any, value);
+        });
+        // Also set defaults for fields not in initialValues
         fields.forEach((field) => {
-          form.setFieldValue(
-            field.name,
-            initialValues[field.name] ?? field.defaultValue ?? ""
-          );
+          if (!(field.name in initialValues)) {
+            form.setFieldValue(field.name as any, field.defaultValue ?? "");
+          }
         });
       } else {
         form.reset();
@@ -162,12 +175,14 @@ export function EntityFormDialog<T extends Record<string, any>>({
     }
 
     if (field.autoGenerateSlug) {
-      const mode =
-        field.autoGenerateSlug === "createOnly" ? !isEditing : true;
+      const mode = field.autoGenerateSlug === "createOnly" ? !isEditing : true;
       if (mode) {
         validators.onChange = ({ value }: { value: string }) => {
           if (typeof value === "string") {
-            form.setFieldValue("slug", value.toLowerCase().replace(/\s+/g, "-"));
+            form.setFieldValue(
+              "slug",
+              value.toLowerCase().replace(/\s+/g, "-"),
+            );
           }
         };
       }
@@ -191,14 +206,64 @@ export function EntityFormDialog<T extends Record<string, any>>({
                 gridShowFileNames
                 sourceList="local, gdrive"
                 imgOnly
-                multiple={false}
+                multiple={field.multiple}
                 filesViewMode="grid"
                 onFileUploadSuccess={(e: { cdnUrl?: string } | null) => {
                   if (e?.cdnUrl) {
-                    fieldState.handleChange(e.cdnUrl);
+                    if (field.multiple) {
+                      const current = fieldState.state.value || [];
+                      fieldState.handleChange([...current, e.cdnUrl]);
+                    } else {
+                      fieldState.handleChange(e.cdnUrl);
+                    }
                   }
                 }}
               />
+              {!field.multiple && fieldState.state.value && (
+                <div className="mt-2 relative group w-fit">
+                  <img
+                    src={fieldState.state.value}
+                    alt="Preview"
+                    className="size-16 rounded-md object-cover border"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fieldState.handleChange("")}
+                    className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <X className="size-3" />
+                  </button>
+                </div>
+              )}
+              {field.multiple &&
+                Array.isArray(fieldState.state.value) &&
+                fieldState.state.value.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {fieldState.state.value.map(
+                      (url: string, index: number) => (
+                        <div key={index} className="relative group">
+                          <img
+                            src={url}
+                            alt={`Preview ${index}`}
+                            className="size-16 rounded-md object-cover border"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const next = fieldState.state.value.filter(
+                                (_: any, i: number) => i !== index,
+                              );
+                              fieldState.handleChange(next);
+                            }}
+                            className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <X className="size-3" />
+                          </button>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                )}
               {field.description && (
                 <FieldDescription>{field.description}</FieldDescription>
               )}
@@ -278,7 +343,7 @@ export function EntityFormDialog<T extends Record<string, any>>({
                 if (shouldAuto && typeof value === "string") {
                   form.setFieldValue(
                     "slug",
-                    value.toLowerCase().replace(/\s+/g, "-")
+                    value.toLowerCase().replace(/\s+/g, "-"),
                   );
                 }
               }

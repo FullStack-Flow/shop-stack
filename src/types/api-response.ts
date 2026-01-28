@@ -76,7 +76,7 @@ export function createPaginatedResponse<T>(
   data: T[],
   total: number,
   limit: number,
-  offset: number
+  offset: number,
 ): PaginatedResponse<T> {
   return { data, total, limit, offset };
 }
@@ -86,7 +86,7 @@ export function createPaginatedResponse<T>(
  */
 export function createSuccessResponse<T = undefined>(
   message: string,
-  data?: T
+  data?: T,
 ): MutationResponse<T> {
   return { success: true, message, data };
 }
@@ -96,7 +96,7 @@ export function createSuccessResponse<T = undefined>(
  */
 export function emptyPaginatedResponse<T>(
   limit: number,
-  offset: number
+  offset: number,
 ): PaginatedResponse<T> {
   return { data: [], total: 0, limit, offset };
 }

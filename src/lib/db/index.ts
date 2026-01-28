@@ -9,6 +9,16 @@ import {
 import { user } from "./schema/auth-schema";
 import { brands } from "./schema/brand-schema";
 import { categories } from "./schema/category-schema";
+import {
+  productAttributes,
+  productAttributesRelations,
+  productImages,
+  productImagesRelations,
+  products,
+  productsRelations,
+  productTags,
+  productTagsRelations,
+} from "./schema/products-schema";
 import { shops, vendors } from "./schema/shop-schema";
 import { tags, tagsRelations } from "./schema/tags-schema";
 import { taxRates, taxRatesRelations } from "./schema/tax-schema";
@@ -27,6 +37,14 @@ const schema = {
   tagsRelations,
   taxRates,
   taxRatesRelations,
+  productAttributes,
+  productAttributesRelations,
+  productImages,
+  productImagesRelations,
+  products,
+  productsRelations,
+  productTags,
+  productTagsRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server
