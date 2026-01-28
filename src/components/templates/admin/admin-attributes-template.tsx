@@ -1,12 +1,13 @@
+import { useState } from "react";
+import { AddAttributeDialog } from "@/components/containers/shared/attributes/add-attribute-dialog";
 import AttributeHeader from "@/components/containers/shared/attributes/attribute-header";
 import AttributeTable from "@/components/containers/shared/attributes/attribute-table";
-import { ADMIN_ATTRIBUTE_PERMISSIONS } from "@/lib/config/attribute-permissions";
-import type { Attribute, AttributeFormValues } from "@/types/attributes";
+import type { AttributeFormValues, AttributeItem } from "@/types/attributes";
 
 interface AdminAttributesTemplateProps {
-  attributes: Attribute[];
+  attributes: AttributeItem[];
   onAddAttribute: (data: AttributeFormValues) => void;
-  onDeleteAttribute: (attributeId: string) => void;
+  onDeleteAttribute: (attribute: AttributeItem) => void;
 }
 
 export default function AdminAttributesTemplate({
@@ -14,13 +15,24 @@ export default function AdminAttributesTemplate({
   onAddAttribute,
   onDeleteAttribute,
 }: AdminAttributesTemplateProps) {
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+
   return (
     <div className="space-y-6">
-      <AttributeHeader onAddAttribute={onAddAttribute} role="admin" />
+      <AttributeHeader
+        onAddAttribute={() => setIsAddDialogOpen(true)}
+        role="admin"
+      />
+      <AddAttributeDialog
+        open={isAddDialogOpen}
+        onOpenChange={setIsAddDialogOpen}
+        onSubmit={onAddAttribute}
+        role="admin"
+      />
       <AttributeTable
         attributes={attributes}
-        permissions={ADMIN_ATTRIBUTE_PERMISSIONS}
-        onDeleteAttribute={onDeleteAttribute}
+        onDelete={onDeleteAttribute}
+        mode="admin"
       />
     </div>
   );

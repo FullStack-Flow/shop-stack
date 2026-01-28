@@ -87,7 +87,7 @@ export interface DeleteBrandResponse {
 export interface BrandFormValues {
   name: string;
   slug: string;
-  website: string;
-  description: string;
-  logo: string | null;
+  website?: string;
+  description?: string;
+  logo?: string | null;
 }

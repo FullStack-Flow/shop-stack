@@ -1,17 +1,13 @@
+import { useState } from "react";
 import AdminBrandsTable from "@/components/containers/admin/brands/admin-brands-table";
+import { AddBrandDialog } from "@/components/containers/shared/brands/add-brand-dialog";
 import BrandHeader from "@/components/containers/shared/brands/brand-header";
-import type { Brand } from "@/types/brands";
+import type { BrandFormValues, BrandItem } from "@/types/brands";
 
 interface AdminBrandsTemplateProps {
-  brands: Brand[];
-  onAddBrand: (data: {
-    name: string;
-    slug: string;
-    website?: string;
-    description?: string;
-    logo?: string;
-  }) => void;
-  onDeleteBrand: (brandId: string) => void;
+  brands: BrandItem[];
+  onAddBrand: (data: BrandFormValues) => void;
+  onDeleteBrand: (brand: BrandItem) => void;
 }
 
 export default function AdminBrandsTemplate({
@@ -19,11 +15,15 @@ export default function AdminBrandsTemplate({
   onAddBrand,
   onDeleteBrand,
 }: AdminBrandsTemplateProps) {
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+
   return (
     <div className="space-y-6">
-      <BrandHeader
-        onAddBrand={() => onAddBrand({ name: "", slug: "" })}
-        role="admin"
+      <BrandHeader onAddBrand={() => setIsAddDialogOpen(true)} role="admin" />
+      <AddBrandDialog
+        open={isAddDialogOpen}
+        onOpenChange={setIsAddDialogOpen}
+        onSubmit={onAddBrand}
       />
       <AdminBrandsTable brands={brands} onDelete={onDeleteBrand} />
     </div>

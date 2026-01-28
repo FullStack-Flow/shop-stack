@@ -26,8 +26,25 @@ export interface TaxRateFormValues {
   state?: string;
   zip?: string;
   priority: number;
-  isActive: boolean;
-  isCompound: boolean;
+  isActive?: boolean;
+  isCompound?: boolean;
+}
+
+export interface TaxPermissions {
+  canDelete: boolean;
+  canEdit: boolean;
+  canView: boolean;
+  canCreate: boolean;
+}
+
+export interface Taxes {
+  id: string;
+  name: string;
+  rate: number;
+  country: string;
+  state?: string;
+  zip?: string;
+  priority: number;
 }
 
 export interface TaxRateFilters {

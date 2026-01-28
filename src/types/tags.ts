@@ -12,7 +12,7 @@ export interface TagFormValues {
   name: string;
   slug: string;
   description?: string | null;
-  isActive: boolean;
+  isActive?: boolean;
   sortOrder?: number;
 }
 
@@ -20,6 +20,7 @@ export interface TagPermissions {
   canDelete: boolean;
   canEdit: boolean;
   canView: boolean;
+  canCreate: boolean;
 }
 
 export interface TagItem {

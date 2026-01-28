@@ -74,8 +74,8 @@ function TaxesPage() {
           state: data.state,
           zip: data.zip,
           priority: data.priority,
-          isActive: data.isActive,
-          isCompound: data.isCompound,
+          isActive: data.isActive || false,
+          isCompound: data.isCompound || false,
         });
       }
       handleDialogClose();
