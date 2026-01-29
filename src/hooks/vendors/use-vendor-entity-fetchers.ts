@@ -5,6 +5,7 @@ import type {
 import { getAttributes } from "@/lib/functions/vendor/attribute";
 import { getBrands } from "@/lib/functions/vendor/brands";
 import { getCategories } from "@/lib/functions/vendor/categories";
+import { getCoupons } from "@/lib/functions/vendor/coupons";
 import { getProducts } from "@/lib/functions/vendor/products";
 import { getTags } from "@/lib/functions/vendor/tag";
 import { getTaxRates } from "@/lib/functions/vendor/tax";
@@ -15,6 +16,7 @@ import {
 import type { AttributeItem } from "@/types/attributes";
 import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
+import type { CouponItem } from "@/types/coupons";
 import type { ProductItem } from "@/types/products";
 import type { TagItem } from "@/types/tags";
 import type { TaxRateItem } from "@/types/taxes";
@@ -110,6 +112,37 @@ export function createVendorTaxRatesFetcher(
     },
     filterFieldMap: { isActive: "isActive", country: "country" },
     defaultQuery: { sortBy: "priority", sortDirection: "asc" },
+    transformFilters: booleanFilterTransform,
+  });
+}
+
+// ============================================================================
+// Coupons Fetcher
+// ============================================================================
+
+export function createVendorCouponsFetcher(
+  shopId: string,
+): (params: DataTableFetchParams) => Promise<DataTableFetchResult<CouponItem>> {
+  return createServerFetcher<CouponItem, any>({
+    fetchFn: async (query) => {
+      const response = await getCoupons({ data: { ...query, shopId } });
+      return { data: response.data ?? [], total: response.total ?? 0 };
+    },
+    sortFieldMap: {
+      code: "code",
+      discountAmount: "discountAmount",
+      usageCount: "usageCount",
+      activeFrom: "activeFrom",
+      activeTo: "activeTo",
+      createdAt: "createdAt",
+    },
+    filterFieldMap: {
+      isActive: "isActive",
+      type: "type",
+      status: "status",
+      applicableTo: "applicableTo",
+    },
+    defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
     transformFilters: booleanFilterTransform,
   });
 }

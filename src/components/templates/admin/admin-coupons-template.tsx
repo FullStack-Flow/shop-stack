@@ -1,5 +1,5 @@
 import CouponHeader from "@/components/containers/shared/coupons/coupon-header";
-import CouponTable from "@/components/containers/shared/coupons/coupon-table";
+import { AdminCouponTable } from "@/components/containers/shared/coupons/coupon-table";
 import { ADMIN_COUPON_PERMISSIONS } from "@/lib/config/coupon-permissions";
 import type { Coupon, CouponFormValues } from "@/types/coupon";
 
@@ -30,7 +30,7 @@ export default function AdminCouponsTemplate({
         onAddCoupon={onAddCoupon}
         showAddButton={!!onAddCoupon}
       />
-      <CouponTable
+      <AdminCouponTable
         coupons={coupons}
         permissions={ADMIN_COUPON_PERMISSIONS}
         onToggleStatus={handleToggleStatus}

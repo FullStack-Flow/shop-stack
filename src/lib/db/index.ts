@@ -10,6 +10,16 @@ import { user } from "./schema/auth-schema";
 import { brands } from "./schema/brand-schema";
 import { categories } from "./schema/category-schema";
 import {
+  couponCategories,
+  couponCategoriesRelations,
+  couponProducts,
+  couponProductsRelations,
+  coupons,
+  couponsRelations,
+  couponUsage,
+  couponUsageRelations,
+} from "./schema/coupon-schema";
+import {
   productAttributes,
   productAttributesRelations,
   productImages,
@@ -45,6 +55,14 @@ const schema = {
   productsRelations,
   productTags,
   productTagsRelations,
+  coupons,
+  couponProducts,
+  couponCategories,
+  couponUsage,
+  couponsRelations,
+  couponProductsRelations,
+  couponCategoriesRelations,
+  couponUsageRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server
