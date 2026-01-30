@@ -6,7 +6,7 @@ import { PageSkeleton } from "@/components/base/common/page-skeleton";
 import { AddCouponDialog } from "@/components/containers/shared/coupons/add-coupon-dialog";
 import ShopCouponsTemplate from "@/components/templates/vendor/shop-coupons-template";
 import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
-import { useCouponMutations } from "@/hooks/vendors/use-coupons";
+import { useCoupons } from "@/hooks/vendors/use-coupons";
 import { shopBySlugQueryOptions } from "@/hooks/vendors/use-shops";
 import { createVendorCouponsFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
 import type { CouponFormValues } from "@/lib/validators/shared/coupon-query";
@@ -34,7 +34,7 @@ function CouponsPage() {
     deleteCoupon,
     mutationState,
     isCouponMutating,
-  } = useCouponMutations(shopId);
+  } = useCoupons(shopId);
 
   // Use shared CRUD hook
   const {
@@ -56,41 +56,30 @@ function CouponsPage() {
 
   const handleCouponSubmit = async (data: CouponFormValues) => {
     try {
+      const couponData = {
+        code: data.code,
+        description: data.description || undefined,
+        type: data.type,
+        discountAmount: data.discountAmount,
+        minimumCartAmount: data.minimumCartAmount || "0",
+        maximumDiscountAmount: data.maximumDiscountAmount || undefined,
+        activeFrom: data.activeFrom,
+        activeTo: data.activeTo,
+        usageLimit: data.usageLimit || undefined,
+        usageLimitPerUser: data.usageLimitPerUser ?? 1,
+        isActive: data.isActive ?? true,
+        applicableTo: data.applicableTo ?? "all",
+        productIds: data.productIds ?? [],
+        categoryIds: data.categoryIds ?? [],
+      };
+
       if (editingCoupon) {
         await updateCoupon({
           id: editingCoupon.id,
-          code: data.code,
-          description: data.description || undefined,
-          type: data.type,
-          discountAmount: data.discountAmount,
-          minimumCartAmount: data.minimumCartAmount,
-          maximumDiscountAmount: data.maximumDiscountAmount || undefined,
-          activeFrom: data.activeFrom,
-          activeTo: data.activeTo,
-          usageLimit: data.usageLimit || undefined,
-          usageLimitPerUser: data.usageLimitPerUser,
-          isActive: data.isActive,
-          applicableTo: data.applicableTo,
-          productIds: data.productIds,
-          categoryIds: data.categoryIds,
+          ...couponData,
         });
       } else {
-        await createCoupon({
-          code: data.code,
-          description: data.description || undefined,
-          type: data.type,
-          discountAmount: data.discountAmount,
-          minimumCartAmount: data.minimumCartAmount,
-          maximumDiscountAmount: data.maximumDiscountAmount || undefined,
-          activeFrom: data.activeFrom,
-          activeTo: data.activeTo,
-          usageLimit: data.usageLimit || undefined,
-          usageLimitPerUser: data.usageLimitPerUser,
-          isActive: data.isActive,
-          applicableTo: data.applicableTo,
-          productIds: data.productIds,
-          categoryIds: data.categoryIds,
-        });
+        await createCoupon(couponData);
       }
       handleDialogClose();
     } catch (error) {
