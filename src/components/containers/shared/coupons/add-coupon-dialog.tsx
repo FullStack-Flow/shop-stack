@@ -225,6 +225,7 @@ export function AddCouponDialog({
       name: "applicableTo",
       label: "Applicable To",
       type: "select",
+      defaultValue: "all",
       placeholder: "Select applicability",
       selectOptions: [
         { label: "All Products", value: "all" },
