@@ -1,15 +1,15 @@
-import { Link } from '@tanstack/react-router';
-import { ArrowRight, ShoppingBag, Tag } from 'lucide-react';
-import EmptyState from '@/components/base/empty/empty-state';
-import { Button } from '@/components/ui/button';
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, ShoppingBag, Tag } from "lucide-react";
+import EmptyState from "@/components/base/empty/empty-state";
+import { Button } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from '@/components/ui/input-group';
-import { Separator } from '@/components/ui/separator';
-import { useCartStore } from '@/lib/store/cart-store';
+} from "@/components/ui/input-group";
+import { Separator } from "@/components/ui/separator";
+import { useCartStore } from "@/lib/store/cart-store";
 
 export default function CheckoutOrderSummary() {
   const { items, subtotal, shippingCost } = useCartStore();

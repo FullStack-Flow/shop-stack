@@ -1,6 +1,6 @@
-import { Clock, Mail, MapPin, Phone } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { Store } from '@/types/store-types';
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import type { Store } from "@/types/store-types";
 
 interface StoreAboutProps {
   store: Store;

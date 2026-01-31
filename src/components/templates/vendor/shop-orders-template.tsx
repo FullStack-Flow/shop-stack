@@ -1,7 +1,7 @@
-import OrderHeader from '@/components/containers/shared/orders/order-header';
-import OrderTable from '@/components/containers/shared/orders/order-table';
-import { VENDOR_ORDER_PERMISSIONS } from '@/lib/config/order-permissions';
-import type { Order } from '@/types/orders';
+import OrderHeader from "@/components/containers/shared/orders/order-header";
+import OrderTable from "@/components/containers/shared/orders/order-table";
+import { VENDOR_ORDER_PERMISSIONS } from "@/lib/config/order-permissions";
+import type { Order } from "@/types/orders";
 
 interface ShopOrdersTemplateProps {
   orders: Order[];

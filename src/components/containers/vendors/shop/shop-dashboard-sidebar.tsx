@@ -1,9 +1,9 @@
-import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Store } from 'lucide-react';
-import VendorNavMenu from '@/components/base/vendors/vendor-nav-menu';
-import VendorUserMenu from '@/components/base/vendors/vendor-user-menu';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft, Store } from "lucide-react";
+import VendorNavMenu from "@/components/base/vendors/vendor-nav-menu";
+import VendorUserMenu from "@/components/base/vendors/vendor-user-menu";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Sidebar,
   SidebarContent,
@@ -13,26 +13,21 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarRail,
-} from '@/components/ui/sidebar';
-import { getShopNavItems } from '@/lib/constants/vendors.routes';
+} from "@/components/ui/sidebar";
+import { useSession } from "@/lib/auth/auth-client";
+import { getShopNavItems } from "@/lib/constants/vendors.routes";
 
 interface ShopSidebarProps {
   shopName: string;
   shopSlug: string;
 }
 
-// Mock user data - replace with actual user data from auth context
-const mockUser = {
-  name: 'John Vendor',
-  email: 'john@vendor.com',
-  avatar: '',
-  role: 'Vendor',
-};
-
 export default function ShopDashboardSidebar({
   shopName,
   shopSlug,
 }: ShopSidebarProps) {
+  const { data: session } = useSession();
+  const user = session?.user;
   return (
     <Sidebar collapsible="icon" variant="inset">
       <SidebarHeader>
@@ -73,7 +68,20 @@ export default function ShopDashboardSidebar({
       </SidebarContent>
 
       <SidebarFooter>
-        <VendorUserMenu user={mockUser} />
+        {user ? (
+          <VendorUserMenu user={user} />
+        ) : (
+          <Link to="/auth/sign-in">
+            <Button
+              variant="default"
+              className="w-full"
+              type="button"
+              size="lg"
+            >
+              Sign In
+            </Button>
+          </Link>
+        )}
       </SidebarFooter>
 
       <SidebarRail />

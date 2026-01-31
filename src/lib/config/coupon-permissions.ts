@@ -1,4 +1,4 @@
-import type { CouponPermissions } from '@/types/coupon';
+import type { CouponPermissions } from "@/types/coupon";
 
 export const ADMIN_COUPON_PERMISSIONS: CouponPermissions = {
   canDelete: true,

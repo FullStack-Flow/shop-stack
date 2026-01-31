@@ -1,7 +1,7 @@
-import StaffHeader from '@/components/containers/shared/staff/staff-header';
-import StaffTable from '@/components/containers/shared/staff/staff-table';
-import { VENDOR_STAFF_PERMISSIONS } from '@/lib/config/staff-permissions';
-import type { Staff } from '@/types/staff';
+import StaffHeader from "@/components/containers/shared/staff/staff-header";
+import StaffTable from "@/components/containers/shared/staff/staff-table";
+import { VENDOR_STAFF_PERMISSIONS } from "@/lib/config/staff-permissions";
+import type { Staff } from "@/types/staff";
 
 interface ShopStaffTemplateProps {
   staff: Staff[];

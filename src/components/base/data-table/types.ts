@@ -2,9 +2,9 @@ import type {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
-} from '@tanstack/react-table';
+} from "@tanstack/react-table";
 
-export type DataTableContext = 'shop' | 'admin' | 'tenant';
+export type DataTableContext = "shop" | "admin" | "tenant";
 
 export type DataTableFetchParams = {
   pageIndex: number;
@@ -27,9 +27,9 @@ export interface DataTableServer<TData> {
   ) => Promise<DataTableFetchResult<TData>>;
 }
 
-export type FilterType = 'text' | 'number' | 'date' | 'boolean' | 'select';
+export type FilterType = "text" | "number" | "date" | "boolean" | "select";
 
-export interface FilterableColumn {
+export interface FilterableColumn<_TData> {
   id: string; // must match a ColumnDef accessorKey or id
   label: string;
   type: FilterType;
@@ -53,7 +53,7 @@ export interface DataTableProps<TData, TValue> {
   enableRowSelection?: boolean;
   onRowSelectionChange?: (selectedRows: TData[]) => void;
   /** Toolbar configuration */
-  filterableColumns?: FilterableColumn[];
+  filterableColumns?: FilterableColumn<TData>[];
   toolbarTitle?: string;
   globalFilterPlaceholder?: string;
   /** Styling */

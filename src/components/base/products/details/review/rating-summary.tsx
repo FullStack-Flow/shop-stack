@@ -1,6 +1,6 @@
-import { Star } from 'lucide-react';
-import { Progress } from '@/components/ui/progress';
-import { cn } from '@/lib/utils';
+import { Star } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 
 interface RatingSummaryProps {
   averageRating: number;
@@ -24,7 +24,7 @@ export default function RatingSummary({
   return (
     <div
       className={cn(
-        'flex flex-col gap-6 sm:flex-row sm:items-start',
+        "flex flex-col gap-6 sm:flex-row sm:items-start",
         className
       )}
     >
@@ -37,8 +37,8 @@ export default function RatingSummary({
             <Star
               key={i}
               className={cn(
-                'h-5 w-5',
-                i < Math.round(averageRating) ? 'fill-current' : 'text-muted'
+                "h-5 w-5",
+                i < Math.round(averageRating) ? "fill-current" : "text-muted"
               )}
             />
           ))}

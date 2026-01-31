@@ -1,4 +1,4 @@
-import { Link, useLocation } from '@tanstack/react-router';
+import { Link, useLocation } from "@tanstack/react-router";
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -6,9 +6,9 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from '@/components/ui/sidebar';
-import { cn } from '@/lib/utils';
-import type { VendorNavItem } from '@/types/vendor';
+} from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
+import type { VendorNavItem } from "@/types/vendor";
 
 interface VendorNavMenuProps {
   items: VendorNavItem[];

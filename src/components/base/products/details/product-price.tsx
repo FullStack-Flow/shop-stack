@@ -1,5 +1,5 @@
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface ProductPriceProps {
   currentPrice: number;
@@ -20,7 +20,7 @@ export default function ProductPrice({
 }: ProductPriceProps) {
   const hasDiscount = originalPrice > currentPrice;
   return (
-    <div className={cn('flex flex-col gap-2', className)}>
+    <div className={cn("flex flex-col gap-2", className)}>
       <div className="flex items-baseline gap-3">
         <span className="font-bold text-3xl text-foreground">
           {currency}
@@ -43,10 +43,10 @@ export default function ProductPrice({
         )}
 
         <Badge
-          variant={inStock ? 'outline' : 'destructive'}
-          className={cn(inStock && 'border-green-500 text-green-600')}
+          variant={inStock ? "outline" : "destructive"}
+          className={cn(inStock && "border-green-500 text-green-600")}
         >
-          {inStock ? 'In Stock' : 'Out of Stock'}
+          {inStock ? "In Stock" : "Out of Stock"}
         </Badge>
       </div>
     </div>

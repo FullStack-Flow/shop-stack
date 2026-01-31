@@ -1,6 +1,6 @@
-import { Clock, RotateCcw, Truck } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import ShippingInfoItem from './shipping-info-item';
+import { Clock, RotateCcw, Truck } from "lucide-react";
+import { cn } from "@/lib/utils";
+import ShippingInfoItem from "./shipping-info-item";
 
 interface ShippingInfoSectionProps {
   shipping: {
@@ -16,7 +16,7 @@ export default function ShippingInfoSection({
   className,
 }: ShippingInfoSectionProps) {
   return (
-    <div className={cn('space-y-4 border-t pt-4', className)}>
+    <div className={cn("space-y-4 border-t pt-4", className)}>
       {shipping.freeShipping && (
         <ShippingInfoItem
           icon={Truck}

@@ -1,4 +1,4 @@
-import { Clock, RotateCcw, ShieldCheck, Truck } from 'lucide-react';
+import { Clock, RotateCcw, ShieldCheck, Truck } from "lucide-react";
 
 interface ProductShippingTabProps {
   shipping: {
@@ -22,7 +22,7 @@ export default function ProductShippingTab({
             <h4 className="font-medium">Delivery Information</h4>
             <p className="mt-1 text-muted-foreground text-sm">
               Estimated delivery time is {shipping.deliveryTime}.
-              {shipping.freeShipping && ' We offer free shipping on this item.'}
+              {shipping.freeShipping && " We offer free shipping on this item."}
             </p>
           </div>
         </div>

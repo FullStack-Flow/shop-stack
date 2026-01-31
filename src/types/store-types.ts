@@ -23,7 +23,7 @@ export interface StoreFilters {
   category: string;
   minRating: number;
   verifiedOnly: boolean;
-  sortBy: 'rating' | 'newest' | 'popular' | 'name';
+  sortBy: "rating" | "newest" | "popular" | "name";
 }
 
 export interface StoreStats {

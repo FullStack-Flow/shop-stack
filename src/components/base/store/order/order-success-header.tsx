@@ -1,6 +1,6 @@
-import { Link } from '@tanstack/react-router';
-import { CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Link } from "@tanstack/react-router";
+import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function OrderSuccessHeader() {
   return (

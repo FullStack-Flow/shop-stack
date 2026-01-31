@@ -1,26 +1,39 @@
-import CategoryHeader from '@/components/containers/shared/categories/category-header';
-import CategoryTable from '@/components/containers/shared/categories/category-table';
-import { ADMIN_CATEGORY_PERMISSIONS } from '@/lib/config/category-permissions';
-import type { Category, CategoryFormValues } from '@/types/category-types';
+import CategoryHeader from "@/components/containers/shared/categories/category-header";
+import { AdminCategoryTable } from "@/components/containers/shared/categories/category-table";
+import type {
+  CategoryFormValues,
+  NormalizedCategory,
+} from "@/types/category-types";
 
 interface AdminCategoriesTemplateProps {
-  categories: Category[];
+  categories: NormalizedCategory[];
   onCategoryStatusChange: (categoryId: string, newStatus: boolean) => void;
   onAddCategory: (category: CategoryFormValues) => void;
+  onEditCategory?: (category: NormalizedCategory) => void;
+  onDeleteCategory?: (category: NormalizedCategory) => void;
+  onToggleFeatured?: (category: NormalizedCategory) => void;
+  onOpenAddDialog?: () => void;
 }
 
 export default function AdminCategoriesTemplate({
   categories,
   onCategoryStatusChange,
-  onAddCategory,
+  onEditCategory,
+  onDeleteCategory,
+  onToggleFeatured,
+  onOpenAddDialog,
 }: AdminCategoriesTemplateProps) {
   return (
     <div className="space-y-6">
-      <CategoryHeader onAddCategory={onAddCategory} role="admin" />
-      <CategoryTable
+      <CategoryHeader onAdd={onOpenAddDialog} role="admin" />
+      <AdminCategoryTable
         categories={categories}
-        permissions={ADMIN_CATEGORY_PERMISSIONS}
-        onToggleStatus={onCategoryStatusChange}
+        onToggleActive={(category) =>
+          onCategoryStatusChange(category.id, !category.isActive)
+        }
+        onEdit={onEditCategory}
+        onDelete={onDeleteCategory}
+        onToggleFeatured={onToggleFeatured}
       />
     </div>
   );

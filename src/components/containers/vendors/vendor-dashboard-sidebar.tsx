@@ -1,6 +1,9 @@
-import { Home, Store } from 'lucide-react';
-import VendorNavMenu from '@/components/base/vendors/vendor-nav-menu';
-import VendorUserMenu from '@/components/base/vendors/vendor-user-menu';
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
+import { Home, Store } from "lucide-react";
+import VendorNavMenu from "@/components/base/vendors/vendor-nav-menu";
+import VendorUserMenu from "@/components/base/vendors/vendor-user-menu";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -10,30 +13,32 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarRail,
-} from '@/components/ui/sidebar';
-import type { VendorNavItem } from '@/types/vendor';
+} from "@/components/ui/sidebar";
+import { useShops } from "@/hooks/vendors/use-shops";
+import { useSession } from "@/lib/auth/auth-client";
+import type { VendorNavItem } from "@/types/vendor";
 
 export default function VendorDashboardSidebar() {
+  const { data: session } = useSession();
+  const { shopsQueryOptions } = useShops();
+  const { data: shopData } = useQuery(shopsQueryOptions());
+  const shopCount = shopData?.shops?.length ?? 0;
+
+  const user = session?.user;
+
   const vendorNavItems: VendorNavItem[] = [
     {
-      title: 'Dashboard',
-      href: '/dashboard',
+      title: "Dashboard",
+      href: "/dashboard",
       icon: Home,
     },
     {
-      title: 'My Shops',
-      href: '/my-shop',
+      title: "My Shops",
+      href: "/my-shop",
       icon: Store,
-      badge: '5',
+      badge: shopCount > 0 ? shopCount : undefined,
     },
   ];
-
-  const user = {
-    name: 'Vendor',
-    email: 'vendor@email.com',
-    avatar: '',
-    role: 'vendor',
-  };
 
   return (
     <Sidebar>
@@ -61,7 +66,20 @@ export default function VendorDashboardSidebar() {
       </SidebarContent>
 
       <SidebarFooter>
-        <VendorUserMenu user={user} />
+        {user ? (
+          <VendorUserMenu user={user} />
+        ) : (
+          <Link to="/auth/sign-in">
+            <Button
+              variant="default"
+              className="w-full"
+              type="button"
+              size="lg"
+            >
+              Sign In
+            </Button>
+          </Link>
+        )}
       </SidebarFooter>
 
       <SidebarRail />

@@ -1,9 +1,9 @@
-import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Grid3x3, List, ShoppingBag } from 'lucide-react';
-import { useState } from 'react';
-import NotFound from '@/components/base/empty/notfound';
-import CategoryGrid from '@/components/containers/store/category/category-grid';
-import ProductGrid from '@/components/containers/store/product-list/product-grid';
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft, Grid3x3, List, ShoppingBag } from "lucide-react";
+import { useState } from "react";
+import NotFound from "@/components/base/empty/notfound";
+import CategoryGrid from "@/components/containers/store/category/category-grid";
+import ProductGrid from "@/components/containers/store/product-list/product-grid";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,18 +11,18 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import { mockProducts } from '@/data/products';
+} from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { mockProducts } from "@/data/products";
 import {
   getCategoryBreadcrumb,
   getCategoryBySlug,
   getSubcategories,
-} from '@/lib/helper/categories';
+} from "@/lib/helper/categories";
 
 export default function CategoryDetailTemplate({ slug }: { slug: string }) {
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const category = getCategoryBySlug(slug);
   const subcategories = category ? getSubcategories(category.id) : [];
@@ -107,7 +107,7 @@ export default function CategoryDetailTemplate({ slug }: { slug: string }) {
             <p className="mt-2 text-muted-foreground text-sm">
               {categoryProducts.length > 0
                 ? categoryProducts.length
-                : category?.productCount}{' '}
+                : category?.productCount}{" "}
               products in this category
             </p>
           </div>
@@ -153,18 +153,18 @@ export default function CategoryDetailTemplate({ slug }: { slug: string }) {
 
               <div className="flex items-center gap-2">
                 <Button
-                  variant={viewMode === 'grid' ? 'default' : 'outline'}
+                  variant={viewMode === "grid" ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setViewMode('grid')}
+                  onClick={() => setViewMode("grid")}
                   className="gap-2"
                 >
                   <Grid3x3 className="h-4 w-4" />
                   Grid
                 </Button>
                 <Button
-                  variant={viewMode === 'list' ? 'default' : 'outline'}
+                  variant={viewMode === "list" ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setViewMode('list')}
+                  onClick={() => setViewMode("list")}
                   className="gap-2"
                 >
                   <List className="h-4 w-4" />

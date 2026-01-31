@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface TagsProps {
   items: string[];
@@ -8,7 +8,7 @@ interface TagsProps {
 
 export default function Tags({ items, className }: TagsProps) {
   return (
-    <div className={cn('flex flex-wrap gap-3', className)}>
+    <div className={cn("flex flex-wrap gap-3", className)}>
       {items.map((item, index) => (
         <Button
           key={index}

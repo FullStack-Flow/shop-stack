@@ -1,14 +1,14 @@
-import { Link } from '@tanstack/react-router';
-import { ArrowRight, Tag } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Tag } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from '@/components/ui/input-group';
-import { Separator } from '@/components/ui/separator';
-import { useCartStore } from '@/lib/store/cart-store';
+} from "@/components/ui/input-group";
+import { Separator } from "@/components/ui/separator";
+import { useCartStore } from "@/lib/store/cart-store";
 
 export default function CartSummary() {
   const { subtotal, items } = useCartStore();
@@ -38,7 +38,7 @@ export default function CartSummary() {
         <div className="flex justify-between">
           <span className="text-muted-foreground">Delivery Fee</span>
           <span className="font-medium">
-            ${items.length > 0 ? deliveryFee.toFixed(2) : '0.00'}
+            ${items.length > 0 ? deliveryFee.toFixed(2) : "0.00"}
           </span>
         </div>
 

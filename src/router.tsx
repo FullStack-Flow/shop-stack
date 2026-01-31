@@ -1,10 +1,10 @@
-import { QueryClient } from '@tanstack/react-query';
-import { createRouter } from '@tanstack/react-router';
-import { setupRouterSsrQueryIntegration } from '@tanstack/react-router-ssr-query';
-import { DefaultErrorComponent } from './components/base/default-error-component';
-import NotFound from './components/base/not-found';
+import { QueryClient } from "@tanstack/react-query";
+import { createRouter } from "@tanstack/react-router";
+import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query";
+import { DefaultErrorComponent } from "./components/base/error/default-error-component";
+import NotFound from "./components/base/not-found";
 // Import the generated route tree
-import { routeTree } from './routeTree.gen';
+import { routeTree } from "./routeTree.gen";
 
 // Create a new router instance
 export const getRouter = () => {
@@ -14,7 +14,7 @@ export const getRouter = () => {
     context: {
       queryClient,
     },
-    defaultPreload: 'intent',
+    defaultPreload: "intent",
     defaultErrorComponent: DefaultErrorComponent,
     defaultNotFoundComponent: () => <NotFound />,
     scrollRestoration: true,
@@ -26,7 +26,7 @@ export const getRouter = () => {
   return router;
 };
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface Register {
     router: ReturnType<typeof getRouter>;
   }

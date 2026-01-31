@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = 'dark' | 'light' | 'system';
+type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: "system",
   setTheme: () => null,
 };
 
@@ -22,8 +22,8 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
 export function ThemeProvider({
   children,
-  defaultTheme = 'system',
-  storageKey = 'vite-ui-theme',
+  defaultTheme = "system",
+  storageKey = "vite-ui-theme",
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
@@ -31,7 +31,7 @@ export function ThemeProvider({
   useEffect(() => {
     try {
       const stored =
-        typeof window !== 'undefined'
+        typeof window !== "undefined"
           ? (window.localStorage.getItem(storageKey) as Theme | null)
           : null;
       if (stored) {
@@ -46,16 +46,16 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root =
-      typeof document !== 'undefined' ? document.documentElement : null;
+      typeof document !== "undefined" ? document.documentElement : null;
     if (!root) return;
 
-    root.classList.remove('light', 'dark');
+    root.classList.remove("light", "dark");
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
-        ? 'dark'
-        : 'light';
+        ? "dark"
+        : "light";
 
       root.classList.add(systemTheme);
       return;
@@ -70,7 +70,7 @@ export function ThemeProvider({
       try {
         window.localStorage.setItem(storageKey, theme);
       } catch (error) {
-        console.error('Failed to save theme to localStorage', error);
+        console.error("Failed to save theme to localStorage", error);
       }
 
       setTheme(theme);
@@ -88,7 +88,7 @@ export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
 
   if (context === undefined)
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
 
   return context;
 };

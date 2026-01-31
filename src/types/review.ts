@@ -7,7 +7,7 @@ export interface Review {
   rating: number;
   comment: string;
   date: string;
-  status: 'published' | 'pending' | 'rejected';
+  status: "published" | "pending" | "rejected";
 }
 
 export interface ReviewPermissions {

@@ -1,7 +1,7 @@
-import NotFound from '@/components/base/empty/notfound';
-import StoreCard from '@/components/base/store/storefront/store-card';
-import { StoreListSkeleton } from '@/components/base/store/storefront/store-card-skeleton';
-import { useStoreFront } from '@/lib/store/store';
+import NotFound from "@/components/base/empty/notfound";
+import StoreCard from "@/components/base/store/storefront/store-card";
+import { StoreListSkeleton } from "@/components/base/store/storefront/store-card-skeleton";
+import { useStoreFront } from "@/lib/store/store";
 
 export default function StoreList() {
   const { getFilteredStores, isLoading } = useStoreFront();
@@ -24,8 +24,8 @@ export default function StoreList() {
     <div className="space-y-6">
       <div className="flex items-center justify-between rounded-lg bg-muted/50 px-4 py-3">
         <p className="font-medium text-sm">
-          Showing <span className="text-primary">{stores.length}</span>{' '}
-          {stores.length === 1 ? 'store' : 'stores'}
+          Showing <span className="text-primary">{stores.length}</span>{" "}
+          {stores.length === 1 ? "store" : "stores"}
         </p>
       </div>
 

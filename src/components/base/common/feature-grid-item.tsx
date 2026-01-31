@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface FeatureGridItemProps {
   title: string;
@@ -21,13 +21,13 @@ export default function FeatureGridItem({
   return (
     <div
       className={cn(
-        'relative border-dashed @4xl:p-10 @6xl:p-[50px] @7xl:p-[60px] p-[30px]',
+        "relative border-dashed @4xl:p-10 @6xl:p-[50px] @7xl:p-[60px] p-[30px]",
         className
       )}
     >
       <div
         className={cn(
-          '@4xl:mb-10 @6xl:mb-[50px] mb-6 @6xl:size-24 size-[76px]',
+          "@4xl:mb-10 @6xl:mb-[50px] mb-6 @6xl:size-24 size-[76px]",
           iconClassName
         )}
       >
@@ -39,7 +39,7 @@ export default function FeatureGridItem({
       </div>
       <div
         className={cn(
-          'absolute top-0 right-0 size-[173px]',
+          "absolute top-0 right-0 size-[173px]",
           outlineIconClassName
         )}
       >

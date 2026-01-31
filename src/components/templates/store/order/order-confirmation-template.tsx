@@ -1,11 +1,11 @@
-import HelpSection from '@/components/base/store/order/help-section';
-import OrderDetailsCard from '@/components/base/store/order/order-details-card';
-import OrderSuccessHeader from '@/components/base/store/order/order-success-header';
-import OrderInfoSection from '@/components/containers/store/order/order-info-section';
-import OrderItemsList from '@/components/containers/store/order/order-items-list';
-import OrderSummary from '@/components/containers/store/order/order-summary';
-import { Separator } from '@/components/ui/separator';
-import { mockOrderData } from '@/data/order';
+import HelpSection from "@/components/base/store/order/help-section";
+import OrderDetailsCard from "@/components/base/store/order/order-details-card";
+import OrderSuccessHeader from "@/components/base/store/order/order-success-header";
+import OrderInfoSection from "@/components/containers/store/order/order-info-section";
+import OrderItemsList from "@/components/containers/store/order/order-items-list";
+import OrderSummary from "@/components/containers/store/order/order-summary";
+import { Separator } from "@/components/ui/separator";
+import { mockOrderData } from "@/data/order";
 
 export default function OrderConfirmationTemplate() {
   return (

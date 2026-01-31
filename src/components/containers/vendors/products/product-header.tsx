@@ -1,26 +1,11 @@
-import { Plus } from 'lucide-react';
-import PageHeader from '@/components/base/common/page-header';
-import { Button } from '@/components/ui/button';
+import { createEntityHeader } from "@/components/base/common/entity-header";
 
-interface ProductHeaderProps {
-  onAddProduct: () => void;
-  className?: string;
-}
+export const ProductHeader = createEntityHeader({
+  entityName: "Product",
+  entityNamePlural: "Products",
+  adminDescription: "Manage products across the platform",
+  vendorDescription: "Manage your products",
+});
 
-export default function ProductHeader({
-  className,
-  onAddProduct,
-}: ProductHeaderProps) {
-  return (
-    <PageHeader
-      title="Products"
-      description="Manage products across all your shops"
-      className={className}
-    >
-      <Button onClick={onAddProduct}>
-        <Plus className="mr-2 size-4" />
-        Add Product
-      </Button>
-    </PageHeader>
-  );
-}
+export default ProductHeader;
+export type { EntityHeaderProps as ProductHeaderProps } from "@/components/base/common/entity-header";

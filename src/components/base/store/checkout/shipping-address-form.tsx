@@ -1,9 +1,9 @@
-import { useForm } from '@tanstack/react-form';
-import { ShippingAddressFields } from '@/components/containers/store/checkout/shipping-address-fields';
+import { useForm } from "@tanstack/react-form";
+import { ShippingAddressFields } from "@/components/containers/store/checkout/shipping-address-fields";
 import {
   type ShippingAddressInput,
   shippingAddressSchema,
-} from '@/lib/validators/shipping-address';
+} from "@/lib/validators/shipping-address";
 
 interface ShippingAddressFormProps {
   onSubmit?: (data: ShippingAddressInput) => void;
@@ -14,15 +14,15 @@ export default function ShippingAddressForm({
 }: ShippingAddressFormProps) {
   const form = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      countryCode: 'BD',
-      city: '',
-      state: '',
-      zipCode: '',
-      description: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      countryCode: "BD",
+      city: "",
+      state: "",
+      zipCode: "",
+      description: "",
     } as ShippingAddressInput,
     validators: {
       onSubmit: shippingAddressSchema,

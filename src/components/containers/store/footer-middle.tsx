@@ -1,17 +1,17 @@
-import FooterNav from '@/components/base/common/footer-nav';
-import SubscribeForm from '@/components/base/forms/subscribe-form';
+import FooterNav from "@/components/base/common/footer-nav";
+import SubscribeForm from "@/components/base/forms/subscribe-form";
 
 const homeMenu = [
-  { label: 'Why Us', to: '/#why-us' },
-  { label: 'About Us', to: '/#about' },
-  { label: 'Testimonials', to: '/#testimonials' },
-  { label: 'FAQ’s', to: '/#faqs' },
+  { label: "Why Us", to: "/#why-us" },
+  { label: "About Us", to: "/#about" },
+  { label: "Testimonials", to: "/#testimonials" },
+  { label: "FAQ’s", to: "/#faqs" },
 ];
 
 const productsMenu = [
-  { label: 'Menswear', to: '/products?category=mens' },
-  { label: 'Womenswear', to: '/products?category=womens' },
-  { label: 'Kidswear', to: '/products?category=kids' },
+  { label: "Menswear", to: "/products?category=mens" },
+  { label: "Womenswear", to: "/products?category=womens" },
+  { label: "Kidswear", to: "/products?category=kids" },
 ];
 
 export default function FooterMiddle() {

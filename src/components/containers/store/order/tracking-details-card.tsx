@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Package, Truck } from 'lucide-react';
+import { Calendar, MapPin, Package, Truck } from "lucide-react";
 
 interface TrackingDetailsCardProps {
   carrier: string;

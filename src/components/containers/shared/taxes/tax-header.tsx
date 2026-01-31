@@ -1,47 +1,11 @@
-import { useState } from 'react';
-import PageHeader from '@/components/base/common/page-header';
-import type { TaxFormValues } from '@/types/taxes';
-import { AddTaxDialog } from './add-tax-dialog';
+import { createEntityHeader } from "@/components/base/common/entity-header";
 
-export interface TaxHeaderProps {
-  onAddTax?: (data: TaxFormValues) => void;
-  role?: 'admin' | 'vendor';
-  showAddButton?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-}
+export const TaxHeader = createEntityHeader({
+  entityName: "Tax Rate",
+  entityNamePlural: "Tax Rates",
+  adminDescription: "Manage tax rates across the platform",
+  vendorDescription: "Manage your tax rates",
+});
 
-export default function TaxHeader({
-  onAddTax,
-  role = 'vendor',
-  showAddButton = true,
-  children,
-  className,
-}: TaxHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddTax = (data: TaxFormValues) => {
-    onAddTax?.(data);
-  };
-
-  return (
-    <PageHeader
-      title="Taxes"
-      description={
-        role === 'admin'
-          ? 'Manage platform-wide tax rates and configurations'
-          : 'Manage your tax rates and configurations'
-      }
-      className={className}
-    >
-      {children}
-      {showAddButton && (
-        <AddTaxDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddTax}
-        />
-      )}
-    </PageHeader>
-  );
-}
+export default TaxHeader;
+export type { EntityHeaderProps as TaxHeaderProps } from "@/components/base/common/entity-header";

@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface ProductThumbnailProps {
   image: string;
@@ -18,11 +18,11 @@ export default function ProductThumbnail({
       type="button"
       onClick={onClick}
       className={cn(
-        'relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white transition-all hover:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/50',
-        isActive ? 'border-primary' : 'border-transparent'
+        "relative aspect-square w-full overflow-hidden rounded-md border-2 bg-white transition-all hover:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/50",
+        isActive ? "border-primary" : "border-transparent"
       )}
       aria-label={`View ${alt}`}
-      aria-current={isActive ? 'true' : undefined}
+      aria-current={isActive ? "true" : undefined}
     >
       <img
         src={image}

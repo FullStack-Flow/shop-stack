@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import type * as React from "react";
 
 const DialOutlineDashIcon = (_props: React.SVGProps<SVGSVGElement>) => (
   <svg

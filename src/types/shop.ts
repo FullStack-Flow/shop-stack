@@ -10,15 +10,15 @@ export interface Shop {
   totalProducts: number;
   totalOrders: number;
   monthlyRevenue: string;
-  status: 'active' | 'pending';
+  status: "active" | "pending";
 }
 
 export interface ShopFormValues {
   name: string;
   slug: string;
   description: string;
-  logo: FileList | null;
-  banner: FileList | null;
+  logo: string | null;
+  banner: string | null;
   address: string;
   phone: string;
   email: string;

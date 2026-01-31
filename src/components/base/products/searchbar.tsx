@@ -1,13 +1,13 @@
-import { Search, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Search, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupText,
-} from '@/components/ui/input-group';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/input-group";
+import { cn } from "@/lib/utils";
 
 interface SearchBarProps {
   className?: string;
@@ -39,12 +39,12 @@ export default function SearchBar({
   }, [localValue, onChange, value]);
 
   const handleClear = () => {
-    setLocalValue('');
-    onChange('');
+    setLocalValue("");
+    onChange("");
   };
 
   return (
-    <InputGroup className={cn('w-full max-w-md', className)}>
+    <InputGroup className={cn("w-full max-w-md", className)}>
       <InputGroupAddon align="inline-start">
         <InputGroupText>
           <Search className="size-5" />
