@@ -1,21 +1,21 @@
-import type { Category } from '@/types/category-types';
-import CategoryCardGrid from './category-card-grid';
-import CategoryCardList from './category-card-list';
+import type { Category } from "@/types/category-types";
+import CategoryCardGrid from "./category-card-grid";
+import CategoryCardList from "./category-card-list";
 
 interface CategoryCardProps {
   category: Category;
-  variant?: 'default' | 'compact' | 'featured' | 'list';
+  variant?: "default" | "compact" | "featured" | "list";
   className?: string;
   showProductCount?: boolean;
 }
 
 export default function CategoryCard({
   category,
-  variant = 'default',
+  variant = "default",
   className,
   showProductCount = true,
 }: CategoryCardProps) {
-  const isList = variant === 'list';
+  const isList = variant === "list";
 
   if (isList) {
     return (
@@ -29,7 +29,7 @@ export default function CategoryCard({
   return (
     <CategoryCardGrid
       category={category}
-      variant={variant as 'default' | 'compact' | 'featured'}
+      variant={variant as "default" | "compact" | "featured"}
       className={className}
       showProductCount={showProductCount}
     />

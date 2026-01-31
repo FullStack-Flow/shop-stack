@@ -38,7 +38,7 @@ export const registerVendor = createServerFn({ method: "POST" })
 
       if (existingShop) {
         throw new Error(
-          "A shop with this name already exists. Please try a different shop name.",
+          "A shop with this name already exists. Please try a different shop name."
         );
       }
 
@@ -108,7 +108,7 @@ export const registerVendor = createServerFn({ method: "POST" })
 
       if (userId) {
         console.warn(
-          `Vendor registration failed after user creation. User ID: ${userId}`,
+          `Vendor registration failed after user creation. User ID: ${userId}`
         );
         // Attempt to revert user role to 'customer' if vendor creation failed
         try {
@@ -124,7 +124,7 @@ export const registerVendor = createServerFn({ method: "POST" })
         throw new Error(
           error instanceof Error
             ? error.message
-            : "Failed to register vendor. Please try again.",
+            : "Failed to register vendor. Please try again."
         );
       }
     }

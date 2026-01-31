@@ -1,18 +1,18 @@
-import { Link } from '@tanstack/react-router';
-import { ShoppingBag } from 'lucide-react';
-import { BreadcrumbNav } from '@/components/base/common/breadcrumb-nav';
-import EmptyState from '@/components/base/empty/empty-state';
-import CartItemsList from '@/components/containers/store/cart/cart-items-list';
-import CartSummary from '@/components/containers/store/cart/cart-summary';
-import { Button } from '@/components/ui/button';
-import { useCartStore } from '@/lib/store/cart-store';
+import { Link } from "@tanstack/react-router";
+import { ShoppingBag } from "lucide-react";
+import { BreadcrumbNav } from "@/components/base/common/breadcrumb-nav";
+import EmptyState from "@/components/base/empty/empty-state";
+import CartItemsList from "@/components/containers/store/cart/cart-items-list";
+import CartSummary from "@/components/containers/store/cart/cart-summary";
+import { Button } from "@/components/ui/button";
+import { useCartStore } from "@/lib/store/cart-store";
 
 export default function CartTemplate() {
   const { items } = useCartStore();
 
   const cartSteps = [
-    { label: 'Home', href: '/' },
-    { label: 'Cart', isActive: true },
+    { label: "Home", href: "/" },
+    { label: "Cart", isActive: true },
   ] as const;
 
   return (

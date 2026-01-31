@@ -1,4 +1,4 @@
-import { CreditCard } from 'lucide-react';
+import { CreditCard } from "lucide-react";
 
 interface OrderInfoSectionProps {
   paymentMethod: string;

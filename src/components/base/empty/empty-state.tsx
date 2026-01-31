@@ -5,8 +5,8 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from '@/components/ui/empty';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/empty";
+import { cn } from "@/lib/utils";
 
 interface EmptyStateProps {
   icon?: React.ReactNode;
@@ -14,7 +14,7 @@ interface EmptyStateProps {
   description?: string;
   action?: React.ReactNode;
   className?: string;
-  variant?: 'default' | 'icon';
+  variant?: "default" | "icon";
 }
 
 export default function EmptyState({
@@ -23,7 +23,7 @@ export default function EmptyState({
   description,
   action,
   className,
-  variant = 'icon',
+  variant = "icon",
 }: EmptyStateProps) {
   return (
     <Empty className={cn(className)}>

@@ -1,36 +1,40 @@
-import CategoryHeader from '@/components/containers/shared/categories/category-header';
-import CategoryTable from '@/components/containers/shared/categories/category-table';
-import { VENDOR_CATEGORY_PERMISSIONS } from '@/lib/config/category-permissions';
-import type { Category } from '@/types/category-types';
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import CategoryHeader from "@/components/containers/shared/categories/category-header";
+import VendorCategoryTable from "@/components/containers/shared/categories/category-table";
+import type { VendorCategoryMutationState } from "@/hooks/vendors/use-categories";
+import type { NormalizedCategory } from "@/types/category-types";
 
 interface ShopCategoriesTemplateProps {
-  categories: Category[];
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<NormalizedCategory>>;
   onAddCategory: () => void;
-  onDeleteCategory?: (categoryId: string) => void;
-  onEditCategory?: (categoryId: string) => void;
-  onToggleStatus?: (categoryId: string, currentStatus: boolean) => void;
+  onEditCategory: (category: NormalizedCategory) => void;
+  onDeleteCategory: (category: NormalizedCategory) => void;
+  mutationState?: VendorCategoryMutationState;
+  isCategoryMutating?: (id: string) => boolean;
 }
 
 export default function ShopCategoriesTemplate({
-  categories,
+  fetcher,
   onAddCategory,
-  onDeleteCategory,
   onEditCategory,
-  onToggleStatus,
+  onDeleteCategory,
+  mutationState,
+  isCategoryMutating,
 }: ShopCategoriesTemplateProps) {
   return (
     <div className="space-y-6">
-      <CategoryHeader
-        onAddCategory={onAddCategory}
-        role="vendor"
-        showAddButton={true}
-      />
-      <CategoryTable
-        categories={categories}
-        permissions={VENDOR_CATEGORY_PERMISSIONS}
-        onDeleteCategory={onDeleteCategory}
-        onEditCategory={onEditCategory}
-        onToggleStatus={onToggleStatus}
+      <CategoryHeader onAdd={onAddCategory} />
+      <VendorCategoryTable
+        fetcher={fetcher}
+        onEdit={onEditCategory}
+        onDelete={onDeleteCategory}
+        mutationState={mutationState}
+        isCategoryMutating={isCategoryMutating}
       />
     </div>
   );

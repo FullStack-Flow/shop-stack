@@ -1,4 +1,4 @@
-import type { TagPermissions } from '@/types/tags';
+import type { TagPermissions } from "@/types/tags";
 
 export const ADMIN_TAG_PERMISSIONS: TagPermissions = {
   canDelete: true,

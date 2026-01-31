@@ -1,4 +1,4 @@
-import type { ShippingPermissions } from '@/types/shipping';
+import type { ShippingPermissions } from "@/types/shipping";
 
 export const ADMIN_SHIPPING_PERMISSIONS: ShippingPermissions = {
   canDelete: true,

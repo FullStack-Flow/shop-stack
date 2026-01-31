@@ -1,8 +1,8 @@
-import type { ColumnDef } from '@tanstack/react-table';
-import DataTable from '@/components/base/data-table/data-table';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import type { Product } from '@/data/products';
+import type { ColumnDef } from "@tanstack/react-table";
+import DataTable from "@/components/base/data-table/data-table";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import type { Product } from "@/data/products";
 
 interface AdminProductsTableProps {
   products: Product[];
@@ -15,42 +15,42 @@ export default function AdminProductsTable({
 }: AdminProductsTableProps) {
   const columns: ColumnDef<Product>[] = [
     {
-      accessorKey: 'id',
-      header: 'ID',
+      accessorKey: "id",
+      header: "ID",
       cell: ({ row }) => (
         <div className="w-20 truncate text-muted-foreground text-xs">
-          {row.getValue('id')}
+          {row.getValue("id")}
         </div>
       ),
     },
     {
-      accessorKey: 'name',
-      header: 'Product',
+      accessorKey: "name",
+      header: "Product",
       cell: ({ row }) => (
-        <div className="font-medium">{row.getValue('name')}</div>
+        <div className="font-medium">{row.getValue("name")}</div>
       ),
     },
     {
-      accessorKey: 'category.name',
-      header: 'Category',
-      cell: ({ row }) => (
-        <div className="text-muted-foreground text-sm">
-          {row.original.category?.name || '-'}
-        </div>
-      ),
-    },
-    {
-      accessorKey: 'brand',
-      header: 'Brand',
+      accessorKey: "category.name",
+      header: "Category",
       cell: ({ row }) => (
         <div className="text-muted-foreground text-sm">
-          {row.getValue('brand') || '-'}
+          {row.original.category?.name || "-"}
         </div>
       ),
     },
     {
-      accessorKey: 'price.current',
-      header: 'Price',
+      accessorKey: "brand",
+      header: "Brand",
+      cell: ({ row }) => (
+        <div className="text-muted-foreground text-sm">
+          {row.getValue("brand") || "-"}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "price.current",
+      header: "Price",
       cell: ({ row }) => {
         const price = row.original.price;
         return (
@@ -68,20 +68,20 @@ export default function AdminProductsTable({
       },
     },
     {
-      accessorKey: 'stock.quantity',
-      header: 'Stock',
+      accessorKey: "stock.quantity",
+      header: "Stock",
       cell: ({ row }) => {
         const stock = row.original.stock;
         return (
-          <Badge variant={stock.inStock ? 'default' : 'destructive'}>
-            {stock.inStock ? `${stock.quantity} in stock` : 'Out of Stock'}
+          <Badge variant={stock.inStock ? "default" : "destructive"}>
+            {stock.inStock ? `${stock.quantity} in stock` : "Out of Stock"}
           </Badge>
         );
       },
     },
     {
-      accessorKey: 'rating.average',
-      header: 'Rating',
+      accessorKey: "rating.average",
+      header: "Rating",
       cell: ({ row }) => {
         const rating = row.original.rating;
         return (
@@ -95,19 +95,19 @@ export default function AdminProductsTable({
       },
     },
     {
-      accessorKey: 'store.name',
-      header: 'Store',
+      accessorKey: "store.name",
+      header: "Store",
       cell: ({ row }) => (
         <div className="text-muted-foreground text-sm">
-          {row.original.store?.name || '-'}
+          {row.original.store?.name || "-"}
         </div>
       ),
     },
     {
-      accessorKey: 'isOnSale',
-      header: 'Sale',
+      accessorKey: "isOnSale",
+      header: "Sale",
       cell: ({ row }) => {
-        const isOnSale = row.getValue('isOnSale') as boolean;
+        const isOnSale = row.getValue("isOnSale") as boolean;
         return isOnSale ? (
           <Badge variant="secondary">On Sale</Badge>
         ) : (
@@ -116,7 +116,7 @@ export default function AdminProductsTable({
       },
     },
     {
-      id: 'actions',
+      id: "actions",
       header: () => <div className="text-right">Actions</div>,
       cell: () => (
         <div className="text-right">

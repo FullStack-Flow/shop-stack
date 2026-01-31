@@ -1,15 +1,14 @@
-import { Plus } from 'lucide-react';
-import { useState } from 'react';
-import { AddTaxDialog } from '@/components/containers/shared/taxes/add-tax-dialog';
-import TaxHeader from '@/components/containers/shared/taxes/tax-header';
-import TaxesTable from '@/components/containers/shared/taxes/tax-table';
-import { Button } from '@/components/ui/button';
-import { ADMIN_TAX_PERMISSIONS } from '@/lib/config/tax-permissions';
-import type { Taxes as Tax } from '@/types/taxes';
+import { Plus } from "lucide-react";
+import { useState } from "react";
+import { AddTaxDialog } from "@/components/containers/shared/taxes/add-tax-dialog";
+import TaxHeader from "@/components/containers/shared/taxes/tax-header";
+import { Button } from "@/components/ui/button";
+import { ADMIN_TAX_PERMISSIONS } from "@/lib/config/tax-permissions";
+import type { TaxRate } from "@/lib/db/schema/tax-schema";
 
 interface AdminTaxesTemplateProps {
-  taxes: Tax[];
-  onAddTax: (data: Omit<Tax, 'id' | 'createdAt'>) => void;
+  taxes: TaxRate[];
+  onAddTax: (data: Omit<TaxRate, "id" | "createdAt">) => void;
   onDeleteTax: (id: string) => void;
 }
 
@@ -22,7 +21,7 @@ export default function AdminTaxesTemplate({
 
   return (
     <div className="flex flex-col gap-6">
-      <TaxHeader>
+      <TaxHeader role="admin" showAddButton={false}>
         <AddTaxDialog
           open={isAddDialogOpen}
           onOpenChange={setIsAddDialogOpen}

@@ -1,5 +1,5 @@
-import { Clock } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ShippingUpdate {
   id: string;
@@ -24,18 +24,18 @@ export default function ShippingUpdatesList({
           <div
             key={update.id}
             className={cn(
-              'relative flex gap-4 pb-4',
-              index < updates.length - 1 && 'border-b'
+              "relative flex gap-4 pb-4",
+              index < updates.length - 1 && "border-b"
             )}
           >
             {/* Timeline dot */}
             <div className="relative flex flex-col items-center">
               <div
                 className={cn(
-                  'flex h-8 w-8 items-center justify-center rounded-full',
+                  "flex h-8 w-8 items-center justify-center rounded-full",
                   update.isLatest
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground'
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground"
                 )}
               >
                 <Clock className="h-4 w-4" />
@@ -51,8 +51,8 @@ export default function ShippingUpdatesList({
                 <div>
                   <p
                     className={cn(
-                      'font-medium',
-                      update.isLatest && 'text-primary'
+                      "font-medium",
+                      update.isLatest && "text-primary"
                     )}
                   >
                     {update.status}

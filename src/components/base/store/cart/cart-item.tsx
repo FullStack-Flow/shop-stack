@@ -1,11 +1,11 @@
-import { Trash2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   type CartItem as CartItemType,
   useCartStore,
-} from '@/lib/store/cart-store';
-import { cn } from '@/lib/utils';
-import { QuantitySelector } from '../../products/details/quantity-selector';
+} from "@/lib/store/cart-store";
+import { cn } from "@/lib/utils";
+import { QuantitySelector } from "../../products/details/quantity-selector";
 
 interface CartItemProps {
   item: CartItemType;
@@ -17,14 +17,14 @@ export default function CartItem({ item, isCompact = false }: CartItemProps) {
   return (
     <div
       className={cn(
-        'flex gap-4 py-4',
-        isCompact ? 'items-start' : 'items-center'
+        "flex gap-4 py-4",
+        isCompact ? "items-start" : "items-center"
       )}
     >
       <div
         className={cn(
-          'relative overflow-hidden rounded-md border bg-muted',
-          isCompact ? 'h-20 w-20' : 'h-24 w-24'
+          "relative overflow-hidden rounded-md border bg-muted",
+          isCompact ? "h-20 w-20" : "h-24 w-24"
         )}
       >
         <img
@@ -41,7 +41,7 @@ export default function CartItem({ item, isCompact = false }: CartItemProps) {
             {(item.size || item.color) && (
               <p className="text-muted-foreground text-sm">
                 {item.size && `Size: ${item.size}`}
-                {item.size && item.color && ' | '}
+                {item.size && item.color && " | "}
                 {item.color && `Color: ${item.color}`}
               </p>
             )}

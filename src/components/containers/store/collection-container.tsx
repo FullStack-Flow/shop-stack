@@ -1,7 +1,7 @@
-import CollectionItem from '@/components/base/common/collection-item';
-import { type Product, mockProducts as products } from '@/data/products';
-import { useCartStore } from '@/lib/store/cart-store';
-import { gridCellBorderClasses } from '@/lib/utils';
+import CollectionItem from "@/components/base/common/collection-item";
+import { type Product, mockProducts as products } from "@/data/products";
+import { useCartStore } from "@/lib/store/cart-store";
+import { gridCellBorderClasses } from "@/lib/utils";
 
 export default function CollectionContainer() {
   const columns2 = 2;

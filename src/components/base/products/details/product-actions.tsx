@@ -1,6 +1,6 @@
-import { GitCompare, Heart, ShoppingCart } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
+import { GitCompare, Heart, ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface ProductActionsProps {
   onAddToCart: () => void;
@@ -26,7 +26,7 @@ export default function ProductActions({
   className,
 }: ProductActionsProps) {
   return (
-    <div className={cn('flex flex-col gap-3', className)}>
+    <div className={cn("flex flex-col gap-3", className)}>
       <div className="flex w-full flex-col gap-3 sm:flex-row">
         <Button
           size="lg"
@@ -53,8 +53,8 @@ export default function ProductActions({
           variant="outline"
           size="default"
           className={cn(
-            'flex-1 gap-2',
-            isCompareListed && 'border-primary bg-primary/5 text-primary'
+            "flex-1 gap-2",
+            isCompareListed && "border-primary bg-primary/5 text-primary"
           )}
           onClick={onToggleCompare}
         >
@@ -65,13 +65,13 @@ export default function ProductActions({
           variant="outline"
           size="default"
           className={cn(
-            'flex-1 gap-2',
+            "flex-1 gap-2",
             isWishlisted &&
-              'border-red-200 bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-600'
+              "border-red-200 bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-600"
           )}
           onClick={onToggleWishlist}
         >
-          <Heart className={cn('h-4 w-4', isWishlisted && 'fill-current')} />
+          <Heart className={cn("h-4 w-4", isWishlisted && "fill-current")} />
           Wishlist
         </Button>
       </div>

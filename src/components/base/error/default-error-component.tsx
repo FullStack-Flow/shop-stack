@@ -14,20 +14,20 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../ui/card";
+} from "@/components/ui/card";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../ui/collapsible";
-import { ScrollArea } from "../ui/scroll-area";
+} from "@/components/ui/collapsible";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export function DefaultErrorComponent({ error }: ErrorComponentProps) {
   const router = useRouter();

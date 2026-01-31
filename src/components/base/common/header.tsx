@@ -20,8 +20,6 @@ export default function Header() {
   const user = data?.user;
   const { totalItems, setIsOpen } = useCartStore();
 
-  console.log(user);
-
   return (
     <header className="@container sticky top-0 z-40 w-full border-b border-dashed bg-background backdrop-blur supports-filter:bg-background/80">
       <div className="@container container mx-auto grid @6xl:grid-cols-3 grid-cols-2 items-center px-4 py-7">

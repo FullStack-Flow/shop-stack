@@ -1,36 +1,39 @@
-import CouponHeader from '@/components/containers/shared/coupons/coupon-header';
-import CouponTable from '@/components/containers/shared/coupons/coupon-table';
-import { VENDOR_COUPON_PERMISSIONS } from '@/lib/config/coupon-permissions';
-import type { Coupon, CouponFormValues } from '@/types/coupon';
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import CouponHeader from "@/components/containers/shared/coupons/coupon-header";
+import CouponTable from "@/components/containers/shared/coupons/coupon-table";
+import type { CouponItem, CouponMutationState } from "@/types/coupons";
 
 interface ShopCouponsTemplateProps {
-  coupons: Coupon[];
-  onAddCoupon?: (data: CouponFormValues) => void;
-  onDeleteCoupon?: (couponId: string) => void;
-  onEditCoupon?: (couponId: string) => void;
-  onToggleStatus?: (couponId: string, currentStatus: string) => void;
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<CouponItem>>;
+  onAddCoupon: () => void;
+  onEditCoupon?: (coupon: CouponItem) => void;
+  onDeleteCoupon?: (coupon: CouponItem) => void;
+  mutationState?: CouponMutationState;
+  isCouponMutating?: (id: string) => boolean;
 }
 
 export default function ShopCouponsTemplate({
-  coupons,
+  fetcher,
   onAddCoupon,
-  onDeleteCoupon,
   onEditCoupon,
-  onToggleStatus,
+  onDeleteCoupon,
+  mutationState,
+  isCouponMutating,
 }: ShopCouponsTemplateProps) {
   return (
     <div className="space-y-6">
-      <CouponHeader
-        onAddCoupon={onAddCoupon}
-        role="vendor"
-        showAddButton={!!onAddCoupon}
-      />
+      <CouponHeader onAdd={onAddCoupon} />
       <CouponTable
-        coupons={coupons}
-        permissions={VENDOR_COUPON_PERMISSIONS}
-        onDeleteCoupon={onDeleteCoupon}
-        onEditCoupon={onEditCoupon}
-        onToggleStatus={onToggleStatus}
+        fetcher={fetcher}
+        onEdit={onEditCoupon}
+        onDelete={onDeleteCoupon}
+        mutationState={mutationState}
+        isCouponMutating={isCouponMutating}
       />
     </div>
   );

@@ -1,5 +1,5 @@
-import AccountLayout from '@/components/containers/store/accounts/account-layout';
-import OrdersTable from './order-table';
+import AccountLayout from "@/components/containers/store/accounts/account-layout";
+import OrdersTable from "./order-table";
 
 export default function OrderTemplate() {
   return (

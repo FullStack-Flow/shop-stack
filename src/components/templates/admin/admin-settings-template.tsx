@@ -1,5 +1,5 @@
-import PageHeader from '@/components/base/common/page-header';
-import { AdminSettingsTable } from '@/components/containers/admin/settings/admin-settings-table';
+import PageHeader from "@/components/base/common/page-header";
+import { AdminSettingsTable } from "@/components/containers/admin/settings/admin-settings-table";
 
 interface Setting {
   id: string;

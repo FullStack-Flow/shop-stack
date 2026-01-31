@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import type * as React from "react";
 
 const DialCircleIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg

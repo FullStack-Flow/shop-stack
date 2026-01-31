@@ -1,25 +1,25 @@
-import { Link } from '@tanstack/react-router';
-import { ArrowRight, Package } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
-import type { Category } from '@/types/category-types';
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Package } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import type { Category } from "@/types/category-types";
 
 interface CategoryCardGridProps {
   category: Category;
-  variant?: 'default' | 'compact' | 'featured';
+  variant?: "default" | "compact" | "featured";
   className?: string;
   showProductCount?: boolean;
 }
 
 export default function CategoryCardGrid({
   category,
-  variant = 'default',
+  variant = "default",
   className,
   showProductCount = true,
 }: CategoryCardGridProps) {
-  const isCompact = variant === 'compact';
-  const isFeatured = variant === 'featured';
+  const isCompact = variant === "compact";
+  const isFeatured = variant === "featured";
 
   return (
     <Link
@@ -29,10 +29,10 @@ export default function CategoryCardGrid({
     >
       <Card
         className={cn(
-          'hover:-translate-y-1 h-full overflow-hidden py-0 transition-all duration-300 hover:shadow-xl',
+          "hover:-translate-y-1 h-full overflow-hidden py-0 transition-all duration-300 hover:shadow-xl",
           isFeatured
-            ? 'border-primary/20 shadow-md'
-            : 'border-muted hover:border-primary/50',
+            ? "border-primary/20 shadow-md"
+            : "border-muted hover:border-primary/50",
           className
         )}
       >
@@ -41,12 +41,12 @@ export default function CategoryCardGrid({
             {/* Category Image */}
             <div
               className={cn(
-                'relative w-full overflow-hidden bg-muted',
+                "relative w-full overflow-hidden bg-muted",
                 isCompact
-                  ? 'aspect-2/1'
+                  ? "aspect-2/1"
                   : isFeatured
-                    ? 'aspect-video'
-                    : 'aspect-4/3'
+                    ? "aspect-video"
+                    : "aspect-4/3"
               )}
             >
               {category.image ? (
@@ -83,8 +83,8 @@ export default function CategoryCardGrid({
                 )}
                 <h3
                   className={cn(
-                    'font-bold transition-colors group-hover:text-primary',
-                    isCompact ? 'text-lg' : 'text-xl'
+                    "font-bold transition-colors group-hover:text-primary",
+                    isCompact ? "text-lg" : "text-xl"
                   )}
                 >
                   {category.name}
@@ -101,8 +101,8 @@ export default function CategoryCardGrid({
             {/* Footer info */}
             <div
               className={cn(
-                'mt-auto flex items-center justify-between border-border/50 border-t pt-3',
-                isCompact && 'pt-2'
+                "mt-auto flex items-center justify-between border-border/50 border-t pt-3",
+                isCompact && "pt-2"
               )}
             >
               {showProductCount && (

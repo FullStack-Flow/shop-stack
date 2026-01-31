@@ -1,5 +1,5 @@
-import AccountLayout from '@/components/containers/store/accounts/account-layout';
-import WishlistList from '@/components/containers/store/accounts/wishlist/wishlist-list';
+import AccountLayout from "@/components/containers/store/accounts/account-layout";
+import WishlistList from "@/components/containers/store/accounts/wishlist/wishlist-list";
 
 export default function WishlistTemplate() {
   return (

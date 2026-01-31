@@ -1,6 +1,6 @@
-import { useForm } from '@tanstack/react-form';
-import { Star } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useForm } from "@tanstack/react-form";
+import { Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,28 +8,28 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
-import type { ReviewFormValues } from '@/types/review-form';
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import type { ReviewFormValues } from "@/types/review-form";
 
 // Helper function to safely get string errors from field meta
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === 'string');
+  return errors.filter((error): error is string => typeof error === "string");
 }
 
 interface AddReviewDialogProps {
@@ -57,8 +57,8 @@ const StarRatingInput = ({
           <Star
             className={`size-6 ${
               star <= rating
-                ? 'fill-yellow-400 text-yellow-400'
-                : 'text-gray-300'
+                ? "fill-yellow-400 text-yellow-400"
+                : "text-gray-300"
             } transition-colors hover:fill-yellow-400 hover:text-yellow-400`}
           />
         </button>
@@ -75,11 +75,11 @@ export function AddReviewDialog({
 }: AddReviewDialogProps) {
   const form = useForm({
     defaultValues: {
-      productName: '',
-      customerName: '',
+      productName: "",
+      customerName: "",
       rating: 5,
-      comment: '',
-      status: 'pending' as 'published' | 'pending' | 'rejected',
+      comment: "",
+      status: "pending" as "published" | "pending" | "rejected",
       customerAvatar: null as FileList | null,
     },
     onSubmit: async ({ value }) => {
@@ -228,7 +228,7 @@ export function AddReviewDialog({
                         value={field.state.value}
                         onValueChange={(value) =>
                           field.handleChange(
-                            value as 'published' | 'pending' | 'rejected'
+                            value as "published" | "pending" | "rejected"
                           )
                         }
                       >
@@ -291,7 +291,7 @@ export function AddReviewDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? 'Adding...' : 'Add Review'}
+                  {isSubmitting ? "Adding..." : "Add Review"}
                 </Button>
               )}
             </form.Subscribe>

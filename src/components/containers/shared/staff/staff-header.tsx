@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import PageHeader from '@/components/base/common/page-header';
-import type { StaffFormValues } from '@/types/staff';
-import { AddStaffDialog } from './add-staff-dialog';
+import { useState } from "react";
+import PageHeader from "@/components/base/common/page-header";
+import type { StaffFormValues } from "@/types/staff";
+import { AddStaffDialog } from "./add-staff-dialog";
 
 export interface StaffHeaderProps {
   onAddStaff?: (data: StaffFormValues) => void;
-  role?: 'admin' | 'vendor';
+  role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -13,7 +13,7 @@ export interface StaffHeaderProps {
 
 export default function StaffHeader({
   onAddStaff,
-  role = 'vendor',
+  role = "vendor",
   showAddButton = true,
   children,
   className,
@@ -28,9 +28,9 @@ export default function StaffHeader({
     <PageHeader
       title="Staff Members"
       description={
-        role === 'admin'
-          ? 'Manage platform-wide staff and their roles'
-          : 'Manage your shop staff and their roles'
+        role === "admin"
+          ? "Manage platform-wide staff and their roles"
+          : "Manage your shop staff and their roles"
       }
       className={className}
     >

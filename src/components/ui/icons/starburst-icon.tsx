@@ -1,4 +1,4 @@
-import type * as React from 'react';
+import type * as React from "react";
 
 const StarburstIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
@@ -14,7 +14,7 @@ const StarburstIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
       x="0"
       y="0"
       maskUnits="userSpaceOnUse"
-      style={{ maskType: 'luminance' }}
+      style={{ maskType: "luminance" }}
     >
       <path fill="#fff" d="M60 0H0v60h60z"></path>
     </mask>

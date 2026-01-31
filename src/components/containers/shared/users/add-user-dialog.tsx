@@ -1,5 +1,5 @@
-import { useForm } from '@tanstack/react-form';
-import { Button } from '@/components/ui/button';
+import { useForm } from "@tanstack/react-form";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,26 +7,26 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
+} from "@/components/ui/dialog";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import type { UserFormValues } from '@/types/users';
+} from "@/components/ui/select";
+import type { UserFormValues } from "@/types/users";
 
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === 'string');
+  return errors.filter((error): error is string => typeof error === "string");
 }
 
 interface AddUserDialogProps {
@@ -42,9 +42,9 @@ export function AddUserDialog({
 }: AddUserDialogProps) {
   const form = useForm({
     defaultValues: {
-      name: '',
-      email: '',
-      status: 'active' as 'active' | 'inactive' | 'suspended',
+      name: "",
+      email: "",
+      status: "active" as "active" | "inactive" | "suspended",
       avatar: null as FileList | null,
     },
     onSubmit: async ({ value }) => {
@@ -134,7 +134,7 @@ export function AddUserDialog({
                         value={field.state.value}
                         onValueChange={(value) =>
                           field.handleChange(
-                            value as 'active' | 'inactive' | 'suspended'
+                            value as "active" | "inactive" | "suspended"
                           )
                         }
                       >
@@ -196,7 +196,7 @@ export function AddUserDialog({
             >
               {([canSubmit, isSubmitting]) => (
                 <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? 'Adding...' : 'Add User'}
+                  {isSubmitting ? "Adding..." : "Add User"}
                 </Button>
               )}
             </form.Subscribe>

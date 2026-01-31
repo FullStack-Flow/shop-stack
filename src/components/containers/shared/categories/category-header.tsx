@@ -1,48 +1,11 @@
-import { useState } from 'react';
-import PageHeader from '@/components/base/common/page-header';
-import type { CategoryFormValues } from '@/types/category-types';
-import { AddCategoryDialog } from './add-category-dialog';
+import { createEntityHeader } from "@/components/base/common/entity-header";
 
-export interface CategoryHeaderProps {
-  onAddCategory?: (data: CategoryFormValues) => void;
-  role?: 'admin' | 'vendor';
-  showAddButton?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-}
+export const CategoryHeader = createEntityHeader({
+  entityName: "Category",
+  entityNamePlural: "Categories",
+  adminDescription: "Manage product categories across the platform",
+  vendorDescription: "Manage your product categories and organization",
+});
 
-export default function CategoryHeader({
-  onAddCategory,
-  role = 'vendor',
-  showAddButton = true,
-  children,
-  className,
-}: CategoryHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddCategory = (data: CategoryFormValues) => {
-    onAddCategory?.(data);
-  };
-
-  return (
-    <PageHeader
-      title="Categories"
-      description={
-        role === 'admin'
-          ? 'Manage product categories across the platform'
-          : 'Manage your product categories and organization'
-      }
-      className={className}
-    >
-      {children}
-      {showAddButton && (
-        <AddCategoryDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddCategory}
-          role={role}
-        />
-      )}
-    </PageHeader>
-  );
-}
+export default CategoryHeader;
+export type { EntityHeaderProps as CategoryHeaderProps } from "@/components/base/common/entity-header";

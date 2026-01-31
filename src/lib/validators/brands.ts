@@ -1,0 +1,23 @@
+// Re-export all brand schemas from the shared file for backward compatibility
+export {
+  type AdminBrandsQuery,
+  adminBrandsQuerySchema,
+  type Brand,
+  type BrandSortBy,
+  brandSchema,
+  brandSortByEnum,
+  type CreateBrandInput,
+  createBrandSchema,
+  deleteBrandSchema,
+  getBrandByIdSchema,
+  getBrandBySlugSchema,
+  type StoreBrandsQuery,
+  storeBrandsQuerySchema,
+  toggleBrandActiveSchema,
+  type UpdateBrandInput,
+  updateBrandSchema,
+  type VendorBrandsQuery,
+  type VendorBrandsQuery as GetBrandsQueryInput,
+  vendorBrandsQuerySchema,
+  vendorBrandsQuerySchema as getBrandsQuerySchema,
+} from "./shared/brand-query";

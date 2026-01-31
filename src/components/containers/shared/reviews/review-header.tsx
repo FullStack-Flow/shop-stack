@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import PageHeader from '@/components/base/common/page-header';
-import type { ReviewFormValues } from '@/types/review-form';
-import { AddReviewDialog } from './add-review-dialog';
+import { useState } from "react";
+import PageHeader from "@/components/base/common/page-header";
+import type { ReviewFormValues } from "@/types/review-form";
+import { AddReviewDialog } from "./add-review-dialog";
 
 export interface ReviewHeaderProps {
   onAddReview?: (data: ReviewFormValues) => void;
-  role?: 'admin' | 'vendor';
+  role?: "admin" | "vendor";
   showAddButton?: boolean;
   children?: React.ReactNode;
   className?: string;
@@ -13,7 +13,7 @@ export interface ReviewHeaderProps {
 
 export default function ReviewHeader({
   onAddReview,
-  role = 'vendor',
+  role = "vendor",
   showAddButton = true,
   children,
   className,
@@ -28,9 +28,9 @@ export default function ReviewHeader({
     <PageHeader
       title="Reviews"
       description={
-        role === 'admin'
-          ? 'Manage platform-wide customer reviews and ratings'
-          : 'Manage customer reviews and ratings for your products'
+        role === "admin"
+          ? "Manage platform-wide customer reviews and ratings"
+          : "Manage customer reviews and ratings for your products"
       }
       className={className}
     >

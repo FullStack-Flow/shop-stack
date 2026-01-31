@@ -1,29 +1,51 @@
-import AttributeHeader from '@/components/containers/shared/attributes/attribute-header';
-import AttributeTable from '@/components/containers/shared/attributes/attribute-table';
-import { VENDOR_ATTRIBUTE_PERMISSIONS } from '@/lib/config/attribute-permissions';
-import type { Attribute, AttributeFormValues } from '@/types/attributes';
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import AttributeHeader from "@/components/containers/shared/attributes/attribute-header";
+import AttributeTable from "@/components/containers/shared/attributes/attribute-table";
+import type {
+  AttributeMutationState,
+  AttributeTableActions,
+} from "@/components/containers/shared/attributes/attribute-table-columns";
+import type { AttributeItem } from "@/types/attributes";
 
-interface ShopAttributesTemplateProps {
-  attributes: Attribute[];
-  onAddAttribute?: (data: AttributeFormValues) => void;
-  showAddButton?: boolean;
+interface ShopAttributesTemplateProps extends AttributeTableActions {
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<AttributeItem>>;
+  onAddAttribute: () => void;
+  onEditAttribute?: (attribute: AttributeItem) => void;
+  onDeleteAttribute?: (attribute: AttributeItem) => void;
+  onToggleActive?: (attribute: AttributeItem) => void;
+  mutationState?: AttributeMutationState;
+  isAttributeMutating?: (id: string) => boolean;
 }
 
 export function ShopAttributesTemplate({
-  attributes,
+  fetcher,
   onAddAttribute,
-  showAddButton = true,
+  onEditAttribute,
+  onDeleteAttribute,
+  onToggleActive,
+  mutationState,
+  isAttributeMutating,
 }: ShopAttributesTemplateProps) {
   return (
     <div className="space-y-6">
       <AttributeHeader
-        onAddAttribute={onAddAttribute}
+        onAdd={onAddAttribute}
         role="vendor"
-        showAddButton={showAddButton}
+        showAddButton={true}
       />
       <AttributeTable
-        attributes={attributes}
-        permissions={VENDOR_ATTRIBUTE_PERMISSIONS}
+        fetcher={fetcher}
+        onEdit={onEditAttribute}
+        onDelete={onDeleteAttribute}
+        onToggleActive={onToggleActive}
+        mutationState={mutationState}
+        isAttributeMutating={isAttributeMutating}
+        mode="vendor"
       />
     </div>
   );

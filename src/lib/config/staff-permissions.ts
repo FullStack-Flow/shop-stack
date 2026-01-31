@@ -1,4 +1,4 @@
-import type { StaffPermissions } from '@/types/staff';
+import type { StaffPermissions } from "@/types/staff";
 
 export const ADMIN_STAFF_PERMISSIONS: StaffPermissions = {
   canDelete: true,

@@ -1,12 +1,68 @@
 import { type NeonQueryFunction, neon } from "@neondatabase/serverless";
 import { drizzle, type NeonHttpDatabase } from "drizzle-orm/neon-http";
+import {
+  attributes,
+  attributesRelations,
+  attributeValues,
+  attributeValuesRelations,
+} from "./schema/attribute-schema";
 import { user } from "./schema/auth-schema";
+import { brands } from "./schema/brand-schema";
+import { categories } from "./schema/category-schema";
+import {
+  couponCategories,
+  couponCategoriesRelations,
+  couponProducts,
+  couponProductsRelations,
+  coupons,
+  couponsRelations,
+  couponUsage,
+  couponUsageRelations,
+} from "./schema/coupon-schema";
+import {
+  productAttributes,
+  productAttributesRelations,
+  productImages,
+  productImagesRelations,
+  products,
+  productsRelations,
+  productTags,
+  productTagsRelations,
+} from "./schema/products-schema";
 import { shops, vendors } from "./schema/shop-schema";
+import { tags, tagsRelations } from "./schema/tags-schema";
+import { taxRates, taxRatesRelations } from "./schema/tax-schema";
 
 const schema = {
   user,
   vendors,
   shops,
+  categories,
+  brands,
+  attributes,
+  attributeValues,
+  attributesRelations,
+  attributeValuesRelations,
+  tags,
+  tagsRelations,
+  taxRates,
+  taxRatesRelations,
+  productAttributes,
+  productAttributesRelations,
+  productImages,
+  productImagesRelations,
+  products,
+  productsRelations,
+  productTags,
+  productTagsRelations,
+  coupons,
+  couponProducts,
+  couponCategories,
+  couponUsage,
+  couponsRelations,
+  couponProductsRelations,
+  couponCategoriesRelations,
+  couponUsageRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server

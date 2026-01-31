@@ -1,6 +1,6 @@
-import { Link } from '@tanstack/react-router';
-import { ExternalLink, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Link } from "@tanstack/react-router";
+import { ExternalLink, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface OrderTrackingSummaryProps {
   orderId: string;

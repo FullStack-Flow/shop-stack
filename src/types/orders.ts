@@ -7,8 +7,8 @@ export interface Order {
   };
   date: string;
   total: string;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-  paymentStatus: 'paid' | 'unpaid' | 'refunded';
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
+  paymentStatus: "paid" | "unpaid" | "refunded";
   items: number;
 }
 

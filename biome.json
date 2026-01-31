@@ -39,7 +39,8 @@
       "suspicious": {
         "noArrayIndexKey": "off",
         "noExplicitAny": "off",
-        "noUnknownAtRules": "off"
+        "noUnknownAtRules": "off",
+        "noDocumentCookie": "off"
       },
       "style": {
         "noNonNullAssertion": "off"
@@ -51,7 +52,7 @@
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "single",
+      "quoteStyle": "double",
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
       "trailingCommas": "es5",

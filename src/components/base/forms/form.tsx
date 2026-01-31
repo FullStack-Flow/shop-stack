@@ -33,7 +33,7 @@ export function Form({ form, onSubmit, multiStep, ...props }: FormProps) {
 
         const hasErrors = currentStepFieldNames.some(
           (fieldName) =>
-            (form.state.fieldMeta[fieldName]?.errors?.length ?? 0) > 0,
+            (form.state.fieldMeta[fieldName]?.errors?.length ?? 0) > 0
         );
 
         if (!hasErrors) {

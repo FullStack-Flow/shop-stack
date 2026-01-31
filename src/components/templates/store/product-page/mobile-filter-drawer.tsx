@@ -1,16 +1,16 @@
-import { Filter } from 'lucide-react';
-import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Filter } from "lucide-react";
+import React from "react";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet';
-import type { FilterState } from '@/lib/store/product-filters-store';
-import { cn } from '@/lib/utils';
-import FilterSidebar from './filter-sidebar';
+} from "@/components/ui/sheet";
+import type { FilterState } from "@/lib/store/product-filters-store";
+import { cn } from "@/lib/utils";
+import FilterSidebar from "./filter-sidebar";
 
 interface MobileFilterDrawerProps {
   filters: FilterState;
@@ -32,7 +32,7 @@ export default function MobileFilterDrawer({
         <Button
           variant="outline"
           size="lg"
-          className={cn('flex @4xl:hidden gap-2', className)}
+          className={cn("flex @4xl:hidden gap-2", className)}
         >
           <Filter className="h-4 w-4" />
           Filters
