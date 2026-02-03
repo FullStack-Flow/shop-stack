@@ -27,7 +27,7 @@ export default function ProductListingTemplate() {
             <p className="mt-1 text-muted-foreground">Showing results</p>
           </div>
           <div className="flex flex-col @4xl:flex-row items-center gap-3 w-full @4xl:w-auto">
-            <div className="w-full @4xl:w-[300px] order-1 @4xl:order-2">
+            <div className="w-full @4xl:w-75 order-1 @4xl:order-2">
               <SearchBar
                 value={filters.search}
                 onChange={(val) => updateFilter("search", val)}
@@ -44,7 +44,7 @@ export default function ProductListingTemplate() {
               <SortDropdown
                 value={filters.sort}
                 onChange={(val) => updateFilter("sort", val)}
-                className="flex-1 @4xl:w-[180px]"
+                className="flex-1 @4xl:w-45"
               />
             </div>
           </div>

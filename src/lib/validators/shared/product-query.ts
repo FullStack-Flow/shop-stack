@@ -16,12 +16,10 @@ import {
   optionalShopIdField,
   optionalVendorIdField,
   paginationFields,
-  STORE_DEFAULT_LIMIT,
   searchFields,
   shopScopeFields,
   shopSlugFields,
   sortDirectionEnum,
-  storeIsActiveField,
   VENDOR_DEFAULT_LIMIT,
 } from "./base-query";
 
@@ -106,6 +104,14 @@ const sortFields = {
   sortDirection: sortDirectionEnum.optional().default("desc"),
 };
 
+const storeSortFields = {
+  sortBy: z
+    .enum(["name", "price", "createdAt", "updatedAt"])
+    .optional()
+    .default("createdAt"), // No stock sort for public
+  sortDirection: sortDirectionEnum.optional().default("desc"),
+};
+
 // ============================================================================
 // Get by ID/Slug Schemas (using factory functions)
 // ============================================================================
@@ -126,11 +132,12 @@ export const getProductBySlugSchema = createGetBySlugSchema("Product");
  */
 export const storeProductsQuerySchema = z.object({
   ...paginationFields,
-  limit: paginationFields.limit.default(STORE_DEFAULT_LIMIT),
-  ...sortFields,
+  limit: paginationFields.limit.default(12), // Store default
+  ...storeSortFields,
   ...searchFields,
-  ...productFilterFields,
-  ...storeIsActiveField,
+  ...productBaseFilterFields,
+  isFeatured: statusFilterFields.isFeatured,
+  inStock: stockFilterFields.inStock,
   ...shopSlugFields,
   ...optionalShopIdField,
 });
@@ -561,6 +568,15 @@ export const updateProductSchema = z.object({
   ...productFlagFieldsUpdate,
   ...productSeoFieldsUpdate,
   ...productRelationArraysUpdate,
+});
+
+export const getFeaturedProductsSchema = z.object({
+  limit: z.coerce.number().min(1).max(20).optional().default(8),
+});
+
+export const getRelatedProductsSchema = z.object({
+  productId: z.string().min(1, "Product ID is required"),
+  limit: z.coerce.number().min(1).max(10).optional().default(4),
 });
 
 // ============================================================================
