@@ -46,7 +46,7 @@ export const createProductTableColumns = ({
       cell: ({ row }) => {
         const product = row.original;
         const primaryImage =
-          product.images.find((img) => img.isPrimary) || product.images[0];
+          product.images?.find((img) => img.isPrimary) || product.images?.[0];
 
         return (
           <div className="h-10 w-10 overflow-hidden rounded-md border bg-muted">
