@@ -2,16 +2,39 @@ import ProductAdditionalInfoTab from "@/components/base/products/details/product
 import ProductDescriptionTab from "@/components/base/products/details/product-description-tab";
 import ProductShippingTab from "@/components/base/products/details/product-shipping-tab";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { Product } from "@/data/products";
+import type { StoreProduct } from "@/types/store-types";
 import ProductReviewsTab from "./product-reviews-tab";
 
 interface ProductDetailsTabsProps {
-  product: Product;
+  product: StoreProduct;
 }
 
 export default function ProductDetailsTabs({
   product,
 }: ProductDetailsTabsProps) {
+  // Map attributes to specifications
+  const specifications: Record<string, string> = {};
+  if (product.attributeIds && product.attributeNames) {
+    product.attributeIds.forEach((attrId, index) => {
+      const attrName = product.attributeNames[index];
+      const valueIds = product.attributeValues[attrId] || [];
+      const valueNames = valueIds
+        .map((vid) => product.attributeValueNames[vid])
+        .filter(Boolean)
+        .join(", ");
+      if (attrName && valueNames) {
+        specifications[attrName] = valueNames;
+      }
+    });
+  }
+
+  // Default shipping info since API doesn't provide it
+  const shipping = {
+    freeShipping: false,
+    deliveryTime: "3-5 business days",
+    policy: "Standard return policy applies.",
+  };
+
   return (
     <Tabs defaultValue="description" className="w-full">
       <div className="overflow-x-auto border-b">
@@ -32,7 +55,7 @@ export default function ProductDetailsTabs({
             value="reviews"
             className="relative whitespace-nowrap rounded-none border-transparent border-b-2 bg-transparent px-2 pt-2 pb-3 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-primary data-[state=active]:text-primary data-[state=active]:shadow-none sm:px-0"
           >
-            Reviews ({product.rating.count})
+            Reviews ({product.reviewCount})
           </TabsTrigger>
           <TabsTrigger
             value="shipping"
@@ -45,22 +68,22 @@ export default function ProductDetailsTabs({
 
       <div className="mt-8">
         <TabsContent value="description">
-          <ProductDescriptionTab description={product.description} />
+          <ProductDescriptionTab description={product.description || ""} />
         </TabsContent>
         <TabsContent value="additional-info">
-          <ProductAdditionalInfoTab specifications={product.specifications} />
+          <ProductAdditionalInfoTab specifications={specifications} />
         </TabsContent>
         <TabsContent value="reviews">
           <ProductReviewsTab
-            reviews={product.reviews}
-            averageRating={product.rating.average}
-            ratingBreakdown={product.rating.breakdown}
-            totalRatings={product.rating.count}
+            reviews={[]}
+            averageRating={parseFloat(product.averageRating) || 0}
+            ratingBreakdown={{ 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }}
+            totalRatings={product.reviewCount}
             productId={product.id}
           />
         </TabsContent>
         <TabsContent value="shipping">
-          <ProductShippingTab shipping={product.shipping} />
+          <ProductShippingTab shipping={shipping} />
         </TabsContent>
       </div>
     </Tabs>
