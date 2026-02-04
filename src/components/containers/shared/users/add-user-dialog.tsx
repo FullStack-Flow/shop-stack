@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { UserFormValues } from "@/types/users";
+import type { AdminUserFormValues, UserRole } from "@/types/users";
 
 function getFieldErrors(errors: any): string[] {
   if (!Array.isArray(errors)) return [];
@@ -32,23 +32,25 @@ function getFieldErrors(errors: any): string[] {
 interface AddUserDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSubmit: (data: UserFormValues) => void;
+  onSubmit: (data: AdminUserFormValues) => Promise<void> | void;
+  isSubmitting?: boolean;
 }
 
 export function AddUserDialog({
   open,
   onOpenChange,
   onSubmit,
+  isSubmitting = false,
 }: AddUserDialogProps) {
   const form = useForm({
     defaultValues: {
       name: "",
       email: "",
-      status: "active" as "active" | "inactive" | "suspended",
-      avatar: null as FileList | null,
+      password: "",
+      role: "customer" as UserRole,
     },
     onSubmit: async ({ value }) => {
-      onSubmit(value);
+      await onSubmit(value);
       onOpenChange(false);
       form.reset();
     },
@@ -125,57 +127,53 @@ export function AddUserDialog({
                 }}
               </form.Field>
 
-              <form.Field name="status">
-                {(field) => {
-                  return (
-                    <Field>
-                      <FieldLabel htmlFor={field.name}>Status</FieldLabel>
-                      <Select
-                        value={field.state.value}
-                        onValueChange={(value) =>
-                          field.handleChange(
-                            value as "active" | "inactive" | "suspended"
-                          )
-                        }
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="active">Active</SelectItem>
-                          <SelectItem value="inactive">Inactive</SelectItem>
-                          <SelectItem value="suspended">Suspended</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </Field>
-                  );
-                }}
-              </form.Field>
-
-              <form.Field name="avatar">
+              <form.Field name="password">
                 {(field) => {
                   const isInvalid =
                     field.state.meta.isTouched && !field.state.meta.isValid;
                   return (
                     <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>
-                        Avatar (Optional)
-                      </FieldLabel>
+                      <FieldLabel htmlFor={field.name}>Password*</FieldLabel>
                       <Input
                         id={field.name}
                         name={field.name}
-                        type="file"
-                        accept="image/*"
+                        type="password"
+                        value={field.state.value}
                         onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.files)}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        placeholder="Create a password"
                         aria-invalid={isInvalid}
-                        className="cursor-pointer"
                       />
                       {isInvalid && (
                         <FieldError
                           errors={getFieldErrors(field.state.meta.errors)}
                         />
                       )}
+                    </Field>
+                  );
+                }}
+              </form.Field>
+
+              <form.Field name="role">
+                {(field) => {
+                  return (
+                    <Field>
+                      <FieldLabel htmlFor={field.name}>Role</FieldLabel>
+                      <Select
+                        value={field.state.value}
+                        onValueChange={(value) =>
+                          field.handleChange(value as UserRole)
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select role" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="customer">Customer</SelectItem>
+                          <SelectItem value="vendor">Vendor</SelectItem>
+                          <SelectItem value="admin">Admin</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </Field>
                   );
                 }}
@@ -194,9 +192,12 @@ export function AddUserDialog({
             <form.Subscribe
               selector={(state) => [state.canSubmit, state.isSubmitting]}
             >
-              {([canSubmit, isSubmitting]) => (
-                <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? "Adding..." : "Add User"}
+              {([canSubmit, formSubmitting]) => (
+                <Button
+                  type="submit"
+                  disabled={!canSubmit || formSubmitting || isSubmitting}
+                >
+                  {formSubmitting || isSubmitting ? "Adding..." : "Add User"}
                 </Button>
               )}
             </form.Subscribe>

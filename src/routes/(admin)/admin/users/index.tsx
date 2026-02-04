@@ -1,92 +1,95 @@
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "@/components/base/common/page-skeleton";
+import { AddUserDialog } from "@/components/containers/shared/users/add-user-dialog";
 import AdminUsersTemplate from "@/components/templates/admin/admin-users-template";
-import type { User, UserFormValues } from "@/types/users";
-
-const mockUsers: User[] = [
-  {
-    id: "1",
-    name: "John Doe",
-    email: "john@example.com",
-    avatar: "https://placehold.co/40?text=JD",
-    totalOrders: 15,
-    totalSpent: "$1,245.00",
-    status: "active",
-    createdAt: new Date("2024-01-15"),
-  },
-  {
-    id: "2",
-    name: "Jane Smith",
-    email: "jane@example.com",
-    avatar: "https://placehold.co/40?text=JS",
-    totalOrders: 8,
-    totalSpent: "$680.50",
-    status: "active",
-    createdAt: new Date("2024-02-01"),
-  },
-  {
-    id: "3",
-    name: "Bob Johnson",
-    email: "bob@example.com",
-    avatar: "https://placehold.co/40?text=BJ",
-    totalOrders: 3,
-    totalSpent: "$245.00",
-    status: "inactive",
-    createdAt: new Date("2024-03-10"),
-  },
-  {
-    id: "4",
-    name: "Alice Brown",
-    email: "alice@example.com",
-    avatar: "https://placehold.co/40?text=AB",
-    totalOrders: 22,
-    totalSpent: "$3,450.75",
-    status: "active",
-    createdAt: new Date("2024-03-20"),
-  },
-  {
-    id: "5",
-    name: "Charlie Wilson",
-    email: "charlie@example.com",
-    avatar: "https://placehold.co/40?text=CW",
-    totalOrders: 0,
-    totalSpent: "$0.00",
-    status: "suspended",
-    createdAt: new Date("2024-04-01"),
-  },
-];
+import { useUsers } from "@/hooks/admin/use-users";
+import type { AdminUser, AdminUserFormValues, UserRole } from "@/types/users";
 
 export const Route = createFileRoute("/(admin)/admin/users/")({
   component: AdminUsersPage,
 });
 
 function AdminUsersPage() {
-  const [users, setUsers] = useState<User[]>(mockUsers);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [deletingUser, setDeletingUser] = useState<AdminUser | null>(null);
+  const {
+    queryOptions,
+    createUser,
+    deleteUser,
+    banUser,
+    unbanUser,
+    updateRole,
+    isCreating,
+    isDeleting,
+  } = useUsers();
+  const { data, isLoading, isError } = useQuery(queryOptions());
+  const users = data?.users ?? [];
 
-  const handleAddUser = (data: UserFormValues) => {
-    const newUser: User = {
-      ...data,
-      id: String(users.length + 1),
-      avatar: `https://placehold.co/40?text=${data.name
-        .split(" ")
-        .map((n) => n[0])
-        .join("")}`,
-      totalOrders: 0,
-      totalSpent: "$0.00",
-      createdAt: new Date(),
-    };
-    setUsers([...users, newUser]);
+  const handleAddUser = async (data: AdminUserFormValues) => {
+    await createUser(data);
   };
 
-  const handleDeleteUser = (id: string) => {
-    setUsers(users.filter((user) => user.id !== id));
+  const handleConfirmDelete = async () => {
+    if (!deletingUser) return;
+    await deleteUser(deletingUser.id);
+    setDeletingUser(null);
   };
+
+  const handleBanUser = async (userId: string) => {
+    await banUser({ userId });
+  };
+
+  const handleUnbanUser = async (userId: string) => {
+    await unbanUser({ userId });
+  };
+
+  const handleUpdateRole = async (userId: string, role: UserRole) => {
+    await updateRole({ userId, role });
+  };
+
+  if (isLoading) {
+    return <PageSkeleton />;
+  }
+
+  if (isError) {
+    return (
+      <div className="rounded-lg border border-destructive/30 bg-destructive/10 p-4 text-destructive">
+        Failed to load users.
+      </div>
+    );
+  }
 
   return (
-    <AdminUsersTemplate
-      users={users}
-      onAddUser={handleAddUser}
-      onDeleteUser={handleDeleteUser}
-    />
+    <>
+      <AddUserDialog
+        open={isAddDialogOpen}
+        onOpenChange={setIsAddDialogOpen}
+        onSubmit={handleAddUser}
+        isSubmitting={isCreating}
+      />
+      <ConfirmDeleteDialog
+        open={!!deletingUser}
+        onOpenChange={(open) => {
+          if (!open) setDeletingUser(null);
+        }}
+        onConfirm={handleConfirmDelete}
+        itemName={deletingUser?.name}
+        entityType="user"
+        isDeleting={isDeleting}
+      />
+      <AdminUsersTemplate
+        users={users}
+        onOpenAddDialog={() => setIsAddDialogOpen(true)}
+        onDeleteUser={(userId) =>
+          setDeletingUser(users.find((user) => user.id === userId) ?? null)
+        }
+        onBanUser={handleBanUser}
+        onUnbanUser={handleUnbanUser}
+        onUpdateRole={handleUpdateRole}
+      />
+    </>
   );
 }
