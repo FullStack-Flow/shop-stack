@@ -3,14 +3,14 @@ import { Eye, ShoppingCart, Star } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { Product } from "@/data/products";
 import { useCartStore } from "@/lib/store/cart-store";
 import { cn } from "@/lib/utils";
+import type { DisplayProduct } from "@/types/store-types";
 import { ColorSwatch } from "./color-redio-item";
 import PriceTag from "./price-tag";
 
 interface ProductCardProps {
-  product: Product;
+  product: DisplayProduct;
   className?: string;
 }
 
@@ -34,7 +34,7 @@ export default function ProductCard({ product, className }: ProductCardProps) {
     <div
       className={cn(
         "group relative flex flex-col rounded-xl border-2 border-muted border-dashed p-4 transition-colors hover:border-primary/50",
-        className
+        className,
       )}
     >
       <div className="relative aspect-3/4 overflow-hidden rounded-t-2xl bg-muted">

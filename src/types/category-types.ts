@@ -108,3 +108,7 @@ export interface CategoryQueryResult {
   limit: number;
   offset: number;
 }
+
+export interface CategoryTreeNode extends NormalizedCategory {
+  children: CategoryTreeNode[];
+}
