@@ -1,10 +1,10 @@
 import ProductCard from "@/components/base/products/product-card";
 import ProductGridSkeleton from "@/components/base/products/product-grid-skeleton";
 import ProductNotFound from "@/components/base/products/product-not-found";
-import type { Product } from "@/data/products";
+import type { DisplayProduct } from "@/types/store-types";
 
 interface ProductGridProps {
-  products: Product[];
+  products: DisplayProduct[];
   isLoading?: boolean;
   viewMode?: "grid" | "list";
 }
