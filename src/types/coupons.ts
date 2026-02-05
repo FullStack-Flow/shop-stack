@@ -99,6 +99,7 @@ export interface CouponQueryOptions {
   sortDirection?: "asc" | "desc";
   includeShopInfo?: boolean;
   includeVendorInfo?: boolean;
+  includeLinkedItems?: boolean;
 }
 
 // ============================================================================

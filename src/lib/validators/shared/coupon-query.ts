@@ -17,6 +17,7 @@ import {
   paginationFields,
   searchFields,
   shopScopeFields,
+  shopSlugFields,
   sortDirectionEnum,
   storeIsActiveField,
   VENDOR_DEFAULT_LIMIT,
@@ -95,6 +96,7 @@ export const getCouponByIdSchema = createGetByIdSchema("Coupon");
 export const getCouponByCodeSchema = z.object({
   code: z.string().min(1, "Coupon code is required"),
   shopId: z.string().min(1, "Shop ID is required"),
+  shopSlug: z.string().optional(),
 });
 
 // ============================================================================
@@ -109,12 +111,12 @@ export const getCouponByCodeSchema = z.object({
  */
 export const storeCouponsQuerySchema = z.object({
   ...paginationFields,
-  limit: paginationFields.limit.default(50),
+  limit: paginationFields.limit.default(20),
   ...sortFields,
   ...searchFields,
-  ...couponFilterFields,
-  ...storeIsActiveField,
+  ...shopSlugFields,
   ...optionalShopIdField,
+  ...storeIsActiveField,
 });
 
 /**

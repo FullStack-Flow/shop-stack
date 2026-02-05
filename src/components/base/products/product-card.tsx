@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/store/use-cart";
 import { useCartStore } from "@/lib/store/cart-store";
 import { cn } from "@/lib/utils";
 import type { DisplayProduct } from "@/types/store-types";
@@ -21,22 +22,27 @@ export default function ProductCard({
   className,
   variant = "grid",
 }: ProductCardProps) {
-  const { addItem } = useCartStore();
+  const { addItem } = useCart();
+  const { setIsOpen } = useCartStore();
   const [isAddingThis, setIsAddingThis] = useState(false);
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent navigation if inside a link
     e.stopPropagation();
     setIsAddingThis(true);
-    addItem({
-      productId: product.id,
-      name: product.name,
-      price: product.price.current,
-      image: product.images[0].url,
-      quantity: 1,
-      maxQuantity: product.stock.quantity,
-    });
-    toast.success("Added to cart");
+    try {
+      await addItem({
+        productId: product.id,
+        quantity: 1,
+      });
+      setIsOpen(true); // Open cart sheet after successful addition
+      toast.success("Added to cart");
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+      toast.error("Failed to add to cart");
+    } finally {
+      setIsAddingThis(false);
+    }
   };
   return (
     <div
