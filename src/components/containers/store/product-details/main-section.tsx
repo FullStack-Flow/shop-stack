@@ -7,6 +7,7 @@ import ProductPrice from "@/components/base/products/details/product-price";
 import { QuantitySelector } from "@/components/base/products/details/quantity-selector";
 import ShippingInfoSection from "@/components/base/products/details/shipping-info-section";
 import StoreInfoCard from "@/components/base/products/details/store-info-card";
+import { useCart } from "@/hooks/store/use-cart";
 import { useCartStore } from "@/lib/store/cart-store";
 import type { StoreProduct } from "@/types/store-types";
 
@@ -20,18 +21,21 @@ export default function ProductMainSection({
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [isCompareListed, setIsCompareListed] = useState(false);
 
-  const { addItem } = useCartStore();
+  const { addItem } = useCart();
+  const { setIsOpen } = useCartStore();
 
-  const handleAddToCart = () => {
-    addItem({
-      productId: product.id,
-      name: product.name,
-      price: parseFloat(product.sellingPrice),
-      image: product.images[0]?.url || "",
-      quantity,
-      maxQuantity: product.stock,
-    });
-    toast.success("Added to cart");
+  const handleAddToCart = async () => {
+    try {
+      await addItem({
+        productId: product.id,
+        quantity,
+      });
+      setIsOpen(true); // Open cart sheet after successful addition
+      toast.success("Added to cart");
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+      toast.error("Failed to add to cart");
+    }
   };
 
   const handleBuyNow = () => {

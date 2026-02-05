@@ -1,7 +1,7 @@
 import { useMemo } from "react";
-import { toast } from "sonner";
 import CollectionItem from "@/components/base/common/collection-item";
 import CollectionSkeleton from "@/components/base/skeleton/category-skeleton";
+import { useCart } from "@/hooks/store/use-cart";
 import { useCartStore } from "@/lib/store/cart-store";
 import { gridCellBorderClasses } from "@/lib/utils";
 import type { DisplayProduct } from "@/types/store-types";
@@ -17,7 +17,8 @@ export default function CollectionContainer({
 }) {
   const columns2 = 2;
   const columns3 = 3;
-  const { addItem } = useCartStore();
+  const { addItem } = useCart();
+  const { setIsOpen } = useCartStore();
 
   // Filter products by category
   const filteredProducts = useMemo(() => {
@@ -31,16 +32,16 @@ export default function CollectionContainer({
       .slice(0, 6);
   }, [products, activeCategory]);
 
-  const handleAddToCart = (product: DisplayProduct) => {
-    addItem({
-      productId: product.id,
-      name: product.name,
-      price: product.price.current,
-      image: product.images[0]?.url || "",
-      quantity: 1,
-      maxQuantity: product.stock.quantity,
-    });
-    toast.success("Added to cart");
+  const handleAddToCart = async (product: DisplayProduct) => {
+    try {
+      await addItem({
+        productId: product.id,
+        quantity: 1,
+      });
+      setIsOpen(true);
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+    }
   };
 
   if (isLoading) {

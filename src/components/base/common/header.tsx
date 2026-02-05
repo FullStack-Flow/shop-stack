@@ -3,6 +3,7 @@ import { Menu, ShoppingBag } from "lucide-react";
 import Navbar from "@/components/base/common/navbar";
 import CartSheet from "@/components/containers/store/cart/cart-sheet";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/hooks/store/use-cart";
 import { useSession } from "@/lib/auth/auth-client";
 import { useCartStore } from "@/lib/store/cart-store";
 import { ModeToggle } from "../provider/mode-toggle";
@@ -18,7 +19,8 @@ const navigationItems = [
 export default function Header() {
   const { data } = useSession();
   const user = data?.user;
-  const { totalItems, setIsOpen } = useCartStore();
+  const { totalItems } = useCart();
+  const { setIsOpen } = useCartStore();
 
   return (
     <header className="@container sticky top-0 z-40 w-full border-b border-dashed bg-background backdrop-blur supports-filter:bg-background/80">

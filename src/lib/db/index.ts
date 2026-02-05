@@ -8,6 +8,12 @@ import {
 } from "./schema/attribute-schema";
 import { user } from "./schema/auth-schema";
 import { brands } from "./schema/brand-schema";
+import {
+  cartItems,
+  cartItemsRelations,
+  cartSessions,
+  cartSessionsRelations,
+} from "./schema/cart-schema";
 import { categories } from "./schema/category-schema";
 import {
   couponCategories,
@@ -63,6 +69,10 @@ const schema = {
   couponProductsRelations,
   couponCategoriesRelations,
   couponUsageRelations,
+  cartSessions,
+  cartItems,
+  cartItemsRelations,
+  cartSessionsRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server

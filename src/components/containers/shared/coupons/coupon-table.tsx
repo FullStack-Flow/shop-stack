@@ -28,6 +28,72 @@ const TYPE_OPTIONS = [
 ];
 
 // ============================================================================
+// Admin Coupon Table
+// ============================================================================
+
+interface AdminCouponTableProps extends CouponTableActions {
+  coupons: CouponItem[];
+  className?: string;
+  mutationState?: CouponMutationState;
+  isCouponMutating?: (id: string) => boolean;
+  permissions?: CouponPermissions;
+}
+
+export function AdminCouponTable({
+  coupons,
+  className,
+  onEdit,
+  onDelete,
+  onToggleStatus,
+  mutationState,
+  isCouponMutating,
+  permissions,
+}: AdminCouponTableProps) {
+  const columns = useMemo(() => {
+    const actions: CouponTableActions = {
+      onEdit,
+      onDelete,
+      onToggleStatus,
+    };
+    return createCouponColumns({
+      mode: "admin",
+      actions,
+      isCouponMutating,
+      mutationState,
+      permissions,
+    });
+  }, [
+    onEdit,
+    onDelete,
+    onToggleStatus,
+    isCouponMutating,
+    mutationState,
+    permissions,
+  ]);
+
+  const filterableColumns = useMemo(
+    () =>
+      getSharedCouponFilters({
+        statusOptions: STATUS_OPTIONS,
+        typeOptions: TYPE_OPTIONS,
+      }),
+    [],
+  );
+
+  return (
+    <DataTable
+      columns={columns}
+      data={coupons}
+      context="shop"
+      initialPageSize={10}
+      filterableColumns={filterableColumns}
+      globalFilterPlaceholder="Search coupons..."
+      className={className}
+    />
+  );
+}
+
+// ============================================================================
 // Vendor Coupon Table
 // ============================================================================
 
