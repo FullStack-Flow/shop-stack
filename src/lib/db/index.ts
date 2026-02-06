@@ -42,6 +42,10 @@ import {
 import { shops, vendors } from "./schema/shop-schema";
 import { tags, tagsRelations } from "./schema/tags-schema";
 import { taxRates, taxRatesRelations } from "./schema/tax-schema";
+import {
+  wishlistItems,
+  wishlistItemsRelations,
+} from "./schema/wishlist-schema";
 
 const schema = {
   user,
@@ -79,6 +83,8 @@ const schema = {
   cartSessionsRelations,
   customerAddresses,
   customerAddressesRelations,
+  wishlistItems,
+  wishlistItemsRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server
