@@ -46,7 +46,7 @@ export function SecuritySettings() {
 
   return (
     <>
-      <Card>
+      <Card className="bg-input/10">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Shield className="h-5 w-5 text-primary" />
