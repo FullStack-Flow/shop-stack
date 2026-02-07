@@ -1,112 +1,81 @@
-import type { ColumnDef } from "@tanstack/react-table";
-import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
+import { useMemo } from "react";
 import DataTable from "@/components/base/data-table/data-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
+import type { ShippingMethodItem } from "@/types/shipping";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import type { ShippingMethod, ShippingPermissions } from "@/types/shipping";
+  createShippingColumns,
+  getSharedShippingFilters,
+  SHIPPING_STATUS_OPTIONS,
+  type ShippingMutationState,
+} from "./shipping-table-columns";
 
 interface ShippingTableProps {
-  shippingMethods: ShippingMethod[];
-  permissions?: ShippingPermissions;
-  onEditShipping?: (shippingId: string) => void;
-  onDeleteShipping?: (shippingId: string) => void;
+  shippingMethods?: ShippingMethodItem[];
+  fetcher?: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<ShippingMethodItem>>;
+  onEdit?: (shipping: ShippingMethodItem) => void;
+  onDelete?: (shipping: ShippingMethodItem) => void;
   className?: string;
+  mutationState?: ShippingMutationState;
+  isMutating?: (id: string) => boolean;
+  mode?: "vendor" | "admin";
 }
 
 export default function ShippingTable({
   shippingMethods,
-  permissions = {
-    canDelete: false,
-    canEdit: true,
-    canView: true,
-    canCreate: true,
-  },
-  onEditShipping,
-  onDeleteShipping,
+  fetcher,
+  onEdit,
+  onDelete,
   className,
+  mutationState,
+  isMutating,
+  mode = "vendor",
 }: ShippingTableProps) {
-  const columns: ColumnDef<ShippingMethod>[] = [
-    {
-      accessorKey: "name",
-      header: "Name",
-      cell: ({ row }) => {
-        return <div className="font-medium">{row.getValue("name")}</div>;
+  const columns = useMemo(() => {
+    return createShippingColumns({
+      actions: {
+        onEdit,
+        onDelete,
       },
-    },
-    {
-      accessorKey: "price",
-      header: "Price",
-      cell: ({ row }) => {
-        const price = row.getValue("price") as number;
-        return <div className="font-medium">${price.toFixed(2)}</div>;
-      },
-    },
-    {
-      accessorKey: "duration",
-      header: "Duration",
-      cell: ({ row }) => {
-        const duration = row.getValue("duration") as string;
-        return <Badge variant="outline">{duration}</Badge>;
-      },
-    },
-    {
-      accessorKey: "description",
-      header: "Description",
-      cell: ({ row }) => {
-        const description = row.getValue("description") as string;
-        return (
-          <div className="max-w-xs truncate text-muted-foreground">
-            {description || "No description"}
-          </div>
-        );
-      },
-    },
-    {
-      id: "actions",
-      enableHiding: false,
-      cell: ({ row }) => {
-        const shippingMethod = row.original;
+      isShippingMutating: isMutating,
+      mutationState,
+      mode,
+    });
+  }, [onEdit, onDelete, isMutating, mutationState, mode]);
 
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {permissions.canEdit && (
-                <DropdownMenuItem
-                  onClick={() => onEditShipping?.(shippingMethod.id)}
-                >
-                  <Edit className="mr-2 h-4 w-4" />
-                  Edit
-                </DropdownMenuItem>
-              )}
-              {permissions.canDelete && (
-                <DropdownMenuItem
-                  onClick={() => onDeleteShipping?.(shippingMethod.id)}
-                  className="text-destructive"
-                >
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  Delete
-                </DropdownMenuItem>
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
-        );
-      },
-    },
-  ];
+  const filterableColumns = useMemo(
+    () =>
+      getSharedShippingFilters({
+        statusOptions: SHIPPING_STATUS_OPTIONS,
+      }),
+    [],
+  );
+
+  if (fetcher) {
+    return (
+      <DataTable
+        columns={columns}
+        server={{ fetcher }}
+        context="shop"
+        initialPageSize={10}
+        filterableColumns={filterableColumns}
+        globalFilterPlaceholder="Search shipping methods..."
+        className={className}
+      />
+    );
+  }
 
   return (
-    <DataTable columns={columns} data={shippingMethods} className={className} />
+    <DataTable
+      columns={columns}
+      data={shippingMethods || []}
+      filterableColumns={filterableColumns}
+      globalFilterPlaceholder="Search shipping methods..."
+      className={className}
+    />
   );
 }
