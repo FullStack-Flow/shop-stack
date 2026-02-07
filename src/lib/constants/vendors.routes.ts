@@ -9,6 +9,7 @@ import {
   Star,
   Tag,
   Tags,
+  TruckElectric,
   Users,
 } from "lucide-react";
 import type { VendorNavItem } from "@/types/vendor";
@@ -68,6 +69,11 @@ export const getShopNavItems = (shopSlug: string): VendorNavItem[] => [
     title: "Taxes",
     href: `/shop/${shopSlug}/taxes`,
     icon: Landmark,
+  },
+  {
+    title: "Shipping Methods",
+    href: `/shop/${shopSlug}/shipping`,
+    icon: TruckElectric,
   },
   {
     title: "Staff",
