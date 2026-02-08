@@ -234,6 +234,14 @@ export const productAttributeRelationSchema = z.object({
 });
 
 /**
+ * Product Shipping Method Relation Schema
+ */
+export const productShippingMethodRelationSchema = z.object({
+  productId: z.string(),
+  shippingMethodId: z.string(),
+});
+
+/**
  * Variation Price Schema
  * { [valueId]: { regularPrice?, sellingPrice?, image? } }
  */
@@ -468,6 +476,7 @@ const productRelationArraysCreate = {
   images: z.array(productImageInputSchema).optional().default([]),
   tagIds: z.array(z.string()).optional().default([]),
   attributeIds: z.array(z.string()).optional().default([]),
+  shippingMethodIds: z.array(z.string()).optional().default([]),
   attributeValues: z
     .record(z.string(), z.array(z.string()))
     .optional()
@@ -486,6 +495,7 @@ const productRelationArraysUpdate = {
   images: z.array(productImageInputSchema).optional(),
   tagIds: z.array(z.string()).optional(),
   attributeIds: z.array(z.string()).optional(),
+  shippingMethodIds: z.array(z.string()).optional(),
   attributeValues: z.record(z.string(), z.array(z.string())).optional(),
   variationPrices: z.record(z.string(), variationPriceEntrySchema).optional(),
 };
@@ -530,6 +540,7 @@ export const productFormSchema = z.object({
   ...productSeoFieldsCreate,
   tagIds: z.array(z.string()).optional().default([]),
   attributeIds: z.array(z.string()).optional().default([]),
+  shippingMethodIds: z.array(z.string()).optional().default([]),
   attributeValues: z
     .record(z.string(), z.array(z.string()))
     .optional()
@@ -592,6 +603,9 @@ export type ProductImage = z.infer<typeof productImageSchema>;
 export type ProductTagRelation = z.infer<typeof productTagRelationSchema>;
 export type ProductAttributeRelation = z.infer<
   typeof productAttributeRelationSchema
+>;
+export type ProductShippingMethodRelation = z.infer<
+  typeof productShippingMethodRelationSchema
 >;
 export type VariationPrice = z.infer<typeof variationPriceSchema>;
 
