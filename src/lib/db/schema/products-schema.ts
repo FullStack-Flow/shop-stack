@@ -19,6 +19,7 @@ import {
 import { attributes } from "./attribute-schema";
 import { brands } from "./brand-schema";
 import { categories } from "./category-schema";
+import { shippingMethods } from "./shipping-schema";
 import { shops } from "./shop-schema";
 import { tags } from "./tags-schema";
 import { taxRates } from "./tax-schema";
@@ -148,9 +149,26 @@ export const productAttributes = pgTable(
     attributeId: text("attribute_id")
       .notNull()
       .references(() => attributes.id, { onDelete: "cascade" }),
-    value: text("value"), // Optional: specific value for this product-attribute
+    value: text("value"), // Selected value (e.g., "#FF0000" or "XL")
   },
-  (table) => [primaryKey({ columns: [table.productId, table.attributeId] })],
+  (t) => ({
+    pk: primaryKey({ columns: [t.productId, t.attributeId] }),
+  }),
+);
+
+export const productShippingMethods = pgTable(
+  "product_shipping_methods",
+  {
+    productId: text("product_id")
+      .notNull()
+      .references(() => products.id, { onDelete: "cascade" }),
+    shippingMethodId: text("shipping_method_id")
+      .notNull()
+      .references(() => shippingMethods.id, { onDelete: "cascade" }),
+  },
+  (t) => ({
+    pk: primaryKey({ columns: [t.productId, t.shippingMethodId] }),
+  }),
 );
 
 // ============================================================================
@@ -177,6 +195,7 @@ export const productsRelations = relations(products, ({ one, many }) => ({
   images: many(productImages),
   productTags: many(productTags),
   productAttributes: many(productAttributes),
+  shippingMethods: many(productShippingMethods),
 }));
 
 /**
@@ -220,6 +239,20 @@ export const productAttributesRelations = relations(
   }),
 );
 
+export const productShippingMethodsRelations = relations(
+  productShippingMethods,
+  ({ one }) => ({
+    product: one(products, {
+      fields: [productShippingMethods.productId],
+      references: [products.id],
+    }),
+    shippingMethod: one(shippingMethods, {
+      fields: [productShippingMethods.shippingMethodId],
+      references: [shippingMethods.id],
+    }),
+  }),
+);
+
 // ============================================================================
 // Type Exports
 // ============================================================================
@@ -232,3 +265,6 @@ export type ProductTag = typeof productTags.$inferSelect;
 export type NewProductTag = typeof productTags.$inferInsert;
 export type ProductAttribute = typeof productAttributes.$inferSelect;
 export type NewProductAttribute = typeof productAttributes.$inferInsert;
+export type ProductShippingMethod = typeof productShippingMethods.$inferSelect;
+export type NewProductShippingMethod =
+  typeof productShippingMethods.$inferInsert;

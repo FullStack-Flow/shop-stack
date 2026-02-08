@@ -47,6 +47,7 @@ interface AddProductDialogProps {
     values: { id: string; name: string; value: string }[];
   }[];
   taxes?: { id: string; name: string; rate: string }[];
+  shippingMethods?: { id: string; name: string }[];
   initialValues?: ProductFormValues | null;
 }
 
@@ -60,6 +61,7 @@ export function AddProductDialog({
   tags,
   availableAttributes = [],
   taxes = [],
+  shippingMethods = [],
   initialValues,
 }: AddProductDialogProps) {
   const fields: EntityFormField[] = useMemo(
@@ -203,6 +205,106 @@ export function AddProductDialog({
               </form.Field>
             </div>
           </div>
+        ),
+      },
+      {
+        name: "shippingMethodIds",
+        type: "custom",
+        render: ({ form, isSubmitting: isSubmittingExternal }) => (
+          <form.Field
+            name="shippingMethodIds"
+            validators={{
+              onBlur: validateField(productFormSchema.shape.shippingMethodIds),
+            }}
+          >
+            {(field: any) => (
+              <Field>
+                <FieldLabel>Shipping Methods</FieldLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      disabled={isSubmittingExternal}
+                      className={cn(
+                        "w-full justify-between",
+                        !field.state.value?.length && "text-muted-foreground",
+                      )}
+                    >
+                      {field.state.value?.length > 0
+                        ? `${field.state.value.length} methods selected`
+                        : "Select shipping methods"}
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-full p-0">
+                    <Command>
+                      <CommandInput placeholder="Search shipping methods..." />
+                      <CommandList>
+                        <CommandEmpty>No shipping method found.</CommandEmpty>
+                        <CommandGroup>
+                          {shippingMethods.map((method) => (
+                            <CommandItem
+                              key={method.id}
+                              value={method.name}
+                              onSelect={() => {
+                                const current = field.state.value || [];
+                                const next = current.includes(method.id)
+                                  ? current.filter(
+                                      (id: string) => id !== method.id,
+                                    )
+                                  : [...current, method.id];
+                                field.handleChange(next);
+                              }}
+                            >
+                              <Check
+                                className={cn(
+                                  "mr-2 h-4 w-4",
+                                  field.state.value?.includes(method.id)
+                                    ? "opacity-100"
+                                    : "opacity-0",
+                                )}
+                              />
+                              {method.name}
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+                {field.state.value?.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {field.state.value.map((methodId: string) => {
+                      const method = shippingMethods.find(
+                        (m) => m.id === methodId,
+                      );
+                      return (
+                        <Badge key={methodId} variant="secondary">
+                          {method?.name}
+                          <button
+                            type="button"
+                            className="ml-1 rounded-full outline-none focus:ring-2 focus:ring-ring"
+                            disabled={isSubmittingExternal}
+                            onClick={() =>
+                              field.handleChange(
+                                field.state.value.filter(
+                                  (id: string) => id !== methodId,
+                                ),
+                              )
+                            }
+                          >
+                            <X className="h-3 w-3" />
+                            <span className="sr-only">Remove</span>
+                          </button>
+                        </Badge>
+                      );
+                    })}
+                  </div>
+                )}
+              </Field>
+            )}
+          </form.Field>
         ),
       },
       {
@@ -664,7 +766,15 @@ export function AddProductDialog({
         label: "Meta Description",
       },
     ],
-    [categories, brands, tags, availableAttributes, taxes],
+    [
+      categories,
+      brands,
+      tags,
+      availableAttributes,
+      taxes,
+      shippingMethods.map,
+      shippingMethods.find,
+    ],
   );
 
   return (

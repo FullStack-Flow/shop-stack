@@ -34,6 +34,8 @@ import {
   productAttributesRelations,
   productImages,
   productImagesRelations,
+  productShippingMethods,
+  productShippingMethodsRelations,
   products,
   productsRelations,
   productTags,
@@ -91,6 +93,8 @@ const schema = {
   wishlistItemsRelations,
   shippingMethods,
   shippingMethodsRelations,
+  productShippingMethods,
+  productShippingMethodsRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server

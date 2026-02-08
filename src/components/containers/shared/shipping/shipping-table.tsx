@@ -41,7 +41,7 @@ export default function ShippingTable({
         onEdit,
         onDelete,
       },
-      isShippingMutating: isMutating,
+      isMutating,
       mutationState,
       mode,
     });
