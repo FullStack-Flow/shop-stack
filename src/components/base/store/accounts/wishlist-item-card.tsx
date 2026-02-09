@@ -1,7 +1,13 @@
-import { ShoppingCart, Star, Trash2 } from "lucide-react";
+import { Loader2, ShoppingCart, Star, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function WishlistItemCard({ item }: any) {
+export default function WishlistItemCard({
+  item,
+  onAddToCart,
+  onRemove,
+  isAdding,
+  isRemoving,
+}: any) {
   return (
     <div className="@container group relative flex @2xl:flex-row flex-col @2xl:items-center gap-4 rounded-lg border-muted border-b border-dashed @2xl:p-4 py-6 transition-colors last:border-0 @2xl:hover:bg-muted hover:bg-muted">
       <div className="relative aspect-square @2xl:w-24 w-full shrink-0 overflow-hidden rounded-lg border bg-muted">
@@ -50,18 +56,32 @@ export default function WishlistItemCard({ item }: any) {
         </div>
 
         <div className="flex @2xl:w-auto w-full items-center gap-2">
-          <Button size="sm" className="@2xl:flex-none flex-1 gap-2">
-            <ShoppingCart className="size-4" />
+          <Button
+            size="sm"
+            className="@2xl:flex-none flex-1 gap-2"
+            onClick={() => onAddToCart?.(item.id)}
+            disabled={isAdding}
+          >
+            {isAdding ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
+              <ShoppingCart className="size-4" />
+            )}
             Add to Cart
           </Button>
           <Button
             variant="ghost"
             size="icon"
             className="text-muted-foreground hover:text-destructive"
-            // onClick={() => removeItem(item.id)}
+            onClick={() => onRemove?.(item.id)}
+            disabled={isRemoving}
             title="Remove from wishlist"
           >
-            <Trash2 className="size-4" />
+            {isRemoving ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
+              <Trash2 className="size-4" />
+            )}
             <span className="sr-only">Remove</span>
           </Button>
         </div>
