@@ -80,3 +80,16 @@ export interface DeleteShippingMethodResponse {
   id: string;
   message?: string;
 }
+
+export interface SelectedAddress {
+  id?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+}

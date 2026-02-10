@@ -5,6 +5,7 @@ import {
   Home,
   Landmark,
   Package,
+  Settings,
   ShoppingBag,
   Star,
   Tag,
@@ -79,5 +80,10 @@ export const getShopNavItems = (shopSlug: string): VendorNavItem[] => [
     title: "Staff",
     href: `/shop/${shopSlug}/staff`,
     icon: Users,
+  },
+  {
+    title: "Settings",
+    href: `/shop/${shopSlug}/settings`,
+    icon: Settings,
   },
 ];

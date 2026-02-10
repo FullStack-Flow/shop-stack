@@ -30,6 +30,22 @@ import {
   couponUsageRelations,
 } from "./schema/coupon-schema";
 import {
+  emailDeliveries,
+  emailDeliveriesRelations,
+} from "./schema/email-schema";
+import {
+  notifications,
+  notificationsRelations,
+} from "./schema/notification-schema";
+import {
+  orderItems,
+  orderItemsRelations,
+  orders,
+  ordersRelations,
+  payments,
+  paymentsRelations,
+} from "./schema/order-schema";
+import {
   productAttributes,
   productAttributesRelations,
   productImages,
@@ -45,7 +61,12 @@ import {
   shippingMethods,
   shippingMethodsRelations,
 } from "./schema/shipping-schema";
-import { shops, vendors } from "./schema/shop-schema";
+import {
+  shops,
+  shopsRelations,
+  vendors,
+  vendorsRelations,
+} from "./schema/shop-schema";
 import { tags, tagsRelations } from "./schema/tags-schema";
 import { taxRates, taxRatesRelations } from "./schema/tax-schema";
 import {
@@ -56,7 +77,9 @@ import {
 const schema = {
   user,
   vendors,
+  vendorsRelations,
   shops,
+  shopsRelations,
   categories,
   brands,
   attributes,
@@ -95,6 +118,16 @@ const schema = {
   shippingMethodsRelations,
   productShippingMethods,
   productShippingMethodsRelations,
+  orderItems,
+  orderItemsRelations,
+  orders,
+  ordersRelations,
+  payments,
+  paymentsRelations,
+  notifications,
+  notificationsRelations,
+  emailDeliveries,
+  emailDeliveriesRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server

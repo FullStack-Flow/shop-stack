@@ -64,7 +64,7 @@ export const createShippingColumns = ({
   actions,
   mutationState,
   isMutating,
-  mode = "vendor",
+  mode: _mode = "vendor",
 }: ShippingColumnConfig): ColumnDef<ShippingMethodItem>[] => {
   return [
     {
