@@ -24,6 +24,7 @@ import { Route as vendorShopSlugRouteImport } from './routes/(vendor)/shop/$slug
 import { Route as vendorLayoutMyShopRouteImport } from './routes/(vendor)/_layout/my-shop'
 import { Route as vendorLayoutDashboardRouteImport } from './routes/(vendor)/_layout/dashboard'
 import { Route as storeLayoutWishlistRouteImport } from './routes/(store)/_layout/wishlist'
+import { Route as storeLayoutTrackOrderRouteImport } from './routes/(store)/_layout/track-order'
 import { Route as storeLayoutProfileRouteImport } from './routes/(store)/_layout/profile'
 import { Route as storeLayoutOrdersRouteImport } from './routes/(store)/_layout/orders'
 import { Route as storeLayoutOrderTrackingRouteImport } from './routes/(store)/_layout/order-tracking'
@@ -139,6 +140,11 @@ const vendorLayoutDashboardRoute = vendorLayoutDashboardRouteImport.update({
 const storeLayoutWishlistRoute = storeLayoutWishlistRouteImport.update({
   id: '/wishlist',
   path: '/wishlist',
+  getParentRoute: () => storeLayoutRoute,
+} as any)
+const storeLayoutTrackOrderRoute = storeLayoutTrackOrderRouteImport.update({
+  id: '/track-order',
+  path: '/track-order',
   getParentRoute: () => storeLayoutRoute,
 } as any)
 const storeLayoutProfileRoute = storeLayoutProfileRouteImport.update({
@@ -384,6 +390,7 @@ export interface FileRoutesByFullPath {
   '/order-tracking': typeof storeLayoutOrderTrackingRoute
   '/orders': typeof storeLayoutOrdersRoute
   '/profile': typeof storeLayoutProfileRoute
+  '/track-order': typeof storeLayoutTrackOrderRoute
   '/wishlist': typeof storeLayoutWishlistRoute
   '/dashboard': typeof vendorLayoutDashboardRoute
   '/my-shop': typeof vendorLayoutMyShopRoute
@@ -441,6 +448,7 @@ export interface FileRoutesByTo {
   '/order-tracking': typeof storeLayoutOrderTrackingRoute
   '/orders': typeof storeLayoutOrdersRoute
   '/profile': typeof storeLayoutProfileRoute
+  '/track-order': typeof storeLayoutTrackOrderRoute
   '/wishlist': typeof storeLayoutWishlistRoute
   '/dashboard': typeof vendorLayoutDashboardRoute
   '/my-shop': typeof vendorLayoutMyShopRoute
@@ -501,6 +509,7 @@ export interface FileRoutesById {
   '/(store)/_layout/order-tracking': typeof storeLayoutOrderTrackingRoute
   '/(store)/_layout/orders': typeof storeLayoutOrdersRoute
   '/(store)/_layout/profile': typeof storeLayoutProfileRoute
+  '/(store)/_layout/track-order': typeof storeLayoutTrackOrderRoute
   '/(store)/_layout/wishlist': typeof storeLayoutWishlistRoute
   '/(vendor)/_layout/dashboard': typeof vendorLayoutDashboardRoute
   '/(vendor)/_layout/my-shop': typeof vendorLayoutMyShopRoute
@@ -561,6 +570,7 @@ export interface FileRouteTypes {
     | '/order-tracking'
     | '/orders'
     | '/profile'
+    | '/track-order'
     | '/wishlist'
     | '/dashboard'
     | '/my-shop'
@@ -618,6 +628,7 @@ export interface FileRouteTypes {
     | '/order-tracking'
     | '/orders'
     | '/profile'
+    | '/track-order'
     | '/wishlist'
     | '/dashboard'
     | '/my-shop'
@@ -677,6 +688,7 @@ export interface FileRouteTypes {
     | '/(store)/_layout/order-tracking'
     | '/(store)/_layout/orders'
     | '/(store)/_layout/profile'
+    | '/(store)/_layout/track-order'
     | '/(store)/_layout/wishlist'
     | '/(vendor)/_layout/dashboard'
     | '/(vendor)/_layout/my-shop'
@@ -841,6 +853,13 @@ declare module '@tanstack/react-router' {
       path: '/wishlist'
       fullPath: '/wishlist'
       preLoaderRoute: typeof storeLayoutWishlistRouteImport
+      parentRoute: typeof storeLayoutRoute
+    }
+    '/(store)/_layout/track-order': {
+      id: '/(store)/_layout/track-order'
+      path: '/track-order'
+      fullPath: '/track-order'
+      preLoaderRoute: typeof storeLayoutTrackOrderRouteImport
       parentRoute: typeof storeLayoutRoute
     }
     '/(store)/_layout/profile': {
@@ -1198,6 +1217,7 @@ interface storeLayoutRouteChildren {
   storeLayoutOrderTrackingRoute: typeof storeLayoutOrderTrackingRoute
   storeLayoutOrdersRoute: typeof storeLayoutOrdersRoute
   storeLayoutProfileRoute: typeof storeLayoutProfileRoute
+  storeLayoutTrackOrderRoute: typeof storeLayoutTrackOrderRoute
   storeLayoutWishlistRoute: typeof storeLayoutWishlistRoute
   storeLayoutIndexRoute: typeof storeLayoutIndexRoute
   storeLayoutCategorySlugRoute: typeof storeLayoutCategorySlugRoute
@@ -1215,6 +1235,7 @@ const storeLayoutRouteChildren: storeLayoutRouteChildren = {
   storeLayoutOrderTrackingRoute: storeLayoutOrderTrackingRoute,
   storeLayoutOrdersRoute: storeLayoutOrdersRoute,
   storeLayoutProfileRoute: storeLayoutProfileRoute,
+  storeLayoutTrackOrderRoute: storeLayoutTrackOrderRoute,
   storeLayoutWishlistRoute: storeLayoutWishlistRoute,
   storeLayoutIndexRoute: storeLayoutIndexRoute,
   storeLayoutCategorySlugRoute: storeLayoutCategorySlugRoute,
