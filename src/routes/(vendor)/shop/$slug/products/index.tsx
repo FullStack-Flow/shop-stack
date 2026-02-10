@@ -310,6 +310,7 @@ function ProductsPage() {
           editingProduct
             ? {
                 name: editingProduct.name,
+                slug: editingProduct.slug || "",
                 sku: editingProduct.sku || "",
                 sellingPrice: editingProduct.sellingPrice,
                 regularPrice: editingProduct.regularPrice || "",

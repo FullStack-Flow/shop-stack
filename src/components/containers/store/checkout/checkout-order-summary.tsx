@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Loader2, ShoppingBag, Tag } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Loader2, ShoppingBag, Tag, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import EmptyState from "@/components/base/empty/empty-state";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,12 +13,15 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCart } from "@/hooks/store/use-cart";
 import { useCartStore } from "@/lib/store/cart-store";
+import type { AppliedCoupon } from "@/types/coupon";
 
 interface CheckoutOrderSummaryProps {
   onProceedToPayment?: () => void;
   canProceed?: boolean;
   isProcessing?: boolean;
   onCouponsChange?: (code: string | null) => void;
+  appliedCoupons?: AppliedCoupon[];
+  onRemoveCoupon?: (code: string) => void;
 }
 
 export default function CheckoutOrderSummary({
@@ -26,13 +29,31 @@ export default function CheckoutOrderSummary({
   canProceed = true,
   isProcessing = false,
   onCouponsChange,
+  appliedCoupons = [],
+  onRemoveCoupon,
 }: CheckoutOrderSummaryProps) {
   const { items, subtotal, isLoading: isCartLoading } = useCart();
   const { shippingCost, shippingAddress, shippingMethod } = useCartStore();
   const [couponCode, setCouponCode] = useState("");
 
+  useEffect(() => {
+    if (
+      couponCode &&
+      appliedCoupons.some((c) => c.code === couponCode.toUpperCase())
+    ) {
+      setCouponCode("");
+    }
+  }, [appliedCoupons, couponCode]);
+
   const estimatedTaxes = 5.0; // Mock value
-  const total = subtotal + shippingCost + estimatedTaxes;
+  const totalDiscount = appliedCoupons.reduce(
+    (acc, coupon) => acc + coupon.discountAmount,
+    0,
+  );
+  const total = Math.max(
+    0,
+    subtotal + shippingCost + estimatedTaxes - totalDiscount,
+  );
 
   // Derive readiness from store state + props
   // If parent controls 'canProceed', respect it.
@@ -147,6 +168,31 @@ export default function CheckoutOrderSummary({
             </InputGroupAddon>
           </InputGroup>
 
+          {appliedCoupons.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {appliedCoupons.map((coupon) => (
+                <div
+                  key={coupon.code}
+                  className="flex items-center gap-1 rounded-md border bg-secondary/50 px-2 py-1 text-xs"
+                >
+                  <Tag className="h-3 w-3 text-muted-foreground" />
+                  <span className="font-medium">{coupon.code}</span>
+                  <span className="text-muted-foreground">
+                    (-${coupon.discountAmount.toFixed(2)})
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onRemoveCoupon?.(coupon.code)}
+                    className="ml-1 rounded-full p-0.5 hover:bg-background hover:text-destructive"
+                  >
+                    <X className="h-3 w-3" />
+                    <span className="sr-only">Remove coupon {coupon.code}</span>
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Subtotal</span>
@@ -156,6 +202,14 @@ export default function CheckoutOrderSummary({
               <span className="text-muted-foreground">Shipping</span>
               <span className="font-medium">${shippingCost.toFixed(2)}</span>
             </div>
+            {totalDiscount > 0 && (
+              <div className="flex justify-between text-green-600">
+                <span>Discount</span>
+                <span className="font-medium">
+                  -${totalDiscount.toFixed(2)}
+                </span>
+              </div>
+            )}
             <div className="flex justify-between">
               <span className="text-muted-foreground">Estimated taxes</span>
               <span className="font-medium">${estimatedTaxes.toFixed(2)}</span>
