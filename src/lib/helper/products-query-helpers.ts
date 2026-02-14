@@ -18,6 +18,7 @@ import type {
   NormalizedProduct,
   ProductQueryOptions,
 } from "@/types/products";
+import type { DisplayProduct, StoreProduct } from "@/types/store-types";
 import { attributes, attributeValues } from "../db/schema/attribute-schema";
 import { brands } from "../db/schema/brand-schema";
 import { categories } from "../db/schema/category-schema";
@@ -25,9 +26,11 @@ import {
   type Product,
   productAttributes,
   productImages,
+  productShippingMethods,
   products,
   productTags,
 } from "../db/schema/products-schema";
+import { shippingMethods } from "../db/schema/shipping-schema";
 import { shops, vendors } from "../db/schema/shop-schema";
 import { tags } from "../db/schema/tags-schema";
 import { taxRates } from "../db/schema/tax-schema";
@@ -129,6 +132,7 @@ export async function batchFetchProductRelations(
       taxRatesMap: new Map(),
       shopsMap: new Map(),
       vendorsMap: new Map(),
+      shippingMethodsMap: new Map(),
     };
   }
 
@@ -199,9 +203,23 @@ export async function batchFetchProductRelations(
           .from(taxRates)
           .where(inArray(taxRates.id, taxIds))
       : Promise.resolve([]),
+
+    // 7. Fetch product shipping methods
+    db
+      .select({
+        productId: productShippingMethods.productId,
+        shippingMethodId: productShippingMethods.shippingMethodId,
+        shippingMethodName: shippingMethods.name,
+      })
+      .from(productShippingMethods)
+      .innerJoin(
+        shippingMethods,
+        eq(productShippingMethods.shippingMethodId, shippingMethods.id),
+      )
+      .where(inArray(productShippingMethods.productId, productIds)),
   ];
 
-  // 7. Optionally fetch shop info
+  // 8. Optionally fetch shop info
   if (options.includeShopInfo && shopIds.length > 0) {
     queries.push(
       db
@@ -226,10 +244,11 @@ export async function batchFetchProductRelations(
     categoryRecords,
     brandRecords,
     taxRecords,
+    allShippingMethods,
     shopRecords,
   ] = await Promise.all(queries);
 
-  // 8. Optionally fetch vendor info (needs shop vendorIds first)
+  // 9. Optionally fetch vendor info (needs shop vendorIds first)
   let vendorRecords: Array<{ id: string; businessName: string | null }> = [];
   if (options.includeVendorInfo && shopRecords.length > 0) {
     const vendorIds = [
@@ -243,7 +262,7 @@ export async function batchFetchProductRelations(
     }
   }
 
-  // 9. Fetch attribute values for all attributes we found
+  // 10. Fetch attribute values for all attributes we found
   let allAttributeValues: Array<{ id: string; name: string; value: string }> =
     [];
   const attributeIds = [
@@ -326,6 +345,19 @@ export async function batchFetchProductRelations(
     vendorsMap.set(vendor.id, vendor);
   }
 
+  const shippingMethodsMap = new Map<
+    string,
+    { shippingMethodId: string; shippingMethodName: string }[]
+  >();
+  for (const sm of allShippingMethods) {
+    const existing = shippingMethodsMap.get(sm.productId) || [];
+    existing.push({
+      shippingMethodId: sm.shippingMethodId,
+      shippingMethodName: sm.shippingMethodName,
+    });
+    shippingMethodsMap.set(sm.productId, existing);
+  }
+
   return {
     imagesMap,
     tagsMap,
@@ -336,6 +368,7 @@ export async function batchFetchProductRelations(
     taxRatesMap,
     shopsMap,
     vendorsMap,
+    shippingMethodsMap,
   };
 }
 
@@ -351,6 +384,8 @@ export function normalizeProduct(
   const imagesList = relations.imagesMap.get(product.id) || [];
   const tagsList = relations.tagsMap.get(product.id) || [];
   const attrsList = relations.attributesMap.get(product.id) || [];
+  const shippingMethodsList =
+    relations.shippingMethodsMap.get(product.id) || [];
 
   // Get category and brand names
   const categoryName = product.categoryId
@@ -484,6 +519,8 @@ export function normalizeProduct(
       .map((img) => img.url),
     tagIds: tagsList.map((t) => t.tagId),
     tagNames: tagsList.map((t) => t.tagName),
+    shippingMethodIds: shippingMethodsList.map((s) => s.shippingMethodId),
+    shippingMethodNames: shippingMethodsList.map((s) => s.shippingMethodName),
     attributeIds: attrsList.map((a) => a.attributeId),
     attributeNames: attrsList.map((a) => a.attributeName),
     attributeValues,
@@ -620,4 +657,93 @@ export async function fetchProductWithRelations(
   });
 
   return normalizeProduct(product, relations, options);
+}
+
+// ============================================================================
+// Transform Functions
+// ============================================================================
+
+/**
+ * Calculate discount percentage from prices
+ */
+function calculateDiscount(selling: number, regular: number): number {
+  if (regular <= selling || regular === 0) return 0;
+  return Math.round(((regular - selling) / regular) * 100);
+}
+
+/**
+ * Check if product is "new" (created within last 30 days)
+ */
+function isNewProduct(createdAt: string): boolean {
+  const createdDate = new Date(createdAt);
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  return createdDate > thirtyDaysAgo;
+}
+
+/**
+ * Transform API StoreProduct to DisplayProduct for UI components
+ */
+export function toDisplayProduct(product: StoreProduct): DisplayProduct {
+  const sellingPrice = parseFloat(product.sellingPrice) || 0;
+  const regularPrice =
+    parseFloat(product.regularPrice || product.sellingPrice) || sellingPrice;
+
+  return {
+    id: product.id,
+    slug: product.slug,
+    name: product.name,
+    description: product.description || "",
+    shortDescription: product.shortDescription,
+    category: {
+      id: product.categoryId || "",
+      name: product.categoryName || "Uncategorized",
+      slug: (product.categoryName || "uncategorized")
+        .toLowerCase()
+        .replace(/\s+/g, "-"),
+    },
+    price: {
+      current: sellingPrice,
+      original: regularPrice,
+      currency: "$",
+      discountPercentage: calculateDiscount(sellingPrice, regularPrice),
+    },
+    images: product.images?.map((img) => ({
+      id: img.id,
+      url: img.url,
+      alt: img.alt || product.name,
+    })) || [
+      {
+        id: "placeholder",
+        url: `https://placehold.co/600x600?text=${encodeURIComponent(product.name)}`,
+        alt: product.name,
+      },
+    ],
+    rating: {
+      average: parseFloat(product.averageRating) || 0,
+      count: product.reviewCount || 0,
+    },
+    stock: {
+      inStock: (product.stock || 0) > 0,
+      quantity: product.stock || 0,
+    },
+    store: {
+      id: product.shopId,
+      name: product.shopName || "Shop",
+      slug: product.shopSlug || "shop",
+    },
+    brand: product.brandName || "",
+    colors: [], // TODO: Extract from attributeValues
+    sizes: [], // TODO: Extract from attributeValues
+    isNew: isNewProduct(product.createdAt),
+    isFeatured: product.isFeatured || false,
+    createdAt: product.createdAt,
+  };
+}
+
+/**
+ * Transform array of API products to display products
+ */
+export function toDisplayProducts(products: StoreProduct[]): DisplayProduct[] {
+  return products.map(toDisplayProduct);
 }

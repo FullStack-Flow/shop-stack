@@ -39,6 +39,12 @@ export const vendors = pgTable("vendors", {
   address: text("address"),
   approvedAt: timestamp("approved_at"),
   approvedBy: text("approved_by").references(() => user.id),
+  stripeConnectedAccountId: text("stripe_connected_account_id"),
+  stripeOnboardingComplete: boolean("stripe_onboarding_complete").default(
+    false,
+  ),
+  stripeChargesEnabled: boolean("stripe_charges_enabled").default(false),
+  stripePayoutsEnabled: boolean("stripe_payouts_enabled").default(false),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()

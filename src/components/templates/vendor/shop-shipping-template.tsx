@@ -1,33 +1,47 @@
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
 import ShippingHeader from "@/components/containers/shared/shipping/shipping-header";
 import ShippingTable from "@/components/containers/shared/shipping/shipping-table";
-import { VENDOR_SHIPPING_PERMISSIONS } from "@/lib/config/shipping-permissions";
-import type { ShippingMethod } from "@/types/shipping";
+import type { ShippingMutationState } from "@/components/containers/shared/shipping/shipping-table-columns";
+import type { ShippingMethodItem } from "@/types/shipping";
 
 interface ShopShippingTemplateProps {
-  shippingMethods: ShippingMethod[];
-  onAddShipping?: (data: any) => void;
-  onEditShipping?: (shippingId: string) => void;
-  onDeleteShipping?: (shippingId: string) => void;
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<ShippingMethodItem>>;
+  onAddShipping?: () => void;
+  onEdit?: (shipping: ShippingMethodItem) => void;
+  onDelete?: (shipping: ShippingMethodItem) => void;
+  mutationState?: ShippingMutationState;
+  isShippingMutating?: (id: string) => boolean;
+  showAddButton?: boolean;
 }
 
 export default function ShopShippingTemplate({
-  shippingMethods,
+  fetcher,
   onAddShipping,
-  onEditShipping,
-  onDeleteShipping,
+  onEdit,
+  onDelete,
+  mutationState,
+  isShippingMutating,
+  showAddButton = true,
 }: ShopShippingTemplateProps) {
   return (
     <div className="space-y-6">
       <ShippingHeader
         role="vendor"
-        onAddShipping={onAddShipping}
-        showAddButton={!!onAddShipping}
+        onAdd={onAddShipping}
+        showAddButton={showAddButton}
       />
       <ShippingTable
-        shippingMethods={shippingMethods}
-        permissions={VENDOR_SHIPPING_PERMISSIONS}
-        onEditShipping={onEditShipping}
-        onDeleteShipping={onDeleteShipping}
+        fetcher={fetcher}
+        onEdit={onEdit}
+        onDelete={onDelete}
+        mutationState={mutationState}
+        isMutating={isShippingMutating}
+        mode="vendor"
       />
     </div>
   );

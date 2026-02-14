@@ -1,6 +1,10 @@
 import { type NeonQueryFunction, neon } from "@neondatabase/serverless";
 import { drizzle, type NeonHttpDatabase } from "drizzle-orm/neon-http";
 import {
+  customerAddresses,
+  customerAddressesRelations,
+} from "./schema/address-schema";
+import {
   attributes,
   attributesRelations,
   attributeValues,
@@ -8,6 +12,12 @@ import {
 } from "./schema/attribute-schema";
 import { user } from "./schema/auth-schema";
 import { brands } from "./schema/brand-schema";
+import {
+  cartItems,
+  cartItemsRelations,
+  cartSessions,
+  cartSessionsRelations,
+} from "./schema/cart-schema";
 import { categories } from "./schema/category-schema";
 import {
   couponCategories,
@@ -20,23 +30,62 @@ import {
   couponUsageRelations,
 } from "./schema/coupon-schema";
 import {
+  emailDeliveries,
+  emailDeliveriesRelations,
+} from "./schema/email-schema";
+import {
+  notifications,
+  notificationsRelations,
+} from "./schema/notification-schema";
+import {
+  orderItems,
+  orderItemsRelations,
+  orders,
+  ordersRelations,
+  payments,
+  paymentsRelations,
+} from "./schema/order-schema";
+import {
   productAttributes,
   productAttributesRelations,
   productImages,
   productImagesRelations,
+  productShippingMethods,
+  productShippingMethodsRelations,
   products,
   productsRelations,
   productTags,
   productTagsRelations,
 } from "./schema/products-schema";
-import { shops, vendors } from "./schema/shop-schema";
+import {
+  productReviews,
+  productReviewsRelations,
+  reviewHelpfulVotes,
+  reviewHelpfulVotesRelations,
+} from "./schema/review-schema";
+import {
+  shippingMethods,
+  shippingMethodsRelations,
+} from "./schema/shipping-schema";
+import {
+  shops,
+  shopsRelations,
+  vendors,
+  vendorsRelations,
+} from "./schema/shop-schema";
 import { tags, tagsRelations } from "./schema/tags-schema";
 import { taxRates, taxRatesRelations } from "./schema/tax-schema";
+import {
+  wishlistItems,
+  wishlistItemsRelations,
+} from "./schema/wishlist-schema";
 
 const schema = {
   user,
   vendors,
+  vendorsRelations,
   shops,
+  shopsRelations,
   categories,
   brands,
   attributes,
@@ -63,6 +112,32 @@ const schema = {
   couponProductsRelations,
   couponCategoriesRelations,
   couponUsageRelations,
+  cartSessions,
+  cartItems,
+  cartItemsRelations,
+  cartSessionsRelations,
+  customerAddresses,
+  customerAddressesRelations,
+  wishlistItems,
+  wishlistItemsRelations,
+  shippingMethods,
+  shippingMethodsRelations,
+  productShippingMethods,
+  productShippingMethodsRelations,
+  orderItems,
+  orderItemsRelations,
+  orders,
+  ordersRelations,
+  payments,
+  paymentsRelations,
+  notifications,
+  notificationsRelations,
+  emailDeliveries,
+  emailDeliveriesRelations,
+  productReviews,
+  productReviewsRelations,
+  reviewHelpfulVotes,
+  reviewHelpfulVotesRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server

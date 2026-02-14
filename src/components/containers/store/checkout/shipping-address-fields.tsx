@@ -83,6 +83,19 @@ export function ShippingAddressFields({ form }: ShippingAddressFieldsProps) {
         </form.Field>
       </div>
 
+      <form.Field
+        name="street"
+        children={(field) => (
+          <FormTextField
+            label="Street Address"
+            required
+            placeholder="123 Main St"
+            autoComplete="street-address"
+            field={field}
+          />
+        )}
+      />
+
       <div className="grid @4xl:grid-cols-3 grid-cols-1 gap-6">
         <form.Field
           name="city"

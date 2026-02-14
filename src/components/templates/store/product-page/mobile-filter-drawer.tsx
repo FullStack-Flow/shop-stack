@@ -16,6 +16,8 @@ interface MobileFilterDrawerProps {
   filters: FilterState;
   updateFilter: (key: keyof FilterState, value: any) => void;
   totalResults: number;
+  availableCategories: string[];
+  availableBrands: string[];
   className?: string;
 }
 
@@ -23,6 +25,8 @@ export default function MobileFilterDrawer({
   filters,
   updateFilter,
   totalResults,
+  availableCategories,
+  availableBrands,
   className,
 }: MobileFilterDrawerProps) {
   const [open, setOpen] = React.useState(false);
@@ -40,13 +44,18 @@ export default function MobileFilterDrawer({
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="@2xl:w-[400px] w-[300px] overflow-y-auto"
+        className="@2xl:w-100 w-75 overflow-y-auto"
       >
         <SheetHeader className="mb-4">
           <SheetTitle>Filters ({totalResults})</SheetTitle>
         </SheetHeader>
 
-        <FilterSidebar filters={filters} updateFilter={updateFilter} />
+        <FilterSidebar
+          filters={filters}
+          updateFilter={updateFilter}
+          availableCategories={availableCategories}
+          availableBrands={availableBrands}
+        />
 
         <div className="sticky bottom-0 mt-6 border-t bg-background p-4">
           <Button className="w-full" onClick={() => setOpen(false)}>

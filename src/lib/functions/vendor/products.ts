@@ -1,6 +1,3 @@
-// ============================================================================
-// Get Products (List with Pagination)
-
 import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
@@ -8,6 +5,7 @@ import { db } from "@/lib/db";
 import {
   productAttributes,
   productImages,
+  productShippingMethods,
   products,
   productTags,
 } from "@/lib/db/schema/products-schema";
@@ -29,6 +27,8 @@ import {
 import { createSuccessResponse } from "@/types/api-response";
 import type { ProductListResponse } from "@/types/products";
 
+// ============================================================================
+// Get Products (List with Pagination)
 // ============================================================================
 export const getProducts = createServerFn({ method: "GET" })
   .middleware([authMiddleware])
@@ -145,6 +145,7 @@ export const createProduct = createServerFn({ method: "POST" })
       images,
       tagIds,
       attributeIds,
+      shippingMethodIds,
       attributeValues,
       variationPrices,
       ...productData
@@ -233,6 +234,16 @@ export const createProduct = createServerFn({ method: "POST" })
       insertPromises.push(db.insert(productAttributes).values(attrRecords));
     }
 
+    if (shippingMethodIds && shippingMethodIds.length > 0) {
+      const shippingRecords = shippingMethodIds.map((methodId) => ({
+        productId: productId,
+        shippingMethodId: methodId,
+      }));
+      insertPromises.push(
+        db.insert(productShippingMethods).values(shippingRecords),
+      );
+    }
+
     await Promise.all(insertPromises);
 
     // Fetch the created product with relations
@@ -266,6 +277,7 @@ export const updateProduct = createServerFn({ method: "POST" })
       images,
       tagIds,
       attributeIds,
+      shippingMethodIds,
       attributeValues,
       variationPrices,
       ...updateData
@@ -369,6 +381,14 @@ export const updateProduct = createServerFn({ method: "POST" })
       );
     }
 
+    if (shippingMethodIds !== undefined) {
+      updatePromises.push(
+        db
+          .delete(productShippingMethods)
+          .where(eq(productShippingMethods.productId, id)),
+      );
+    }
+
     await Promise.all(updatePromises);
 
     // Parallel: Insert new relations
@@ -403,6 +423,16 @@ export const updateProduct = createServerFn({ method: "POST" })
           : null,
       }));
       insertPromises.push(db.insert(productAttributes).values(attrRecords));
+    }
+
+    if (shippingMethodIds !== undefined && shippingMethodIds.length > 0) {
+      const shippingRecords = shippingMethodIds.map((methodId) => ({
+        productId: id,
+        shippingMethodId: methodId,
+      }));
+      insertPromises.push(
+        db.insert(productShippingMethods).values(shippingRecords),
+      );
     }
 
     await Promise.all(insertPromises);
