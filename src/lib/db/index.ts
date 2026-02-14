@@ -58,6 +58,12 @@ import {
   productTagsRelations,
 } from "./schema/products-schema";
 import {
+  productReviews,
+  productReviewsRelations,
+  reviewHelpfulVotes,
+  reviewHelpfulVotesRelations,
+} from "./schema/review-schema";
+import {
   shippingMethods,
   shippingMethodsRelations,
 } from "./schema/shipping-schema";
@@ -128,6 +134,10 @@ const schema = {
   notificationsRelations,
   emailDeliveries,
   emailDeliveriesRelations,
+  productReviews,
+  productReviewsRelations,
+  reviewHelpfulVotes,
+  reviewHelpfulVotesRelations,
 };
 
 // Lazy initialization - only connect to DB when first accessed on server

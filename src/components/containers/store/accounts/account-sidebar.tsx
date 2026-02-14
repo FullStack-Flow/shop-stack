@@ -15,6 +15,11 @@ const sidebarItems = [
     icon: Package,
   },
   {
+    title: "My Reviews",
+    href: "/my-reviews",
+    icon: Package,
+  },
+  {
     title: "My Wishlists",
     href: "/wishlist",
     icon: Heart,
@@ -42,7 +47,7 @@ export default function AccountSidebar() {
                   "w-full justify-start",
                   pathname === item.href
                     ? "border-transparent bg-accent text-accent-foreground"
-                    : "border-transparent text-muted-foreground"
+                    : "border-transparent text-muted-foreground",
                 )}
               >
                 <item.icon className="size-4" />

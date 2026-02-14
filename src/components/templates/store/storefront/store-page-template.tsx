@@ -125,6 +125,7 @@ export default function StorePageTemplate({ slug }: StorePageTemplateProps) {
 
           <TabsContent value="reviews" className="space-y-4">
             <StoreReviews
+              shopId={currentStore.id}
               rating={currentStore.rating}
               reviewCount={currentStore.reviewCount}
             />

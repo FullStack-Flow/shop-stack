@@ -74,13 +74,7 @@ export default function ProductDetailsTabs({
           <ProductAdditionalInfoTab specifications={specifications} />
         </TabsContent>
         <TabsContent value="reviews">
-          <ProductReviewsTab
-            reviews={[]}
-            averageRating={parseFloat(product.averageRating) || 0}
-            ratingBreakdown={{ 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }}
-            totalRatings={product.reviewCount}
-            productId={product.id}
-          />
+          <ProductReviewsTab productId={product.id} />
         </TabsContent>
         <TabsContent value="shipping">
           <ProductShippingTab shipping={shipping} />
