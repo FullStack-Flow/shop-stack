@@ -12,7 +12,7 @@ export interface Shop {
   totalProducts: number;
   totalOrders: number;
   monthlyRevenue: string;
-  status: "active" | "pending";
+  status: "active" | "pending" | "suspended";
 }
 
 export interface ShopFormValues {
@@ -47,3 +47,32 @@ export interface StoreShop {
 }
 
 export type StoreShopListResponse = PaginatedResponse<StoreShop>;
+
+export interface AdminShop {
+  id: string;
+  vendorId: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  logo: string | null;
+  banner: string | null;
+  category: string | null;
+  address: string | null;
+  phone: string | null;
+  email: string | null;
+  status: string | null;
+  rating: string | null;
+  monthlyRevenue: string | null;
+  totalProducts: number;
+  totalOrders: number;
+  createdAt: string;
+  updatedAt: string;
+  vendorBusinessName: string | null;
+  vendorStatus: string | null;
+  ownerName: string | null;
+  ownerEmail: string | null;
+  ownerImage: string | null;
+}
+
+export type AdminShopListResponse = PaginatedResponse<AdminShop>;
+export type AdminShopDetailResponse = { shop: AdminShop };

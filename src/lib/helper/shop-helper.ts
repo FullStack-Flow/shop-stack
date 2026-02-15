@@ -37,6 +37,7 @@ export interface NormalizedShop {
   email: string | null;
   status: string | null;
   rating: string | null;
+  monthlyRevenue: string | null;
   totalProducts: number;
   totalOrders: number;
   createdAt: string;
@@ -75,6 +76,7 @@ export function normalizeShop(
     email: shop.email,
     status: shop.status,
     rating: shop.rating,
+    monthlyRevenue: shop.monthlyRevenue,
     totalProducts: productCount ?? shop.totalProducts ?? 0,
     totalOrders: shop.totalOrders ?? 0,
     createdAt: shop.createdAt.toISOString(),

@@ -14,3 +14,28 @@ export const adminShopsQuerySchema = z.object({
 });
 
 export type AdminShopsQuery = z.infer<typeof adminShopsQuerySchema>;
+
+export const getShopByIdSchema = z.object({
+  id: z.string().min(1, "Shop ID is required"),
+});
+
+export const updateShopStatusSchema = z.object({
+  id: z.string().min(1, "Shop ID is required"),
+  status: z.enum(["pending", "active", "suspended"]),
+});
+
+export const deleteShopByIdSchema = z.object({
+  id: z.string().min(1, "Shop ID is required"),
+});
+
+export const updateVendorCommissionSchema = z.object({
+  vendorId: z.string().min(1, "Vendor ID is required"),
+  commissionRate: z.string().min(1, "Commission rate is required"),
+});
+
+export type GetShopByIdInput = z.infer<typeof getShopByIdSchema>;
+export type UpdateShopStatusInput = z.infer<typeof updateShopStatusSchema>;
+export type DeleteShopByIdInput = z.infer<typeof deleteShopByIdSchema>;
+export type UpdateVendorCommissionInput = z.infer<
+  typeof updateVendorCommissionSchema
+>;

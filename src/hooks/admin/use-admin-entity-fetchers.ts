@@ -8,6 +8,7 @@ import { getAdminCategories } from "@/lib/functions/admin/category";
 import { getAdminCoupons } from "@/lib/functions/admin/coupon";
 import { getAdminOrders } from "@/lib/functions/admin/order";
 import { getAdminProducts } from "@/lib/functions/admin/product";
+import { getAdminShops } from "@/lib/functions/admin/shops";
 import { getAdminTags } from "@/lib/functions/admin/tag";
 import { getAdminTaxRates } from "@/lib/functions/admin/tax";
 import { getAdminTransactions } from "@/lib/functions/admin/transaction";
@@ -23,6 +24,7 @@ import type { VendorOrderResponse } from "@/types/orders";
 import type { ProductItem } from "@/types/products";
 import type { TagItem } from "@/types/tags";
 import type { TaxRateItem } from "@/types/taxes";
+import type { AdminTenant } from "@/types/tenant";
 import type { AdminTransactionResponse } from "@/types/transaction";
 
 export const ADMIN_STATUS_OPTIONS = [
@@ -99,6 +101,37 @@ export function createAdminCouponsFetcher(): (
     },
     defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
     transformFilters: booleanFilterTransform,
+  });
+}
+
+export function createAdminTenantsFetcher(): (
+  params: DataTableFetchParams,
+) => Promise<DataTableFetchResult<AdminTenant>> {
+  return createServerFetcher<AdminTenant, any>({
+    fetchFn: async (query) => {
+      const response = await getAdminShops({ data: query });
+      const data: AdminTenant[] = (response.data ?? []).map((shop) => ({
+        id: shop.id,
+        name: shop.name,
+        slug: shop.slug,
+        ownerName: shop.ownerName ?? "Unknown",
+        ownerEmail: shop.ownerEmail ?? "Unknown",
+        plan: "free",
+        status: (shop.status ?? "pending") as AdminTenant["status"],
+        joinedDate: shop.createdAt,
+        productCount: shop.totalProducts ?? 0,
+        orderCount: shop.totalOrders ?? 0,
+      }));
+      return { data, total: response.total ?? 0 };
+    },
+    sortFieldMap: {
+      name: "name",
+      joinedDate: "createdAt",
+      productCount: "totalProducts",
+      orderCount: "totalOrders",
+    },
+    filterFieldMap: { status: "status" },
+    defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
   });
 }
 
