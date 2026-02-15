@@ -1,44 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "@/components/base/common/page-skeleton";
 import AdminBrandsTemplate from "@/components/templates/admin/admin-brands-template";
-import { mockBrands } from "@/data/brand";
-import type { BrandFormValues, BrandItem } from "@/types/brands";
+import { useAdminBrands } from "@/hooks/admin/use-admin-brands";
+import { createAdminBrandsFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
+import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
+import type { BrandItem } from "@/types/brands";
 
 export const Route = createFileRoute("/(admin)/admin/brands/")({
   component: AdminBrandsPage,
+  pendingComponent: PageSkeleton,
 });
 
 function AdminBrandsPage() {
-  const [brands, setBrands] = useState<BrandItem[]>(mockBrands);
+  const fetcher = createAdminBrandsFetcher();
 
-  const handleAddBrand = (newBrandData: BrandFormValues) => {
-    const now = new Date().toISOString();
-    const newBrand: BrandItem = {
-      id: Date.now().toString(),
-      shopId: "1",
-      name: newBrandData.name,
-      slug: newBrandData.slug,
-      website: newBrandData.website ?? null,
-      logo: newBrandData.logo ?? null,
-      description: newBrandData.description ?? null,
-      sortOrder: brands.length,
-      isActive: true,
-      productCount: 0,
-      createdAt: now,
-      updatedAt: now,
-    };
-    setBrands([...brands, newBrand]);
-  };
+  const { toggleActive, deleteBrand, mutationState, isBrandMutating } =
+    useAdminBrands();
 
-  const handleDeleteBrand = (brand: BrandItem) => {
-    setBrands(brands.filter((b) => b.id !== brand.id));
+  const {
+    deletingItem: deletingBrand,
+    setDeletingItem: setDeletingBrand,
+    handleDelete: handleDeleteBrand,
+    confirmDelete,
+  } = useEntityCRUD<BrandItem>({
+    onDelete: async (id) => {
+      await deleteBrand(id);
+    },
+  });
+
+  const handleToggleActive = async (brand: BrandItem) => {
+    await toggleActive({ id: brand.id, isActive: !brand.isActive });
   };
 
   return (
-    <AdminBrandsTemplate
-      brands={brands}
-      onAddBrand={handleAddBrand}
-      onDeleteBrand={handleDeleteBrand}
-    />
+    <>
+      <AdminBrandsTemplate
+        fetcher={fetcher}
+        onDeleteBrand={handleDeleteBrand}
+        onToggleActive={handleToggleActive}
+        mutationState={mutationState}
+        isBrandMutating={isBrandMutating}
+      />
+
+      <ConfirmDeleteDialog
+        open={!!deletingBrand}
+        onOpenChange={(open) => !open && setDeletingBrand(null)}
+        onConfirm={confirmDelete}
+        isDeleting={mutationState.deletingId === deletingBrand?.id}
+        itemName={deletingBrand?.name}
+        entityType="brand"
+      />
+    </>
   );
 }
