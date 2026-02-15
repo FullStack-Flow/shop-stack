@@ -9,7 +9,7 @@ export const mockReviews: Review[] = [
     rating: 5,
     comment: "Amazing sound quality and battery life!",
     date: "2023-10-15",
-    status: "published",
+    status: "approved",
   },
   {
     id: "2",
@@ -19,7 +19,7 @@ export const mockReviews: Review[] = [
     rating: 4,
     comment: "Great features but the strap is a bit uncomfortable.",
     date: "2023-10-14",
-    status: "published",
+    status: "approved",
   },
   {
     id: "3",
@@ -39,7 +39,7 @@ export const mockReviews: Review[] = [
     rating: 5,
     comment: "Best headphones I have ever owned.",
     date: "2023-10-10",
-    status: "published",
+    status: "approved",
   },
   {
     id: "5",

@@ -79,7 +79,7 @@ export function AddReviewDialog({
       customerName: "",
       rating: 5,
       comment: "",
-      status: "pending" as "published" | "pending" | "rejected",
+      status: "pending" as "approved" | "pending" | "rejected",
       customerAvatar: null as FileList | null,
     },
     onSubmit: async ({ value }) => {
@@ -228,7 +228,7 @@ export function AddReviewDialog({
                         value={field.state.value}
                         onValueChange={(value) =>
                           field.handleChange(
-                            value as "published" | "pending" | "rejected"
+                            value as "approved" | "pending" | "rejected",
                           )
                         }
                       >
@@ -236,7 +236,7 @@ export function AddReviewDialog({
                           <SelectValue placeholder="Select status" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="published">Published</SelectItem>
+                          <SelectItem value="approved">Approved</SelectItem>
                           <SelectItem value="pending">Pending</SelectItem>
                           <SelectItem value="rejected">Rejected</SelectItem>
                         </SelectContent>
