@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { ColumnDef } from "@tanstack/react-table";
-import { useMemo } from "react";
+import { Check, Loader2, MoreHorizontal, X } from "lucide-react";
+import { useCallback, useMemo, useState } from "react";
 import DataTable from "@/components/base/data-table/data-table";
 import type {
   DataTableServer,
@@ -8,6 +9,15 @@ import type {
 } from "@/components/base/data-table/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useAdminShops } from "@/hooks/admin/use-admin-shops";
 import type { AdminTenant } from "@/types/tenant";
 
 interface AdminTenantTableProps {
@@ -19,6 +29,21 @@ export default function AdminTenantTable({
   fetcher,
   className,
 }: AdminTenantTableProps) {
+  const { updateStatus, isUpdatingStatus } = useAdminShops();
+  const [updatingTenantId, setUpdatingTenantId] = useState<string | null>(null);
+
+  const handleUpdateStatus = useCallback(
+    async (tenantId: string, status: AdminTenant["status"]) => {
+      setUpdatingTenantId(tenantId);
+      try {
+        await updateStatus({ id: tenantId, status });
+      } finally {
+        setUpdatingTenantId(null);
+      }
+    },
+    [updateStatus],
+  );
+
   const columns = useMemo<ColumnDef<AdminTenant>[]>(() => {
     return [
       {
@@ -108,21 +133,71 @@ export default function AdminTenantTable({
       {
         id: "actions",
         header: () => <div className="text-right">Actions</div>,
-        cell: ({ row }) => (
-          <div className="text-right">
-            <Button variant="ghost" size="sm" asChild>
-              <Link
-                to="/admin/tenants/$tenantId"
-                params={{ tenantId: row.original.id }}
-              >
-                View Details
-              </Link>
-            </Button>
-          </div>
-        ),
+        cell: ({ row }) => {
+          const tenant = row.original;
+          const isRowUpdating =
+            isUpdatingStatus && updatingTenantId === tenant.id;
+
+          return (
+            <div className="flex justify-end">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild disabled={isRowUpdating}>
+                  <Button
+                    variant="ghost"
+                    className="h-8 w-8 p-0"
+                    disabled={isRowUpdating}
+                  >
+                    <span className="sr-only">Open menu</span>
+                    {isRowUpdating ? (
+                      <Loader2 className="size-4 animate-spin" />
+                    ) : (
+                      <MoreHorizontal className="size-4" />
+                    )}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      to="/admin/tenants/$tenantId"
+                      params={{ tenantId: tenant.id }}
+                      className="w-full cursor-pointer"
+                    >
+                      View Details
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  {tenant.status !== "active" && (
+                    <DropdownMenuItem
+                      onClick={() => handleUpdateStatus(tenant.id, "active")}
+                      disabled={isRowUpdating}
+                    >
+                      <span className="flex items-center gap-2">
+                        <Check className="size-4" />
+                        Approve
+                      </span>
+                    </DropdownMenuItem>
+                  )}
+                  {tenant.status !== "suspended" && (
+                    <DropdownMenuItem
+                      className="text-destructive focus:text-destructive"
+                      onClick={() => handleUpdateStatus(tenant.id, "suspended")}
+                      disabled={isRowUpdating}
+                    >
+                      <span className="flex items-center gap-2">
+                        <X className="size-4" />
+                        Reject
+                      </span>
+                    </DropdownMenuItem>
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          );
+        },
       },
     ];
-  }, []);
+  }, [handleUpdateStatus, isUpdatingStatus, updatingTenantId]);
 
   const filterableColumns = useMemo<FilterableColumn<AdminTenant>[]>(() => {
     return [
