@@ -1,42 +1,55 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "@/components/base/common/page-skeleton";
 import AdminTagsTemplate from "@/components/templates/admin/admin-tags-template";
-import { mockTags } from "@/data/tags";
-import type { TagFormValues, TagItem } from "@/types/tags";
+import { createAdminTagsFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
+import { useAdminTags } from "@/hooks/admin/use-admin-tags";
+import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
+import type { TagItem } from "@/types/tags";
 
 export const Route = createFileRoute("/(admin)/admin/tags/")({
   component: AdminTagsPage,
+  pendingComponent: PageSkeleton,
 });
 
 function AdminTagsPage() {
-  const [tags, setTags] = useState<TagItem[]>(mockTags);
+  const fetcher = createAdminTagsFetcher();
+  const { toggleActive, deleteTag, mutationState, isTagMutating } =
+    useAdminTags();
 
-  const handleAddTag = (newTagData: TagFormValues) => {
-    const now = new Date().toISOString();
-    const newTag: TagItem = {
-      id: Date.now().toString(),
-      shopId: "1",
-      name: newTagData.name,
-      slug: newTagData.slug || newTagData.name.toLowerCase().replace(/\s+/g, "-"),
-      description: newTagData.description ?? null,
-      sortOrder: tags.length,
-      isActive: newTagData.isActive ?? true,
-      productCount: 0,
-      createdAt: now,
-      updatedAt: now,
-    };
-    setTags([...tags, newTag]);
-  };
+  const {
+    deletingItem: deletingTag,
+    setDeletingItem: setDeletingTag,
+    handleDelete,
+    confirmDelete,
+  } = useEntityCRUD<TagItem>({
+    onDelete: async (id) => {
+      await deleteTag(id);
+    },
+  });
 
-  const handleDeleteTag = (tag: TagItem) => {
-    setTags(tags.filter((t) => t.id !== tag.id));
+  const handleToggleActive = async (tag: TagItem) => {
+    await toggleActive({ id: tag.id, isActive: !tag.isActive });
   };
 
   return (
-    <AdminTagsTemplate
-      tags={tags}
-      onAddTag={handleAddTag}
-      onDeleteTag={handleDeleteTag}
-    />
+    <>
+      <AdminTagsTemplate
+        fetcher={fetcher}
+        onDelete={handleDelete}
+        onToggleActive={handleToggleActive}
+        mutationState={mutationState}
+        isTagMutating={isTagMutating}
+      />
+
+      <ConfirmDeleteDialog
+        open={!!deletingTag}
+        onOpenChange={(open) => !open && setDeletingTag(null)}
+        onConfirm={confirmDelete}
+        isDeleting={mutationState.deletingId === deletingTag?.id}
+        itemName={deletingTag?.name}
+        entityType="tag"
+      />
+    </>
   );
 }

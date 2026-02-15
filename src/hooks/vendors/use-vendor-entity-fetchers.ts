@@ -25,11 +25,6 @@ import type { TagItem } from "@/types/tags";
 import type { TaxRateItem } from "@/types/taxes";
 import type { VendorTransactionResponse } from "@/types/transaction";
 
-export const VENDOR_STATUS_OPTIONS = [
-  { label: "Active", value: "true" },
-  { label: "Inactive", value: "false" },
-];
-
 export function createVendorCategoriesFetcher(
   shopId: string,
 ): (

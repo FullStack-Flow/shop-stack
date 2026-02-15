@@ -1,76 +1,55 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "@/components/base/common/page-skeleton";
 import AdminTaxesTemplate from "@/components/templates/admin/admin-taxes-template";
-
-interface TaxFormValues {
-  id: string;
-  name: string;
-  rate: number;
-  country: string;
-  state?: string;
-  zip?: string;
-  priority: number;
-  createdAt: Date;
-}
-
-const mockTaxes: TaxFormValues[] = [
-  {
-    id: "1",
-    name: "US Standard Sales Tax",
-    rate: 8.25,
-    country: "US",
-    state: "CA",
-    zip: "",
-    priority: 1,
-    createdAt: new Date("2024-01-01"),
-  },
-  {
-    id: "2",
-    name: "UK VAT",
-    rate: 20,
-    country: "UK",
-    state: "",
-    zip: "",
-    priority: 1,
-    createdAt: new Date("2024-01-15"),
-  },
-  {
-    id: "3",
-    name: "Canada GST",
-    rate: 5,
-    country: "CA",
-    state: "ON",
-    zip: "",
-    priority: 1,
-    createdAt: new Date("2024-02-01"),
-  },
-];
+import { createAdminTaxRatesFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
+import { useAdminTaxRates } from "@/hooks/admin/use-admin-taxes";
+import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
+import type { TaxRateItem } from "@/types/taxes";
 
 export const Route = createFileRoute("/(admin)/admin/taxes/")({
   component: AdminTaxesPage,
+  pendingComponent: PageSkeleton,
 });
 
 function AdminTaxesPage() {
-  const [taxes, setTaxes] = useState<TaxFormValues[]>(mockTaxes);
+  const fetcher = createAdminTaxRatesFetcher();
+  const { toggleActive, deleteTaxRate, mutationState, isTaxRateMutating } =
+    useAdminTaxRates();
 
-  const handleAddTax = (data: Omit<TaxFormValues, "id" | "createdAt">) => {
-    const newTax: TaxFormValues = {
-      ...data,
-      id: String(taxes.length + 1),
-      createdAt: new Date(),
-    };
-    setTaxes([...taxes, newTax]);
-  };
+  const {
+    deletingItem: deletingTaxRate,
+    setDeletingItem: setDeletingTaxRate,
+    handleDelete,
+    confirmDelete,
+  } = useEntityCRUD<TaxRateItem>({
+    onDelete: async (id) => {
+      await deleteTaxRate(id);
+    },
+  });
 
-  const handleDeleteTax = (id: string) => {
-    setTaxes(taxes.filter((tax) => tax.id !== id));
+  const handleToggleActive = async (taxRate: TaxRateItem) => {
+    await toggleActive({ id: taxRate.id, isActive: !taxRate.isActive });
   };
 
   return (
-    <AdminTaxesTemplate
-      taxes={taxes}
-      onAddTax={handleAddTax}
-      onDeleteTax={handleDeleteTax}
-    />
+    <>
+      <AdminTaxesTemplate
+        fetcher={fetcher}
+        onDeleteTax={handleDelete}
+        onToggleActive={handleToggleActive}
+        mutationState={mutationState}
+        isTaxMutating={isTaxRateMutating}
+      />
+
+      <ConfirmDeleteDialog
+        open={!!deletingTaxRate}
+        onOpenChange={(open) => !open && setDeletingTaxRate(null)}
+        onConfirm={confirmDelete}
+        isDeleting={mutationState.deletingId === deletingTaxRate?.id}
+        itemName={deletingTaxRate?.name}
+        entityType="tax rate"
+      />
+    </>
   );
 }

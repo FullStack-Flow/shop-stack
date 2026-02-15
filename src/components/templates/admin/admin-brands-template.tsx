@@ -1,31 +1,42 @@
-import { useState } from "react";
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
 import AdminBrandsTable from "@/components/containers/admin/brands/admin-brands-table";
-import { AddBrandDialog } from "@/components/containers/shared/brands/add-brand-dialog";
 import BrandHeader from "@/components/containers/shared/brands/brand-header";
-import type { BrandFormValues, BrandItem } from "@/types/brands";
+import type { AdminBrandMutationState } from "@/hooks/admin/use-admin-brands";
+import type { BrandItem } from "@/types/brands";
 
 interface AdminBrandsTemplateProps {
-  brands: BrandItem[];
-  onAddBrand: (data: BrandFormValues) => void;
-  onDeleteBrand: (brand: BrandItem) => void;
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<BrandItem>>;
+  onEditBrand?: (brand: BrandItem) => void;
+  onDeleteBrand?: (brand: BrandItem) => void;
+  onToggleActive?: (brand: BrandItem) => void;
+  mutationState?: AdminBrandMutationState;
+  isBrandMutating?: (id: string) => boolean;
 }
 
 export default function AdminBrandsTemplate({
-  brands,
-  onAddBrand,
+  fetcher,
+  onEditBrand,
   onDeleteBrand,
+  onToggleActive,
+  mutationState,
+  isBrandMutating,
 }: AdminBrandsTemplateProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
   return (
     <div className="space-y-6">
-      <BrandHeader onAdd={() => setIsAddDialogOpen(true)} role="admin" />
-      <AddBrandDialog
-        open={isAddDialogOpen}
-        onOpenChange={setIsAddDialogOpen}
-        onSubmit={onAddBrand}
+      <BrandHeader role="admin" />
+      <AdminBrandsTable
+        fetcher={fetcher}
+        onEdit={onEditBrand}
+        onDelete={onDeleteBrand}
+        onToggleActive={onToggleActive}
+        mutationState={mutationState}
+        isBrandMutating={isBrandMutating}
       />
-      <AdminBrandsTable brands={brands} onDelete={onDeleteBrand} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import type {
   DataTableFetchParams,
   DataTableFetchResult,
 } from "@/components/base/data-table/types";
-import { VENDOR_STATUS_OPTIONS } from "@/hooks/vendors/use-vendor-entity-fetchers";
+import { VENDOR_STATUS_OPTIONS } from "@/lib/constants";
 import type { NormalizedCategory } from "@/types/category-types";
 import {
   type CategoryMutationState,
@@ -15,7 +15,7 @@ import {
 
 interface VendorCategoryTableProps extends CategoryTableActions {
   fetcher: (
-    params: DataTableFetchParams
+    params: DataTableFetchParams,
   ) => Promise<DataTableFetchResult<NormalizedCategory>>;
   className?: string;
   mutationState?: CategoryMutationState;
@@ -49,7 +49,7 @@ export function VendorCategoryTable({
         statusOptions: VENDOR_STATUS_OPTIONS,
         includeFeatured: true,
       }),
-    []
+    [],
   );
 
   return (
@@ -66,14 +66,16 @@ export function VendorCategoryTable({
 }
 
 interface AdminCategoryTableProps extends CategoryTableActions {
-  categories: NormalizedCategory[];
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<NormalizedCategory>>;
   className?: string;
   mutationState?: CategoryMutationState;
   isCategoryMutating?: (id: string) => boolean;
 }
 
 export function AdminCategoryTable({
-  categories,
+  fetcher,
   className,
   onEdit,
   onDelete,
@@ -110,13 +112,14 @@ export function AdminCategoryTable({
         statusOptions: VENDOR_STATUS_OPTIONS,
         includeFeatured: true,
       }),
-    []
+    [],
   );
 
   return (
     <DataTable
       columns={columns}
-      data={categories}
+      server={{ fetcher }}
+      context="admin"
       initialPageSize={10}
       filterableColumns={filterableColumns}
       globalFilterPlaceholder="Search categories..."

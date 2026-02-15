@@ -16,35 +16,15 @@ import {
   or,
   type SQL,
 } from "drizzle-orm";
-import type { TaxRateItem } from "@/types/taxes";
+import type {
+  NormalizedTaxRate,
+  TaxRateQueryOptions,
+  TaxRateQueryResult,
+} from "@/types/taxes";
 import { db } from "../db";
+import { products } from "../db/schema/products-schema";
 import { shops } from "../db/schema/shop-schema";
 import { taxRates } from "../db/schema/tax-schema";
-
-/**
- * Tax Rate Query Options
- */
-export interface TaxRateQueryOptions {
-  baseConditions?: SQL[];
-  limit?: number;
-  offset?: number;
-  sortBy?: "name" | "rate" | "priority" | "createdAt";
-  sortDirection?: "asc" | "desc";
-  search?: string;
-  isActive?: boolean;
-  country?: string;
-  includeShopInfo?: boolean;
-}
-
-/**
- * Tax Rate Query Result
- */
-export interface TaxRateQueryResult {
-  data: TaxRateItem[];
-  total: number;
-  limit: number;
-  offset: number;
-}
 
 /**
  * Batch fetch all related data for a list of tax rates
@@ -57,10 +37,12 @@ export async function batchFetchTaxRateRelations(
   } = {},
 ): Promise<{
   shopsMap: Map<string, { id: string; name: string; slug: string }>;
+  productCountsMap: Map<string, number>;
 }> {
   if (taxRateIds.length === 0) {
     return {
       shopsMap: new Map(),
+      productCountsMap: new Map(),
     };
   }
 
@@ -80,6 +62,15 @@ export async function batchFetchTaxRateRelations(
           .where(inArray(shops.id, shopIds))
       : [];
 
+  const productCounts = await db
+    .select({
+      taxId: products.taxId,
+      count: count(),
+    })
+    .from(products)
+    .where(inArray(products.taxId, taxRateIds))
+    .groupBy(products.taxId);
+
   // Build lookup maps
   const shopsMap = new Map<
     string,
@@ -89,8 +80,17 @@ export async function batchFetchTaxRateRelations(
     shopsMap.set(shop.id, shop);
   }
 
+  const productCountsMap = new Map<string, number>();
+  for (const productCount of productCounts) {
+    if (!productCount.taxId) {
+      continue;
+    }
+    productCountsMap.set(productCount.taxId, productCount.count);
+  }
+
   return {
     shopsMap,
+    productCountsMap,
   };
 }
 
@@ -99,16 +99,32 @@ export async function batchFetchTaxRateRelations(
  */
 export function normalizeTaxRate(
   taxRate: typeof taxRates.$inferSelect,
-  _relations: {
+  relations: {
     shopsMap: Map<string, { id: string; name: string; slug: string }>;
+    productCountsMap: Map<string, number>;
   },
-  _options: {
+  options: {
     includeShopInfo?: boolean;
   } = {},
-): TaxRateItem {
+): NormalizedTaxRate {
+  let shopName: string | null = null;
+  let shopSlug: string | null = null;
+
+  if (options.includeShopInfo) {
+    const shopInfo = relations.shopsMap.get(taxRate.shopId);
+    if (shopInfo) {
+      shopName = shopInfo.name;
+      shopSlug = shopInfo.slug;
+    }
+  }
+
+  const productCount = relations.productCountsMap.get(taxRate.id) ?? 0;
+
   return {
     id: taxRate.id,
     shopId: taxRate.shopId,
+    shopName,
+    shopSlug,
     name: taxRate.name,
     rate: taxRate.rate,
     country: taxRate.country,
@@ -117,6 +133,7 @@ export function normalizeTaxRate(
     priority: taxRate.priority || "",
     isActive: taxRate.isActive || true,
     isCompound: taxRate.isCompound || false,
+    productCount,
     createdAt: taxRate.createdAt.toISOString(),
     updatedAt: taxRate.updatedAt.toISOString(),
   };
@@ -258,7 +275,7 @@ export async function fetchTaxRateWithRelations(
   options: {
     includeShopInfo?: boolean;
   } = {},
-): Promise<TaxRateItem> {
+): Promise<NormalizedTaxRate> {
   const relations = await batchFetchTaxRateRelations([taxRate.id], [taxRate], {
     includeShopInfo: options.includeShopInfo,
   });

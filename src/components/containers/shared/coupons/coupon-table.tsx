@@ -32,7 +32,10 @@ const TYPE_OPTIONS = [
 // ============================================================================
 
 interface AdminCouponTableProps extends CouponTableActions {
-  coupons: CouponItem[];
+  coupons?: CouponItem[];
+  fetcher?: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<CouponItem>>;
   className?: string;
   mutationState?: CouponMutationState;
   isCouponMutating?: (id: string) => boolean;
@@ -41,6 +44,7 @@ interface AdminCouponTableProps extends CouponTableActions {
 
 export function AdminCouponTable({
   coupons,
+  fetcher,
   className,
   onEdit,
   onDelete,
@@ -80,11 +84,24 @@ export function AdminCouponTable({
     [],
   );
 
+  if (fetcher) {
+    return (
+      <DataTable
+        columns={columns}
+        server={{ fetcher }}
+        context="admin"
+        initialPageSize={10}
+        filterableColumns={filterableColumns}
+        globalFilterPlaceholder="Search coupons..."
+        className={className}
+      />
+    );
+  }
+
   return (
     <DataTable
       columns={columns}
-      data={coupons}
-      context="shop"
+      data={coupons || []}
       initialPageSize={10}
       filterableColumns={filterableColumns}
       globalFilterPlaceholder="Search coupons..."

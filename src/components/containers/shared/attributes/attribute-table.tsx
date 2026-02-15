@@ -15,7 +15,7 @@ import {
 interface AttributeTableProps extends AttributeTableActions {
   attributes?: AttributeItem[];
   fetcher?: (
-    params: DataTableFetchParams
+    params: DataTableFetchParams,
   ) => Promise<DataTableFetchResult<AttributeItem>>;
   mutationState?: AttributeMutationState;
   isAttributeMutating?: (id: string) => boolean;
@@ -58,11 +58,12 @@ export default function AttributeTable({
   const filterableColumns = useMemo(() => getSharedAttributeFilters(), []);
 
   if (fetcher) {
+    const context = mode === "admin" ? "admin" : "shop";
     return (
       <DataTable
         columns={columns}
         server={{ fetcher }}
-        context="shop"
+        context={context}
         initialPageSize={10}
         filterableColumns={filterableColumns}
         globalFilterPlaceholder="Search attributes..."

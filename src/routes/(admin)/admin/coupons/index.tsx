@@ -1,52 +1,56 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { ConfirmDeleteDialog } from "@/components/base/common/confirm-delete-dialog";
+import { PageSkeleton } from "@/components/base/common/page-skeleton";
 import AdminCouponsTemplate from "@/components/templates/admin/admin-coupons-template";
-import { mockCoupons } from "@/data/coupons";
-import type { Coupon, CouponFormValues } from "@/types/coupon";
+import { useAdminCoupons } from "@/hooks/admin/use-admin-coupons";
+import { createAdminCouponsFetcher } from "@/hooks/admin/use-admin-entity-fetchers";
+import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
+import type { CouponItem } from "@/types/coupons";
 
 export const Route = createFileRoute("/(admin)/admin/coupons/")({
   component: AdminCouponsPage,
+  pendingComponent: PageSkeleton,
 });
 
 function AdminCouponsPage() {
-  const [coupons, setCoupons] = useState<Coupon[]>(mockCoupons);
+  const fetcher = createAdminCouponsFetcher();
 
-  const handleCouponStatusChange = (
-    couponId: string,
-    newStatus: "active" | "expired" | "inactive"
-  ) => {
-    setCoupons(
-      coupons.map((coupon) =>
-        coupon.id === couponId ? { ...coupon, status: newStatus } : coupon
-      )
-    );
-  };
+  const { toggleActive, deleteCoupon, mutationState, isCouponMutating } =
+    useAdminCoupons();
 
-  const handleAddCoupon = (data: CouponFormValues) => {
-    const newCoupon: Coupon = {
-      id: Date.now().toString(),
-      image: data.image
-        ? URL.createObjectURL(data.image[0])
-        : `https://placehold.co/100?text=${data.code}`,
-      code: data.code,
-      description: data.description,
-      type: data.type,
-      discountAmount: data.discountAmount,
-      minimumCartAmount: data.minimumCartAmount,
-      activeFrom: data.activeFrom,
-      activeTo: data.activeTo,
-      status: data.status,
-      usageLimit: data.usageLimit,
-      usageCount: 0,
-    };
-    setCoupons([...coupons, newCoupon]);
+  const {
+    deletingItem: deletingCoupon,
+    setDeletingItem: setDeletingCoupon,
+    handleDelete: handleDeleteCoupon,
+    confirmDelete,
+  } = useEntityCRUD<CouponItem>({
+    onDelete: async (id) => {
+      await deleteCoupon(id);
+    },
+  });
+
+  const handleToggleStatus = async (coupon: CouponItem) => {
+    await toggleActive({ id: coupon.id, isActive: !coupon.isActive });
   };
 
   return (
-    <AdminCouponsTemplate
-      coupons={coupons}
-      onCouponStatusChange={handleCouponStatusChange}
-      onAddCoupon={handleAddCoupon}
-    />
+    <>
+      <AdminCouponsTemplate
+        fetcher={fetcher}
+        onDeleteCoupon={handleDeleteCoupon}
+        onToggleStatus={handleToggleStatus}
+        mutationState={mutationState}
+        isCouponMutating={isCouponMutating}
+      />
+
+      <ConfirmDeleteDialog
+        open={!!deletingCoupon}
+        onOpenChange={(open) => !open && setDeletingCoupon(null)}
+        onConfirm={confirmDelete}
+        isDeleting={mutationState.deletingId === deletingCoupon?.id}
+        itemName={deletingCoupon?.code}
+        entityType="coupon"
+      />
+    </>
   );
 }

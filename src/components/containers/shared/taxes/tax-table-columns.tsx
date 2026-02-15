@@ -27,7 +27,7 @@ export interface TaxMutationState {
 }
 
 export interface TaxColumnConfig {
-  mode: "vendor" | "customer";
+  mode: "vendor" | "customer" | "admin";
   actions: TaxTableActions;
   mutationState?: TaxMutationState;
   isMutating?: (id: string) => boolean;
@@ -158,23 +158,24 @@ export const createTaxTableColumns = ({
                   </DropdownMenuItem>
                 )}
 
-                {mode === "vendor" && actions.onToggleActive && (
-                  <DropdownMenuItem
-                    onClick={() => actions.onToggleActive!(row.original)}
-                    disabled={isToggling}
-                  >
-                    {isToggling ? (
-                      <span className="flex items-center gap-2">
-                        <Loader2 className="h-3 w-3 animate-spin" />
-                        Updating...
-                      </span>
-                    ) : row.original.isActive ? (
-                      "Deactivate"
-                    ) : (
-                      "Activate"
-                    )}
-                  </DropdownMenuItem>
-                )}
+                {(mode === "vendor" || mode === "admin") &&
+                  actions.onToggleActive && (
+                    <DropdownMenuItem
+                      onClick={() => actions.onToggleActive!(row.original)}
+                      disabled={isToggling}
+                    >
+                      {isToggling ? (
+                        <span className="flex items-center gap-2">
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                          Updating...
+                        </span>
+                      ) : row.original.isActive ? (
+                        "Deactivate"
+                      ) : (
+                        "Activate"
+                      )}
+                    </DropdownMenuItem>
+                  )}
 
                 {actions.onDelete && (
                   <>

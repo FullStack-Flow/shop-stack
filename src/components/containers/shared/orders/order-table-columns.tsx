@@ -33,6 +33,10 @@ export interface OrderColumnConfig {
   isOrderMutating?: (id: string) => boolean;
 }
 
+export interface AdminOrderColumnConfig {
+  isOrderMutating?: (id: string) => boolean;
+}
+
 // ============================================================================
 // Constants
 // ============================================================================
@@ -288,6 +292,221 @@ export const createOrderColumns = ({
                   <Link
                     to="/shop/$slug/orders/$orderId"
                     params={{ slug: shopSlug, orderId: order.id }}
+                  >
+                    <Eye className="mr-2 h-4 w-4" />
+                    View Details
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        );
+      },
+      enableSorting: false,
+    },
+  ];
+};
+
+/**
+ * Shared column definitions for admin order tables
+ */
+export const createAdminOrderColumns = ({
+  isOrderMutating,
+}: AdminOrderColumnConfig): ColumnDef<VendorOrderResponse>[] => {
+  return [
+    {
+      accessorKey: "orderNumber",
+      header: "Order",
+      cell: ({ row }) => (
+        <div className="font-mono text-sm font-medium">
+          {row.getValue("orderNumber")}
+        </div>
+      ),
+      enableSorting: true,
+    },
+    {
+      accessorKey: "shopName",
+      header: "Shop",
+      cell: ({ row }) => (
+        <div className="font-medium">{row.getValue("shopName")}</div>
+      ),
+      enableSorting: true,
+    },
+    {
+      accessorKey: "customer",
+      header: "Customer",
+      cell: ({ row }) => {
+        const customer = row.original.customer ?? {
+          name: null,
+          email: null,
+        };
+        return (
+          <div>
+            <div className="font-medium">{customer.name ?? "Guest"}</div>
+            <div className="text-muted-foreground text-xs">
+              {customer.email ?? "No email"}
+            </div>
+          </div>
+        );
+      },
+      enableSorting: false,
+    },
+    {
+      accessorKey: "itemCount",
+      header: "Items",
+      cell: ({ row }) => (
+        <div className="text-center">{row.getValue("itemCount")}</div>
+      ),
+      enableSorting: true,
+    },
+    {
+      accessorKey: "totalAmount",
+      header: "Total",
+      cell: ({ row }) => {
+        const amount = row.getValue("totalAmount") as number;
+        return <div className="font-medium">{formatCurrency(amount)}</div>;
+      },
+      enableSorting: true,
+    },
+    {
+      accessorKey: "status",
+      header: "Status",
+      cell: ({ row }) => {
+        const status = row.getValue("status") as string;
+
+        const statusConfig: Record<
+          string,
+          {
+            variant: "default" | "secondary" | "outline" | "destructive";
+            className: string;
+            label: string;
+          }
+        > = {
+          pending: { variant: "secondary", className: "", label: "Pending" },
+          confirmed: {
+            variant: "secondary",
+            className: "",
+            label: "Confirmed",
+          },
+          processing: {
+            variant: "outline",
+            className: "",
+            label: "Processing",
+          },
+          shipped: { variant: "outline", className: "", label: "Shipped" },
+          delivered: {
+            variant: "default",
+            className: "bg-green-500",
+            label: "Delivered",
+          },
+          cancelled: {
+            variant: "destructive",
+            className: "",
+            label: "Cancelled",
+          },
+          refunded: {
+            variant: "destructive",
+            className: "",
+            label: "Refunded",
+          },
+        };
+
+        const config = statusConfig[status] || {
+          variant: "outline" as const,
+          className: "",
+          label: status,
+        };
+
+        return (
+          <Badge variant={config.variant} className={config.className}>
+            {config.label}
+          </Badge>
+        );
+      },
+      enableSorting: true,
+    },
+    {
+      accessorKey: "paymentStatus",
+      header: "Payment",
+      cell: ({ row }) => {
+        const status = row.getValue("paymentStatus") as string;
+
+        const paymentConfig: Record<
+          string,
+          {
+            variant: "default" | "secondary" | "outline" | "destructive";
+            className: string;
+            label: string;
+          }
+        > = {
+          paid: {
+            variant: "default",
+            className: "bg-green-500",
+            label: "Paid",
+          },
+          unpaid: { variant: "secondary", className: "", label: "Unpaid" },
+          refunded: { variant: "outline", className: "", label: "Refunded" },
+        };
+
+        const config = paymentConfig[status] || {
+          variant: "outline" as const,
+          className: "",
+          label: status,
+        };
+
+        return (
+          <Badge variant={config.variant} className={config.className}>
+            {config.label}
+          </Badge>
+        );
+      },
+      enableSorting: true,
+    },
+    {
+      accessorKey: "createdAt",
+      header: "Date",
+      cell: ({ row }) => {
+        const date = row.getValue("createdAt") as string;
+        return (
+          <div className="text-muted-foreground">
+            {new Date(date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+          </div>
+        );
+      },
+      enableSorting: true,
+    },
+    {
+      id: "actions",
+      header: () => <div className="text-right">Actions</div>,
+      cell: ({ row }) => {
+        const order = row.original;
+        const isMutating = isOrderMutating?.(order.id) ?? false;
+
+        return (
+          <div className="flex justify-end">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild disabled={isMutating}>
+                <Button
+                  variant="ghost"
+                  className="h-8 w-8 p-0"
+                  disabled={isMutating}
+                >
+                  <span className="sr-only">Open menu</span>
+                  <MoreHorizontal className="size-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuItem asChild>
+                  <Link
+                    to="/admin/orders/$orderId"
+                    params={{ orderId: order.id }}
                   >
                     <Eye className="mr-2 h-4 w-4" />
                     View Details

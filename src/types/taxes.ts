@@ -4,6 +4,9 @@
  * Type definitions for tax rates in the marketplace.
  */
 
+import type { SQL } from "drizzle-orm";
+import type { PaginatedResponse } from "./api-response";
+
 export interface TaxRateItem {
   id: string;
   shopId: string;
@@ -60,3 +63,39 @@ export interface TaxRateMutationState {
   togglingId: string | null;
   isAnyMutating: boolean;
 }
+
+/**
+ * Tax Rate Query Options
+ */
+export interface TaxRateQueryOptions {
+  baseConditions?: SQL[];
+  limit?: number;
+  offset?: number;
+  sortBy?: "name" | "rate" | "priority" | "createdAt";
+  sortDirection?: "asc" | "desc";
+  search?: string;
+  isActive?: boolean;
+  country?: string;
+  includeShopInfo?: boolean;
+}
+
+/**
+ * Tax Rate Query Result
+ */
+export interface TaxRateQueryResult {
+  data: NormalizedTaxRate[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export interface NormalizedTaxRate extends TaxRateItem {
+  shopName?: string | null;
+  shopSlug?: string | null;
+  productCount: number;
+}
+
+/**
+ * Shared tax rate list response type
+ */
+export type TaxRateListResponse = PaginatedResponse<NormalizedTaxRate>;
