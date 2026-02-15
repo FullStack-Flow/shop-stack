@@ -2,6 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { and, eq } from "drizzle-orm";
 import { db } from "../db";
 import { shops, vendors } from "../db/schema/shop-schema";
+import { getProductCountsForShops } from "../helper/shop-helper";
 import { getVendorForUser, isUserAdmin } from "../helper/vendor";
 import { authMiddleware } from "../middleware/auth";
 import { generateSlug } from "../utils/slug";
@@ -12,11 +13,26 @@ import {
   updateShopSchema,
 } from "../validators/shop";
 
-// TODO: Implement Helper Functions
 async function getShopStates(shopIds: string[]) {
   if (shopIds.length === 0) return new Map();
 
-  // const productCountMap = await getProductCountsForShops(shopIds);
+  const productCountMap = await getProductCountsForShops(shopIds);
+
+  // Build state map with product counts
+  const stateMap = new Map<
+    string,
+    { productCount: number; orderCount: number; revenue: number }
+  >();
+
+  for (const shopId of shopIds) {
+    stateMap.set(shopId, {
+      productCount: productCountMap.get(shopId) ?? 0,
+      orderCount: 0,
+      revenue: 0,
+    });
+  }
+
+  return stateMap;
 }
 
 // ============================================================================
@@ -38,7 +54,7 @@ export const getVendorShops = createServerFn({ method: "GET" })
     } else {
       if (!vendor) {
         throw new Error(
-          "Vendor Profile not found. Please complete vendor registration."
+          "Vendor Profile not found. Please complete vendor registration.",
         );
       }
 
@@ -147,7 +163,7 @@ export const createShop = createServerFn({ method: "POST" })
 
     if (!vendor) {
       throw new Error(
-        "Vendor profile not found. Please complete vendor registration."
+        "Vendor profile not found. Please complete vendor registration.",
       );
     }
 
@@ -169,7 +185,7 @@ export const createShop = createServerFn({ method: "POST" })
 
     if (existingShop) {
       throw new Error(
-        "A shop with this slug already exists. Please choose a different name or slug."
+        "A shop with this slug already exists. Please choose a different name or slug.",
       );
     }
 

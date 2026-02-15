@@ -1,21 +1,10 @@
-/**
- * Attribute Server Functions
- *
- * Server functions for attribute management in the vendor dashboard.
- * Uses TanStack Start's createServerFn with Zod validation.
- *
- * Performance Optimizations:
- * - Uses batch queries with inArray to eliminate N+1 queries for product counts
- * - Uses Promise.all for parallel database operations
- * - Computes productCount dynamically from productAttributes table for accuracy
- */
-
 import { createServerFn } from "@tanstack/react-start";
-import { and, eq } from "drizzle-orm";
+import { and, count, eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import { z as zod } from "zod";
 import { db } from "@/lib/db";
 import { attributes, attributeValues } from "@/lib/db/schema/attribute-schema";
+import { productAttributes } from "@/lib/db/schema/products-schema";
 import {
   executeAttributeQuery,
   fetchAttributeWithRelations,
@@ -305,17 +294,23 @@ export const deleteAttribute = createServerFn({ method: "POST" })
     // Verify shop access (vendor ownership or admin)
     await requireShopAccess(userId, shopId);
 
-    // OPTIMIZATION: Parallel fetch - attribute exists and actual product count
-    const existingAttribute = await db.query.brands.findFirst({
-      where: and(eq(attributes.id, id), eq(attributes.shopId, shopId)),
-    });
+    // Check attribute exists and get actual product count in parallel
+    const [existingAttribute, productCountResult] = await Promise.all([
+      db.query.attributes.findFirst({
+        where: and(eq(attributes.id, id), eq(attributes.shopId, shopId)),
+      }),
+      db
+        .select({ count: count() })
+        .from(productAttributes)
+        .where(eq(productAttributes.attributeId, id)),
+    ]);
 
     if (!existingAttribute) {
       throw new Error("Attribute not found.");
     }
 
     // Check actual product count from productAttributes table
-    const actualProductCount = existingAttribute.productCount ?? 0;
+    const actualProductCount = productCountResult[0]?.count ?? 0;
     if (actualProductCount > 0) {
       throw new Error(
         "Cannot delete an attribute that is assigned to products. Please remove it from products first.",

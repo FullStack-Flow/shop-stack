@@ -18,6 +18,7 @@ import type {
 } from "@/types/category-types";
 import { db } from "../db";
 import { categories } from "../db/schema/category-schema";
+import { products } from "../db/schema/products-schema";
 import { shops } from "../db/schema/shop-schema";
 
 /**
@@ -91,17 +92,18 @@ export async function batchFetchCategoryRelations(
   ] as string[];
   const shopIds = [...new Set(categoryList.map((c) => c.shopId))];
 
-  const parentRecords =
+  const [parentRecords, shopRecords, productCountRecords] = await Promise.all([
+    // Fetch parent names
     parentIds.length > 0
-      ? await db
+      ? db
           .select({ id: categories.id, name: categories.name })
           .from(categories)
           .where(inArray(categories.id, parentIds))
-      : [];
+      : Promise.resolve([]),
 
-  const shopRecords =
+    // Fetch shop info
     options.includeShopInfo && shopIds.length > 0
-      ? await db
+      ? db
           .select({
             id: shops.id,
             name: shops.name,
@@ -109,9 +111,25 @@ export async function batchFetchCategoryRelations(
           })
           .from(shops)
           .where(inArray(shops.id, shopIds))
-      : [];
+      : Promise.resolve([]),
+
+    // Count products per category
+    db
+      .select({
+        categoryId: products.categoryId,
+        count: count(),
+      })
+      .from(products)
+      .where(inArray(products.categoryId, categoryIds))
+      .groupBy(products.categoryId),
+  ]);
 
   const productCountsMap = new Map<string, number>();
+  for (const record of productCountRecords) {
+    if (record.categoryId) {
+      productCountsMap.set(record.categoryId, record.count);
+    }
+  }
 
   const parentNamesMap = new Map<string, string>();
   for (const parent of parentRecords) {
