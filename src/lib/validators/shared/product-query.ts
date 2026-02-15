@@ -153,7 +153,10 @@ export const adminProductsQuerySchema = z.object({
   limit: paginationFields.limit.default(ADMIN_DEFAULT_LIMIT),
   ...sortFields,
   ...searchFields,
-  ...productFilterFields,
+  ...productBaseFilterFields,
+  ...stockFilterFields,
+  ...statusFilterFields,
+  ...attributeFilterFields,
   ...optionalShopIdField,
   ...optionalVendorIdField,
 });
@@ -521,6 +524,16 @@ export const createProductSchema = z.object({
   ...productFlagFieldsCreate,
   ...productSeoFieldsCreate,
   ...productRelationArraysCreate,
+});
+
+export const updateProductStatusSchema = z.object({
+  id: z.string().min(1, "Product ID is required"),
+  status: productStatusEnum,
+});
+
+export const toggleProductFeaturedSchema = z.object({
+  id: z.string().min(1, "Product ID is required"),
+  isFeatured: z.boolean(),
 });
 
 /**

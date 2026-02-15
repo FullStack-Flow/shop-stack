@@ -7,6 +7,7 @@ import { getAdminBrands } from "@/lib/functions/admin/brand";
 import { getAdminCategories } from "@/lib/functions/admin/category";
 import { getAdminCoupons } from "@/lib/functions/admin/coupon";
 import { getAdminOrders } from "@/lib/functions/admin/order";
+import { getAdminProducts } from "@/lib/functions/admin/product";
 import {
   booleanFilterTransform,
   createServerFetcher,
@@ -16,6 +17,7 @@ import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
 import type { CouponItem } from "@/types/coupons";
 import type { VendorOrderResponse } from "@/types/orders";
+import type { ProductItem } from "@/types/products";
 
 export const ADMIN_STATUS_OPTIONS = [
   { label: "Active", value: "true" },
@@ -112,5 +114,35 @@ export function createAdminOrdersFetcher(): (
     },
     filterFieldMap: { status: "status", paymentStatus: "paymentStatus" },
     defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
+  });
+}
+
+export function createAdminProductsFetcher(): (
+  params: DataTableFetchParams,
+) => Promise<DataTableFetchResult<ProductItem>> {
+  return createServerFetcher<ProductItem, any>({
+    fetchFn: async (query) => {
+      const response = await getAdminProducts({ data: query });
+      return { data: response.data ?? [], total: response.total ?? 0 };
+    },
+    sortFieldMap: {
+      name: "name",
+      sellingPrice: "sellingPrice",
+      stock: "stock",
+      createdAt: "createdAt",
+      averageRating: "averageRating",
+      reviewCount: "reviewCount",
+    },
+    filterFieldMap: {
+      isActive: "isActive",
+      status: "status",
+      productType: "productType",
+      categoryId: "categoryId",
+      brandId: "brandId",
+      isFeatured: "isFeatured",
+      inStock: "inStock",
+    },
+    defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
+    transformFilters: booleanFilterTransform,
   });
 }
