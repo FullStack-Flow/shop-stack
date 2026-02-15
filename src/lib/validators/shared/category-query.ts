@@ -1,10 +1,13 @@
 import z from "zod";
 import {
+  ADMIN_DEFAULT_LIMIT,
   createDeleteSchema,
   createGetByIdSchema,
   createGetBySlugSchema,
+  createToggleActiveSchema,
   isActiveField,
   optionalShopIdField,
+  optionalVendorIdField,
   paginationFields,
   STORE_DEFAULT_LIMIT,
   searchFields,
@@ -154,6 +157,29 @@ export const storeCategoriesQuerySchema = z.object({
   ...optionalShopIdField,
 });
 
+/**
+ * Admin Query Schema
+ * - Admin auth required
+ * - Full filter access
+ * - Can see all categories across all shops
+ */
+export const adminCategoriesQuerySchema = z.object({
+  ...paginationFields,
+  limit: paginationFields.limit.default(ADMIN_DEFAULT_LIMIT),
+  ...sortFields,
+  ...searchFields,
+  ...categoryFilterFields,
+  ...optionalShopIdField,
+  ...optionalVendorIdField,
+});
+
+export const toggleCategoryActiveSchema = createToggleActiveSchema("Category");
+
+export const toggleCategoryFeaturedSchema = z.object({
+  id: z.string().min(1, "Category ID is required"),
+  featured: z.boolean(),
+});
+
 // ============================================================================
 // Type Exports
 // ============================================================================
@@ -164,3 +190,10 @@ export type Category = z.infer<typeof categorySchema>;
 export type CreateCategoryInput = z.infer<typeof createCategorySchema>;
 export type UpdateCategoryInput = z.infer<typeof updateCategorySchema>;
 export type StoreCategoriesQuery = z.infer<typeof storeCategoriesQuerySchema>;
+export type AdminCategoriesQuery = z.infer<typeof adminCategoriesQuerySchema>;
+export type ToggleCategoryActiveInput = z.infer<
+  typeof toggleCategoryActiveSchema
+>;
+export type ToggleCategoryFeaturedInput = z.infer<
+  typeof toggleCategoryFeaturedSchema
+>;

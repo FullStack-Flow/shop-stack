@@ -1,39 +1,44 @@
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
 import CategoryHeader from "@/components/containers/shared/categories/category-header";
 import { AdminCategoryTable } from "@/components/containers/shared/categories/category-table";
-import type {
-  CategoryFormValues,
-  NormalizedCategory,
-} from "@/types/category-types";
+import type { AdminCategoryMutationState } from "@/hooks/admin/use-admin-categories";
+import type { NormalizedCategory } from "@/types/category-types";
 
 interface AdminCategoriesTemplateProps {
-  categories: NormalizedCategory[];
-  onCategoryStatusChange: (categoryId: string, newStatus: boolean) => void;
-  onAddCategory: (category: CategoryFormValues) => void;
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<NormalizedCategory>>;
   onEditCategory?: (category: NormalizedCategory) => void;
   onDeleteCategory?: (category: NormalizedCategory) => void;
+  onToggleActive?: (category: NormalizedCategory) => void;
   onToggleFeatured?: (category: NormalizedCategory) => void;
-  onOpenAddDialog?: () => void;
+  mutationState?: AdminCategoryMutationState;
+  isCategoryMutating?: (id: string) => boolean;
 }
 
 export default function AdminCategoriesTemplate({
-  categories,
-  onCategoryStatusChange,
+  fetcher,
   onEditCategory,
   onDeleteCategory,
+  onToggleActive,
   onToggleFeatured,
-  onOpenAddDialog,
+  mutationState,
+  isCategoryMutating,
 }: AdminCategoriesTemplateProps) {
   return (
     <div className="space-y-6">
-      <CategoryHeader onAdd={onOpenAddDialog} role="admin" />
+      <CategoryHeader role="admin" />
       <AdminCategoryTable
-        categories={categories}
-        onToggleActive={(category) =>
-          onCategoryStatusChange(category.id, !category.isActive)
-        }
+        fetcher={fetcher}
         onEdit={onEditCategory}
         onDelete={onDeleteCategory}
+        onToggleActive={onToggleActive}
         onToggleFeatured={onToggleFeatured}
+        mutationState={mutationState}
+        isCategoryMutating={isCategoryMutating}
       />
     </div>
   );
