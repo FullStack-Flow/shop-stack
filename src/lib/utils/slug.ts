@@ -28,7 +28,7 @@ export function generateSlug(
     suffixLength?: number;
     /** Custom suffix instead of random (optional) */
     customSuffix?: string;
-  } = {}
+  } = {},
 ): string {
   const {
     separator = "-",

@@ -58,6 +58,7 @@ import { Route as vendorShopSlugStaffRouteImport } from './routes/(vendor)/shop/
 import { Route as vendorShopSlugShippingRouteImport } from './routes/(vendor)/shop/$slug/shipping'
 import { Route as vendorShopSlugSettingsRouteImport } from './routes/(vendor)/shop/$slug/settings'
 import { Route as vendorShopSlugReviewsRouteImport } from './routes/(vendor)/shop/$slug/reviews'
+import { Route as vendorShopSlugNotificationsRouteImport } from './routes/(vendor)/shop/$slug/notifications'
 import { Route as vendorShopSlugCouponsRouteImport } from './routes/(vendor)/shop/$slug/coupons'
 import { Route as vendorShopSlugCategoriesRouteImport } from './routes/(vendor)/shop/$slug/categories'
 import { Route as vendorShopSlugBrandsRouteImport } from './routes/(vendor)/shop/$slug/brands'
@@ -321,6 +322,12 @@ const vendorShopSlugReviewsRoute = vendorShopSlugReviewsRouteImport.update({
   path: '/reviews',
   getParentRoute: () => vendorShopSlugRoute,
 } as any)
+const vendorShopSlugNotificationsRoute =
+  vendorShopSlugNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => vendorShopSlugRoute,
+  } as any)
 const vendorShopSlugCouponsRoute = vendorShopSlugCouponsRouteImport.update({
   id: '/coupons',
   path: '/coupons',
@@ -421,6 +428,7 @@ export interface FileRoutesByFullPath {
   '/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
   '/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
   '/shop/$slug/coupons': typeof vendorShopSlugCouponsRoute
+  '/shop/$slug/notifications': typeof vendorShopSlugNotificationsRoute
   '/shop/$slug/reviews': typeof vendorShopSlugReviewsRoute
   '/shop/$slug/settings': typeof vendorShopSlugSettingsRoute
   '/shop/$slug/shipping': typeof vendorShopSlugShippingRoute
@@ -480,6 +488,7 @@ export interface FileRoutesByTo {
   '/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
   '/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
   '/shop/$slug/coupons': typeof vendorShopSlugCouponsRoute
+  '/shop/$slug/notifications': typeof vendorShopSlugNotificationsRoute
   '/shop/$slug/reviews': typeof vendorShopSlugReviewsRoute
   '/shop/$slug/settings': typeof vendorShopSlugSettingsRoute
   '/shop/$slug/shipping': typeof vendorShopSlugShippingRoute
@@ -544,6 +553,7 @@ export interface FileRoutesById {
   '/(vendor)/shop/$slug/brands': typeof vendorShopSlugBrandsRoute
   '/(vendor)/shop/$slug/categories': typeof vendorShopSlugCategoriesRoute
   '/(vendor)/shop/$slug/coupons': typeof vendorShopSlugCouponsRoute
+  '/(vendor)/shop/$slug/notifications': typeof vendorShopSlugNotificationsRoute
   '/(vendor)/shop/$slug/reviews': typeof vendorShopSlugReviewsRoute
   '/(vendor)/shop/$slug/settings': typeof vendorShopSlugSettingsRoute
   '/(vendor)/shop/$slug/shipping': typeof vendorShopSlugShippingRoute
@@ -607,6 +617,7 @@ export interface FileRouteTypes {
     | '/shop/$slug/brands'
     | '/shop/$slug/categories'
     | '/shop/$slug/coupons'
+    | '/shop/$slug/notifications'
     | '/shop/$slug/reviews'
     | '/shop/$slug/settings'
     | '/shop/$slug/shipping'
@@ -666,6 +677,7 @@ export interface FileRouteTypes {
     | '/shop/$slug/brands'
     | '/shop/$slug/categories'
     | '/shop/$slug/coupons'
+    | '/shop/$slug/notifications'
     | '/shop/$slug/reviews'
     | '/shop/$slug/settings'
     | '/shop/$slug/shipping'
@@ -729,6 +741,7 @@ export interface FileRouteTypes {
     | '/(vendor)/shop/$slug/brands'
     | '/(vendor)/shop/$slug/categories'
     | '/(vendor)/shop/$slug/coupons'
+    | '/(vendor)/shop/$slug/notifications'
     | '/(vendor)/shop/$slug/reviews'
     | '/(vendor)/shop/$slug/settings'
     | '/(vendor)/shop/$slug/shipping'
@@ -1117,6 +1130,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof vendorShopSlugReviewsRouteImport
       parentRoute: typeof vendorShopSlugRoute
     }
+    '/(vendor)/shop/$slug/notifications': {
+      id: '/(vendor)/shop/$slug/notifications'
+      path: '/notifications'
+      fullPath: '/shop/$slug/notifications'
+      preLoaderRoute: typeof vendorShopSlugNotificationsRouteImport
+      parentRoute: typeof vendorShopSlugRoute
+    }
     '/(vendor)/shop/$slug/coupons': {
       id: '/(vendor)/shop/$slug/coupons'
       path: '/coupons'
@@ -1311,6 +1331,7 @@ interface vendorShopSlugRouteChildren {
   vendorShopSlugBrandsRoute: typeof vendorShopSlugBrandsRoute
   vendorShopSlugCategoriesRoute: typeof vendorShopSlugCategoriesRoute
   vendorShopSlugCouponsRoute: typeof vendorShopSlugCouponsRoute
+  vendorShopSlugNotificationsRoute: typeof vendorShopSlugNotificationsRoute
   vendorShopSlugReviewsRoute: typeof vendorShopSlugReviewsRoute
   vendorShopSlugSettingsRoute: typeof vendorShopSlugSettingsRoute
   vendorShopSlugShippingRoute: typeof vendorShopSlugShippingRoute
@@ -1329,6 +1350,7 @@ const vendorShopSlugRouteChildren: vendorShopSlugRouteChildren = {
   vendorShopSlugBrandsRoute: vendorShopSlugBrandsRoute,
   vendorShopSlugCategoriesRoute: vendorShopSlugCategoriesRoute,
   vendorShopSlugCouponsRoute: vendorShopSlugCouponsRoute,
+  vendorShopSlugNotificationsRoute: vendorShopSlugNotificationsRoute,
   vendorShopSlugReviewsRoute: vendorShopSlugReviewsRoute,
   vendorShopSlugSettingsRoute: vendorShopSlugSettingsRoute,
   vendorShopSlugShippingRoute: vendorShopSlugShippingRoute,
