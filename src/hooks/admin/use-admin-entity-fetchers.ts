@@ -6,6 +6,7 @@ import { getAdminAttributes } from "@/lib/functions/admin/attribute";
 import { getAdminBrands } from "@/lib/functions/admin/brand";
 import { getAdminCategories } from "@/lib/functions/admin/category";
 import { getAdminCoupons } from "@/lib/functions/admin/coupon";
+import { getAdminOrders } from "@/lib/functions/admin/order";
 import {
   booleanFilterTransform,
   createServerFetcher,
@@ -14,6 +15,7 @@ import type { AttributeItem } from "@/types/attributes";
 import type { BrandItem } from "@/types/brands";
 import type { NormalizedCategory } from "@/types/category-types";
 import type { CouponItem } from "@/types/coupons";
+import type { VendorOrderResponse } from "@/types/orders";
 
 export const ADMIN_STATUS_OPTIONS = [
   { label: "Active", value: "true" },
@@ -89,5 +91,26 @@ export function createAdminCouponsFetcher(): (
     },
     defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
     transformFilters: booleanFilterTransform,
+  });
+}
+
+export function createAdminOrdersFetcher(): (
+  params: DataTableFetchParams,
+) => Promise<DataTableFetchResult<VendorOrderResponse>> {
+  return createServerFetcher<VendorOrderResponse, any>({
+    fetchFn: async (query) => {
+      const response = await getAdminOrders({ data: query });
+      return {
+        data: (response.orders ?? []) as unknown as VendorOrderResponse[],
+        total: response.total ?? 0,
+      };
+    },
+    sortFieldMap: {
+      createdAt: "createdAt",
+      orderNumber: "orderNumber",
+      totalAmount: "totalAmount",
+    },
+    filterFieldMap: { status: "status", paymentStatus: "paymentStatus" },
+    defaultQuery: { sortBy: "createdAt", sortDirection: "desc" },
   });
 }
