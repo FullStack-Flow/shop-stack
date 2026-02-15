@@ -1,6 +1,13 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { Eye, MoreHorizontal } from "lucide-react";
+import { useMemo } from "react";
 import DataTable from "@/components/base/data-table/data-table";
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+  FilterableColumn,
+} from "@/components/base/data-table/types";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,121 +17,161 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import type { Transaction } from "@/types/transaction";
-
-const columns: ColumnDef<Transaction>[] = [
-  {
-    accessorKey: "id",
-    header: "ID",
-    cell: ({ row }) => (
-      <div className="w-20 truncate text-muted-foreground text-xs">
-        {row.getValue("id")}
-      </div>
-    ),
-  },
-  {
-    accessorKey: "trackingNumber",
-    header: "Tracking Number",
-    cell: ({ row }) => (
-      <div className="font-mono text-sm">{row.getValue("trackingNumber")}</div>
-    ),
-  },
-  {
-    accessorKey: "totalPrice",
-    header: "Total",
-    cell: ({ row }) => (
-      <div className="font-medium">{row.getValue("totalPrice")}</div>
-    ),
-  },
-  {
-    accessorKey: "paymentGateway",
-    header: "Payment Method",
-    cell: ({ row }) => (
-      <div className="text-sm">{row.getValue("paymentGateway")}</div>
-    ),
-  },
-  {
-    accessorKey: "paymentStatus",
-    header: "Status",
-    cell: ({ row }) => {
-      const status = row.getValue("paymentStatus") as string;
-      const statusColors = {
-        paid: "bg-green-100 text-green-800",
-        pending: "bg-yellow-100 text-yellow-800",
-        failed: "bg-red-100 text-red-800",
-        refunded: "bg-gray-100 text-gray-800",
-      };
-      return (
-        <div className="text-sm">
-          <span
-            className={`inline-flex items-center rounded-md px-2 py-1 font-medium text-xs ${statusColors[status as keyof typeof statusColors]}`}
-          >
-            {status}
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "date",
-    header: "Date",
-    cell: ({ row }) => {
-      const date = new Date(row.getValue("date"));
-      return <div className="text-sm">{date.toLocaleDateString()}</div>;
-    },
-  },
-  {
-    id: "actions",
-    header: "Actions",
-    cell: ({ row }) => {
-      const transaction = row.original;
-
-      return (
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="h-8 w-8 p-0">
-                    <span className="sr-only">Open menu</span>
-                    <MoreHorizontal className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    onClick={() =>
-                      navigator.clipboard.writeText(transaction.trackingNumber)
-                    }
-                  >
-                    Copy Tracking Number
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>View Details</DropdownMenuItem>
-                  <DropdownMenuItem>Refund</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>More options</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      );
-    },
-  },
-];
+import { formatCurrency } from "@/lib/utils";
+import type { AdminTransactionResponse } from "@/types/transaction";
 
 interface AdminTransactionsTableProps {
-  data: Transaction[];
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<AdminTransactionResponse>>;
+  className?: string;
 }
 
-export function AdminTransactionsTable({ data }: AdminTransactionsTableProps) {
-  return <DataTable columns={columns} data={data} />;
+const statusOptions = [
+  { label: "Pending", value: "pending" },
+  { label: "Processing", value: "processing" },
+  { label: "Succeeded", value: "succeeded" },
+  { label: "Failed", value: "failed" },
+  { label: "Refunded", value: "refunded" },
+];
+
+export function AdminTransactionsTable({
+  fetcher,
+  className,
+}: AdminTransactionsTableProps) {
+  const columns = useMemo<ColumnDef<AdminTransactionResponse>[]>(() => {
+    return [
+      {
+        accessorKey: "orderNumber",
+        header: "Order",
+        cell: ({ row }) => (
+          <div className="font-mono text-sm font-medium">
+            {row.getValue("orderNumber")}
+          </div>
+        ),
+      },
+      {
+        accessorKey: "shop",
+        header: "Shop",
+        cell: ({ row }) => (
+          <div>
+            <div className="font-medium">{row.original.shop.name}</div>
+            <div className="text-muted-foreground text-xs">
+              {row.original.shop.slug}
+            </div>
+          </div>
+        ),
+      },
+      {
+        accessorKey: "customer",
+        header: "Customer",
+        cell: ({ row }) => {
+          const customer = row.original.customer;
+          return (
+            <div>
+              <div className="font-medium">{customer.name ?? "Guest"}</div>
+              <div className="text-muted-foreground text-xs">
+                {customer.email}
+              </div>
+            </div>
+          );
+        },
+      },
+      {
+        accessorKey: "amount",
+        header: "Amount",
+        cell: ({ row }) => (
+          <div className="font-medium">
+            {formatCurrency(row.original.amount)}
+          </div>
+        ),
+      },
+      {
+        accessorKey: "status",
+        header: "Status",
+        cell: ({ row }) => (
+          <Badge variant="outline" className="capitalize">
+            {row.original.status}
+          </Badge>
+        ),
+      },
+      {
+        accessorKey: "createdAt",
+        header: "Date",
+        cell: ({ row }) => (
+          <div className="text-sm">
+            {new Date(row.original.createdAt).toLocaleDateString()}
+          </div>
+        ),
+      },
+      {
+        id: "actions",
+        header: "Actions",
+        cell: ({ row }) => {
+          const transaction = row.original;
+          return (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => navigator.clipboard.writeText(transaction.id)}
+                >
+                  Copy Transaction ID
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigator.clipboard.writeText(transaction.orderNumber)
+                  }
+                >
+                  Copy Order Number
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <span className="flex items-center gap-2">
+                    <Eye className="size-4" />
+                    View Details
+                  </span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          );
+        },
+        enableSorting: false,
+      },
+    ];
+  }, []);
+
+  const filterableColumns = useMemo<
+    FilterableColumn<AdminTransactionResponse>[]
+  >(
+    () => [
+      {
+        id: "status",
+        label: "Status",
+        type: "select",
+        options: statusOptions,
+        placeholder: "Filter by status",
+      },
+    ],
+    [],
+  );
+
+  return (
+    <DataTable
+      columns={columns}
+      server={{ fetcher }}
+      context="admin"
+      initialPageSize={10}
+      filterableColumns={filterableColumns}
+      globalFilterPlaceholder="Search transactions..."
+      className={className}
+    />
+  );
 }

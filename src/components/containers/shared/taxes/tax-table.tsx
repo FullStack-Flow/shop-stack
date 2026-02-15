@@ -21,7 +21,7 @@ interface TaxTableProps {
   isMutating?: (id: string) => boolean;
   mutationState?: TaxMutationState;
   className?: string;
-  mode?: "vendor" | "customer";
+  mode?: "vendor" | "customer" | "admin";
 }
 
 export function TaxTable({
@@ -49,11 +49,12 @@ export function TaxTable({
   }, [mode, onDelete, onEdit, onToggleActive, mutationState, isMutating]);
 
   if (fetcher) {
+    const context = mode === "admin" ? "admin" : "shop";
     return (
       <DataTable
         columns={columns}
         server={{ fetcher }}
-        context="shop"
+        context={context}
         initialPageSize={10}
         globalFilterPlaceholder="Search tax rates..."
         className={className}
