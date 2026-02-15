@@ -86,3 +86,36 @@ export interface CheckoutSessionData {
   clientSecret: string;
   totalAmount: number;
 }
+
+export interface VendorOrderResponse {
+  id: string;
+  orderNumber: string;
+  status: string;
+  paymentStatus: string;
+  fulfillmentStatus: string;
+  subtotal: number;
+  taxAmount: number;
+  shippingAmount: number;
+  discountAmount: number;
+  totalAmount: number;
+  shippingMethod: string | null;
+  shippingAddress: unknown;
+  shopId: string;
+  shopName: string;
+  customer: {
+    id?: string;
+    name?: string | null;
+    email: string | null;
+  };
+  itemCount: number;
+  createdAt: string;
+}
+
+export type OrderStatus =
+  | "pending"
+  | "confirmed"
+  | "processing"
+  | "shipped"
+  | "delivered"
+  | "cancelled"
+  | "refunded";
