@@ -17,3 +17,38 @@ export interface TransactionPermissions {
   canView: boolean;
   canRefund: boolean;
 }
+
+export interface VendorTransactionResponse {
+  id: string;
+  paymentIntentId: string | null;
+  orderId: string;
+  orderNumber: string;
+  totalAmount: number;
+  vendorAmount: number;
+  platformFee: number;
+  currency: string;
+  status: string;
+  paymentMethod: string;
+  provider: string;
+  // Customer info
+  customer: {
+    name: string | null;
+    email: string;
+  };
+  // Shop info
+  shop: {
+    id: string;
+    name: string;
+  };
+  createdAt: string;
+}
+
+export interface VendorTransactionStats {
+  totalEarnings: number;
+  pendingEarnings: number;
+  platformFeesPaid: number;
+  totalTransactions: number;
+  successfulTransactions: number;
+  pendingTransactions: number;
+  refundedTransactions: number;
+}
