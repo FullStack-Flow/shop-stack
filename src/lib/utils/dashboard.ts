@@ -73,3 +73,40 @@ export function getStatusColor(status: string): string {
       return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400";
   }
 }
+
+export function getStartOfDay(date: Date): Date {
+  const result = new Date(date);
+  result.setHours(0, 0, 0, 0);
+  return result;
+}
+
+export function getStartOfWeek(date: Date): Date {
+  const result = new Date(date);
+  const day = result.getDay();
+  const diff = result.getDate() - day;
+  result.setDate(diff);
+  result.setHours(0, 0, 0, 0);
+  return result;
+}
+
+export function getStartOfMonth(date: Date): Date {
+  const result = new Date(date);
+  result.setDate(1);
+  result.setHours(0, 0, 0, 0);
+  return result;
+}
+
+export function getStartOfLastMonth(date: Date): Date {
+  const result = new Date(date);
+  result.setMonth(result.getMonth() - 1);
+  result.setDate(1);
+  result.setHours(0, 0, 0, 0);
+  return result;
+}
+
+export function getDaysAgo(days: number): Date {
+  const result = new Date();
+  result.setDate(result.getDate() - days);
+  result.setHours(0, 0, 0, 0);
+  return result;
+}
