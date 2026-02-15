@@ -52,10 +52,17 @@ export const useProductFilters = () => {
       maxPrice:
         filters.priceRange[1] < 1000 ? filters.priceRange[1] : undefined,
       inStock: filters.availability.includes("In Stock") ? true : undefined,
+      minRating: filters.rating ?? undefined,
       sortBy: sortParams.sortBy,
       sortDirection: sortParams.sortDirection,
     };
-  }, [filters.search, filters.priceRange, filters.availability, filters.sort]);
+  }, [
+    filters.search,
+    filters.priceRange,
+    filters.availability,
+    filters.sort,
+    filters.rating,
+  ]);
 
   // Infinite query for products with server-side pagination using shared options
   const {

@@ -12,14 +12,13 @@ import {
   getProductByIdSchema,
   getProductBySlugSchema,
   getRelatedProductsSchema,
-  type StoreProductsQuery,
   storeProductsQuerySchema,
 } from "@/lib/validators/shared/product-query";
 import {
   createPaginatedResponse,
   emptyPaginatedResponse,
 } from "@/types/api-response";
-import type { NormalizedProduct } from "@/types/products";
+import type { NormalizedProduct, ProductQueryOptions } from "@/types/products";
 import type {
   StoreProduct,
   StoreProductListResponse,
@@ -41,69 +40,56 @@ function toStoreProduct(product: NormalizedProduct): StoreProduct {
 export const getStoreProducts = createServerFn({ method: "GET" })
   .inputValidator(storeProductsQuerySchema)
   .handler(async ({ data }): Promise<StoreProductListResponse> => {
-    const {
-      limit,
-      offset,
-      search,
-      categoryId,
-      brandId,
-      tagId,
-      productType,
-      isFeatured,
-      inStock,
-      minPrice,
-      maxPrice,
-      sortBy,
-      sortDirection,
-      shopId,
-      shopSlug,
-    } = data as StoreProductsQuery;
-
-    // Base conditions: only active, published products
     const baseConditions = [
       eq(products.status, "active"),
       eq(products.isActive, true),
     ];
 
     // Filter by shop if specified
-    if (shopId) {
-      baseConditions.push(eq(products.shopId, shopId));
+    if (data.shopId) {
+      baseConditions.push(eq(products.shopId, data.shopId));
     }
 
     // If shopSlug is provided, look up the shop first
-    if (shopSlug && !shopId) {
+    if (data.shopSlug && !data.shopId) {
       const { shops } = await import("@/lib/db/schema/shop-schema");
       const [shop] = await db
         .select({ id: shops.id })
         .from(shops)
-        .where(eq(shops.slug, shopSlug));
+        .where(eq(shops.slug, data.shopSlug));
 
       if (shop) {
         baseConditions.push(eq(products.shopId, shop.id));
       } else {
-        return emptyPaginatedResponse<StoreProduct>(limit!, offset!);
+        return emptyPaginatedResponse<StoreProduct>(data.limit!, data.offset!);
       }
     }
 
-    const mappedSortBy = sortBy === "price" ? "sellingPrice" : sortBy;
+    let mappedSortBy: ProductQueryOptions["sortBy"];
+    if (data.sortBy === "price") {
+      mappedSortBy = "sellingPrice";
+    } else {
+      mappedSortBy = data.sortBy;
+    }
 
     // Execute query using shared helper
     const result = await executeProductQuery({
       baseConditions,
-      search,
-      productType,
-      categoryId,
-      brandId,
-      tagId,
-      isFeatured,
+      search: data.search,
+      productType: data.productType,
+      categoryId: data.categoryId,
+      brandId: data.brandId,
+      tagId: data.tagId,
+      isFeatured: data.isFeatured,
       isActive: true,
-      inStock,
-      minPrice,
-      maxPrice,
-      limit,
-      offset,
+      inStock: data.inStock,
+      minPrice: data.minPrice,
+      maxPrice: data.maxPrice,
+      minRating: data.minRating,
+      limit: data.limit,
+      offset: data.offset,
       sortBy: mappedSortBy,
-      sortDirection,
+      sortDirection: data.sortDirection,
       includeShopInfo: true,
       includeVendorInfo: false,
       excludeCostPrice: true,

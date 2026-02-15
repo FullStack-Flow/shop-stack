@@ -80,6 +80,13 @@ export const stockFilterFields = {
 };
 
 /**
+ * Rating filter fields
+ */
+export const ratingFilterFields = {
+  minRating: z.coerce.number().min(1).max(5).optional(),
+};
+
+/**
  * Status filter fields
  */
 export const statusFilterFields = {
@@ -106,9 +113,9 @@ const sortFields = {
 
 const storeSortFields = {
   sortBy: z
-    .enum(["name", "price", "createdAt", "updatedAt"])
+    .enum(["name", "price", "createdAt", "updatedAt", "averageRating"])
     .optional()
-    .default("createdAt"), // No stock sort for public
+    .default("createdAt"),
   sortDirection: sortDirectionEnum.optional().default("desc"),
 };
 
@@ -138,6 +145,7 @@ export const storeProductsQuerySchema = z.object({
   ...productBaseFilterFields,
   isFeatured: statusFilterFields.isFeatured,
   inStock: stockFilterFields.inStock,
+  ...ratingFilterFields,
   ...shopSlugFields,
   ...optionalShopIdField,
 });

@@ -110,6 +110,11 @@ export function buildProductFilterConditions(
     conditions.push(lte(products.sellingPrice, String(options.maxPrice)));
   }
 
+  // Rating filter
+  if (options.minRating !== undefined) {
+    conditions.push(gte(products.averageRating, String(options.minRating)));
+  }
+
   return conditions;
 }
 

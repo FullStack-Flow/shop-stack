@@ -192,6 +192,7 @@ export interface ProductQueryOptions {
   lowStock?: boolean;
   minPrice?: number;
   maxPrice?: number;
+  minRating?: number;
   limit?: number;
   offset?: number;
   sortBy?:

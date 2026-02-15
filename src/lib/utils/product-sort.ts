@@ -11,13 +11,16 @@ import type { SortOption } from "@/types/products";
  */
 export const sortMapping: Record<
   SortOption,
-  { sortBy: "name" | "price" | "createdAt"; sortDirection: "asc" | "desc" }
+  {
+    sortBy: "name" | "price" | "createdAt" | "averageRating";
+    sortDirection: "asc" | "desc";
+  }
 > = {
   relevance: { sortBy: "createdAt", sortDirection: "desc" },
   "price-asc": { sortBy: "price", sortDirection: "asc" },
   "price-desc": { sortBy: "price", sortDirection: "desc" },
   newest: { sortBy: "createdAt", sortDirection: "desc" },
-  rating: { sortBy: "createdAt", sortDirection: "desc" }, // TODO: Add rating sort when available
+  rating: { sortBy: "averageRating", sortDirection: "desc" },
   "best-selling": { sortBy: "createdAt", sortDirection: "desc" }, // TODO: Add sales sort when available
 };
 

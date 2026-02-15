@@ -79,6 +79,7 @@ export const storeProductsInfiniteQueryOptions = (
     minPrice: params.minPrice,
     maxPrice: params.maxPrice,
     inStock: params.inStock,
+    minRating: params.minRating,
     sortBy: params.sortBy ?? defaultParams.sortBy,
     sortDirection: params.sortDirection ?? defaultParams.sortDirection,
   };
