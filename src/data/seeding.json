@@ -1,0 +1,5910 @@
+{
+  "vendors": [
+    {
+      "id": "vendor_0001",
+      "userId": "8ZzH3ONSuSpz1IYwJLiLlpooxbIKxPNO",
+      "businessName": "TechNova Ventures",
+      "status": "active",
+      "contactEmail": "vendor1@shopstack.demo",
+      "contactPhone": "+15550000001"
+    },
+    {
+      "id": "vendor_0002",
+      "userId": "CQUDCefoyYyfpPqbFi4OuzR2XKq0Lbwh",
+      "businessName": "StyleCraft LLC",
+      "status": "active",
+      "contactEmail": "vendor2@shopstack.demo",
+      "contactPhone": "+15550000002"
+    },
+    {
+      "id": "vendor_0003",
+      "userId": "TidNPzRp37zli5iqJoBQQTGypKqzJGg0",
+      "businessName": "HomeWorld Inc",
+      "status": "active",
+      "contactEmail": "vendor3@shopstack.demo",
+      "contactPhone": "+15550000003"
+    },
+    {
+      "id": "vendor_0004",
+      "userId": "fuHd3tcUr1SZ0PWHKi9TM3yHv34enu8a",
+      "businessName": "GreenPath Farms",
+      "status": "active",
+      "contactEmail": "vendor4@shopstack.demo",
+      "contactPhone": "+15550000004"
+    },
+    {
+      "id": "vendor_0005",
+      "userId": "oUP6VlQVSvDF65xAUrIyuvqMxoPsmURL",
+      "businessName": "ProFit Athletics",
+      "status": "active",
+      "contactEmail": "vendor5@shopstack.demo",
+      "contactPhone": "+15550000005"
+    },
+    {
+      "id": "vendor_0006",
+      "userId": "xUYMejz1mKqSD7smI5snNI3roupLUsJG",
+      "businessName": "Bookish Enterprises",
+      "status": "active",
+      "contactEmail": "vendor6@shopstack.demo",
+      "contactPhone": "+15550000006"
+    }
+  ],
+  "shops": [
+    {
+      "id": "shop_0007",
+      "vendorId": "vendor_0001",
+      "name": "TechVault Electronics",
+      "slug": "techvault-electronics",
+      "description": "Premium electronics and gadgets for tech enthusiasts",
+      "category": "Electronics",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1000/200/200",
+      "banner": "https://picsum.photos/seed/1001/1200/400"
+    },
+    {
+      "id": "shop_0061",
+      "vendorId": "vendor_0002",
+      "name": "StyleHaven Boutique",
+      "slug": "stylehaven-boutique",
+      "description": "Trendy fashion and apparel for modern lifestyles",
+      "category": "Fashion",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1022/200/200",
+      "banner": "https://picsum.photos/seed/1023/1200/400"
+    },
+    {
+      "id": "shop_0116",
+      "vendorId": "vendor_0003",
+      "name": "HomeNest Living",
+      "slug": "homenest-living",
+      "description": "Beautiful home decor and furniture essentials",
+      "category": "Home & Living",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1044/200/200",
+      "banner": "https://picsum.photos/seed/1045/1200/400"
+    },
+    {
+      "id": "shop_0170",
+      "vendorId": "vendor_0004",
+      "name": "GreenLeaf Organics",
+      "slug": "greenleaf-organics",
+      "description": "Fresh organic produce and healthy food options",
+      "category": "Grocery",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1066/200/200",
+      "banner": "https://picsum.photos/seed/1067/1200/400"
+    },
+    {
+      "id": "shop_0220",
+      "vendorId": "vendor_0005",
+      "name": "FitPro Sports",
+      "slug": "fitpro-sports",
+      "description": "High-performance sports gear and fitness equipment",
+      "category": "Sports",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1088/200/200",
+      "banner": "https://picsum.photos/seed/1089/1200/400"
+    },
+    {
+      "id": "shop_0274",
+      "vendorId": "vendor_0006",
+      "name": "BookWorm Haven",
+      "slug": "bookworm-haven",
+      "description": "Curated books and stationery for avid readers",
+      "category": "Books",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1110/200/200",
+      "banner": "https://picsum.photos/seed/1111/1200/400"
+    },
+    {
+      "id": "shop_0323",
+      "vendorId": "vendor_0001",
+      "name": "PetPals Store",
+      "slug": "petpals-store",
+      "description": "Everything your furry friends need and love",
+      "category": "Pet Supplies",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1132/200/200",
+      "banner": "https://picsum.photos/seed/1133/1200/400"
+    },
+    {
+      "id": "shop_0373",
+      "vendorId": "vendor_0002",
+      "name": "BeautyGlow Cosmetics",
+      "slug": "beautyglow-cosmetics",
+      "description": "Premium skincare and cosmetics collection",
+      "category": "Beauty",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1154/200/200",
+      "banner": "https://picsum.photos/seed/1155/1200/400"
+    },
+    {
+      "id": "shop_0427",
+      "vendorId": "vendor_0003",
+      "name": "KidZone Toys",
+      "slug": "kidzone-toys",
+      "description": "Fun and educational toys for children of all ages",
+      "category": "Toys",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1176/200/200",
+      "banner": "https://picsum.photos/seed/1177/1200/400"
+    },
+    {
+      "id": "shop_0477",
+      "vendorId": "vendor_0004",
+      "name": "GadgetWorld Hub",
+      "slug": "gadgetworld-hub",
+      "description": "Affordable smart devices and accessories",
+      "category": "Electronics",
+      "status": "active",
+      "logo": "https://picsum.photos/seed/1198/200/200",
+      "banner": "https://picsum.photos/seed/1199/1200/400"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_0008",
+      "shopId": "shop_0007",
+      "name": "Smartphones",
+      "slug": "smartphones",
+      "description": "Smartphones category for TechVault Electronics",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0009",
+      "shopId": "shop_0007",
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Laptops category for TechVault Electronics",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0010",
+      "shopId": "shop_0007",
+      "name": "Audio",
+      "slug": "audio",
+      "description": "Audio category for TechVault Electronics",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0011",
+      "shopId": "shop_0007",
+      "name": "Wearables",
+      "slug": "wearables",
+      "description": "Wearables category for TechVault Electronics",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0012",
+      "shopId": "shop_0007",
+      "name": "Accessories",
+      "slug": "accessories",
+      "description": "Accessories category for TechVault Electronics",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0062",
+      "shopId": "shop_0061",
+      "name": "Men's Wear",
+      "slug": "men-s-wear",
+      "description": "Men's Wear category for StyleHaven Boutique",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0063",
+      "shopId": "shop_0061",
+      "name": "Women's Wear",
+      "slug": "women-s-wear",
+      "description": "Women's Wear category for StyleHaven Boutique",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0064",
+      "shopId": "shop_0061",
+      "name": "Footwear",
+      "slug": "footwear",
+      "description": "Footwear category for StyleHaven Boutique",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0065",
+      "shopId": "shop_0061",
+      "name": "Bags",
+      "slug": "bags",
+      "description": "Bags category for StyleHaven Boutique",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0066",
+      "shopId": "shop_0061",
+      "name": "Jewelry",
+      "slug": "jewelry",
+      "description": "Jewelry category for StyleHaven Boutique",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0117",
+      "shopId": "shop_0116",
+      "name": "Furniture",
+      "slug": "furniture",
+      "description": "Furniture category for HomeNest Living",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0118",
+      "shopId": "shop_0116",
+      "name": "Lighting",
+      "slug": "lighting",
+      "description": "Lighting category for HomeNest Living",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0119",
+      "shopId": "shop_0116",
+      "name": "Kitchenware",
+      "slug": "kitchenware",
+      "description": "Kitchenware category for HomeNest Living",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0120",
+      "shopId": "shop_0116",
+      "name": "Bedding",
+      "slug": "bedding",
+      "description": "Bedding category for HomeNest Living",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0121",
+      "shopId": "shop_0116",
+      "name": "Decor",
+      "slug": "decor",
+      "description": "Decor category for HomeNest Living",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0171",
+      "shopId": "shop_0170",
+      "name": "Fruits",
+      "slug": "fruits",
+      "description": "Fruits category for GreenLeaf Organics",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0172",
+      "shopId": "shop_0170",
+      "name": "Vegetables",
+      "slug": "vegetables",
+      "description": "Vegetables category for GreenLeaf Organics",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0173",
+      "shopId": "shop_0170",
+      "name": "Dairy",
+      "slug": "dairy",
+      "description": "Dairy category for GreenLeaf Organics",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0174",
+      "shopId": "shop_0170",
+      "name": "Snacks",
+      "slug": "snacks",
+      "description": "Snacks category for GreenLeaf Organics",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0175",
+      "shopId": "shop_0170",
+      "name": "Beverages",
+      "slug": "beverages",
+      "description": "Beverages category for GreenLeaf Organics",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0221",
+      "shopId": "shop_0220",
+      "name": "Gym Equipment",
+      "slug": "gym-equipment",
+      "description": "Gym Equipment category for FitPro Sports",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0222",
+      "shopId": "shop_0220",
+      "name": "Running Gear",
+      "slug": "running-gear",
+      "description": "Running Gear category for FitPro Sports",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0223",
+      "shopId": "shop_0220",
+      "name": "Yoga",
+      "slug": "yoga",
+      "description": "Yoga category for FitPro Sports",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0224",
+      "shopId": "shop_0220",
+      "name": "Cycling",
+      "slug": "cycling",
+      "description": "Cycling category for FitPro Sports",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0225",
+      "shopId": "shop_0220",
+      "name": "Outdoor",
+      "slug": "outdoor",
+      "description": "Outdoor category for FitPro Sports",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0275",
+      "shopId": "shop_0274",
+      "name": "Fiction",
+      "slug": "fiction",
+      "description": "Fiction category for BookWorm Haven",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0276",
+      "shopId": "shop_0274",
+      "name": "Non-Fiction",
+      "slug": "non-fiction",
+      "description": "Non-Fiction category for BookWorm Haven",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0277",
+      "shopId": "shop_0274",
+      "name": "Academic",
+      "slug": "academic",
+      "description": "Academic category for BookWorm Haven",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0278",
+      "shopId": "shop_0274",
+      "name": "Children's Books",
+      "slug": "children-s-books",
+      "description": "Children's Books category for BookWorm Haven",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0279",
+      "shopId": "shop_0274",
+      "name": "Comics",
+      "slug": "comics",
+      "description": "Comics category for BookWorm Haven",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0324",
+      "shopId": "shop_0323",
+      "name": "Dog Food",
+      "slug": "dog-food",
+      "description": "Dog Food category for PetPals Store",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0325",
+      "shopId": "shop_0323",
+      "name": "Cat Food",
+      "slug": "cat-food",
+      "description": "Cat Food category for PetPals Store",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0326",
+      "shopId": "shop_0323",
+      "name": "Toys",
+      "slug": "toys",
+      "description": "Toys category for PetPals Store",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0327",
+      "shopId": "shop_0323",
+      "name": "Grooming",
+      "slug": "grooming",
+      "description": "Grooming category for PetPals Store",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0328",
+      "shopId": "shop_0323",
+      "name": "Health",
+      "slug": "health",
+      "description": "Health category for PetPals Store",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0374",
+      "shopId": "shop_0373",
+      "name": "Skincare",
+      "slug": "skincare",
+      "description": "Skincare category for BeautyGlow Cosmetics",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0375",
+      "shopId": "shop_0373",
+      "name": "Makeup",
+      "slug": "makeup",
+      "description": "Makeup category for BeautyGlow Cosmetics",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0376",
+      "shopId": "shop_0373",
+      "name": "Haircare",
+      "slug": "haircare",
+      "description": "Haircare category for BeautyGlow Cosmetics",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0377",
+      "shopId": "shop_0373",
+      "name": "Fragrance",
+      "slug": "fragrance",
+      "description": "Fragrance category for BeautyGlow Cosmetics",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0378",
+      "shopId": "shop_0373",
+      "name": "Tools",
+      "slug": "tools",
+      "description": "Tools category for BeautyGlow Cosmetics",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0428",
+      "shopId": "shop_0427",
+      "name": "Action Figures",
+      "slug": "action-figures",
+      "description": "Action Figures category for KidZone Toys",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0429",
+      "shopId": "shop_0427",
+      "name": "Board Games",
+      "slug": "board-games",
+      "description": "Board Games category for KidZone Toys",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0430",
+      "shopId": "shop_0427",
+      "name": "Puzzles",
+      "slug": "puzzles",
+      "description": "Puzzles category for KidZone Toys",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0431",
+      "shopId": "shop_0427",
+      "name": "Dolls",
+      "slug": "dolls",
+      "description": "Dolls category for KidZone Toys",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0432",
+      "shopId": "shop_0427",
+      "name": "STEM Kits",
+      "slug": "stem-kits",
+      "description": "STEM Kits category for KidZone Toys",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "cat_0478",
+      "shopId": "shop_0477",
+      "name": "Smartphones",
+      "slug": "smartphones",
+      "description": "Smartphones category for GadgetWorld Hub",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "cat_0479",
+      "shopId": "shop_0477",
+      "name": "Laptops",
+      "slug": "laptops",
+      "description": "Laptops category for GadgetWorld Hub",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "cat_0480",
+      "shopId": "shop_0477",
+      "name": "Audio",
+      "slug": "audio",
+      "description": "Audio category for GadgetWorld Hub",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "cat_0481",
+      "shopId": "shop_0477",
+      "name": "Wearables",
+      "slug": "wearables",
+      "description": "Wearables category for GadgetWorld Hub",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "cat_0482",
+      "shopId": "shop_0477",
+      "name": "Accessories",
+      "slug": "accessories",
+      "description": "Accessories category for GadgetWorld Hub",
+      "isActive": true,
+      "sortOrder": 4
+    }
+  ],
+  "brands": [
+    {
+      "id": "brand_0013",
+      "shopId": "shop_0007",
+      "name": "Apple",
+      "slug": "apple",
+      "description": "Apple products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0014",
+      "shopId": "shop_0007",
+      "name": "Samsung",
+      "slug": "samsung",
+      "description": "Samsung products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0015",
+      "shopId": "shop_0007",
+      "name": "Sony",
+      "slug": "sony",
+      "description": "Sony products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0016",
+      "shopId": "shop_0007",
+      "name": "Bose",
+      "slug": "bose",
+      "description": "Bose products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0017",
+      "shopId": "shop_0007",
+      "name": "Anker",
+      "slug": "anker",
+      "description": "Anker products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0067",
+      "shopId": "shop_0061",
+      "name": "Zara",
+      "slug": "zara",
+      "description": "Zara products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0068",
+      "shopId": "shop_0061",
+      "name": "H&M",
+      "slug": "h-m",
+      "description": "H&M products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0069",
+      "shopId": "shop_0061",
+      "name": "Nike",
+      "slug": "nike",
+      "description": "Nike products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0070",
+      "shopId": "shop_0061",
+      "name": "Gucci",
+      "slug": "gucci",
+      "description": "Gucci products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0071",
+      "shopId": "shop_0061",
+      "name": "Levi's",
+      "slug": "levi-s",
+      "description": "Levi's products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0122",
+      "shopId": "shop_0116",
+      "name": "IKEA",
+      "slug": "ikea",
+      "description": "IKEA products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0123",
+      "shopId": "shop_0116",
+      "name": "West Elm",
+      "slug": "west-elm",
+      "description": "West Elm products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0124",
+      "shopId": "shop_0116",
+      "name": "Pottery Barn",
+      "slug": "pottery-barn",
+      "description": "Pottery Barn products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0125",
+      "shopId": "shop_0116",
+      "name": "Crate & Barrel",
+      "slug": "crate-barrel",
+      "description": "Crate & Barrel products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0126",
+      "shopId": "shop_0116",
+      "name": "Muji",
+      "slug": "muji",
+      "description": "Muji products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0176",
+      "shopId": "shop_0170",
+      "name": "Whole Foods",
+      "slug": "whole-foods",
+      "description": "Whole Foods products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0177",
+      "shopId": "shop_0170",
+      "name": "Organic Valley",
+      "slug": "organic-valley",
+      "description": "Organic Valley products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0178",
+      "shopId": "shop_0170",
+      "name": "Nature's Path",
+      "slug": "nature-s-path",
+      "description": "Nature's Path products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0179",
+      "shopId": "shop_0170",
+      "name": "Bob's Red Mill",
+      "slug": "bob-s-red-mill",
+      "description": "Bob's Red Mill products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0180",
+      "shopId": "shop_0170",
+      "name": "Earthbound",
+      "slug": "earthbound",
+      "description": "Earthbound products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0226",
+      "shopId": "shop_0220",
+      "name": "Nike",
+      "slug": "nike",
+      "description": "Nike products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0227",
+      "shopId": "shop_0220",
+      "name": "Adidas",
+      "slug": "adidas",
+      "description": "Adidas products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0228",
+      "shopId": "shop_0220",
+      "name": "Under Armour",
+      "slug": "under-armour",
+      "description": "Under Armour products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0229",
+      "shopId": "shop_0220",
+      "name": "Reebok",
+      "slug": "reebok",
+      "description": "Reebok products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0230",
+      "shopId": "shop_0220",
+      "name": "Puma",
+      "slug": "puma",
+      "description": "Puma products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0280",
+      "shopId": "shop_0274",
+      "name": "Penguin",
+      "slug": "penguin",
+      "description": "Penguin products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0281",
+      "shopId": "shop_0274",
+      "name": "HarperCollins",
+      "slug": "harpercollins",
+      "description": "HarperCollins products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0282",
+      "shopId": "shop_0274",
+      "name": "Simon & Schuster",
+      "slug": "simon-schuster",
+      "description": "Simon & Schuster products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0283",
+      "shopId": "shop_0274",
+      "name": "Scholastic",
+      "slug": "scholastic",
+      "description": "Scholastic products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0284",
+      "shopId": "shop_0274",
+      "name": "O'Reilly",
+      "slug": "o-reilly",
+      "description": "O'Reilly products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0329",
+      "shopId": "shop_0323",
+      "name": "Royal Canin",
+      "slug": "royal-canin",
+      "description": "Royal Canin products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0330",
+      "shopId": "shop_0323",
+      "name": "Blue Buffalo",
+      "slug": "blue-buffalo",
+      "description": "Blue Buffalo products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0331",
+      "shopId": "shop_0323",
+      "name": "Purina",
+      "slug": "purina",
+      "description": "Purina products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0332",
+      "shopId": "shop_0323",
+      "name": "Hill's",
+      "slug": "hill-s",
+      "description": "Hill's products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0333",
+      "shopId": "shop_0323",
+      "name": "KONG",
+      "slug": "kong",
+      "description": "KONG products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0379",
+      "shopId": "shop_0373",
+      "name": "L'Oreal",
+      "slug": "l-oreal",
+      "description": "L'Oreal products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0380",
+      "shopId": "shop_0373",
+      "name": "Estee Lauder",
+      "slug": "estee-lauder",
+      "description": "Estee Lauder products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0381",
+      "shopId": "shop_0373",
+      "name": "Clinique",
+      "slug": "clinique",
+      "description": "Clinique products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0382",
+      "shopId": "shop_0373",
+      "name": "MAC",
+      "slug": "mac",
+      "description": "MAC products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0383",
+      "shopId": "shop_0373",
+      "name": "Neutrogena",
+      "slug": "neutrogena",
+      "description": "Neutrogena products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0433",
+      "shopId": "shop_0427",
+      "name": "LEGO",
+      "slug": "lego",
+      "description": "LEGO products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0434",
+      "shopId": "shop_0427",
+      "name": "Hasbro",
+      "slug": "hasbro",
+      "description": "Hasbro products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0435",
+      "shopId": "shop_0427",
+      "name": "Mattel",
+      "slug": "mattel",
+      "description": "Mattel products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0436",
+      "shopId": "shop_0427",
+      "name": "Fisher-Price",
+      "slug": "fisher-price",
+      "description": "Fisher-Price products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0437",
+      "shopId": "shop_0427",
+      "name": "Melissa & Doug",
+      "slug": "melissa-doug",
+      "description": "Melissa & Doug products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0483",
+      "shopId": "shop_0477",
+      "name": "Apple",
+      "slug": "apple",
+      "description": "Apple products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0484",
+      "shopId": "shop_0477",
+      "name": "Samsung",
+      "slug": "samsung",
+      "description": "Samsung products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0485",
+      "shopId": "shop_0477",
+      "name": "Sony",
+      "slug": "sony",
+      "description": "Sony products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0486",
+      "shopId": "shop_0477",
+      "name": "Bose",
+      "slug": "bose",
+      "description": "Bose products",
+      "isActive": true
+    },
+    {
+      "id": "brand_0487",
+      "shopId": "shop_0477",
+      "name": "Anker",
+      "slug": "anker",
+      "description": "Anker products",
+      "isActive": true
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag_0018",
+      "shopId": "shop_0007",
+      "name": "bestseller",
+      "slug": "bestseller",
+      "description": "bestseller tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0019",
+      "shopId": "shop_0007",
+      "name": "new arrival",
+      "slug": "new-arrival",
+      "description": "new-arrival tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0020",
+      "shopId": "shop_0007",
+      "name": "trending",
+      "slug": "trending",
+      "description": "trending tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0021",
+      "shopId": "shop_0007",
+      "name": "limited edition",
+      "slug": "limited-edition",
+      "description": "limited-edition tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0022",
+      "shopId": "shop_0007",
+      "name": "sale",
+      "slug": "sale",
+      "description": "sale tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0072",
+      "shopId": "shop_0061",
+      "name": "summer collection",
+      "slug": "summer-collection",
+      "description": "summer-collection tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0073",
+      "shopId": "shop_0061",
+      "name": "winter collection",
+      "slug": "winter-collection",
+      "description": "winter-collection tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0074",
+      "shopId": "shop_0061",
+      "name": "bestseller",
+      "slug": "bestseller",
+      "description": "bestseller tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0075",
+      "shopId": "shop_0061",
+      "name": "eco friendly",
+      "slug": "eco-friendly",
+      "description": "eco-friendly tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0076",
+      "shopId": "shop_0061",
+      "name": "premium",
+      "slug": "premium",
+      "description": "premium tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0127",
+      "shopId": "shop_0116",
+      "name": "handmade",
+      "slug": "handmade",
+      "description": "handmade tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0128",
+      "shopId": "shop_0116",
+      "name": "sustainable",
+      "slug": "sustainable",
+      "description": "sustainable tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0129",
+      "shopId": "shop_0116",
+      "name": "modern",
+      "slug": "modern",
+      "description": "modern tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0130",
+      "shopId": "shop_0116",
+      "name": "vintage",
+      "slug": "vintage",
+      "description": "vintage tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0131",
+      "shopId": "shop_0116",
+      "name": "clearance",
+      "slug": "clearance",
+      "description": "clearance tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0181",
+      "shopId": "shop_0170",
+      "name": "organic",
+      "slug": "organic",
+      "description": "organic tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0182",
+      "shopId": "shop_0170",
+      "name": "gluten free",
+      "slug": "gluten-free",
+      "description": "gluten-free tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0183",
+      "shopId": "shop_0170",
+      "name": "vegan",
+      "slug": "vegan",
+      "description": "vegan tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0184",
+      "shopId": "shop_0170",
+      "name": "sugar free",
+      "slug": "sugar-free",
+      "description": "sugar-free tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0185",
+      "shopId": "shop_0170",
+      "name": "farm fresh",
+      "slug": "farm-fresh",
+      "description": "farm-fresh tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0231",
+      "shopId": "shop_0220",
+      "name": "pro grade",
+      "slug": "pro-grade",
+      "description": "pro-grade tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0232",
+      "shopId": "shop_0220",
+      "name": "lightweight",
+      "slug": "lightweight",
+      "description": "lightweight tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0233",
+      "shopId": "shop_0220",
+      "name": "durable",
+      "slug": "durable",
+      "description": "durable tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0234",
+      "shopId": "shop_0220",
+      "name": "compact",
+      "slug": "compact",
+      "description": "compact tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0235",
+      "shopId": "shop_0220",
+      "name": "bestseller",
+      "slug": "bestseller",
+      "description": "bestseller tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0285",
+      "shopId": "shop_0274",
+      "name": "award winning",
+      "slug": "award-winning",
+      "description": "award-winning tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0286",
+      "shopId": "shop_0274",
+      "name": "bestseller",
+      "slug": "bestseller",
+      "description": "bestseller tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0287",
+      "shopId": "shop_0274",
+      "name": "new release",
+      "slug": "new-release",
+      "description": "new-release tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0288",
+      "shopId": "shop_0274",
+      "name": "classic",
+      "slug": "classic",
+      "description": "classic tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0289",
+      "shopId": "shop_0274",
+      "name": "signed copy",
+      "slug": "signed-copy",
+      "description": "signed-copy tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0334",
+      "shopId": "shop_0323",
+      "name": "natural",
+      "slug": "natural",
+      "description": "natural tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0335",
+      "shopId": "shop_0323",
+      "name": "grain free",
+      "slug": "grain-free",
+      "description": "grain-free tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0336",
+      "shopId": "shop_0323",
+      "name": "vet recommended",
+      "slug": "vet-recommended",
+      "description": "vet-recommended tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0337",
+      "shopId": "shop_0323",
+      "name": "eco friendly",
+      "slug": "eco-friendly",
+      "description": "eco-friendly tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0338",
+      "shopId": "shop_0323",
+      "name": "premium",
+      "slug": "premium",
+      "description": "premium tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0384",
+      "shopId": "shop_0373",
+      "name": "cruelty free",
+      "slug": "cruelty-free",
+      "description": "cruelty-free tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0385",
+      "shopId": "shop_0373",
+      "name": "vegan",
+      "slug": "vegan",
+      "description": "vegan tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0386",
+      "shopId": "shop_0373",
+      "name": "organic",
+      "slug": "organic",
+      "description": "organic tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0387",
+      "shopId": "shop_0373",
+      "name": "dermatologist tested",
+      "slug": "dermatologist-tested",
+      "description": "dermatologist-tested tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0388",
+      "shopId": "shop_0373",
+      "name": "anti aging",
+      "slug": "anti-aging",
+      "description": "anti-aging tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0438",
+      "shopId": "shop_0427",
+      "name": "educational",
+      "slug": "educational",
+      "description": "educational tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0439",
+      "shopId": "shop_0427",
+      "name": "eco friendly",
+      "slug": "eco-friendly",
+      "description": "eco-friendly tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0440",
+      "shopId": "shop_0427",
+      "name": "award winning",
+      "slug": "award-winning",
+      "description": "award-winning tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0441",
+      "shopId": "shop_0427",
+      "name": "ages 3 plus",
+      "slug": "ages-3-plus",
+      "description": "ages-3-plus tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0442",
+      "shopId": "shop_0427",
+      "name": "stem",
+      "slug": "stem",
+      "description": "stem tag",
+      "isActive": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "tag_0488",
+      "shopId": "shop_0477",
+      "name": "bestseller",
+      "slug": "bestseller",
+      "description": "bestseller tag",
+      "isActive": true,
+      "sortOrder": 0
+    },
+    {
+      "id": "tag_0489",
+      "shopId": "shop_0477",
+      "name": "new arrival",
+      "slug": "new-arrival",
+      "description": "new-arrival tag",
+      "isActive": true,
+      "sortOrder": 1
+    },
+    {
+      "id": "tag_0490",
+      "shopId": "shop_0477",
+      "name": "trending",
+      "slug": "trending",
+      "description": "trending tag",
+      "isActive": true,
+      "sortOrder": 2
+    },
+    {
+      "id": "tag_0491",
+      "shopId": "shop_0477",
+      "name": "limited edition",
+      "slug": "limited-edition",
+      "description": "limited-edition tag",
+      "isActive": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "tag_0492",
+      "shopId": "shop_0477",
+      "name": "sale",
+      "slug": "sale",
+      "description": "sale tag",
+      "isActive": true,
+      "sortOrder": 4
+    }
+  ],
+  "attributes": [
+    {
+      "id": "attr_0023",
+      "shopId": "shop_0007",
+      "name": "Color",
+      "slug": "color",
+      "type": "color",
+      "values": [
+        {
+          "id": "aval_0024",
+          "name": "Black",
+          "value": "#000000"
+        },
+        {
+          "id": "aval_0025",
+          "name": "Silver",
+          "value": "#C0C0C0"
+        },
+        {
+          "id": "aval_0026",
+          "name": "White",
+          "value": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "id": "attr_0027",
+      "shopId": "shop_0007",
+      "name": "Storage",
+      "slug": "storage",
+      "type": "select",
+      "values": [
+        {
+          "id": "aval_0028",
+          "name": "64GB",
+          "value": "64GB"
+        },
+        {
+          "id": "aval_0029",
+          "name": "128GB",
+          "value": "128GB"
+        },
+        {
+          "id": "aval_0030",
+          "name": "256GB",
+          "value": "256GB"
+        }
+      ]
+    },
+    {
+      "id": "attr_0077",
+      "shopId": "shop_0061",
+      "name": "Size",
+      "slug": "size",
+      "type": "label",
+      "values": [
+        {
+          "id": "aval_0078",
+          "name": "S",
+          "value": "S"
+        },
+        {
+          "id": "aval_0079",
+          "name": "M",
+          "value": "M"
+        },
+        {
+          "id": "aval_0080",
+          "name": "L",
+          "value": "L"
+        },
+        {
+          "id": "aval_0081",
+          "name": "XL",
+          "value": "XL"
+        }
+      ]
+    },
+    {
+      "id": "attr_0082",
+      "shopId": "shop_0061",
+      "name": "Color",
+      "slug": "color",
+      "type": "color",
+      "values": [
+        {
+          "id": "aval_0083",
+          "name": "Red",
+          "value": "#FF0000"
+        },
+        {
+          "id": "aval_0084",
+          "name": "Blue",
+          "value": "#0000FF"
+        },
+        {
+          "id": "aval_0085",
+          "name": "Black",
+          "value": "#000000"
+        }
+      ]
+    },
+    {
+      "id": "attr_0132",
+      "shopId": "shop_0116",
+      "name": "Material",
+      "slug": "material",
+      "type": "select",
+      "values": [
+        {
+          "id": "aval_0133",
+          "name": "Wood",
+          "value": "Wood"
+        },
+        {
+          "id": "aval_0134",
+          "name": "Metal",
+          "value": "Metal"
+        },
+        {
+          "id": "aval_0135",
+          "name": "Fabric",
+          "value": "Fabric"
+        }
+      ]
+    },
+    {
+      "id": "attr_0136",
+      "shopId": "shop_0116",
+      "name": "Color",
+      "slug": "color",
+      "type": "color",
+      "values": [
+        {
+          "id": "aval_0137",
+          "name": "Oak",
+          "value": "#C19A6B"
+        },
+        {
+          "id": "aval_0138",
+          "name": "Walnut",
+          "value": "#5C4033"
+        },
+        {
+          "id": "aval_0139",
+          "name": "White",
+          "value": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "id": "attr_0186",
+      "shopId": "shop_0170",
+      "name": "Weight",
+      "slug": "weight",
+      "type": "select",
+      "values": [
+        {
+          "id": "aval_0187",
+          "name": "250g",
+          "value": "250g"
+        },
+        {
+          "id": "aval_0188",
+          "name": "500g",
+          "value": "500g"
+        },
+        {
+          "id": "aval_0189",
+          "name": "1kg",
+          "value": "1kg"
+        }
+      ]
+    },
+    {
+      "id": "attr_0236",
+      "shopId": "shop_0220",
+      "name": "Size",
+      "slug": "size",
+      "type": "label",
+      "values": [
+        {
+          "id": "aval_0237",
+          "name": "S",
+          "value": "S"
+        },
+        {
+          "id": "aval_0238",
+          "name": "M",
+          "value": "M"
+        },
+        {
+          "id": "aval_0239",
+          "name": "L",
+          "value": "L"
+        }
+      ]
+    },
+    {
+      "id": "attr_0240",
+      "shopId": "shop_0220",
+      "name": "Color",
+      "slug": "color",
+      "type": "color",
+      "values": [
+        {
+          "id": "aval_0241",
+          "name": "Black",
+          "value": "#000000"
+        },
+        {
+          "id": "aval_0242",
+          "name": "Red",
+          "value": "#FF0000"
+        },
+        {
+          "id": "aval_0243",
+          "name": "Blue",
+          "value": "#0000FF"
+        }
+      ]
+    },
+    {
+      "id": "attr_0290",
+      "shopId": "shop_0274",
+      "name": "Format",
+      "slug": "format",
+      "type": "select",
+      "values": [
+        {
+          "id": "aval_0291",
+          "name": "Paperback",
+          "value": "Paperback"
+        },
+        {
+          "id": "aval_0292",
+          "name": "Hardcover",
+          "value": "Hardcover"
+        }
+      ]
+    },
+    {
+      "id": "attr_0339",
+      "shopId": "shop_0323",
+      "name": "Size",
+      "slug": "size",
+      "type": "select",
+      "values": [
+        {
+          "id": "aval_0340",
+          "name": "Small",
+          "value": "Small"
+        },
+        {
+          "id": "aval_0341",
+          "name": "Medium",
+          "value": "Medium"
+        },
+        {
+          "id": "aval_0342",
+          "name": "Large",
+          "value": "Large"
+        }
+      ]
+    },
+    {
+      "id": "attr_0389",
+      "shopId": "shop_0373",
+      "name": "Shade",
+      "slug": "shade",
+      "type": "color",
+      "values": [
+        {
+          "id": "aval_0390",
+          "name": "Light",
+          "value": "#FDEBD0"
+        },
+        {
+          "id": "aval_0391",
+          "name": "Medium",
+          "value": "#D4A574"
+        },
+        {
+          "id": "aval_0392",
+          "name": "Dark",
+          "value": "#8B4513"
+        }
+      ]
+    },
+    {
+      "id": "attr_0393",
+      "shopId": "shop_0373",
+      "name": "Size",
+      "slug": "size",
+      "type": "select",
+      "values": [
+        {
+          "id": "aval_0394",
+          "name": "30ml",
+          "value": "30ml"
+        },
+        {
+          "id": "aval_0395",
+          "name": "50ml",
+          "value": "50ml"
+        },
+        {
+          "id": "aval_0396",
+          "name": "100ml",
+          "value": "100ml"
+        }
+      ]
+    },
+    {
+      "id": "attr_0443",
+      "shopId": "shop_0427",
+      "name": "Age Group",
+      "slug": "age-group",
+      "type": "label",
+      "values": [
+        {
+          "id": "aval_0444",
+          "name": "3-5 Years",
+          "value": "3-5"
+        },
+        {
+          "id": "aval_0445",
+          "name": "6-8 Years",
+          "value": "6-8"
+        },
+        {
+          "id": "aval_0446",
+          "name": "9-12 Years",
+          "value": "9-12"
+        }
+      ]
+    },
+    {
+      "id": "attr_0493",
+      "shopId": "shop_0477",
+      "name": "Color",
+      "slug": "color",
+      "type": "color",
+      "values": [
+        {
+          "id": "aval_0494",
+          "name": "Black",
+          "value": "#000000"
+        },
+        {
+          "id": "aval_0495",
+          "name": "Silver",
+          "value": "#C0C0C0"
+        },
+        {
+          "id": "aval_0496",
+          "name": "White",
+          "value": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "id": "attr_0497",
+      "shopId": "shop_0477",
+      "name": "Storage",
+      "slug": "storage",
+      "type": "select",
+      "values": [
+        {
+          "id": "aval_0498",
+          "name": "64GB",
+          "value": "64GB"
+        },
+        {
+          "id": "aval_0499",
+          "name": "128GB",
+          "value": "128GB"
+        },
+        {
+          "id": "aval_0500",
+          "name": "256GB",
+          "value": "256GB"
+        }
+      ]
+    }
+  ],
+  "taxes": [
+    {
+      "id": "tax_0031",
+      "shopId": "shop_0007",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0032",
+      "shopId": "shop_0007",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0086",
+      "shopId": "shop_0061",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0087",
+      "shopId": "shop_0061",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0140",
+      "shopId": "shop_0116",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0141",
+      "shopId": "shop_0116",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0190",
+      "shopId": "shop_0170",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0191",
+      "shopId": "shop_0170",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0244",
+      "shopId": "shop_0220",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0245",
+      "shopId": "shop_0220",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0293",
+      "shopId": "shop_0274",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0294",
+      "shopId": "shop_0274",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0343",
+      "shopId": "shop_0323",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0344",
+      "shopId": "shop_0323",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0397",
+      "shopId": "shop_0373",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0398",
+      "shopId": "shop_0373",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0447",
+      "shopId": "shop_0427",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0448",
+      "shopId": "shop_0427",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0501",
+      "shopId": "shop_0477",
+      "name": "Standard Tax",
+      "rate": "10.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    },
+    {
+      "id": "tax_0502",
+      "shopId": "shop_0477",
+      "name": "Reduced Tax",
+      "rate": "5.00",
+      "country": "US",
+      "isCompound": false,
+      "isActive": true
+    }
+  ],
+  "shippingMethods": [
+    {
+      "id": "ship_0033",
+      "shopId": "shop_0007",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0034",
+      "shopId": "shop_0007",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0035",
+      "shopId": "shop_0007",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0088",
+      "shopId": "shop_0061",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0089",
+      "shopId": "shop_0061",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0090",
+      "shopId": "shop_0061",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0142",
+      "shopId": "shop_0116",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0143",
+      "shopId": "shop_0116",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0144",
+      "shopId": "shop_0116",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0192",
+      "shopId": "shop_0170",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0193",
+      "shopId": "shop_0170",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0194",
+      "shopId": "shop_0170",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0246",
+      "shopId": "shop_0220",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0247",
+      "shopId": "shop_0220",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0248",
+      "shopId": "shop_0220",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0295",
+      "shopId": "shop_0274",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0296",
+      "shopId": "shop_0274",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0297",
+      "shopId": "shop_0274",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0345",
+      "shopId": "shop_0323",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0346",
+      "shopId": "shop_0323",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0347",
+      "shopId": "shop_0323",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0399",
+      "shopId": "shop_0373",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0400",
+      "shopId": "shop_0373",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0401",
+      "shopId": "shop_0373",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0449",
+      "shopId": "shop_0427",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0450",
+      "shopId": "shop_0427",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0451",
+      "shopId": "shop_0427",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    },
+    {
+      "id": "ship_0503",
+      "shopId": "shop_0477",
+      "name": "Standard Shipping",
+      "description": "Regular delivery service",
+      "price": "5.99",
+      "duration": "5-7 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0504",
+      "shopId": "shop_0477",
+      "name": "Express Shipping",
+      "description": "Fast delivery service",
+      "price": "14.99",
+      "duration": "2-3 business days",
+      "isActive": true
+    },
+    {
+      "id": "ship_0505",
+      "shopId": "shop_0477",
+      "name": "Overnight Shipping",
+      "description": "Next-day delivery",
+      "price": "24.99",
+      "duration": "1 business day",
+      "isActive": true
+    }
+  ],
+  "products": [
+    {
+      "id": "prod_0036",
+      "shopId": "shop_0007",
+      "name": "ProMax Wireless Earbuds",
+      "slug": "promax-wireless-earbuds",
+      "sku": "SKU-0007-001",
+      "description": "Premium noise-cancelling wireless earbuds with 30hr battery life",
+      "shortDescription": "Wireless earbuds with ANC",
+      "sellingPrice": "79.99",
+      "regularPrice": "99.99",
+      "costPrice": "35.00",
+      "stock": 150,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0008",
+      "brandId": "brand_0013",
+      "taxId": "tax_0031",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "ProMax Wireless Earbuds",
+      "metaDescription": "Wireless earbuds with ANC",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0037",
+          "url": "https://picsum.photos/seed/1002/800/800",
+          "alt": "ProMax Wireless Earbuds - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0038",
+          "url": "https://picsum.photos/seed/1003/800/800",
+          "alt": "ProMax Wireless Earbuds - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0039",
+          "url": "https://picsum.photos/seed/1004/800/800",
+          "alt": "ProMax Wireless Earbuds - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0040",
+          "url": "https://picsum.photos/seed/1005/800/800",
+          "alt": "ProMax Wireless Earbuds - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0018",
+        "tag_0019"
+      ],
+      "attributeIds": [
+        "attr_0023",
+        "attr_0027"
+      ],
+      "attributeValues": {
+        "attr_0023": [
+          "aval_0024",
+          "aval_0025",
+          "aval_0026"
+        ],
+        "attr_0027": [
+          "aval_0028",
+          "aval_0029",
+          "aval_0030"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0033",
+        "ship_0034"
+      ]
+    },
+    {
+      "id": "prod_0041",
+      "shopId": "shop_0007",
+      "name": "UltraSlim Laptop Stand",
+      "slug": "ultraslim-laptop-stand",
+      "sku": "SKU-0007-002",
+      "description": "Ergonomic aluminum laptop stand with adjustable height",
+      "shortDescription": "Adjustable laptop stand",
+      "sellingPrice": "49.99",
+      "regularPrice": "59.99",
+      "costPrice": "20.00",
+      "stock": 200,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0009",
+      "brandId": "brand_0014",
+      "taxId": "tax_0031",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "UltraSlim Laptop Stand",
+      "metaDescription": "Adjustable laptop stand",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0042",
+          "url": "https://picsum.photos/seed/1006/800/800",
+          "alt": "UltraSlim Laptop Stand - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0043",
+          "url": "https://picsum.photos/seed/1007/800/800",
+          "alt": "UltraSlim Laptop Stand - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0044",
+          "url": "https://picsum.photos/seed/1008/800/800",
+          "alt": "UltraSlim Laptop Stand - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0045",
+          "url": "https://picsum.photos/seed/1009/800/800",
+          "alt": "UltraSlim Laptop Stand - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0019",
+        "tag_0020"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0033",
+        "ship_0034"
+      ]
+    },
+    {
+      "id": "prod_0046",
+      "shopId": "shop_0007",
+      "name": "SmartWatch Pro X",
+      "slug": "smartwatch-pro-x",
+      "sku": "SKU-0007-003",
+      "description": "Advanced smartwatch with health monitoring and GPS",
+      "shortDescription": "GPS smartwatch",
+      "sellingPrice": "199.99",
+      "regularPrice": "249.99",
+      "costPrice": "90.00",
+      "stock": 80,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0010",
+      "brandId": "brand_0015",
+      "taxId": "tax_0031",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "SmartWatch Pro X",
+      "metaDescription": "GPS smartwatch",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0047",
+          "url": "https://picsum.photos/seed/1010/800/800",
+          "alt": "SmartWatch Pro X - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0048",
+          "url": "https://picsum.photos/seed/1011/800/800",
+          "alt": "SmartWatch Pro X - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0049",
+          "url": "https://picsum.photos/seed/1012/800/800",
+          "alt": "SmartWatch Pro X - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0050",
+          "url": "https://picsum.photos/seed/1013/800/800",
+          "alt": "SmartWatch Pro X - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0020",
+        "tag_0021"
+      ],
+      "attributeIds": [
+        "attr_0023",
+        "attr_0027"
+      ],
+      "attributeValues": {
+        "attr_0023": [
+          "aval_0024",
+          "aval_0025",
+          "aval_0026"
+        ],
+        "attr_0027": [
+          "aval_0028",
+          "aval_0029",
+          "aval_0030"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0033",
+        "ship_0034"
+      ]
+    },
+    {
+      "id": "prod_0051",
+      "shopId": "shop_0007",
+      "name": "4K Webcam Ultra HD",
+      "slug": "4k-webcam-ultra-hd",
+      "sku": "SKU-0007-004",
+      "description": "Professional 4K webcam with auto-focus and noise reduction mic",
+      "shortDescription": "4K streaming webcam",
+      "sellingPrice": "129.99",
+      "regularPrice": "159.99",
+      "costPrice": "55.00",
+      "stock": 120,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0011",
+      "brandId": "brand_0016",
+      "taxId": "tax_0031",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "4K Webcam Ultra HD",
+      "metaDescription": "4K streaming webcam",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0052",
+          "url": "https://picsum.photos/seed/1014/800/800",
+          "alt": "4K Webcam Ultra HD - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0053",
+          "url": "https://picsum.photos/seed/1015/800/800",
+          "alt": "4K Webcam Ultra HD - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0054",
+          "url": "https://picsum.photos/seed/1016/800/800",
+          "alt": "4K Webcam Ultra HD - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0055",
+          "url": "https://picsum.photos/seed/1017/800/800",
+          "alt": "4K Webcam Ultra HD - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0021",
+        "tag_0022"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0033",
+        "ship_0034"
+      ]
+    },
+    {
+      "id": "prod_0056",
+      "shopId": "shop_0007",
+      "name": "PowerBank 20000mAh",
+      "slug": "powerbank-20000mah",
+      "sku": "SKU-0007-005",
+      "description": "High-capacity portable charger with fast charging support",
+      "shortDescription": "20000mAh power bank",
+      "sellingPrice": "39.99",
+      "regularPrice": "49.99",
+      "costPrice": "15.00",
+      "stock": 300,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0012",
+      "brandId": "brand_0017",
+      "taxId": "tax_0031",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "PowerBank 20000mAh",
+      "metaDescription": "20000mAh power bank",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0057",
+          "url": "https://picsum.photos/seed/1018/800/800",
+          "alt": "PowerBank 20000mAh - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0058",
+          "url": "https://picsum.photos/seed/1019/800/800",
+          "alt": "PowerBank 20000mAh - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0059",
+          "url": "https://picsum.photos/seed/1020/800/800",
+          "alt": "PowerBank 20000mAh - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0060",
+          "url": "https://picsum.photos/seed/1021/800/800",
+          "alt": "PowerBank 20000mAh - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0022",
+        "tag_0018"
+      ],
+      "attributeIds": [
+        "attr_0023",
+        "attr_0027"
+      ],
+      "attributeValues": {
+        "attr_0023": [
+          "aval_0024",
+          "aval_0025",
+          "aval_0026"
+        ],
+        "attr_0027": [
+          "aval_0028",
+          "aval_0029",
+          "aval_0030"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0033",
+        "ship_0034"
+      ]
+    },
+    {
+      "id": "prod_0091",
+      "shopId": "shop_0061",
+      "name": "Classic Denim Jacket",
+      "slug": "classic-denim-jacket",
+      "sku": "SKU-0061-001",
+      "description": "Premium denim jacket with vintage wash finish",
+      "shortDescription": "Vintage denim jacket",
+      "sellingPrice": "89.99",
+      "regularPrice": "119.99",
+      "costPrice": "40.00",
+      "stock": 100,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0062",
+      "brandId": "brand_0067",
+      "taxId": "tax_0086",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Classic Denim Jacket",
+      "metaDescription": "Vintage denim jacket",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0092",
+          "url": "https://picsum.photos/seed/1024/800/800",
+          "alt": "Classic Denim Jacket - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0093",
+          "url": "https://picsum.photos/seed/1025/800/800",
+          "alt": "Classic Denim Jacket - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0094",
+          "url": "https://picsum.photos/seed/1026/800/800",
+          "alt": "Classic Denim Jacket - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0095",
+          "url": "https://picsum.photos/seed/1027/800/800",
+          "alt": "Classic Denim Jacket - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0072",
+        "tag_0073"
+      ],
+      "attributeIds": [
+        "attr_0077",
+        "attr_0082"
+      ],
+      "attributeValues": {
+        "attr_0077": [
+          "aval_0078",
+          "aval_0079",
+          "aval_0080",
+          "aval_0081"
+        ],
+        "attr_0082": [
+          "aval_0083",
+          "aval_0084",
+          "aval_0085"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0088",
+        "ship_0089"
+      ]
+    },
+    {
+      "id": "prod_0096",
+      "shopId": "shop_0061",
+      "name": "Silk Blend Scarf",
+      "slug": "silk-blend-scarf",
+      "sku": "SKU-0061-002",
+      "description": "Luxurious silk blend scarf with geometric patterns",
+      "shortDescription": "Silk pattern scarf",
+      "sellingPrice": "34.99",
+      "regularPrice": "44.99",
+      "costPrice": "12.00",
+      "stock": 250,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0063",
+      "brandId": "brand_0068",
+      "taxId": "tax_0086",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Silk Blend Scarf",
+      "metaDescription": "Silk pattern scarf",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0097",
+          "url": "https://picsum.photos/seed/1028/800/800",
+          "alt": "Silk Blend Scarf - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0098",
+          "url": "https://picsum.photos/seed/1029/800/800",
+          "alt": "Silk Blend Scarf - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0099",
+          "url": "https://picsum.photos/seed/1030/800/800",
+          "alt": "Silk Blend Scarf - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0100",
+          "url": "https://picsum.photos/seed/1031/800/800",
+          "alt": "Silk Blend Scarf - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0073",
+        "tag_0074"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0088",
+        "ship_0089"
+      ]
+    },
+    {
+      "id": "prod_0101",
+      "shopId": "shop_0061",
+      "name": "Leather Chelsea Boots",
+      "slug": "leather-chelsea-boots",
+      "sku": "SKU-0061-003",
+      "description": "Handcrafted leather chelsea boots with cushioned sole",
+      "shortDescription": "Chelsea boots",
+      "sellingPrice": "149.99",
+      "regularPrice": "189.99",
+      "costPrice": "65.00",
+      "stock": 60,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0064",
+      "brandId": "brand_0069",
+      "taxId": "tax_0086",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Leather Chelsea Boots",
+      "metaDescription": "Chelsea boots",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0102",
+          "url": "https://picsum.photos/seed/1032/800/800",
+          "alt": "Leather Chelsea Boots - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0103",
+          "url": "https://picsum.photos/seed/1033/800/800",
+          "alt": "Leather Chelsea Boots - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0104",
+          "url": "https://picsum.photos/seed/1034/800/800",
+          "alt": "Leather Chelsea Boots - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0105",
+          "url": "https://picsum.photos/seed/1035/800/800",
+          "alt": "Leather Chelsea Boots - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0074",
+        "tag_0075"
+      ],
+      "attributeIds": [
+        "attr_0077",
+        "attr_0082"
+      ],
+      "attributeValues": {
+        "attr_0077": [
+          "aval_0078",
+          "aval_0079",
+          "aval_0080",
+          "aval_0081"
+        ],
+        "attr_0082": [
+          "aval_0083",
+          "aval_0084",
+          "aval_0085"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0088",
+        "ship_0089"
+      ]
+    },
+    {
+      "id": "prod_0106",
+      "shopId": "shop_0061",
+      "name": "Cashmere Sweater",
+      "slug": "cashmere-sweater",
+      "sku": "SKU-0061-004",
+      "description": "Ultra-soft cashmere pullover sweater",
+      "shortDescription": "Cashmere pullover",
+      "sellingPrice": "129.99",
+      "regularPrice": "169.99",
+      "costPrice": "55.00",
+      "stock": 75,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0065",
+      "brandId": "brand_0070",
+      "taxId": "tax_0086",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Cashmere Sweater",
+      "metaDescription": "Cashmere pullover",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0107",
+          "url": "https://picsum.photos/seed/1036/800/800",
+          "alt": "Cashmere Sweater - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0108",
+          "url": "https://picsum.photos/seed/1037/800/800",
+          "alt": "Cashmere Sweater - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0109",
+          "url": "https://picsum.photos/seed/1038/800/800",
+          "alt": "Cashmere Sweater - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0110",
+          "url": "https://picsum.photos/seed/1039/800/800",
+          "alt": "Cashmere Sweater - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0075",
+        "tag_0076"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0088",
+        "ship_0089"
+      ]
+    },
+    {
+      "id": "prod_0111",
+      "shopId": "shop_0061",
+      "name": "Canvas Tote Bag",
+      "slug": "canvas-tote-bag",
+      "sku": "SKU-0061-005",
+      "description": "Durable canvas tote bag with interior pockets",
+      "shortDescription": "Canvas tote bag",
+      "sellingPrice": "29.99",
+      "regularPrice": "39.99",
+      "costPrice": "10.00",
+      "stock": 400,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0066",
+      "brandId": "brand_0071",
+      "taxId": "tax_0086",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Canvas Tote Bag",
+      "metaDescription": "Canvas tote bag",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0112",
+          "url": "https://picsum.photos/seed/1040/800/800",
+          "alt": "Canvas Tote Bag - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0113",
+          "url": "https://picsum.photos/seed/1041/800/800",
+          "alt": "Canvas Tote Bag - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0114",
+          "url": "https://picsum.photos/seed/1042/800/800",
+          "alt": "Canvas Tote Bag - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0115",
+          "url": "https://picsum.photos/seed/1043/800/800",
+          "alt": "Canvas Tote Bag - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0076",
+        "tag_0072"
+      ],
+      "attributeIds": [
+        "attr_0077",
+        "attr_0082"
+      ],
+      "attributeValues": {
+        "attr_0077": [
+          "aval_0078",
+          "aval_0079",
+          "aval_0080",
+          "aval_0081"
+        ],
+        "attr_0082": [
+          "aval_0083",
+          "aval_0084",
+          "aval_0085"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0088",
+        "ship_0089"
+      ]
+    },
+    {
+      "id": "prod_0145",
+      "shopId": "shop_0116",
+      "name": "Scandinavian Floor Lamp",
+      "slug": "scandinavian-floor-lamp",
+      "sku": "SKU-0116-001",
+      "description": "Minimalist floor lamp with warm LED and dimmer",
+      "shortDescription": "Modern floor lamp",
+      "sellingPrice": "159.99",
+      "regularPrice": "199.99",
+      "costPrice": "70.00",
+      "stock": 40,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0117",
+      "brandId": "brand_0122",
+      "taxId": "tax_0140",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Scandinavian Floor Lamp",
+      "metaDescription": "Modern floor lamp",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0146",
+          "url": "https://picsum.photos/seed/1046/800/800",
+          "alt": "Scandinavian Floor Lamp - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0147",
+          "url": "https://picsum.photos/seed/1047/800/800",
+          "alt": "Scandinavian Floor Lamp - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0148",
+          "url": "https://picsum.photos/seed/1048/800/800",
+          "alt": "Scandinavian Floor Lamp - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0149",
+          "url": "https://picsum.photos/seed/1049/800/800",
+          "alt": "Scandinavian Floor Lamp - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0127",
+        "tag_0128"
+      ],
+      "attributeIds": [
+        "attr_0132",
+        "attr_0136"
+      ],
+      "attributeValues": {
+        "attr_0132": [
+          "aval_0133",
+          "aval_0134",
+          "aval_0135"
+        ],
+        "attr_0136": [
+          "aval_0137",
+          "aval_0138",
+          "aval_0139"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0142",
+        "ship_0143"
+      ]
+    },
+    {
+      "id": "prod_0150",
+      "shopId": "shop_0116",
+      "name": "Bamboo Cutting Board Set",
+      "slug": "bamboo-cutting-board-set",
+      "sku": "SKU-0116-002",
+      "description": "Premium bamboo cutting board set of 3 sizes",
+      "shortDescription": "Bamboo board set",
+      "sellingPrice": "44.99",
+      "regularPrice": "54.99",
+      "costPrice": "18.00",
+      "stock": 180,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0118",
+      "brandId": "brand_0123",
+      "taxId": "tax_0140",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Bamboo Cutting Board Set",
+      "metaDescription": "Bamboo board set",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0151",
+          "url": "https://picsum.photos/seed/1050/800/800",
+          "alt": "Bamboo Cutting Board Set - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0152",
+          "url": "https://picsum.photos/seed/1051/800/800",
+          "alt": "Bamboo Cutting Board Set - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0153",
+          "url": "https://picsum.photos/seed/1052/800/800",
+          "alt": "Bamboo Cutting Board Set - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0154",
+          "url": "https://picsum.photos/seed/1053/800/800",
+          "alt": "Bamboo Cutting Board Set - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0128",
+        "tag_0129"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0142",
+        "ship_0143"
+      ]
+    },
+    {
+      "id": "prod_0155",
+      "shopId": "shop_0116",
+      "name": "Egyptian Cotton Duvet",
+      "slug": "egyptian-cotton-duvet",
+      "sku": "SKU-0116-003",
+      "description": "800-thread-count Egyptian cotton duvet cover set",
+      "shortDescription": "Luxury duvet set",
+      "sellingPrice": "199.99",
+      "regularPrice": "249.99",
+      "costPrice": "85.00",
+      "stock": 50,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0119",
+      "brandId": "brand_0124",
+      "taxId": "tax_0140",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Egyptian Cotton Duvet",
+      "metaDescription": "Luxury duvet set",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0156",
+          "url": "https://picsum.photos/seed/1054/800/800",
+          "alt": "Egyptian Cotton Duvet - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0157",
+          "url": "https://picsum.photos/seed/1055/800/800",
+          "alt": "Egyptian Cotton Duvet - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0158",
+          "url": "https://picsum.photos/seed/1056/800/800",
+          "alt": "Egyptian Cotton Duvet - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0159",
+          "url": "https://picsum.photos/seed/1057/800/800",
+          "alt": "Egyptian Cotton Duvet - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0129",
+        "tag_0130"
+      ],
+      "attributeIds": [
+        "attr_0132",
+        "attr_0136"
+      ],
+      "attributeValues": {
+        "attr_0132": [
+          "aval_0133",
+          "aval_0134",
+          "aval_0135"
+        ],
+        "attr_0136": [
+          "aval_0137",
+          "aval_0138",
+          "aval_0139"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0142",
+        "ship_0143"
+      ]
+    },
+    {
+      "id": "prod_0160",
+      "shopId": "shop_0116",
+      "name": "Ceramic Plant Pot Set",
+      "slug": "ceramic-plant-pot-set",
+      "sku": "SKU-0116-004",
+      "description": "Hand-glazed ceramic plant pots in 3 earthy tones",
+      "shortDescription": "Ceramic pot set",
+      "sellingPrice": "59.99",
+      "regularPrice": "74.99",
+      "costPrice": "22.00",
+      "stock": 120,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0120",
+      "brandId": "brand_0125",
+      "taxId": "tax_0140",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Ceramic Plant Pot Set",
+      "metaDescription": "Ceramic pot set",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0161",
+          "url": "https://picsum.photos/seed/1058/800/800",
+          "alt": "Ceramic Plant Pot Set - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0162",
+          "url": "https://picsum.photos/seed/1059/800/800",
+          "alt": "Ceramic Plant Pot Set - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0163",
+          "url": "https://picsum.photos/seed/1060/800/800",
+          "alt": "Ceramic Plant Pot Set - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0164",
+          "url": "https://picsum.photos/seed/1061/800/800",
+          "alt": "Ceramic Plant Pot Set - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0130",
+        "tag_0131"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0142",
+        "ship_0143"
+      ]
+    },
+    {
+      "id": "prod_0165",
+      "shopId": "shop_0116",
+      "name": "Woven Wall Art",
+      "slug": "woven-wall-art",
+      "sku": "SKU-0116-005",
+      "description": "Handwoven macramé wall hanging with natural cotton",
+      "shortDescription": "Macramé wall art",
+      "sellingPrice": "79.99",
+      "regularPrice": "99.99",
+      "costPrice": "30.00",
+      "stock": 65,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0121",
+      "brandId": "brand_0126",
+      "taxId": "tax_0140",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Woven Wall Art",
+      "metaDescription": "Macramé wall art",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0166",
+          "url": "https://picsum.photos/seed/1062/800/800",
+          "alt": "Woven Wall Art - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0167",
+          "url": "https://picsum.photos/seed/1063/800/800",
+          "alt": "Woven Wall Art - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0168",
+          "url": "https://picsum.photos/seed/1064/800/800",
+          "alt": "Woven Wall Art - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0169",
+          "url": "https://picsum.photos/seed/1065/800/800",
+          "alt": "Woven Wall Art - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0131",
+        "tag_0127"
+      ],
+      "attributeIds": [
+        "attr_0132",
+        "attr_0136"
+      ],
+      "attributeValues": {
+        "attr_0132": [
+          "aval_0133",
+          "aval_0134",
+          "aval_0135"
+        ],
+        "attr_0136": [
+          "aval_0137",
+          "aval_0138",
+          "aval_0139"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0142",
+        "ship_0143"
+      ]
+    },
+    {
+      "id": "prod_0195",
+      "shopId": "shop_0170",
+      "name": "Organic Quinoa Mix",
+      "slug": "organic-quinoa-mix",
+      "sku": "SKU-0170-001",
+      "description": "Tri-color organic quinoa blend, 1kg bag",
+      "shortDescription": "Organic quinoa 1kg",
+      "sellingPrice": "12.99",
+      "regularPrice": "15.99",
+      "costPrice": "5.00",
+      "stock": 500,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0171",
+      "brandId": "brand_0176",
+      "taxId": "tax_0190",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Organic Quinoa Mix",
+      "metaDescription": "Organic quinoa 1kg",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0196",
+          "url": "https://picsum.photos/seed/1068/800/800",
+          "alt": "Organic Quinoa Mix - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0197",
+          "url": "https://picsum.photos/seed/1069/800/800",
+          "alt": "Organic Quinoa Mix - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0198",
+          "url": "https://picsum.photos/seed/1070/800/800",
+          "alt": "Organic Quinoa Mix - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0199",
+          "url": "https://picsum.photos/seed/1071/800/800",
+          "alt": "Organic Quinoa Mix - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0181",
+        "tag_0182"
+      ],
+      "attributeIds": [
+        "attr_0186"
+      ],
+      "attributeValues": {
+        "attr_0186": [
+          "aval_0187",
+          "aval_0188",
+          "aval_0189"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0192",
+        "ship_0193"
+      ]
+    },
+    {
+      "id": "prod_0200",
+      "shopId": "shop_0170",
+      "name": "Raw Honey Collection",
+      "slug": "raw-honey-collection",
+      "sku": "SKU-0170-002",
+      "description": "Pure raw honey sampler with 3 varieties",
+      "shortDescription": "Raw honey sampler",
+      "sellingPrice": "24.99",
+      "regularPrice": "29.99",
+      "costPrice": "10.00",
+      "stock": 200,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0172",
+      "brandId": "brand_0177",
+      "taxId": "tax_0190",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Raw Honey Collection",
+      "metaDescription": "Raw honey sampler",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0201",
+          "url": "https://picsum.photos/seed/1072/800/800",
+          "alt": "Raw Honey Collection - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0202",
+          "url": "https://picsum.photos/seed/1073/800/800",
+          "alt": "Raw Honey Collection - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0203",
+          "url": "https://picsum.photos/seed/1074/800/800",
+          "alt": "Raw Honey Collection - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0204",
+          "url": "https://picsum.photos/seed/1075/800/800",
+          "alt": "Raw Honey Collection - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0182",
+        "tag_0183"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0192",
+        "ship_0193"
+      ]
+    },
+    {
+      "id": "prod_0205",
+      "shopId": "shop_0170",
+      "name": "Cold-Pressed Olive Oil",
+      "slug": "cold-pressed-olive-oil",
+      "sku": "SKU-0170-003",
+      "description": "Extra virgin cold-pressed olive oil, 500ml",
+      "shortDescription": "EVOO 500ml",
+      "sellingPrice": "18.99",
+      "regularPrice": "22.99",
+      "costPrice": "8.00",
+      "stock": 300,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0173",
+      "brandId": "brand_0178",
+      "taxId": "tax_0190",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Cold-Pressed Olive Oil",
+      "metaDescription": "EVOO 500ml",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0206",
+          "url": "https://picsum.photos/seed/1076/800/800",
+          "alt": "Cold-Pressed Olive Oil - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0207",
+          "url": "https://picsum.photos/seed/1077/800/800",
+          "alt": "Cold-Pressed Olive Oil - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0208",
+          "url": "https://picsum.photos/seed/1078/800/800",
+          "alt": "Cold-Pressed Olive Oil - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0209",
+          "url": "https://picsum.photos/seed/1079/800/800",
+          "alt": "Cold-Pressed Olive Oil - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0183",
+        "tag_0184"
+      ],
+      "attributeIds": [
+        "attr_0186"
+      ],
+      "attributeValues": {
+        "attr_0186": [
+          "aval_0187",
+          "aval_0188",
+          "aval_0189"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0192",
+        "ship_0193"
+      ]
+    },
+    {
+      "id": "prod_0210",
+      "shopId": "shop_0170",
+      "name": "Mixed Nuts Premium",
+      "slug": "mixed-nuts-premium",
+      "sku": "SKU-0170-004",
+      "description": "Premium mixed nuts with cashews, almonds, and walnuts",
+      "shortDescription": "Premium mixed nuts",
+      "sellingPrice": "15.99",
+      "regularPrice": "19.99",
+      "costPrice": "7.00",
+      "stock": 250,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0174",
+      "brandId": "brand_0179",
+      "taxId": "tax_0190",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Mixed Nuts Premium",
+      "metaDescription": "Premium mixed nuts",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0211",
+          "url": "https://picsum.photos/seed/1080/800/800",
+          "alt": "Mixed Nuts Premium - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0212",
+          "url": "https://picsum.photos/seed/1081/800/800",
+          "alt": "Mixed Nuts Premium - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0213",
+          "url": "https://picsum.photos/seed/1082/800/800",
+          "alt": "Mixed Nuts Premium - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0214",
+          "url": "https://picsum.photos/seed/1083/800/800",
+          "alt": "Mixed Nuts Premium - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0184",
+        "tag_0185"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0192",
+        "ship_0193"
+      ]
+    },
+    {
+      "id": "prod_0215",
+      "shopId": "shop_0170",
+      "name": "Matcha Green Tea Powder",
+      "slug": "matcha-green-tea-powder",
+      "sku": "SKU-0170-005",
+      "description": "Ceremonial grade Japanese matcha powder, 100g",
+      "shortDescription": "Matcha powder 100g",
+      "sellingPrice": "29.99",
+      "regularPrice": "34.99",
+      "costPrice": "12.00",
+      "stock": 150,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0175",
+      "brandId": "brand_0180",
+      "taxId": "tax_0190",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Matcha Green Tea Powder",
+      "metaDescription": "Matcha powder 100g",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0216",
+          "url": "https://picsum.photos/seed/1084/800/800",
+          "alt": "Matcha Green Tea Powder - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0217",
+          "url": "https://picsum.photos/seed/1085/800/800",
+          "alt": "Matcha Green Tea Powder - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0218",
+          "url": "https://picsum.photos/seed/1086/800/800",
+          "alt": "Matcha Green Tea Powder - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0219",
+          "url": "https://picsum.photos/seed/1087/800/800",
+          "alt": "Matcha Green Tea Powder - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0185",
+        "tag_0181"
+      ],
+      "attributeIds": [
+        "attr_0186"
+      ],
+      "attributeValues": {
+        "attr_0186": [
+          "aval_0187",
+          "aval_0188",
+          "aval_0189"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0192",
+        "ship_0193"
+      ]
+    },
+    {
+      "id": "prod_0249",
+      "shopId": "shop_0220",
+      "name": "Resistance Band Set Pro",
+      "slug": "resistance-band-set-pro",
+      "sku": "SKU-0220-001",
+      "description": "Professional 5-level resistance band set with handles",
+      "shortDescription": "5-level resistance bands",
+      "sellingPrice": "34.99",
+      "regularPrice": "44.99",
+      "costPrice": "12.00",
+      "stock": 350,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0221",
+      "brandId": "brand_0226",
+      "taxId": "tax_0244",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Resistance Band Set Pro",
+      "metaDescription": "5-level resistance bands",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0250",
+          "url": "https://picsum.photos/seed/1090/800/800",
+          "alt": "Resistance Band Set Pro - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0251",
+          "url": "https://picsum.photos/seed/1091/800/800",
+          "alt": "Resistance Band Set Pro - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0252",
+          "url": "https://picsum.photos/seed/1092/800/800",
+          "alt": "Resistance Band Set Pro - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0253",
+          "url": "https://picsum.photos/seed/1093/800/800",
+          "alt": "Resistance Band Set Pro - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0231",
+        "tag_0232"
+      ],
+      "attributeIds": [
+        "attr_0236",
+        "attr_0240"
+      ],
+      "attributeValues": {
+        "attr_0236": [
+          "aval_0237",
+          "aval_0238",
+          "aval_0239"
+        ],
+        "attr_0240": [
+          "aval_0241",
+          "aval_0242",
+          "aval_0243"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0246",
+        "ship_0247"
+      ]
+    },
+    {
+      "id": "prod_0254",
+      "shopId": "shop_0220",
+      "name": "Yoga Mat Premium",
+      "slug": "yoga-mat-premium",
+      "sku": "SKU-0220-002",
+      "description": "Non-slip TPE yoga mat 6mm with alignment lines",
+      "shortDescription": "Premium yoga mat",
+      "sellingPrice": "59.99",
+      "regularPrice": "74.99",
+      "costPrice": "22.00",
+      "stock": 200,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0222",
+      "brandId": "brand_0227",
+      "taxId": "tax_0244",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Yoga Mat Premium",
+      "metaDescription": "Premium yoga mat",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0255",
+          "url": "https://picsum.photos/seed/1094/800/800",
+          "alt": "Yoga Mat Premium - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0256",
+          "url": "https://picsum.photos/seed/1095/800/800",
+          "alt": "Yoga Mat Premium - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0257",
+          "url": "https://picsum.photos/seed/1096/800/800",
+          "alt": "Yoga Mat Premium - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0258",
+          "url": "https://picsum.photos/seed/1097/800/800",
+          "alt": "Yoga Mat Premium - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0232",
+        "tag_0233"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0246",
+        "ship_0247"
+      ]
+    },
+    {
+      "id": "prod_0259",
+      "shopId": "shop_0220",
+      "name": "Running Hydration Vest",
+      "slug": "running-hydration-vest",
+      "sku": "SKU-0220-003",
+      "description": "Lightweight running vest with 2L hydration bladder",
+      "shortDescription": "Hydration vest 2L",
+      "sellingPrice": "49.99",
+      "regularPrice": "64.99",
+      "costPrice": "20.00",
+      "stock": 100,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0223",
+      "brandId": "brand_0228",
+      "taxId": "tax_0244",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Running Hydration Vest",
+      "metaDescription": "Hydration vest 2L",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0260",
+          "url": "https://picsum.photos/seed/1098/800/800",
+          "alt": "Running Hydration Vest - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0261",
+          "url": "https://picsum.photos/seed/1099/800/800",
+          "alt": "Running Hydration Vest - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0262",
+          "url": "https://picsum.photos/seed/1100/800/800",
+          "alt": "Running Hydration Vest - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0263",
+          "url": "https://picsum.photos/seed/1101/800/800",
+          "alt": "Running Hydration Vest - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0233",
+        "tag_0234"
+      ],
+      "attributeIds": [
+        "attr_0236",
+        "attr_0240"
+      ],
+      "attributeValues": {
+        "attr_0236": [
+          "aval_0237",
+          "aval_0238",
+          "aval_0239"
+        ],
+        "attr_0240": [
+          "aval_0241",
+          "aval_0242",
+          "aval_0243"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0246",
+        "ship_0247"
+      ]
+    },
+    {
+      "id": "prod_0264",
+      "shopId": "shop_0220",
+      "name": "Adjustable Dumbbells 25kg",
+      "slug": "adjustable-dumbbells-25kg",
+      "sku": "SKU-0220-004",
+      "description": "Space-saving adjustable dumbbells pair, 2.5-25kg each",
+      "shortDescription": "Adjustable dumbbells",
+      "sellingPrice": "189.99",
+      "regularPrice": "229.99",
+      "costPrice": "85.00",
+      "stock": 45,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0224",
+      "brandId": "brand_0229",
+      "taxId": "tax_0244",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Adjustable Dumbbells 25kg",
+      "metaDescription": "Adjustable dumbbells",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0265",
+          "url": "https://picsum.photos/seed/1102/800/800",
+          "alt": "Adjustable Dumbbells 25kg - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0266",
+          "url": "https://picsum.photos/seed/1103/800/800",
+          "alt": "Adjustable Dumbbells 25kg - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0267",
+          "url": "https://picsum.photos/seed/1104/800/800",
+          "alt": "Adjustable Dumbbells 25kg - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0268",
+          "url": "https://picsum.photos/seed/1105/800/800",
+          "alt": "Adjustable Dumbbells 25kg - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0234",
+        "tag_0235"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0246",
+        "ship_0247"
+      ]
+    },
+    {
+      "id": "prod_0269",
+      "shopId": "shop_0220",
+      "name": "LED Jump Rope",
+      "slug": "led-jump-rope",
+      "sku": "SKU-0220-005",
+      "description": "Smart LED jump rope with calorie counter display",
+      "shortDescription": "LED jump rope",
+      "sellingPrice": "24.99",
+      "regularPrice": "29.99",
+      "costPrice": "8.00",
+      "stock": 400,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0225",
+      "brandId": "brand_0230",
+      "taxId": "tax_0244",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "LED Jump Rope",
+      "metaDescription": "LED jump rope",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0270",
+          "url": "https://picsum.photos/seed/1106/800/800",
+          "alt": "LED Jump Rope - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0271",
+          "url": "https://picsum.photos/seed/1107/800/800",
+          "alt": "LED Jump Rope - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0272",
+          "url": "https://picsum.photos/seed/1108/800/800",
+          "alt": "LED Jump Rope - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0273",
+          "url": "https://picsum.photos/seed/1109/800/800",
+          "alt": "LED Jump Rope - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0235",
+        "tag_0231"
+      ],
+      "attributeIds": [
+        "attr_0236",
+        "attr_0240"
+      ],
+      "attributeValues": {
+        "attr_0236": [
+          "aval_0237",
+          "aval_0238",
+          "aval_0239"
+        ],
+        "attr_0240": [
+          "aval_0241",
+          "aval_0242",
+          "aval_0243"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0246",
+        "ship_0247"
+      ]
+    },
+    {
+      "id": "prod_0298",
+      "shopId": "shop_0274",
+      "name": "The Code of Tomorrow",
+      "slug": "the-code-of-tomorrow",
+      "sku": "SKU-0274-001",
+      "description": "A gripping sci-fi novel about AI and humanity's future",
+      "shortDescription": "Sci-fi novel",
+      "sellingPrice": "24.99",
+      "regularPrice": "29.99",
+      "costPrice": "8.00",
+      "stock": 300,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0275",
+      "brandId": "brand_0280",
+      "taxId": "tax_0293",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "The Code of Tomorrow",
+      "metaDescription": "Sci-fi novel",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0299",
+          "url": "https://picsum.photos/seed/1112/800/800",
+          "alt": "The Code of Tomorrow - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0300",
+          "url": "https://picsum.photos/seed/1113/800/800",
+          "alt": "The Code of Tomorrow - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0301",
+          "url": "https://picsum.photos/seed/1114/800/800",
+          "alt": "The Code of Tomorrow - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0302",
+          "url": "https://picsum.photos/seed/1115/800/800",
+          "alt": "The Code of Tomorrow - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0285",
+        "tag_0286"
+      ],
+      "attributeIds": [
+        "attr_0290"
+      ],
+      "attributeValues": {
+        "attr_0290": [
+          "aval_0291",
+          "aval_0292"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0295",
+        "ship_0296"
+      ]
+    },
+    {
+      "id": "prod_0303",
+      "shopId": "shop_0274",
+      "name": "Mindful Leadership",
+      "slug": "mindful-leadership",
+      "sku": "SKU-0274-002",
+      "description": "A guide to leading with empathy and purpose",
+      "shortDescription": "Leadership guide",
+      "sellingPrice": "19.99",
+      "regularPrice": "24.99",
+      "costPrice": "7.00",
+      "stock": 250,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0276",
+      "brandId": "brand_0281",
+      "taxId": "tax_0293",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Mindful Leadership",
+      "metaDescription": "Leadership guide",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0304",
+          "url": "https://picsum.photos/seed/1116/800/800",
+          "alt": "Mindful Leadership - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0305",
+          "url": "https://picsum.photos/seed/1117/800/800",
+          "alt": "Mindful Leadership - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0306",
+          "url": "https://picsum.photos/seed/1118/800/800",
+          "alt": "Mindful Leadership - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0307",
+          "url": "https://picsum.photos/seed/1119/800/800",
+          "alt": "Mindful Leadership - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0286",
+        "tag_0287"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0295",
+        "ship_0296"
+      ]
+    },
+    {
+      "id": "prod_0308",
+      "shopId": "shop_0274",
+      "name": "Data Structures Mastery",
+      "slug": "data-structures-mastery",
+      "sku": "SKU-0274-003",
+      "description": "Comprehensive textbook on algorithms and data structures",
+      "shortDescription": "CS textbook",
+      "sellingPrice": "44.99",
+      "regularPrice": "54.99",
+      "costPrice": "18.00",
+      "stock": 150,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0277",
+      "brandId": "brand_0282",
+      "taxId": "tax_0293",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Data Structures Mastery",
+      "metaDescription": "CS textbook",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0309",
+          "url": "https://picsum.photos/seed/1120/800/800",
+          "alt": "Data Structures Mastery - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0310",
+          "url": "https://picsum.photos/seed/1121/800/800",
+          "alt": "Data Structures Mastery - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0311",
+          "url": "https://picsum.photos/seed/1122/800/800",
+          "alt": "Data Structures Mastery - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0312",
+          "url": "https://picsum.photos/seed/1123/800/800",
+          "alt": "Data Structures Mastery - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0287",
+        "tag_0288"
+      ],
+      "attributeIds": [
+        "attr_0290"
+      ],
+      "attributeValues": {
+        "attr_0290": [
+          "aval_0291",
+          "aval_0292"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0295",
+        "ship_0296"
+      ]
+    },
+    {
+      "id": "prod_0313",
+      "shopId": "shop_0274",
+      "name": "Adventures of Luna",
+      "slug": "adventures-of-luna",
+      "sku": "SKU-0274-004",
+      "description": "Illustrated children's storybook about a brave rabbit",
+      "shortDescription": "Children's storybook",
+      "sellingPrice": "14.99",
+      "regularPrice": "17.99",
+      "costPrice": "5.00",
+      "stock": 400,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0278",
+      "brandId": "brand_0283",
+      "taxId": "tax_0293",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Adventures of Luna",
+      "metaDescription": "Children's storybook",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0314",
+          "url": "https://picsum.photos/seed/1124/800/800",
+          "alt": "Adventures of Luna - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0315",
+          "url": "https://picsum.photos/seed/1125/800/800",
+          "alt": "Adventures of Luna - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0316",
+          "url": "https://picsum.photos/seed/1126/800/800",
+          "alt": "Adventures of Luna - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0317",
+          "url": "https://picsum.photos/seed/1127/800/800",
+          "alt": "Adventures of Luna - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0288",
+        "tag_0289"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0295",
+        "ship_0296"
+      ]
+    },
+    {
+      "id": "prod_0318",
+      "shopId": "shop_0274",
+      "name": "Graphic Novel: Eclipse",
+      "slug": "graphic-novel-eclipse",
+      "sku": "SKU-0274-005",
+      "description": "Award-winning graphic novel with stunning artwork",
+      "shortDescription": "Graphic novel",
+      "sellingPrice": "29.99",
+      "regularPrice": "34.99",
+      "costPrice": "12.00",
+      "stock": 120,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0279",
+      "brandId": "brand_0284",
+      "taxId": "tax_0293",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Graphic Novel: Eclipse",
+      "metaDescription": "Graphic novel",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0319",
+          "url": "https://picsum.photos/seed/1128/800/800",
+          "alt": "Graphic Novel: Eclipse - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0320",
+          "url": "https://picsum.photos/seed/1129/800/800",
+          "alt": "Graphic Novel: Eclipse - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0321",
+          "url": "https://picsum.photos/seed/1130/800/800",
+          "alt": "Graphic Novel: Eclipse - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0322",
+          "url": "https://picsum.photos/seed/1131/800/800",
+          "alt": "Graphic Novel: Eclipse - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0289",
+        "tag_0285"
+      ],
+      "attributeIds": [
+        "attr_0290"
+      ],
+      "attributeValues": {
+        "attr_0290": [
+          "aval_0291",
+          "aval_0292"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0295",
+        "ship_0296"
+      ]
+    },
+    {
+      "id": "prod_0348",
+      "shopId": "shop_0323",
+      "name": "Grain-Free Dog Kibble",
+      "slug": "grain-free-dog-kibble",
+      "sku": "SKU-0323-001",
+      "description": "Premium grain-free dry dog food, chicken recipe 5kg",
+      "shortDescription": "Dog food 5kg",
+      "sellingPrice": "49.99",
+      "regularPrice": "59.99",
+      "costPrice": "22.00",
+      "stock": 200,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0324",
+      "brandId": "brand_0329",
+      "taxId": "tax_0343",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Grain-Free Dog Kibble",
+      "metaDescription": "Dog food 5kg",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0349",
+          "url": "https://picsum.photos/seed/1134/800/800",
+          "alt": "Grain-Free Dog Kibble - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0350",
+          "url": "https://picsum.photos/seed/1135/800/800",
+          "alt": "Grain-Free Dog Kibble - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0351",
+          "url": "https://picsum.photos/seed/1136/800/800",
+          "alt": "Grain-Free Dog Kibble - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0352",
+          "url": "https://picsum.photos/seed/1137/800/800",
+          "alt": "Grain-Free Dog Kibble - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0334",
+        "tag_0335"
+      ],
+      "attributeIds": [
+        "attr_0339"
+      ],
+      "attributeValues": {
+        "attr_0339": [
+          "aval_0340",
+          "aval_0341",
+          "aval_0342"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0345",
+        "ship_0346"
+      ]
+    },
+    {
+      "id": "prod_0353",
+      "shopId": "shop_0323",
+      "name": "Interactive Cat Toy",
+      "slug": "interactive-cat-toy",
+      "sku": "SKU-0323-002",
+      "description": "Motion-activated laser and feather cat toy",
+      "shortDescription": "Cat laser toy",
+      "sellingPrice": "19.99",
+      "regularPrice": "24.99",
+      "costPrice": "7.00",
+      "stock": 350,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0325",
+      "brandId": "brand_0330",
+      "taxId": "tax_0343",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Interactive Cat Toy",
+      "metaDescription": "Cat laser toy",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0354",
+          "url": "https://picsum.photos/seed/1138/800/800",
+          "alt": "Interactive Cat Toy - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0355",
+          "url": "https://picsum.photos/seed/1139/800/800",
+          "alt": "Interactive Cat Toy - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0356",
+          "url": "https://picsum.photos/seed/1140/800/800",
+          "alt": "Interactive Cat Toy - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0357",
+          "url": "https://picsum.photos/seed/1141/800/800",
+          "alt": "Interactive Cat Toy - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0335",
+        "tag_0336"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0345",
+        "ship_0346"
+      ]
+    },
+    {
+      "id": "prod_0358",
+      "shopId": "shop_0323",
+      "name": "Orthopedic Dog Bed",
+      "slug": "orthopedic-dog-bed",
+      "sku": "SKU-0323-003",
+      "description": "Memory foam orthopedic dog bed, washable cover",
+      "shortDescription": "Dog bed large",
+      "sellingPrice": "79.99",
+      "regularPrice": "99.99",
+      "costPrice": "35.00",
+      "stock": 80,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0326",
+      "brandId": "brand_0331",
+      "taxId": "tax_0343",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Orthopedic Dog Bed",
+      "metaDescription": "Dog bed large",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0359",
+          "url": "https://picsum.photos/seed/1142/800/800",
+          "alt": "Orthopedic Dog Bed - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0360",
+          "url": "https://picsum.photos/seed/1143/800/800",
+          "alt": "Orthopedic Dog Bed - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0361",
+          "url": "https://picsum.photos/seed/1144/800/800",
+          "alt": "Orthopedic Dog Bed - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0362",
+          "url": "https://picsum.photos/seed/1145/800/800",
+          "alt": "Orthopedic Dog Bed - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0336",
+        "tag_0337"
+      ],
+      "attributeIds": [
+        "attr_0339"
+      ],
+      "attributeValues": {
+        "attr_0339": [
+          "aval_0340",
+          "aval_0341",
+          "aval_0342"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0345",
+        "ship_0346"
+      ]
+    },
+    {
+      "id": "prod_0363",
+      "shopId": "shop_0323",
+      "name": "Pet Grooming Kit",
+      "slug": "pet-grooming-kit",
+      "sku": "SKU-0323-004",
+      "description": "Complete grooming kit with clippers, brushes, and scissors",
+      "shortDescription": "Grooming kit",
+      "sellingPrice": "39.99",
+      "regularPrice": "49.99",
+      "costPrice": "15.00",
+      "stock": 150,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0327",
+      "brandId": "brand_0332",
+      "taxId": "tax_0343",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Pet Grooming Kit",
+      "metaDescription": "Grooming kit",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0364",
+          "url": "https://picsum.photos/seed/1146/800/800",
+          "alt": "Pet Grooming Kit - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0365",
+          "url": "https://picsum.photos/seed/1147/800/800",
+          "alt": "Pet Grooming Kit - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0366",
+          "url": "https://picsum.photos/seed/1148/800/800",
+          "alt": "Pet Grooming Kit - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0367",
+          "url": "https://picsum.photos/seed/1149/800/800",
+          "alt": "Pet Grooming Kit - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0337",
+        "tag_0338"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0345",
+        "ship_0346"
+      ]
+    },
+    {
+      "id": "prod_0368",
+      "shopId": "shop_0323",
+      "name": "Salmon Oil Supplement",
+      "slug": "salmon-oil-supplement",
+      "sku": "SKU-0323-005",
+      "description": "Wild-caught salmon oil for skin and coat health, 500ml",
+      "shortDescription": "Salmon oil 500ml",
+      "sellingPrice": "22.99",
+      "regularPrice": "27.99",
+      "costPrice": "9.00",
+      "stock": 250,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0328",
+      "brandId": "brand_0333",
+      "taxId": "tax_0343",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Salmon Oil Supplement",
+      "metaDescription": "Salmon oil 500ml",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0369",
+          "url": "https://picsum.photos/seed/1150/800/800",
+          "alt": "Salmon Oil Supplement - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0370",
+          "url": "https://picsum.photos/seed/1151/800/800",
+          "alt": "Salmon Oil Supplement - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0371",
+          "url": "https://picsum.photos/seed/1152/800/800",
+          "alt": "Salmon Oil Supplement - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0372",
+          "url": "https://picsum.photos/seed/1153/800/800",
+          "alt": "Salmon Oil Supplement - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0338",
+        "tag_0334"
+      ],
+      "attributeIds": [
+        "attr_0339"
+      ],
+      "attributeValues": {
+        "attr_0339": [
+          "aval_0340",
+          "aval_0341",
+          "aval_0342"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0345",
+        "ship_0346"
+      ]
+    },
+    {
+      "id": "prod_0402",
+      "shopId": "shop_0373",
+      "name": "Hyaluronic Acid Serum",
+      "slug": "hyaluronic-acid-serum",
+      "sku": "SKU-0373-001",
+      "description": "2% hyaluronic acid serum for intense hydration, 30ml",
+      "shortDescription": "HA serum 30ml",
+      "sellingPrice": "34.99",
+      "regularPrice": "44.99",
+      "costPrice": "12.00",
+      "stock": 300,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0374",
+      "brandId": "brand_0379",
+      "taxId": "tax_0397",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Hyaluronic Acid Serum",
+      "metaDescription": "HA serum 30ml",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0403",
+          "url": "https://picsum.photos/seed/1156/800/800",
+          "alt": "Hyaluronic Acid Serum - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0404",
+          "url": "https://picsum.photos/seed/1157/800/800",
+          "alt": "Hyaluronic Acid Serum - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0405",
+          "url": "https://picsum.photos/seed/1158/800/800",
+          "alt": "Hyaluronic Acid Serum - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0406",
+          "url": "https://picsum.photos/seed/1159/800/800",
+          "alt": "Hyaluronic Acid Serum - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0384",
+        "tag_0385"
+      ],
+      "attributeIds": [
+        "attr_0389",
+        "attr_0393"
+      ],
+      "attributeValues": {
+        "attr_0389": [
+          "aval_0390",
+          "aval_0391",
+          "aval_0392"
+        ],
+        "attr_0393": [
+          "aval_0394",
+          "aval_0395",
+          "aval_0396"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0399",
+        "ship_0400"
+      ]
+    },
+    {
+      "id": "prod_0407",
+      "shopId": "shop_0373",
+      "name": "Vitamin C Moisturizer",
+      "slug": "vitamin-c-moisturizer",
+      "sku": "SKU-0373-002",
+      "description": "Brightening vitamin C day cream with SPF 30",
+      "shortDescription": "Vit C moisturizer",
+      "sellingPrice": "29.99",
+      "regularPrice": "39.99",
+      "costPrice": "10.00",
+      "stock": 250,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0375",
+      "brandId": "brand_0380",
+      "taxId": "tax_0397",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Vitamin C Moisturizer",
+      "metaDescription": "Vit C moisturizer",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0408",
+          "url": "https://picsum.photos/seed/1160/800/800",
+          "alt": "Vitamin C Moisturizer - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0409",
+          "url": "https://picsum.photos/seed/1161/800/800",
+          "alt": "Vitamin C Moisturizer - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0410",
+          "url": "https://picsum.photos/seed/1162/800/800",
+          "alt": "Vitamin C Moisturizer - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0411",
+          "url": "https://picsum.photos/seed/1163/800/800",
+          "alt": "Vitamin C Moisturizer - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0385",
+        "tag_0386"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0399",
+        "ship_0400"
+      ]
+    },
+    {
+      "id": "prod_0412",
+      "shopId": "shop_0373",
+      "name": "Retinol Night Cream",
+      "slug": "retinol-night-cream",
+      "sku": "SKU-0373-003",
+      "description": "Advanced retinol night cream for anti-aging, 50ml",
+      "shortDescription": "Retinol cream 50ml",
+      "sellingPrice": "49.99",
+      "regularPrice": "64.99",
+      "costPrice": "20.00",
+      "stock": 150,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0376",
+      "brandId": "brand_0381",
+      "taxId": "tax_0397",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "Retinol Night Cream",
+      "metaDescription": "Retinol cream 50ml",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0413",
+          "url": "https://picsum.photos/seed/1164/800/800",
+          "alt": "Retinol Night Cream - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0414",
+          "url": "https://picsum.photos/seed/1165/800/800",
+          "alt": "Retinol Night Cream - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0415",
+          "url": "https://picsum.photos/seed/1166/800/800",
+          "alt": "Retinol Night Cream - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0416",
+          "url": "https://picsum.photos/seed/1167/800/800",
+          "alt": "Retinol Night Cream - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0386",
+        "tag_0387"
+      ],
+      "attributeIds": [
+        "attr_0389",
+        "attr_0393"
+      ],
+      "attributeValues": {
+        "attr_0389": [
+          "aval_0390",
+          "aval_0391",
+          "aval_0392"
+        ],
+        "attr_0393": [
+          "aval_0394",
+          "aval_0395",
+          "aval_0396"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0399",
+        "ship_0400"
+      ]
+    },
+    {
+      "id": "prod_0417",
+      "shopId": "shop_0373",
+      "name": "Matte Lipstick Collection",
+      "slug": "matte-lipstick-collection",
+      "sku": "SKU-0373-004",
+      "description": "Set of 4 long-lasting matte lipsticks in nude shades",
+      "shortDescription": "Matte lipstick set",
+      "sellingPrice": "24.99",
+      "regularPrice": "29.99",
+      "costPrice": "8.00",
+      "stock": 400,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0377",
+      "brandId": "brand_0382",
+      "taxId": "tax_0397",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Matte Lipstick Collection",
+      "metaDescription": "Matte lipstick set",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0418",
+          "url": "https://picsum.photos/seed/1168/800/800",
+          "alt": "Matte Lipstick Collection - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0419",
+          "url": "https://picsum.photos/seed/1169/800/800",
+          "alt": "Matte Lipstick Collection - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0420",
+          "url": "https://picsum.photos/seed/1170/800/800",
+          "alt": "Matte Lipstick Collection - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0421",
+          "url": "https://picsum.photos/seed/1171/800/800",
+          "alt": "Matte Lipstick Collection - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0387",
+        "tag_0388"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0399",
+        "ship_0400"
+      ]
+    },
+    {
+      "id": "prod_0422",
+      "shopId": "shop_0373",
+      "name": "Argan Hair Oil",
+      "slug": "argan-hair-oil",
+      "sku": "SKU-0373-005",
+      "description": "Pure argan oil for frizz control and shine, 100ml",
+      "shortDescription": "Argan oil 100ml",
+      "sellingPrice": "19.99",
+      "regularPrice": "24.99",
+      "costPrice": "7.00",
+      "stock": 200,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0378",
+      "brandId": "brand_0383",
+      "taxId": "tax_0397",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Argan Hair Oil",
+      "metaDescription": "Argan oil 100ml",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0423",
+          "url": "https://picsum.photos/seed/1172/800/800",
+          "alt": "Argan Hair Oil - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0424",
+          "url": "https://picsum.photos/seed/1173/800/800",
+          "alt": "Argan Hair Oil - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0425",
+          "url": "https://picsum.photos/seed/1174/800/800",
+          "alt": "Argan Hair Oil - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0426",
+          "url": "https://picsum.photos/seed/1175/800/800",
+          "alt": "Argan Hair Oil - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0388",
+        "tag_0384"
+      ],
+      "attributeIds": [
+        "attr_0389",
+        "attr_0393"
+      ],
+      "attributeValues": {
+        "attr_0389": [
+          "aval_0390",
+          "aval_0391",
+          "aval_0392"
+        ],
+        "attr_0393": [
+          "aval_0394",
+          "aval_0395",
+          "aval_0396"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0399",
+        "ship_0400"
+      ]
+    },
+    {
+      "id": "prod_0452",
+      "shopId": "shop_0427",
+      "name": "STEM Robot Kit",
+      "slug": "stem-robot-kit",
+      "sku": "SKU-0427-001",
+      "description": "Build-your-own programmable robot kit for ages 8+",
+      "shortDescription": "Programmable robot",
+      "sellingPrice": "59.99",
+      "regularPrice": "74.99",
+      "costPrice": "25.00",
+      "stock": 120,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0428",
+      "brandId": "brand_0433",
+      "taxId": "tax_0447",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "STEM Robot Kit",
+      "metaDescription": "Programmable robot",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0453",
+          "url": "https://picsum.photos/seed/1178/800/800",
+          "alt": "STEM Robot Kit - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0454",
+          "url": "https://picsum.photos/seed/1179/800/800",
+          "alt": "STEM Robot Kit - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0455",
+          "url": "https://picsum.photos/seed/1180/800/800",
+          "alt": "STEM Robot Kit - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0456",
+          "url": "https://picsum.photos/seed/1181/800/800",
+          "alt": "STEM Robot Kit - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0438",
+        "tag_0439"
+      ],
+      "attributeIds": [
+        "attr_0443"
+      ],
+      "attributeValues": {
+        "attr_0443": [
+          "aval_0444",
+          "aval_0445",
+          "aval_0446"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0449",
+        "ship_0450"
+      ]
+    },
+    {
+      "id": "prod_0457",
+      "shopId": "shop_0427",
+      "name": "Classic Strategy Board Game",
+      "slug": "classic-strategy-board-game",
+      "sku": "SKU-0427-002",
+      "description": "Award-winning strategy board game for 2-6 players",
+      "shortDescription": "Strategy board game",
+      "sellingPrice": "34.99",
+      "regularPrice": "39.99",
+      "costPrice": "14.00",
+      "stock": 200,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0429",
+      "brandId": "brand_0434",
+      "taxId": "tax_0447",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Classic Strategy Board Game",
+      "metaDescription": "Strategy board game",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0458",
+          "url": "https://picsum.photos/seed/1182/800/800",
+          "alt": "Classic Strategy Board Game - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0459",
+          "url": "https://picsum.photos/seed/1183/800/800",
+          "alt": "Classic Strategy Board Game - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0460",
+          "url": "https://picsum.photos/seed/1184/800/800",
+          "alt": "Classic Strategy Board Game - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0461",
+          "url": "https://picsum.photos/seed/1185/800/800",
+          "alt": "Classic Strategy Board Game - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0439",
+        "tag_0440"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0449",
+        "ship_0450"
+      ]
+    },
+    {
+      "id": "prod_0462",
+      "shopId": "shop_0427",
+      "name": "3D Wooden Puzzle Castle",
+      "slug": "3d-wooden-puzzle-castle",
+      "sku": "SKU-0427-003",
+      "description": "Intricate 3D wooden castle puzzle with 250 pieces",
+      "shortDescription": "3D castle puzzle",
+      "sellingPrice": "29.99",
+      "regularPrice": "34.99",
+      "costPrice": "10.00",
+      "stock": 180,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0430",
+      "brandId": "brand_0435",
+      "taxId": "tax_0447",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "3D Wooden Puzzle Castle",
+      "metaDescription": "3D castle puzzle",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0463",
+          "url": "https://picsum.photos/seed/1186/800/800",
+          "alt": "3D Wooden Puzzle Castle - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0464",
+          "url": "https://picsum.photos/seed/1187/800/800",
+          "alt": "3D Wooden Puzzle Castle - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0465",
+          "url": "https://picsum.photos/seed/1188/800/800",
+          "alt": "3D Wooden Puzzle Castle - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0466",
+          "url": "https://picsum.photos/seed/1189/800/800",
+          "alt": "3D Wooden Puzzle Castle - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0440",
+        "tag_0441"
+      ],
+      "attributeIds": [
+        "attr_0443"
+      ],
+      "attributeValues": {
+        "attr_0443": [
+          "aval_0444",
+          "aval_0445",
+          "aval_0446"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0449",
+        "ship_0450"
+      ]
+    },
+    {
+      "id": "prod_0467",
+      "shopId": "shop_0427",
+      "name": "Princess Doll Playset",
+      "slug": "princess-doll-playset",
+      "sku": "SKU-0427-004",
+      "description": "Deluxe princess doll with castle playset and accessories",
+      "shortDescription": "Princess playset",
+      "sellingPrice": "44.99",
+      "regularPrice": "54.99",
+      "costPrice": "18.00",
+      "stock": 150,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0431",
+      "brandId": "brand_0436",
+      "taxId": "tax_0447",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Princess Doll Playset",
+      "metaDescription": "Princess playset",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0468",
+          "url": "https://picsum.photos/seed/1190/800/800",
+          "alt": "Princess Doll Playset - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0469",
+          "url": "https://picsum.photos/seed/1191/800/800",
+          "alt": "Princess Doll Playset - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0470",
+          "url": "https://picsum.photos/seed/1192/800/800",
+          "alt": "Princess Doll Playset - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0471",
+          "url": "https://picsum.photos/seed/1193/800/800",
+          "alt": "Princess Doll Playset - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0441",
+        "tag_0442"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0449",
+        "ship_0450"
+      ]
+    },
+    {
+      "id": "prod_0472",
+      "shopId": "shop_0427",
+      "name": "Solar System Science Kit",
+      "slug": "solar-system-science-kit",
+      "sku": "SKU-0427-005",
+      "description": "Interactive solar system model kit with LED lights",
+      "shortDescription": "Solar system kit",
+      "sellingPrice": "39.99",
+      "regularPrice": "49.99",
+      "costPrice": "16.00",
+      "stock": 100,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0432",
+      "brandId": "brand_0437",
+      "taxId": "tax_0447",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "Solar System Science Kit",
+      "metaDescription": "Solar system kit",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0473",
+          "url": "https://picsum.photos/seed/1194/800/800",
+          "alt": "Solar System Science Kit - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0474",
+          "url": "https://picsum.photos/seed/1195/800/800",
+          "alt": "Solar System Science Kit - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0475",
+          "url": "https://picsum.photos/seed/1196/800/800",
+          "alt": "Solar System Science Kit - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0476",
+          "url": "https://picsum.photos/seed/1197/800/800",
+          "alt": "Solar System Science Kit - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0442",
+        "tag_0438"
+      ],
+      "attributeIds": [
+        "attr_0443"
+      ],
+      "attributeValues": {
+        "attr_0443": [
+          "aval_0444",
+          "aval_0445",
+          "aval_0446"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0449",
+        "ship_0450"
+      ]
+    },
+    {
+      "id": "prod_0506",
+      "shopId": "shop_0477",
+      "name": "ProMax Wireless Earbuds",
+      "slug": "promax-wireless-earbuds",
+      "sku": "SKU-0477-001",
+      "description": "Premium noise-cancelling wireless earbuds with 30hr battery life",
+      "shortDescription": "Wireless earbuds with ANC",
+      "sellingPrice": "79.99",
+      "regularPrice": "99.99",
+      "costPrice": "35.00",
+      "stock": 150,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0478",
+      "brandId": "brand_0483",
+      "taxId": "tax_0501",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "ProMax Wireless Earbuds",
+      "metaDescription": "Wireless earbuds with ANC",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0507",
+          "url": "https://picsum.photos/seed/1200/800/800",
+          "alt": "ProMax Wireless Earbuds - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0508",
+          "url": "https://picsum.photos/seed/1201/800/800",
+          "alt": "ProMax Wireless Earbuds - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0509",
+          "url": "https://picsum.photos/seed/1202/800/800",
+          "alt": "ProMax Wireless Earbuds - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0510",
+          "url": "https://picsum.photos/seed/1203/800/800",
+          "alt": "ProMax Wireless Earbuds - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0488",
+        "tag_0489"
+      ],
+      "attributeIds": [
+        "attr_0493",
+        "attr_0497"
+      ],
+      "attributeValues": {
+        "attr_0493": [
+          "aval_0494",
+          "aval_0495",
+          "aval_0496"
+        ],
+        "attr_0497": [
+          "aval_0498",
+          "aval_0499",
+          "aval_0500"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0503",
+        "ship_0504"
+      ]
+    },
+    {
+      "id": "prod_0511",
+      "shopId": "shop_0477",
+      "name": "UltraSlim Laptop Stand",
+      "slug": "ultraslim-laptop-stand",
+      "sku": "SKU-0477-002",
+      "description": "Ergonomic aluminum laptop stand with adjustable height",
+      "shortDescription": "Adjustable laptop stand",
+      "sellingPrice": "49.99",
+      "regularPrice": "59.99",
+      "costPrice": "20.00",
+      "stock": 200,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0479",
+      "brandId": "brand_0484",
+      "taxId": "tax_0501",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "UltraSlim Laptop Stand",
+      "metaDescription": "Adjustable laptop stand",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0512",
+          "url": "https://picsum.photos/seed/1204/800/800",
+          "alt": "UltraSlim Laptop Stand - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0513",
+          "url": "https://picsum.photos/seed/1205/800/800",
+          "alt": "UltraSlim Laptop Stand - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0514",
+          "url": "https://picsum.photos/seed/1206/800/800",
+          "alt": "UltraSlim Laptop Stand - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0515",
+          "url": "https://picsum.photos/seed/1207/800/800",
+          "alt": "UltraSlim Laptop Stand - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0489",
+        "tag_0490"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0503",
+        "ship_0504"
+      ]
+    },
+    {
+      "id": "prod_0516",
+      "shopId": "shop_0477",
+      "name": "SmartWatch Pro X",
+      "slug": "smartwatch-pro-x",
+      "sku": "SKU-0477-003",
+      "description": "Advanced smartwatch with health monitoring and GPS",
+      "shortDescription": "GPS smartwatch",
+      "sellingPrice": "199.99",
+      "regularPrice": "249.99",
+      "costPrice": "90.00",
+      "stock": 80,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0480",
+      "brandId": "brand_0485",
+      "taxId": "tax_0501",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": true,
+      "isActive": true,
+      "metaTitle": "SmartWatch Pro X",
+      "metaDescription": "GPS smartwatch",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0517",
+          "url": "https://picsum.photos/seed/1208/800/800",
+          "alt": "SmartWatch Pro X - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0518",
+          "url": "https://picsum.photos/seed/1209/800/800",
+          "alt": "SmartWatch Pro X - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0519",
+          "url": "https://picsum.photos/seed/1210/800/800",
+          "alt": "SmartWatch Pro X - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0520",
+          "url": "https://picsum.photos/seed/1211/800/800",
+          "alt": "SmartWatch Pro X - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0490",
+        "tag_0491"
+      ],
+      "attributeIds": [
+        "attr_0493",
+        "attr_0497"
+      ],
+      "attributeValues": {
+        "attr_0493": [
+          "aval_0494",
+          "aval_0495",
+          "aval_0496"
+        ],
+        "attr_0497": [
+          "aval_0498",
+          "aval_0499",
+          "aval_0500"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0503",
+        "ship_0504"
+      ]
+    },
+    {
+      "id": "prod_0521",
+      "shopId": "shop_0477",
+      "name": "4K Webcam Ultra HD",
+      "slug": "4k-webcam-ultra-hd",
+      "sku": "SKU-0477-004",
+      "description": "Professional 4K webcam with auto-focus and noise reduction mic",
+      "shortDescription": "4K streaming webcam",
+      "sellingPrice": "129.99",
+      "regularPrice": "159.99",
+      "costPrice": "55.00",
+      "stock": 120,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0481",
+      "brandId": "brand_0486",
+      "taxId": "tax_0501",
+      "status": "active",
+      "productType": "simple",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "4K Webcam Ultra HD",
+      "metaDescription": "4K streaming webcam",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0522",
+          "url": "https://picsum.photos/seed/1212/800/800",
+          "alt": "4K Webcam Ultra HD - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0523",
+          "url": "https://picsum.photos/seed/1213/800/800",
+          "alt": "4K Webcam Ultra HD - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0524",
+          "url": "https://picsum.photos/seed/1214/800/800",
+          "alt": "4K Webcam Ultra HD - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0525",
+          "url": "https://picsum.photos/seed/1215/800/800",
+          "alt": "4K Webcam Ultra HD - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0491",
+        "tag_0492"
+      ],
+      "attributeIds": [],
+      "attributeValues": {},
+      "shippingMethodIds": [
+        "ship_0503",
+        "ship_0504"
+      ]
+    },
+    {
+      "id": "prod_0526",
+      "shopId": "shop_0477",
+      "name": "PowerBank 20000mAh",
+      "slug": "powerbank-20000mah",
+      "sku": "SKU-0477-005",
+      "description": "High-capacity portable charger with fast charging support",
+      "shortDescription": "20000mAh power bank",
+      "sellingPrice": "39.99",
+      "regularPrice": "49.99",
+      "costPrice": "15.00",
+      "stock": 300,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "categoryId": "cat_0482",
+      "brandId": "brand_0487",
+      "taxId": "tax_0501",
+      "status": "active",
+      "productType": "variable",
+      "isFeatured": false,
+      "isActive": true,
+      "metaTitle": "PowerBank 20000mAh",
+      "metaDescription": "20000mAh power bank",
+      "variationPrices": {},
+      "images": [
+        {
+          "id": "img_0527",
+          "url": "https://picsum.photos/seed/1216/800/800",
+          "alt": "PowerBank 20000mAh - Main",
+          "sortOrder": 0,
+          "isPrimary": true
+        },
+        {
+          "id": "img_0528",
+          "url": "https://picsum.photos/seed/1217/800/800",
+          "alt": "PowerBank 20000mAh - Side",
+          "sortOrder": 1,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0529",
+          "url": "https://picsum.photos/seed/1218/800/800",
+          "alt": "PowerBank 20000mAh - Detail",
+          "sortOrder": 2,
+          "isPrimary": false
+        },
+        {
+          "id": "img_0530",
+          "url": "https://picsum.photos/seed/1219/800/800",
+          "alt": "PowerBank 20000mAh - Lifestyle",
+          "sortOrder": 3,
+          "isPrimary": false
+        }
+      ],
+      "tagIds": [
+        "tag_0492",
+        "tag_0488"
+      ],
+      "attributeIds": [
+        "attr_0493",
+        "attr_0497"
+      ],
+      "attributeValues": {
+        "attr_0493": [
+          "aval_0494",
+          "aval_0495",
+          "aval_0496"
+        ],
+        "attr_0497": [
+          "aval_0498",
+          "aval_0499",
+          "aval_0500"
+        ]
+      },
+      "shippingMethodIds": [
+        "ship_0503",
+        "ship_0504"
+      ]
+    }
+  ]
+}

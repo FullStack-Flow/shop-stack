@@ -10,7 +10,7 @@
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "npx tsx src/lib/db/seed-products.ts",
+    "db:seed": "npx tsx src/lib/db/seeding.ts",
     "test": "vitest run",
     "format": "biome format",
     "lint": "biome lint",
