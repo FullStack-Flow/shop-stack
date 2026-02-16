@@ -113,9 +113,9 @@ export const createOrderColumns = ({
         const customer = row.original.customer;
         return (
           <div>
-            <div className="font-medium">{customer.name ?? "Guest"}</div>
+            <div className="font-medium">{customer?.name ?? "Guest"}</div>
             <div className="text-muted-foreground text-xs">
-              {customer.email ?? "No email"}
+              {customer?.email ?? "No email"}
             </div>
           </div>
         );

@@ -20,7 +20,6 @@ import {
   getProductRatingStats,
   getReviewOrderByClause,
   requireReview,
-  type StoreReviewResponse,
   updateProductRating,
   verifyReviewOwnership,
 } from "@/lib/helper/review-query-helpers";
@@ -36,7 +35,7 @@ import {
   voteHelpfulSchema,
 } from "@/lib/validators/review";
 
-import type { ReviewEligibility } from "@/types/review";
+import type { ReviewEligibility, StoreReviewResponse } from "@/types/review";
 
 // ============================================================================
 // Check Review Eligibility
