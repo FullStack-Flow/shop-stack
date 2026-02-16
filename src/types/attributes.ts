@@ -129,3 +129,25 @@ export interface DeleteAttributeResponse {
   success: boolean;
   message: string;
 }
+
+export interface ToggleActiveParams {
+  id: string;
+  isActive: boolean;
+}
+
+export interface UpdateAttributeParams {
+  id: string;
+  name?: string;
+  slug?: string;
+  type?: "select" | "color" | "image" | "label";
+  values?: { name: string; slug: string; value: string }[];
+  sortOrder?: number;
+  isActive?: boolean;
+}
+
+export interface AdminAttributeMutationState {
+  togglingId: string | null;
+  deletingId: string | null;
+  updatingId: string | null;
+  isAnyMutating: boolean;
+}

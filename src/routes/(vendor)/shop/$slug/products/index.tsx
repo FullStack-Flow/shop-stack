@@ -6,6 +6,7 @@ import { PageSkeleton } from "@/components/base/common/page-skeleton";
 import { AddProductDialog } from "@/components/containers/shared/products/add-product-dialog";
 import ShopProductsTemplate from "@/components/templates/vendor/products/shop-products-template";
 import { useEntityCRUD } from "@/hooks/common/use-entity-crud";
+import { shippingMethodsQueryOptions } from "@/hooks/common/use-shipping";
 import { attributesQueryOptions } from "@/hooks/vendors/use-attributes";
 import { brandsQueryOptions } from "@/hooks/vendors/use-brands";
 import { categoriesQueryOptions } from "@/hooks/vendors/use-categories";
@@ -82,6 +83,17 @@ function ProductsPage() {
     }),
   );
 
+  const { data: shippingMethodsData } = useSuspenseQuery(
+    shippingMethodsQueryOptions({
+      shopId,
+      limit: 100,
+      offset: 0,
+      isActive: true,
+      sortBy: "name",
+      sortDirection: "asc",
+    }),
+  );
+
   // Get product mutations
   const {
     createProduct,
@@ -120,6 +132,12 @@ function ProductsPage() {
       id: t.id,
       name: t.name,
       rate: t.rate,
+    })) ?? [];
+
+  const shippingMethods =
+    shippingMethodsData?.data?.map((s) => ({
+      id: s.id,
+      name: s.name,
     })) ?? [];
 
   // Use shared CRUD hook
@@ -188,6 +206,7 @@ function ProductsPage() {
           brandId: data.brandId || undefined,
           tagIds: data.tagIds,
           attributeIds: data.attributeIds,
+          shippingMethodIds: data.shippingMethodIds,
           attributeValues: data.attributeValues,
           taxId: data.taxId || undefined,
           productType: data.productType,
@@ -238,6 +257,7 @@ function ProductsPage() {
           brandId: data.brandId || undefined,
           tagIds: data.tagIds,
           attributeIds: data.attributeIds,
+          shippingMethodIds: data.shippingMethodIds,
           attributeValues: data.attributeValues,
           taxId: data.taxId || undefined,
           status,
@@ -285,10 +305,12 @@ function ProductsPage() {
         tags={tags}
         availableAttributes={availableAttributes}
         taxes={taxes}
+        shippingMethods={shippingMethods}
         initialValues={
           editingProduct
             ? {
                 name: editingProduct.name,
+                slug: editingProduct.slug || "",
                 sku: editingProduct.sku || "",
                 sellingPrice: editingProduct.sellingPrice,
                 regularPrice: editingProduct.regularPrice || "",
@@ -302,6 +324,7 @@ function ProductsPage() {
                 brandId: editingProduct.brandId || "",
                 tagIds: editingProduct.tagIds,
                 attributeIds: editingProduct.attributeIds,
+                shippingMethodIds: editingProduct.shippingMethodIds || [],
                 attributeValues: editingProduct.attributeValues || {},
                 taxId: editingProduct.taxId || "",
                 status: editingProduct.status,

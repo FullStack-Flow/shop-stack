@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import type { Product } from "@/data/products";
 import { cn } from "@/lib/utils";
+import type { StoreProduct } from "@/types/store-types";
 
 interface ProductCardHorizontalProps {
-  product: Product;
+  product: StoreProduct;
   className?: string;
 }
 
@@ -14,6 +14,9 @@ export default function ProductCardHorizontal({
   className,
 }: ProductCardHorizontalProps) {
   const mainImage = product.images[0]?.url || "https://placehold.co/300x300";
+  const regularPrice = parseFloat(product.regularPrice || "0");
+  const sellingPrice = parseFloat(product.sellingPrice);
+  const rating = parseFloat(product.averageRating) || 0;
 
   return (
     <Link
@@ -21,7 +24,7 @@ export default function ProductCardHorizontal({
       params={{ productId: product.id }}
       className={cn(
         "group flex w-full min-w-70 max-w-[320px] flex-col gap-3 rounded-lg border bg-background p-4 transition-all hover:shadow-md",
-        className
+        className,
       )}
     >
       <div className="relative aspect-square w-full overflow-hidden rounded-md bg-muted">
@@ -31,7 +34,7 @@ export default function ProductCardHorizontal({
           className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
           loading="lazy"
         />
-        {product.isOnSale && (
+        {regularPrice > sellingPrice && (
           <Badge variant="destructive" className="absolute top-2 left-2">
             Sale
           </Badge>
@@ -40,7 +43,7 @@ export default function ProductCardHorizontal({
 
       <div className="space-y-1">
         <p className="font-medium text-muted-foreground text-xs">
-          {product.brand}
+          {product.brandName || "Unknown Brand"}
         </p>
         <h3 className="line-clamp-2 font-medium text-foreground text-sm group-hover:text-primary">
           {product.name}
@@ -53,27 +56,23 @@ export default function ProductCardHorizontal({
                 key={i}
                 className={cn(
                   "h-3 w-3",
-                  i < Math.round(product.rating.average)
-                    ? "fill-current"
-                    : "text-muted"
+                  i < Math.round(rating) ? "fill-current" : "text-muted",
                 )}
               />
             ))}
           </div>
           <span className="text-muted-foreground text-xs">
-            ({product.rating.count})
+            ({product.reviewCount || 0})
           </span>
         </div>
 
         <div className="flex items-baseline gap-2 pt-1">
           <span className="font-bold text-foreground text-lg">
-            {product.price.currency}
-            {product.price.current.toFixed(2)}
+            ${sellingPrice.toFixed(2)}
           </span>
-          {product.price.original > product.price.current && (
+          {regularPrice > sellingPrice && (
             <span className="text-muted-foreground text-sm line-through">
-              {product.price.currency}
-              {product.price.original.toFixed(2)}
+              ${regularPrice.toFixed(2)}
             </span>
           )}
         </div>

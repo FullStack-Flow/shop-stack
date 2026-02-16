@@ -239,6 +239,7 @@ export function normalizeCoupon(
   options: {
     includeShopInfo?: boolean;
     includeVendorInfo?: boolean;
+    includeLinkedItems?: boolean;
   } = {},
 ): NormalizedCoupon {
   // Get linked items
@@ -377,4 +378,51 @@ export async function fetchCouponWithRelations(
   });
 
   return normalizeCoupon(coupon, relations, options);
+}
+
+// ============================================================================
+// Get Active Coupons (for store/checkout)
+// ============================================================================
+
+/**
+ * Get currently active coupons for a shop
+ */
+export async function getActiveCouponsForShop(
+  shopId: string,
+  options: {
+    limit?: number;
+    includeShopInfo?: boolean;
+  } = {},
+): Promise<NormalizedCoupon[]> {
+  const now = new Date();
+
+  const activeCoupons = await db
+    .select()
+    .from(coupons)
+    .where(
+      and(
+        eq(coupons.shopId, shopId),
+        eq(coupons.isActive, true),
+        lte(coupons.activeFrom, now),
+        gte(coupons.activeTo, now),
+      ),
+    )
+    .limit(options.limit ?? 50);
+
+  if (activeCoupons.length === 0) {
+    return [];
+  }
+
+  const couponIds = activeCoupons.map((c) => c.id);
+  const relations = await batchFetchCouponRelations(couponIds, activeCoupons, {
+    includeShopInfo: options.includeShopInfo,
+    includeLinkedItems: true,
+  });
+
+  return activeCoupons.map((coupon) =>
+    normalizeCoupon(coupon, relations, {
+      includeShopInfo: options.includeShopInfo,
+      includeLinkedItems: true,
+    }),
+  );
 }

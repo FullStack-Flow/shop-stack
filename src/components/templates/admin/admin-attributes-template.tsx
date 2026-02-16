@@ -1,34 +1,43 @@
-import { useState } from "react";
-import { AddAttributeDialog } from "@/components/containers/shared/attributes/add-attribute-dialog";
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
 import AttributeHeader from "@/components/containers/shared/attributes/attribute-header";
 import AttributeTable from "@/components/containers/shared/attributes/attribute-table";
-import type { AttributeFormValues, AttributeItem } from "@/types/attributes";
+import type {
+  AdminAttributeMutationState,
+  AttributeItem,
+} from "@/types/attributes";
 
 interface AdminAttributesTemplateProps {
-  attributes: AttributeItem[];
-  onAddAttribute: (data: AttributeFormValues) => void;
-  onDeleteAttribute: (attribute: AttributeItem) => void;
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<AttributeItem>>;
+  onEditAttribute?: (attribute: AttributeItem) => void;
+  onDeleteAttribute?: (attribute: AttributeItem) => void;
+  onToggleActive?: (attribute: AttributeItem) => void;
+  mutationState?: AdminAttributeMutationState;
+  isAttributeMutating?: (id: string) => boolean;
 }
 
 export default function AdminAttributesTemplate({
-  attributes,
-  onAddAttribute,
+  fetcher,
+  onEditAttribute,
   onDeleteAttribute,
+  onToggleActive,
+  mutationState,
+  isAttributeMutating,
 }: AdminAttributesTemplateProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
   return (
     <div className="space-y-6">
-      <AttributeHeader onAdd={() => setIsAddDialogOpen(true)} role="admin" />
-      <AddAttributeDialog
-        open={isAddDialogOpen}
-        onOpenChange={setIsAddDialogOpen}
-        onSubmit={onAddAttribute}
-        role="admin"
-      />
+      <AttributeHeader role="admin" />
       <AttributeTable
-        attributes={attributes}
+        fetcher={fetcher}
+        onEdit={onEditAttribute}
         onDelete={onDeleteAttribute}
+        onToggleActive={onToggleActive}
+        mutationState={mutationState}
+        isAttributeMutating={isAttributeMutating}
         mode="admin"
       />
     </div>

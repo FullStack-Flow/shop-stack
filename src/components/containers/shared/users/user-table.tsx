@@ -1,6 +1,6 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
-import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import DataTable from "@/components/base/data-table/data-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -10,16 +10,23 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { User, UserPermissions } from "@/types/users";
+import type { AdminUser, UserPermissions, UserRole } from "@/types/users";
 
 interface UserTableProps {
-  users: User[];
+  users: AdminUser[];
   permissions?: UserPermissions;
   onDeleteUser?: (userId: string) => void;
-  onEditUser?: (userId: string) => void;
+  onBanUser?: (userId: string) => void;
+  onUnbanUser?: (userId: string) => void;
+  onUpdateRole?: (userId: string, role: UserRole) => void;
   className?: string;
 }
 
@@ -32,10 +39,12 @@ export default function UserTable({
     canCreate: true,
   },
   onDeleteUser,
-  onEditUser,
+  onBanUser,
+  onUnbanUser,
+  onUpdateRole,
   className,
 }: UserTableProps) {
-  const columns: ColumnDef<User>[] = [
+  const columns: ColumnDef<AdminUser>[] = [
     {
       accessorKey: "id",
       header: "ID",
@@ -53,7 +62,7 @@ export default function UserTable({
         return (
           <div className="flex items-center gap-3">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={user.avatar} alt={user.name} />
+              <AvatarImage src={user.image} alt={user.name} />
               <AvatarFallback>
                 {user.name
                   .split(" ")
@@ -77,23 +86,12 @@ export default function UserTable({
       },
     },
     {
-      accessorKey: "totalOrders",
-      header: "Total Orders",
+      accessorKey: "role",
+      header: "Role",
       cell: ({ row }) => {
         return (
           <div className="text-muted-foreground">
-            {row.getValue("totalOrders")}
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "totalSpent",
-      header: "Total Spent",
-      cell: ({ row }) => {
-        return (
-          <div className="text-muted-foreground">
-            {row.getValue("totalSpent")}
+            {row.getValue("role")}
           </div>
         );
       },
@@ -105,13 +103,7 @@ export default function UserTable({
         const status = row.getValue("status") as string;
         return (
           <Badge
-            variant={
-              status === "active"
-                ? "default"
-                : status === "suspended"
-                  ? "destructive"
-                  : "secondary"
-            }
+            variant={status === "banned" ? "destructive" : "default"}
             className={status === "active" ? "bg-green-500" : ""}
           >
             {status}
@@ -123,10 +115,12 @@ export default function UserTable({
       accessorKey: "createdAt",
       header: "Created At",
       cell: ({ row }) => {
-        const createdAt = row.getValue("createdAt") as Date;
+        const createdAt = row.getValue("createdAt") as Date | string;
+        const createdAtDate =
+          createdAt instanceof Date ? createdAt : new Date(createdAt);
         return (
           <div className="text-muted-foreground">
-            {format(createdAt, "yyyy-MM-dd")}
+            {format(createdAtDate, "yyyy-MM-dd")}
           </div>
         );
       },
@@ -150,13 +144,41 @@ export default function UserTable({
               >
                 Copy ID
               </DropdownMenuItem>
-              {permissions.canView && (
-                <DropdownMenuItem>View Details</DropdownMenuItem>
+              {permissions.canEdit && onUpdateRole && (
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>Update Role</DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuRadioGroup
+                      value={row.original.role}
+                      onValueChange={(value) =>
+                        onUpdateRole(row.original.id, value as UserRole)
+                      }
+                    >
+                      <DropdownMenuRadioItem value="customer">
+                        Customer
+                      </DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="vendor">
+                        Vendor
+                      </DropdownMenuRadioItem>
+                      <DropdownMenuRadioItem value="admin">
+                        Admin
+                      </DropdownMenuRadioItem>
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
               )}
-              {permissions.canEdit && (
-                <DropdownMenuItem onClick={() => onEditUser?.(row.original.id)}>
-                  <Edit className="mr-2 h-4 w-4" />
-                  Edit
+              {permissions.canEdit && row.original.status === "active" && (
+                <DropdownMenuItem
+                  onClick={() => onBanUser?.(row.original.id)}
+                >
+                  Ban User
+                </DropdownMenuItem>
+              )}
+              {permissions.canEdit && row.original.status === "banned" && (
+                <DropdownMenuItem
+                  onClick={() => onUnbanUser?.(row.original.id)}
+                >
+                  Unban User
                 </DropdownMenuItem>
               )}
               {permissions.canDelete && (
@@ -166,7 +188,6 @@ export default function UserTable({
                     onClick={() => onDeleteUser?.(row.original.id)}
                     className="text-destructive"
                   >
-                    <Trash2 className="mr-2 h-4 w-4" />
                     Delete
                   </DropdownMenuItem>
                 </>

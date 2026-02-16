@@ -17,6 +17,7 @@ import type {
 } from "@/types/brands";
 import { db } from "../db";
 import { brands } from "../db/schema/brand-schema";
+import { products } from "../db/schema/products-schema";
 import { shops } from "../db/schema/shop-schema";
 
 /**
@@ -28,7 +29,7 @@ export async function batchFetchBrandRelations(
   brandList: (typeof brands.$inferSelect)[],
   options: {
     includeShopInfo?: boolean;
-  } = {}
+  } = {},
 ): Promise<BatchedBrandRelations> {
   if (brandIds.length === 0) {
     return {
@@ -39,9 +40,10 @@ export async function batchFetchBrandRelations(
 
   const shopIds = [...new Set(brandList.map((b) => b.shopId))];
 
-  const shopRecords =
+  const [shopRecords, productCountRecords] = await Promise.all([
+    // Fetch shop info
     options.includeShopInfo && shopIds.length > 0
-      ? await db
+      ? db
           .select({
             id: shops.id,
             name: shops.name,
@@ -49,9 +51,25 @@ export async function batchFetchBrandRelations(
           })
           .from(shops)
           .where(inArray(shops.id, shopIds))
-      : [];
+      : Promise.resolve([]),
+
+    // Count products per brand
+    db
+      .select({
+        brandId: products.brandId,
+        count: count(),
+      })
+      .from(products)
+      .where(inArray(products.brandId, brandIds))
+      .groupBy(products.brandId),
+  ]);
 
   const productCountsMap = new Map<string, number>();
+  for (const record of productCountRecords) {
+    if (record.brandId) {
+      productCountsMap.set(record.brandId, record.count);
+    }
+  }
 
   const shopsMap = new Map<
     string,
@@ -75,7 +93,7 @@ export function normalizeBrand(
   relations: BatchedBrandRelations,
   options: {
     includeShopInfo?: boolean;
-  } = {}
+  } = {},
 ): BrandItem {
   const productCount = relations.productCountsMap.get(brand.id) ?? 0;
 
@@ -115,7 +133,7 @@ export function buildBrandFilterConditions(
   options: Omit<
     BrandQueryOptions,
     "limit" | "offset" | "sortBy" | "sortDirection"
-  >
+  >,
 ): SQL[] {
   const conditions: SQL[] = [];
 
@@ -129,8 +147,8 @@ export function buildBrandFilterConditions(
       or(
         ilike(brands.name, searchTerm),
         ilike(brands.slug, searchTerm),
-        ilike(brands.description, searchTerm)
-      ) as any
+        ilike(brands.description, searchTerm),
+      ) as any,
     );
   }
 
@@ -142,7 +160,7 @@ export function buildBrandFilterConditions(
 }
 
 export async function executeBrandQuery(
-  options: BrandQueryOptions
+  options: BrandQueryOptions,
 ): Promise<BrandQueryResult> {
   const limit = options.limit ?? 10;
   const offset = options.offset ?? 0;
@@ -200,7 +218,7 @@ export async function executeBrandQuery(
   const normalizedBrands = brandList.map((brand) =>
     normalizeBrand(brand, relations, {
       includeShopInfo: options.includeShopInfo,
-    })
+    }),
   );
 
   return {
@@ -218,7 +236,7 @@ export async function fetchBrandWithRelations(
   brand: typeof brands.$inferSelect,
   options: {
     includeShopInfo?: boolean;
-  } = {}
+  } = {},
 ): Promise<BrandItem> {
   const relations = await batchFetchBrandRelations([brand.id], [brand], {
     includeShopInfo: options.includeShopInfo,

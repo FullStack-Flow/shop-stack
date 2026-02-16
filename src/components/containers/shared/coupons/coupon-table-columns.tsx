@@ -76,14 +76,12 @@ export const getSharedCouponFilters = (options: {
  * Shared column definitions for coupon tables (Admin & Vendor)
  */
 export const createCouponColumns = ({
-  mode,
+  mode: _mode,
   actions,
   permissions,
   mutationState,
   isCouponMutating,
 }: CouponColumnConfig): ColumnDef<CouponItem>[] => {
-  const isAdmin = mode === "admin";
-
   return [
     // 1. Code Column
     {
@@ -95,7 +93,7 @@ export const createCouponColumns = ({
           <div
             className={cn(
               "font-mono font-semibold",
-              isMutating && "opacity-60"
+              isMutating && "opacity-60",
             )}
           >
             {isMutating && (
@@ -171,7 +169,7 @@ export const createCouponColumns = ({
           <span
             className={cn(
               "text-sm",
-              isExpired ? "text-destructive" : "text-muted-foreground"
+              isExpired ? "text-destructive" : "text-muted-foreground",
             )}
           >
             {date.toLocaleDateString()}

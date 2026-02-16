@@ -16,12 +16,10 @@ import {
   optionalShopIdField,
   optionalVendorIdField,
   paginationFields,
-  STORE_DEFAULT_LIMIT,
   searchFields,
   shopScopeFields,
   shopSlugFields,
   sortDirectionEnum,
-  storeIsActiveField,
   VENDOR_DEFAULT_LIMIT,
 } from "./base-query";
 
@@ -82,6 +80,13 @@ export const stockFilterFields = {
 };
 
 /**
+ * Rating filter fields
+ */
+export const ratingFilterFields = {
+  minRating: z.coerce.number().min(1).max(5).optional(),
+};
+
+/**
  * Status filter fields
  */
 export const statusFilterFields = {
@@ -106,6 +111,14 @@ const sortFields = {
   sortDirection: sortDirectionEnum.optional().default("desc"),
 };
 
+const storeSortFields = {
+  sortBy: z
+    .enum(["name", "price", "createdAt", "updatedAt", "averageRating"])
+    .optional()
+    .default("createdAt"),
+  sortDirection: sortDirectionEnum.optional().default("desc"),
+};
+
 // ============================================================================
 // Get by ID/Slug Schemas (using factory functions)
 // ============================================================================
@@ -126,11 +139,13 @@ export const getProductBySlugSchema = createGetBySlugSchema("Product");
  */
 export const storeProductsQuerySchema = z.object({
   ...paginationFields,
-  limit: paginationFields.limit.default(STORE_DEFAULT_LIMIT),
-  ...sortFields,
+  limit: paginationFields.limit.default(12), // Store default
+  ...storeSortFields,
   ...searchFields,
-  ...productFilterFields,
-  ...storeIsActiveField,
+  ...productBaseFilterFields,
+  isFeatured: statusFilterFields.isFeatured,
+  inStock: stockFilterFields.inStock,
+  ...ratingFilterFields,
   ...shopSlugFields,
   ...optionalShopIdField,
 });
@@ -146,7 +161,10 @@ export const adminProductsQuerySchema = z.object({
   limit: paginationFields.limit.default(ADMIN_DEFAULT_LIMIT),
   ...sortFields,
   ...searchFields,
-  ...productFilterFields,
+  ...productBaseFilterFields,
+  ...stockFilterFields,
+  ...statusFilterFields,
+  ...attributeFilterFields,
   ...optionalShopIdField,
   ...optionalVendorIdField,
 });
@@ -224,6 +242,14 @@ export const productAttributeRelationSchema = z.object({
   productId: z.string(),
   attributeId: z.string(),
   value: z.string().optional().nullable(),
+});
+
+/**
+ * Product Shipping Method Relation Schema
+ */
+export const productShippingMethodRelationSchema = z.object({
+  productId: z.string(),
+  shippingMethodId: z.string(),
 });
 
 /**
@@ -461,6 +487,7 @@ const productRelationArraysCreate = {
   images: z.array(productImageInputSchema).optional().default([]),
   tagIds: z.array(z.string()).optional().default([]),
   attributeIds: z.array(z.string()).optional().default([]),
+  shippingMethodIds: z.array(z.string()).optional().default([]),
   attributeValues: z
     .record(z.string(), z.array(z.string()))
     .optional()
@@ -479,6 +506,7 @@ const productRelationArraysUpdate = {
   images: z.array(productImageInputSchema).optional(),
   tagIds: z.array(z.string()).optional(),
   attributeIds: z.array(z.string()).optional(),
+  shippingMethodIds: z.array(z.string()).optional(),
   attributeValues: z.record(z.string(), z.array(z.string())).optional(),
   variationPrices: z.record(z.string(), variationPriceEntrySchema).optional(),
 };
@@ -506,6 +534,16 @@ export const createProductSchema = z.object({
   ...productRelationArraysCreate,
 });
 
+export const updateProductStatusSchema = z.object({
+  id: z.string().min(1, "Product ID is required"),
+  status: productStatusEnum,
+});
+
+export const toggleProductFeaturedSchema = z.object({
+  id: z.string().min(1, "Product ID is required"),
+  isFeatured: z.boolean(),
+});
+
 /**
  * Schema for product form values (UI-specific)
  */
@@ -523,6 +561,7 @@ export const productFormSchema = z.object({
   ...productSeoFieldsCreate,
   tagIds: z.array(z.string()).optional().default([]),
   attributeIds: z.array(z.string()).optional().default([]),
+  shippingMethodIds: z.array(z.string()).optional().default([]),
   attributeValues: z
     .record(z.string(), z.array(z.string()))
     .optional()
@@ -563,6 +602,15 @@ export const updateProductSchema = z.object({
   ...productRelationArraysUpdate,
 });
 
+export const getFeaturedProductsSchema = z.object({
+  limit: z.coerce.number().min(1).max(20).optional().default(8),
+});
+
+export const getRelatedProductsSchema = z.object({
+  productId: z.string().min(1, "Product ID is required"),
+  limit: z.coerce.number().min(1).max(10).optional().default(4),
+});
+
 // ============================================================================
 // Type Exports
 // ============================================================================
@@ -576,6 +624,9 @@ export type ProductImage = z.infer<typeof productImageSchema>;
 export type ProductTagRelation = z.infer<typeof productTagRelationSchema>;
 export type ProductAttributeRelation = z.infer<
   typeof productAttributeRelationSchema
+>;
+export type ProductShippingMethodRelation = z.infer<
+  typeof productShippingMethodRelationSchema
 >;
 export type VariationPrice = z.infer<typeof variationPriceSchema>;
 

@@ -1,211 +1,113 @@
-import { useForm } from "@tanstack/react-form";
-import { Button } from "@/components/ui/button";
+import { useMemo } from "react";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import type { ShippingFormValues } from "@/types/shipping-form";
+  EntityFormDialog,
+  type EntityFormField,
+} from "@/components/base/forms/entity-form-dialog";
+import { FieldLabel } from "@/components/ui/field";
+import { Switch } from "@/components/ui/switch";
+import type { CreateShippingMethodInput } from "@/lib/validators/shipping";
+import { createShippingMethodSchema } from "@/lib/validators/shipping";
 
-// Helper function to safely get string errors from field meta
-function getFieldErrors(errors: any): string[] {
-  if (!Array.isArray(errors)) return [];
-  return errors.filter((error): error is string => typeof error === "string");
-}
+type ShippingFormValues = Omit<CreateShippingMethodInput, "shopId">;
 
 interface AddShippingDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (data: ShippingFormValues) => void;
+  isSubmitting?: boolean;
+  initialValues?: ShippingFormValues | null;
 }
 
 export function AddShippingDialog({
   open,
   onOpenChange,
   onSubmit,
+  isSubmitting,
+  initialValues,
 }: AddShippingDialogProps) {
-  const form = useForm({
-    defaultValues: {
-      name: "",
-      price: 0,
-      duration: "",
-      description: "",
-    },
-    onSubmit: async ({ value }) => {
-      onSubmit(value);
-      onOpenChange(false);
-      form.reset();
-    },
-  });
+  const fields: EntityFormField[] = useMemo(
+    () => [
+      {
+        name: "name",
+        label: "Name",
+        required: true,
+        placeholder: "e.g. Standard Shipping",
+        defaultValue: "",
+      },
+      {
+        name: "price",
+        label: "Price",
+        required: true,
+        placeholder: "0.00",
+        defaultValue: 0,
+      },
+      {
+        name: "duration",
+        label: "Duration",
+        required: true,
+        placeholder: "e.g. 3-5 business days",
+        defaultValue: "",
+      },
+      {
+        name: "description",
+        label: "Description",
+        type: "textarea",
+        placeholder: "Describe this shipping method...",
+        defaultValue: "",
+      },
+      {
+        name: "isActive",
+        label: "Active Status",
+        type: "custom",
+        defaultValue: true,
+        render: ({
+          form,
+          isSubmitting: isSubmittingExternal,
+        }: {
+          form: any;
+          isSubmitting: boolean;
+        }) => (
+          <form.Field name="isActive">
+            {(field: any) => (
+              <div className="flex items-center gap-2 mt-4">
+                <Switch
+                  id="isActive"
+                  checked={field.state.value}
+                  onCheckedChange={field.handleChange}
+                  disabled={isSubmittingExternal}
+                />
+                <FieldLabel htmlFor="isActive" className="m-0">
+                  Active
+                </FieldLabel>
+              </div>
+            )}
+          </form.Field>
+        ),
+      },
+    ],
+    [],
+  );
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-150">
-        <DialogHeader>
-          <DialogTitle>Add New Shipping Method</DialogTitle>
-          <DialogDescription>
-            Add a new shipping method for your shop.
-          </DialogDescription>
-        </DialogHeader>
-
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            form.handleSubmit();
-          }}
-          className="space-y-6"
-        >
-          <FieldGroup>
-            <div className="grid gap-4">
-              {/* Name Field */}
-              <form.Field name="name">
-                {(field) => {
-                  const isInvalid =
-                    field.state.meta.isTouched && !field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Name*</FieldLabel>
-                      <Input
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        placeholder="e.g. Standard Shipping"
-                        aria-invalid={isInvalid}
-                      />
-                      {isInvalid && (
-                        <FieldError
-                          errors={getFieldErrors(field.state.meta.errors)}
-                        />
-                      )}
-                    </Field>
-                  );
-                }}
-              </form.Field>
-
-              {/* Price Field */}
-              <form.Field name="price">
-                {(field) => {
-                  const isInvalid =
-                    field.state.meta.isTouched && !field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Price*</FieldLabel>
-                      <Input
-                        id={field.name}
-                        name={field.name}
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) =>
-                          field.handleChange(parseFloat(e.target.value))
-                        }
-                        placeholder="0.00"
-                        aria-invalid={isInvalid}
-                      />
-                      {isInvalid && (
-                        <FieldError
-                          errors={getFieldErrors(field.state.meta.errors)}
-                        />
-                      )}
-                    </Field>
-                  );
-                }}
-              </form.Field>
-
-              {/* Duration Field */}
-              <form.Field name="duration">
-                {(field) => {
-                  const isInvalid =
-                    field.state.meta.isTouched && !field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Duration*</FieldLabel>
-                      <Input
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        placeholder="e.g. 3-5 business days"
-                        aria-invalid={isInvalid}
-                      />
-                      {isInvalid && (
-                        <FieldError
-                          errors={getFieldErrors(field.state.meta.errors)}
-                        />
-                      )}
-                    </Field>
-                  );
-                }}
-              </form.Field>
-
-              {/* Description Field */}
-              <form.Field name="description">
-                {(field) => {
-                  const isInvalid =
-                    field.state.meta.isTouched && !field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isInvalid}>
-                      <FieldLabel htmlFor={field.name}>Description</FieldLabel>
-                      <Textarea
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        placeholder="Describe this shipping method..."
-                        aria-invalid={isInvalid}
-                        className="resize-none"
-                        rows={3}
-                      />
-                      {isInvalid && (
-                        <FieldError
-                          errors={getFieldErrors(field.state.meta.errors)}
-                        />
-                      )}
-                    </Field>
-                  );
-                }}
-              </form.Field>
-            </div>
-          </FieldGroup>
-
-          <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => onOpenChange(false)}
-            >
-              Cancel
-            </Button>
-            <form.Subscribe
-              selector={(state) => [state.canSubmit, state.isSubmitting]}
-            >
-              {([canSubmit, isSubmitting]) => (
-                <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                  {isSubmitting ? "Adding..." : "Add Shipping Method"}
-                </Button>
-              )}
-            </form.Subscribe>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
+    <EntityFormDialog<ShippingFormValues>
+      open={open}
+      onOpenChange={onOpenChange}
+      onSubmit={(data) => {
+        onSubmit({
+          ...data,
+          price: Number(data.price),
+        });
+      }}
+      isSubmitting={isSubmitting}
+      title="Shipping Method"
+      description="Add a new shipping method for your shop."
+      validationSchema={createShippingMethodSchema}
+      submitButtonText={{
+        create: "Create Method",
+        update: "Update Method",
+      }}
+      fields={fields}
+      initialValues={initialValues}
+    />
   );
 }

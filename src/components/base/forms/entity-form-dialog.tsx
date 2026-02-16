@@ -1,6 +1,7 @@
 import { useForm } from "@tanstack/react-form";
 import { FileUploaderRegular } from "@uploadcare/react-uploader";
 import { X } from "lucide-react";
+import type React from "react";
 import { useEffect, useRef } from "react";
 import { toast } from "sonner";
 import type { z } from "zod";
@@ -20,6 +21,7 @@ import {
   FieldLabel,
   Field as UIField,
 } from "@/components/ui/field";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -28,6 +30,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { validateField, validateOptionalField } from "@/lib/helper/validators";
+import { cn } from "@/lib/utils";
 
 export interface EntityFormField {
   name: string;
@@ -66,6 +69,7 @@ interface EntityFormDialogProps<T extends Record<string, any>> {
     update: string;
   };
   contentClassName?: string;
+  scrollable?: boolean;
 }
 
 export function EntityFormDialog<T extends Record<string, any>>({
@@ -80,6 +84,7 @@ export function EntityFormDialog<T extends Record<string, any>>({
   validationSchema,
   submitButtonText = { create: "Create", update: "Update" },
   contentClassName,
+  scrollable = true,
 }: EntityFormDialogProps<T>) {
   const isEditing = Boolean(initialValues);
   const defaultValues = {
@@ -355,7 +360,12 @@ export function EntityFormDialog<T extends Record<string, any>>({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className={contentClassName ?? "sm:max-w-125"}>
+      <DialogContent
+        className={cn(
+          contentClassName ?? "sm:max-w-125",
+          scrollable && "h-[85vh] flex flex-col overflow-hidden min-h-0",
+        )}
+      >
         <DialogHeader>
           <DialogTitle>
             {initialValues ? `Edit ${title}` : `Add New ${title}`}
@@ -363,10 +373,31 @@ export function EntityFormDialog<T extends Record<string, any>>({
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
 
-        <Form form={form} className="space-y-4">
-          <div className="grid gap-4">{fields.map(renderField)}</div>
+        <Form
+          form={form}
+          className={cn(
+            "space-y-4",
+            scrollable && "flex flex-col flex-1 overflow-hidden min-h-0",
+          )}
+        >
+          <div
+            className={cn(
+              "flex flex-col flex-1 overflow-hidden",
+              scrollable && "min-h-0",
+            )}
+          >
+            {scrollable ? (
+              <ScrollArea className="flex-1 min-h-0 h-full">
+                <div className="grid gap-4 p-1 pr-4 pb-10">
+                  {fields.map(renderField)}
+                </div>
+              </ScrollArea>
+            ) : (
+              <div className="grid gap-4">{fields.map(renderField)}</div>
+            )}
+          </div>
 
-          <DialogFooter>
+          <DialogFooter className="shrink-0">
             <Button
               type="button"
               variant="outline"

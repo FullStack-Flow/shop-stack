@@ -1,43 +1,66 @@
 import { Link } from "@tanstack/react-router";
-import { Eye, ShoppingCart, Star } from "lucide-react";
+import { Eye, Loader2, ShoppingCart, Star, Store } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import type { Product } from "@/data/products";
+import { useCart } from "@/hooks/store/use-cart";
 import { useCartStore } from "@/lib/store/cart-store";
 import { cn } from "@/lib/utils";
+import type { DisplayProduct } from "@/types/store-types";
 import { ColorSwatch } from "./color-redio-item";
 import PriceTag from "./price-tag";
 
 interface ProductCardProps {
-  product: Product;
+  product: DisplayProduct;
   className?: string;
+  variant?: "grid" | "list";
 }
 
-export default function ProductCard({ product, className }: ProductCardProps) {
-  const { addItem } = useCartStore();
+export default function ProductCard({
+  product,
+  className,
+  variant = "grid",
+}: ProductCardProps) {
+  const { addItem } = useCart();
+  const { setIsOpen } = useCartStore();
+  const [isAddingThis, setIsAddingThis] = useState(false);
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent navigation if inside a link
     e.stopPropagation();
-    addItem({
-      productId: product.id,
-      name: product.name,
-      price: product.price.current,
-      image: product.images[0].url,
-      quantity: 1,
-      maxQuantity: product.stock.quantity,
-    });
-    toast.success("Added to cart");
+    setIsAddingThis(true);
+    try {
+      await addItem({
+        productId: product.id,
+        quantity: 1,
+      });
+      setIsOpen(true); // Open cart sheet after successful addition
+      toast.success("Added to cart");
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+      toast.error("Failed to add to cart");
+    } finally {
+      setIsAddingThis(false);
+    }
   };
   return (
     <div
       className={cn(
-        "group relative flex flex-col rounded-xl border-2 border-muted border-dashed p-4 transition-colors hover:border-primary/50",
-        className
+        "group relative flex rounded-xl border-2 border-muted border-dashed p-4 transition-colors hover:border-primary/50",
+        variant === "grid" ? "flex-col" : "@2xl:flex-row flex-col gap-6",
+        className,
       )}
     >
-      <div className="relative aspect-3/4 overflow-hidden rounded-t-2xl bg-muted">
+      {/* Image Section */}
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-2xl bg-muted",
+          variant === "grid"
+            ? "aspect-square w-full"
+            : "aspect-square @2xl:w-48 w-full shrink-0",
+        )}
+      >
         <img
           src={product.images[0].url}
           alt={product.name}
@@ -73,14 +96,26 @@ export default function ProductCard({ product, className }: ProductCardProps) {
             className="h-10 w-10 rounded-full shadow-lg transition-transform hover:scale-110"
             title="Add to Cart"
             onClick={handleAddToCart}
+            disabled={isAddingThis}
           >
-            <ShoppingCart className="h-5 w-5" />
+            {isAddingThis ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
+              <ShoppingCart className="h-5 w-5" />
+            )}
             <span className="sr-only">Add to Cart</span>
           </Button>
         </div>
       </div>
 
-      <div className="mt-4 flex flex-col gap-3">
+      {/* Content Section */}
+      <div
+        className={cn(
+          "flex flex-1 flex-col",
+          variant === "grid" ? "mt-4 gap-3" : "gap-4 py-2",
+        )}
+      >
+        {/* Top Row: Category & Rating */}
         <div className="flex items-center justify-between">
           <span className="rounded-full border border-muted-foreground/30 border-dashed bg-muted/50 px-3 py-1 font-medium text-muted-foreground text-xs">
             {product.category.name}
@@ -96,22 +131,44 @@ export default function ProductCard({ product, className }: ProductCardProps) {
           </div>
         </div>
 
-        {/* Title */}
-        <Link
-          to="/product/$productId"
-          params={{ productId: product.id }}
-          className="group/title"
-        >
-          <h3
-            className="line-clamp-1 font-medium font-mono text-lg transition-colors group-hover/title:text-primary"
-            title={product.name}
+        {/* Title & Description */}
+        <div className="space-y-2">
+          <Link
+            to="/product/$productId"
+            params={{ productId: product.id }}
+            className="group/title"
           >
-            {product.name}
-          </h3>
+            <h3
+              className="line-clamp-1 font-medium font-mono text-lg transition-colors group-hover/title:text-primary"
+              title={product.name}
+            >
+              {product.name}
+            </h3>
+          </Link>
+
+          {variant === "list" && (
+            <p className="line-clamp-2 text-muted-foreground text-sm">
+              {product.description}
+            </p>
+          )}
+        </div>
+
+        <Link
+          to="/store/$slug"
+          params={{ slug: product.store.slug }}
+          className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors w-fit"
+        >
+          <Store className="h-3.5 w-3.5" />
+          <span className="text-xs font-medium">{product.store.name}</span>
         </Link>
 
         {/* Price & Colors */}
-        <div className="flex items-center justify-between border-muted border-t border-dashed pt-3">
+        <div
+          className={cn(
+            "flex items-center justify-between border-muted border-t border-dashed",
+            variant === "grid" ? "pt-3" : "mt-auto pt-4",
+          )}
+        >
           <div className="font-mono text-muted-foreground text-sm">
             <span className="font-medium text-base text-foreground">
               <PriceTag

@@ -13,10 +13,12 @@ import type {
   BatchedCategoryRelations,
   CategoryQueryOptions,
   CategoryQueryResult,
+  CategoryTreeNode,
   NormalizedCategory,
 } from "@/types/category-types";
 import { db } from "../db";
 import { categories } from "../db/schema/category-schema";
+import { products } from "../db/schema/products-schema";
 import { shops } from "../db/schema/shop-schema";
 
 /**
@@ -26,7 +28,7 @@ export function buildCategoryFilterConditions(
   options: Omit<
     CategoryQueryOptions,
     "limit" | "offset" | "sortBy" | "sortDirection"
-  >
+  >,
 ): SQL[] {
   const conditions: SQL[] = [];
 
@@ -41,8 +43,8 @@ export function buildCategoryFilterConditions(
       or(
         ilike(categories.name, `%${options.search}%`),
         ilike(categories.slug, `%${options.search}%`),
-        ilike(categories.description, `%${options.search}%`)
-      ) as any
+        ilike(categories.description, `%${options.search}%`),
+      ) as any,
     );
   }
 
@@ -74,7 +76,7 @@ export async function batchFetchCategoryRelations(
   categoryList: (typeof categories.$inferSelect)[],
   options: {
     includeShopInfo?: boolean;
-  } = {}
+  } = {},
 ): Promise<BatchedCategoryRelations> {
   if (categoryIds.length === 0) {
     return {
@@ -90,17 +92,18 @@ export async function batchFetchCategoryRelations(
   ] as string[];
   const shopIds = [...new Set(categoryList.map((c) => c.shopId))];
 
-  const parentRecords =
+  const [parentRecords, shopRecords, productCountRecords] = await Promise.all([
+    // Fetch parent names
     parentIds.length > 0
-      ? await db
+      ? db
           .select({ id: categories.id, name: categories.name })
           .from(categories)
           .where(inArray(categories.id, parentIds))
-      : [];
+      : Promise.resolve([]),
 
-  const shopRecords =
+    // Fetch shop info
     options.includeShopInfo && shopIds.length > 0
-      ? await db
+      ? db
           .select({
             id: shops.id,
             name: shops.name,
@@ -108,9 +111,25 @@ export async function batchFetchCategoryRelations(
           })
           .from(shops)
           .where(inArray(shops.id, shopIds))
-      : [];
+      : Promise.resolve([]),
+
+    // Count products per category
+    db
+      .select({
+        categoryId: products.categoryId,
+        count: count(),
+      })
+      .from(products)
+      .where(inArray(products.categoryId, categoryIds))
+      .groupBy(products.categoryId),
+  ]);
 
   const productCountsMap = new Map<string, number>();
+  for (const record of productCountRecords) {
+    if (record.categoryId) {
+      productCountsMap.set(record.categoryId, record.count);
+    }
+  }
 
   const parentNamesMap = new Map<string, string>();
   for (const parent of parentRecords) {
@@ -137,7 +156,7 @@ export function normalizeCategory(
   relations: BatchedCategoryRelations,
   options: {
     includeShopInfo?: boolean;
-  } = {}
+  } = {},
 ): NormalizedCategory {
   // Get parent name
   const parentName = category.parentId
@@ -182,7 +201,7 @@ export function normalizeCategory(
 }
 
 export async function executeCategoryQuery(
-  options: CategoryQueryOptions
+  options: CategoryQueryOptions,
 ): Promise<CategoryQueryResult> {
   const limit = options.limit ?? 10;
   const offset = options.offset ?? 0;
@@ -237,14 +256,14 @@ export async function executeCategoryQuery(
     categoryList,
     {
       includeShopInfo: options.includeShopInfo,
-    }
+    },
   );
 
   // Normalize all categories
   const normalizedCategories = categoryList.map((category) =>
     normalizeCategory(category, relations, {
       includeShopInfo: options.includeShopInfo,
-    })
+    }),
   );
 
   return {
@@ -259,15 +278,60 @@ export async function fetchCategoryWithRelations(
   category: typeof categories.$inferSelect,
   options: {
     includeShopInfo?: boolean;
-  } = {}
+  } = {},
 ): Promise<NormalizedCategory> {
   const relations = await batchFetchCategoryRelations(
     [category.id],
     [category],
     {
       includeShopInfo: options.includeShopInfo,
-    }
+    },
   );
 
   return normalizeCategory(category, relations, options);
+}
+
+// ============================================================================
+// Get Categories Tree (Hierarchical)
+// ============================================================================
+
+/**
+ * Build a hierarchical category tree from a flat list
+ */
+
+export function buildCategoryTree(
+  flatCategories: NormalizedCategory[],
+): CategoryTreeNode[] {
+  const categoryMap = new Map<string, CategoryTreeNode>();
+
+  // First pass: create tree nodes
+  for (const category of flatCategories) {
+    categoryMap.set(category.id, { ...category, children: [] });
+  }
+
+  // Second pass: build the tree structure
+  const roots: CategoryTreeNode[] = [];
+  for (const category of flatCategories) {
+    const node = categoryMap.get(category.id)!;
+    if (category.parentId && categoryMap.has(category.parentId)) {
+      const parent = categoryMap.get(category.parentId)!;
+      parent.children.push(node);
+    } else {
+      roots.push(node);
+    }
+  }
+
+  // Sort roots and children by sortOrder
+  const sortByOrder = (a: CategoryTreeNode, b: CategoryTreeNode) =>
+    a.sortOrder - b.sortOrder;
+
+  const sortChildren = (nodes: CategoryTreeNode[]) => {
+    nodes.sort(sortByOrder);
+    for (const node of nodes) {
+      sortChildren(node.children);
+    }
+  };
+
+  sortChildren(roots);
+  return roots;
 }

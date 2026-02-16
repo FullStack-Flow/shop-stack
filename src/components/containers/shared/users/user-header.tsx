@@ -1,47 +1,11 @@
-import { useState } from "react";
-import PageHeader from "@/components/base/common/page-header";
-import type { UserFormValues } from "@/types/users";
-import { AddUserDialog } from "./add-user-dialog";
+import { createEntityHeader } from "@/components/base/common/entity-header";
 
-export interface UserHeaderProps {
-  onAddUser?: (data: UserFormValues) => void;
-  role?: "admin" | "vendor";
-  showAddButton?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-}
+export const UserHeader = createEntityHeader({
+  entityName: "User",
+  entityNamePlural: "Users",
+  adminDescription: "Manage platform users and customers",
+  vendorDescription: "Manage your shop's customers and users",
+});
 
-export default function UserHeader({
-  onAddUser,
-  role = "vendor",
-  showAddButton = true,
-  children,
-  className,
-}: UserHeaderProps) {
-  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
-
-  const handleAddUser = (data: UserFormValues) => {
-    onAddUser?.(data);
-  };
-
-  return (
-    <PageHeader
-      title="Users"
-      description={
-        role === "admin"
-          ? "Manage platform users and customers"
-          : "Manage your shop's customers and users"
-      }
-      className={className}
-    >
-      {children}
-      {showAddButton && (
-        <AddUserDialog
-          open={isAddDialogOpen}
-          onOpenChange={setIsAddDialogOpen}
-          onSubmit={handleAddUser}
-        />
-      )}
-    </PageHeader>
-  );
-}
+export default UserHeader;
+export type { EntityHeaderProps as UserHeaderProps } from "@/components/base/common/entity-header";

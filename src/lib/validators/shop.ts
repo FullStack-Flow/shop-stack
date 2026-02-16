@@ -7,7 +7,7 @@ export const shopSchema = z.object({
     .min(2, "Slug must be at least 2 characters")
     .regex(
       /^[a-z0-9-]+$/,
-      "Slug can only contain lowercase letters, numbers, and hyphens"
+      "Slug can only contain lowercase letters, numbers, and hyphens",
     ),
   description: z.string().optional(),
   address: z.string().min(5, "Address must be at least 5 characters"),
@@ -32,7 +32,7 @@ export const createShopSchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only"
+      "Slug must be lowercase with hyphens only",
     ),
   description: z
     .string()
@@ -60,7 +60,7 @@ export const updateShopSchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only"
+      "Slug must be lowercase with hyphens only",
     )
     .optional(),
   description: z.string().max(500).optional(),
@@ -78,8 +78,26 @@ export const deleteShopSchema = z.object({
   id: z.string().min(1, "Shop ID is required"),
 });
 
+export const storeShopsQuerySchema = z.object({
+  limit: z.coerce.number().min(1).max(100).optional().default(20),
+  offset: z.coerce.number().min(0).optional().default(0),
+  search: z.string().optional(),
+  category: z.string().optional(),
+  sortBy: z
+    .enum(["name", "rating", "createdAt", "totalProducts"])
+    .optional()
+    .default("rating"),
+  sortDirection: z.enum(["asc", "desc"]).optional().default("desc"),
+});
+
+export const storeShopBySlugSchema = z.object({
+  slug: z.string().min(1, "Shop slug is required"),
+});
+
 // Type exports
 export type CreateShopInput = z.infer<typeof createShopSchema>;
 export type UpdateShopInput = z.infer<typeof updateShopSchema>;
 export type GetShopBySlugInput = z.infer<typeof getShopBySlugSchema>;
 export type DeleteShopInput = z.infer<typeof deleteShopSchema>;
+export type StoreShopsQueryInput = z.infer<typeof storeShopsQuerySchema>;
+export type StoreShopBySlugInput = z.infer<typeof storeShopBySlugSchema>;

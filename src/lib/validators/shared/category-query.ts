@@ -1,13 +1,20 @@
 import z from "zod";
 import {
+  ADMIN_DEFAULT_LIMIT,
   createDeleteSchema,
   createGetByIdSchema,
   createGetBySlugSchema,
+  createToggleActiveSchema,
   isActiveField,
+  optionalShopIdField,
+  optionalVendorIdField,
   paginationFields,
+  STORE_DEFAULT_LIMIT,
   searchFields,
   shopScopeFields,
+  shopSlugFields,
   sortDirectionEnum,
+  storeIsActiveField,
   VENDOR_DEFAULT_LIMIT,
 } from "./base-query";
 
@@ -89,7 +96,7 @@ export const createCategorySchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only"
+      "Slug must be lowercase with hyphens only",
     )
     .optional(),
   description: z
@@ -121,7 +128,7 @@ export const updateCategorySchema = z.object({
     .max(100, "Slug must be at most 100 characters")
     .regex(
       /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
-      "Slug must be lowercase with hyphens only"
+      "Slug must be lowercase with hyphens only",
     )
     .optional(),
   description: z.string().max(500).optional().nullable(),
@@ -133,6 +140,46 @@ export const updateCategorySchema = z.object({
   featured: z.boolean().optional(),
 });
 
+/**
+ * Store Front Query Schema
+ * - Public access (no auth)
+ * - Limited filters (customer-facing only)
+ * - Only active categories
+ */
+export const storeCategoriesQuerySchema = z.object({
+  ...paginationFields,
+  limit: paginationFields.limit.default(STORE_DEFAULT_LIMIT),
+  ...sortFields,
+  ...searchFields,
+  ...categoryFilterFields,
+  ...storeIsActiveField,
+  ...shopSlugFields,
+  ...optionalShopIdField,
+});
+
+/**
+ * Admin Query Schema
+ * - Admin auth required
+ * - Full filter access
+ * - Can see all categories across all shops
+ */
+export const adminCategoriesQuerySchema = z.object({
+  ...paginationFields,
+  limit: paginationFields.limit.default(ADMIN_DEFAULT_LIMIT),
+  ...sortFields,
+  ...searchFields,
+  ...categoryFilterFields,
+  ...optionalShopIdField,
+  ...optionalVendorIdField,
+});
+
+export const toggleCategoryActiveSchema = createToggleActiveSchema("Category");
+
+export const toggleCategoryFeaturedSchema = z.object({
+  id: z.string().min(1, "Category ID is required"),
+  featured: z.boolean(),
+});
+
 // ============================================================================
 // Type Exports
 // ============================================================================
@@ -142,3 +189,11 @@ export type VendorCategoriesQuery = z.infer<typeof vendorCategoriesQuerySchema>;
 export type Category = z.infer<typeof categorySchema>;
 export type CreateCategoryInput = z.infer<typeof createCategorySchema>;
 export type UpdateCategoryInput = z.infer<typeof updateCategorySchema>;
+export type StoreCategoriesQuery = z.infer<typeof storeCategoriesQuerySchema>;
+export type AdminCategoriesQuery = z.infer<typeof adminCategoriesQuerySchema>;
+export type ToggleCategoryActiveInput = z.infer<
+  typeof toggleCategoryActiveSchema
+>;
+export type ToggleCategoryFeaturedInput = z.infer<
+  typeof toggleCategoryFeaturedSchema
+>;

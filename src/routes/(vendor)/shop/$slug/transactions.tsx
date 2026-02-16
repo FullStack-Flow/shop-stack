@@ -1,29 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useMemo } from "react";
+import { PageSkeleton } from "@/components/base/common/page-skeleton";
 import ShopTransactionsTemplate from "@/components/templates/vendor/shop-transactions-template";
-import { mockTransactions } from "@/data/transactions";
-import type { Transaction } from "@/types/transaction";
+import { createVendorTransactionsFetcher } from "@/hooks/vendors/use-vendor-entity-fetchers";
+import { useVendorTransactionStats } from "@/hooks/vendors/use-vendor-transactions";
 
 export const Route = createFileRoute("/(vendor)/shop/$slug/transactions")({
   component: TransactionsPage,
+  pendingComponent: PageSkeleton,
 });
 
 function TransactionsPage() {
-  const [transactions] = useState<Transaction[]>(mockTransactions);
+  const { slug } = Route.useParams();
 
-  const handleViewTransaction = (transactionId: string) => {
-    console.log("View transaction:", transactionId);
-  };
+  // Create fetcher for server-side pagination
+  const fetcher = useMemo(() => createVendorTransactionsFetcher(slug), [slug]);
 
-  const handleRefundTransaction = (transactionId: string) => {
-    console.log("Refund transaction:", transactionId);
-  };
+  // Get transaction stats (small query, can stay as hook)
+  const { data: stats } = useVendorTransactionStats(slug);
 
   return (
-    <ShopTransactionsTemplate
-      transactions={transactions}
-      onViewTransaction={handleViewTransaction}
-      onRefundTransaction={handleRefundTransaction}
-    />
+    <ShopTransactionsTemplate fetcher={fetcher} stats={stats} shopSlug={slug} />
   );
 }

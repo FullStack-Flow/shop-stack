@@ -1,6 +1,9 @@
-import type { ColumnDef } from "@tanstack/react-table";
 import { useMemo } from "react";
 import DataTable from "@/components/base/data-table/data-table";
+import type {
+  DataTableFetchParams,
+  DataTableFetchResult,
+} from "@/components/base/data-table/types";
 import {
   type BrandMutationState,
   type BrandTableActions,
@@ -10,14 +13,16 @@ import {
 import type { BrandItem } from "@/types/brands";
 
 interface AdminBrandsTableProps extends BrandTableActions {
-  brands: BrandItem[];
+  fetcher: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<BrandItem>>;
   className?: string;
   mutationState?: BrandMutationState;
   isBrandMutating?: (id: string) => boolean;
 }
 
 export default function AdminBrandsTable({
-  brands,
+  fetcher,
   className,
   onEdit,
   onDelete,
@@ -25,23 +30,21 @@ export default function AdminBrandsTable({
   mutationState,
   isBrandMutating,
 }: AdminBrandsTableProps) {
-  const columns: ColumnDef<BrandItem>[] = useMemo(
-    () =>
-      createBrandColumns({
-        mode: "admin",
-        actions: { onEdit, onDelete, onToggleActive },
-        mutationState,
-        isBrandMutating,
-      }),
-    [onEdit, onDelete, onToggleActive, mutationState, isBrandMutating]
-  );
+  const columns = useMemo(() => {
+    return createBrandColumns({
+      mode: "admin",
+      actions: { onEdit, onDelete, onToggleActive },
+      mutationState,
+      isBrandMutating,
+    });
+  }, [onEdit, onDelete, onToggleActive, mutationState, isBrandMutating]);
 
   const filterableColumns = useMemo(() => getSharedBrandFilters(), []);
 
   return (
     <DataTable
       columns={columns}
-      data={brands}
+      server={{ fetcher }}
       context="admin"
       initialPageSize={10}
       filterableColumns={filterableColumns}

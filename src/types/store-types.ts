@@ -1,3 +1,6 @@
+import type { PaginatedResponse } from "./api-response";
+import type { NormalizedProduct } from "./products";
+
 export interface Store {
   id: string;
   slug: string;
@@ -44,14 +47,56 @@ export interface StoreReview {
   helpful: number;
 }
 
-export interface StoreProduct {
+export type StoreProduct = Omit<
+  NormalizedProduct,
+  "costPrice" | "lowStockThreshold" | "trackInventory"
+>;
+
+/**
+ * Display-ready product format for ProductCard component
+ * Adapts the API response to the UI component expectations
+ */
+export interface DisplayProduct {
   id: string;
-  storeId: string;
+  slug: string;
   name: string;
-  price: number;
-  originalPrice?: number;
-  image: string;
-  rating: number;
-  reviewCount: number;
-  inStock: boolean;
+  description: string;
+  shortDescription?: string | null;
+  category: {
+    id: string;
+    name: string;
+    slug: string;
+  };
+  price: {
+    current: number;
+    original: number;
+    currency: string;
+    discountPercentage: number;
+  };
+  images: {
+    id: string;
+    url: string;
+    alt: string;
+  }[];
+  rating: {
+    average: number;
+    count: number;
+  };
+  stock: {
+    inStock: boolean;
+    quantity: number;
+  };
+  store: {
+    id: string;
+    name: string;
+    slug: string;
+  };
+  brand: string;
+  colors: string[];
+  sizes: string[];
+  isNew: boolean;
+  isFeatured: boolean;
+  createdAt: string;
 }
+
+export type StoreProductListResponse = PaginatedResponse<StoreProduct>;

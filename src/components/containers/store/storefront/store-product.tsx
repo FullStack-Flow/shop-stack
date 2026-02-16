@@ -1,5 +1,6 @@
-import { PackageOpen } from "lucide-react";
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Loader2, PackageOpen } from "lucide-react";
+import { useMemo, useState } from "react";
 import NotFound from "@/components/base/empty/notfound";
 import ProductCard from "@/components/base/products/product-card";
 import {
@@ -9,10 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { mockProducts } from "@/data/products";
+import { storeProductsQueryOptions } from "@/hooks/store/use-store-product";
+import { toDisplayProducts } from "@/lib/helper/products-query-helpers";
 
 interface StoreProductsProps {
   storeName: string;
+  storeSlug?: string;
 }
 
 const sortOptions = [
@@ -23,32 +26,49 @@ const sortOptions = [
   { value: "popular", label: "Most Popular" },
 ];
 
-export default function StoreProducts({ storeName }: StoreProductsProps) {
+export default function StoreProducts({
+  storeName,
+  storeSlug,
+}: StoreProductsProps) {
   const [sortBy, setSortBy] = useState("newest");
 
-  // Filter products by store name
-  // In a real app, products would have a storeId field for direct matching
-  const storeProducts = mockProducts.filter(
-    (product) => product.store.name === storeName
-  );
-
-  // Sort products
-  const sortedProducts = [...storeProducts].sort((a, b) => {
-    switch (sortBy) {
-      case "price-low":
-        return a.price.current - b.price.current;
-      case "price-high":
-        return b.price.current - a.price.current;
-      case "rating":
-        return b.rating.average - a.rating.average;
-      case "popular":
-        return b.rating.count - a.rating.count;
-      default:
-        return 0;
-    }
+  // Fetch products for this store using shopSlug
+  const { data: productsData, isPending } = useQuery({
+    ...storeProductsQueryOptions({
+      shopSlug: storeSlug,
+      limit: 50,
+      sortBy: sortBy === "newest" ? "createdAt" : "price",
+      sortDirection: sortBy === "price-low" ? "asc" : "desc",
+    }),
+    enabled: !!storeSlug,
   });
 
-  if (storeProducts.length === 0) {
+  // Transform to display products
+  const products = useMemo(
+    () => toDisplayProducts(productsData?.data ?? []),
+    [productsData?.data],
+  );
+
+  // Client-side sort for rating (since API might not support it)
+  const sortedProducts = useMemo(() => {
+    if (sortBy === "rating") {
+      return [...products].sort((a, b) => b.rating.average - a.rating.average);
+    }
+    return products;
+  }, [products, sortBy]);
+
+  if (isPending) {
+    return (
+      <div className="flex min-h-50 items-center justify-center">
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <Loader2 className="h-5 w-5 animate-spin" />
+          <span>Loading products...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (sortedProducts.length === 0) {
     return (
       <NotFound
         title="No Products Yet"
@@ -65,7 +85,7 @@ export default function StoreProducts({ storeName }: StoreProductsProps) {
       <div className="flex @2xl:flex-row flex-col items-start @2xl:items-center justify-between gap-4">
         <div className="@2xl:items-center">
           <h2 className="font-semibold text-xl">
-            Products ({storeProducts.length})
+            Products ({sortedProducts.length})
           </h2>
           <p className="text-muted-foreground text-sm">
             Browse all products from {storeName}

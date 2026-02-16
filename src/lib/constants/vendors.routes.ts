@@ -5,10 +5,12 @@ import {
   Home,
   Landmark,
   Package,
+  Settings,
   ShoppingBag,
   Star,
   Tag,
   Tags,
+  TruckElectric,
   Users,
 } from "lucide-react";
 import type { VendorNavItem } from "@/types/vendor";
@@ -70,8 +72,18 @@ export const getShopNavItems = (shopSlug: string): VendorNavItem[] => [
     icon: Landmark,
   },
   {
+    title: "Shipping Methods",
+    href: `/shop/${shopSlug}/shipping`,
+    icon: TruckElectric,
+  },
+  {
     title: "Staff",
     href: `/shop/${shopSlug}/staff`,
     icon: Users,
+  },
+  {
+    title: "Settings",
+    href: `/shop/${shopSlug}/settings`,
+    icon: Settings,
   },
 ];

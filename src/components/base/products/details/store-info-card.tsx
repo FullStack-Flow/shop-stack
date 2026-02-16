@@ -24,7 +24,7 @@ export default function StoreInfoCard({
   className,
 }: StoreInfoCardProps) {
   return (
-    <Card className={cn("overflow-hidden bg-muted/30", className)}>
+    <Card className={cn("overflow-hidden bg-muted/30 py-0", className)}>
       <CardContent className="p-4">
         <div className="flex items-center gap-4">
           <Avatar className="h-12 w-12 border-2 border-background">

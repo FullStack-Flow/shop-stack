@@ -28,6 +28,89 @@ const TYPE_OPTIONS = [
 ];
 
 // ============================================================================
+// Admin Coupon Table
+// ============================================================================
+
+interface AdminCouponTableProps extends CouponTableActions {
+  coupons?: CouponItem[];
+  fetcher?: (
+    params: DataTableFetchParams,
+  ) => Promise<DataTableFetchResult<CouponItem>>;
+  className?: string;
+  mutationState?: CouponMutationState;
+  isCouponMutating?: (id: string) => boolean;
+  permissions?: CouponPermissions;
+}
+
+export function AdminCouponTable({
+  coupons,
+  fetcher,
+  className,
+  onEdit,
+  onDelete,
+  onToggleStatus,
+  mutationState,
+  isCouponMutating,
+  permissions,
+}: AdminCouponTableProps) {
+  const columns = useMemo(() => {
+    const actions: CouponTableActions = {
+      onEdit,
+      onDelete,
+      onToggleStatus,
+    };
+    return createCouponColumns({
+      mode: "admin",
+      actions,
+      isCouponMutating,
+      mutationState,
+      permissions,
+    });
+  }, [
+    onEdit,
+    onDelete,
+    onToggleStatus,
+    isCouponMutating,
+    mutationState,
+    permissions,
+  ]);
+
+  const filterableColumns = useMemo(
+    () =>
+      getSharedCouponFilters({
+        statusOptions: STATUS_OPTIONS,
+        typeOptions: TYPE_OPTIONS,
+      }),
+    [],
+  );
+
+  if (fetcher) {
+    return (
+      <DataTable
+        columns={columns}
+        server={{ fetcher }}
+        context="admin"
+        initialPageSize={10}
+        filterableColumns={filterableColumns}
+        globalFilterPlaceholder="Search coupons..."
+        className={className}
+      />
+    );
+  }
+
+  return (
+    <DataTable
+      columns={columns}
+      data={coupons || []}
+      initialPageSize={10}
+      filterableColumns={filterableColumns}
+      globalFilterPlaceholder="Search coupons..."
+      className={className}
+    />
+  );
+}
+
+// ============================================================================
 // Vendor Coupon Table
 // ============================================================================
 

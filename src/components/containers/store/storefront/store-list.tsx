@@ -1,12 +1,19 @@
 import NotFound from "@/components/base/empty/notfound";
 import StoreCard from "@/components/base/store/storefront/store-card";
 import { StoreListSkeleton } from "@/components/base/store/storefront/store-card-skeleton";
-import { useStoreFront } from "@/lib/store/store";
+import type { Store } from "@/types/store-types";
 
-export default function StoreList() {
-  const { getFilteredStores, isLoading } = useStoreFront();
-  const stores = getFilteredStores();
+interface StoreListProps {
+  stores: Store[];
+  totalCount?: number;
+  isLoading?: boolean;
+}
 
+export default function StoreList({
+  stores,
+  totalCount,
+  isLoading,
+}: StoreListProps) {
   if (isLoading) {
     return <StoreListSkeleton />;
   }
@@ -24,8 +31,14 @@ export default function StoreList() {
     <div className="space-y-6">
       <div className="flex items-center justify-between rounded-lg bg-muted/50 px-4 py-3">
         <p className="font-medium text-sm">
-          Showing <span className="text-primary">{stores.length}</span>{" "}
-          {stores.length === 1 ? "store" : "stores"}
+          Showing <span className="text-primary">{stores.length}</span>
+          {totalCount && totalCount > stores.length && (
+            <>
+              {' '}
+              of <span className="text-primary">{totalCount}</span>
+            </>
+          )}{' '}
+          {stores.length === 1 ? 'store' : 'stores'}
         </p>
       </div>
 

@@ -1,7 +1,7 @@
-import { SlidersHorizontal, Star, X } from "lucide-react";
-import StoreSearch from "@/components/base/store/storefront/store-search";
+import { Search, SlidersHorizontal, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useStoreFront } from "@/lib/store/store";
+import type { StoreFilters } from "@/types/store-types";
 
 const categories = [
   "All Categories",
@@ -36,8 +36,17 @@ const sortOptions = [
   { value: "name", label: "Name (A-Z)" },
 ];
 
-export default function StoreFilterSidebar() {
-  const { filters, setFilters, resetFilters } = useStoreFront();
+interface StoreFilterSidebarProps {
+  filters: StoreFilters;
+  onFilterChange: (filters: Partial<StoreFilters>) => void;
+  onReset: () => void;
+}
+
+export default function StoreFilterSidebar({
+  filters,
+  onFilterChange,
+  onReset,
+}: StoreFilterSidebarProps) {
   const hasActiveFilters =
     filters.search ||
     filters.category ||
@@ -45,23 +54,23 @@ export default function StoreFilterSidebar() {
     filters.verifiedOnly;
 
   const handleSearchChange = (search: string) => {
-    setFilters({ search });
+    onFilterChange({ search });
   };
 
   const handleCategoryChange = (value: string) => {
-    setFilters({ category: value === "All Categories" ? "" : value });
+    onFilterChange({ category: value === "All Categories" ? "" : value });
   };
 
   const handleRatingChange = (value: string) => {
-    setFilters({ minRating: Number(value) });
+    onFilterChange({ minRating: Number(value) });
   };
 
   const handleVerifiedChange = (checked: boolean) => {
-    setFilters({ verifiedOnly: checked });
+    onFilterChange({ verifiedOnly: checked });
   };
 
   const handleSortChange = (value: string) => {
-    setFilters({ sortBy: value as any });
+    onFilterChange({ sortBy: value as any });
   };
 
   return (
@@ -76,7 +85,7 @@ export default function StoreFilterSidebar() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={resetFilters}
+            onClick={onReset}
             className="h-8 gap-1 text-xs"
           >
             <X className="size-3" />
@@ -86,7 +95,19 @@ export default function StoreFilterSidebar() {
       </div>
 
       {/* Search */}
-      <StoreSearch filters={filters} onSearchChange={handleSearchChange} />
+      <div className="space-y-2">
+        <Label htmlFor="search">Search Stores</Label>
+        <div className="relative">
+          <Search className="-translate-y-1/2 absolute top-1/2 left-3 size-4 text-muted-foreground" />
+          <Input
+            id="search"
+            placeholder="Search by name..."
+            value={filters.search}
+            onChange={(e) => handleSearchChange(e.target.value)}
+            className="pl-9"
+          />
+        </div>
+      </div>
 
       {/* Category */}
       <div className="space-y-2">
