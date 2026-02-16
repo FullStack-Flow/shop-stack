@@ -18,7 +18,6 @@ export const getRouter = () => {
     defaultErrorComponent: DefaultErrorComponent,
     defaultNotFoundComponent: () => <NotFound />,
     scrollRestoration: true,
-    defaultPreloadStaleTime: 0,
   });
 
   setupRouterSsrQueryIntegration({ router, queryClient });

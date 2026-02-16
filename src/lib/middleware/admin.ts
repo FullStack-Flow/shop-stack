@@ -10,6 +10,20 @@ import { createMiddleware } from "@tanstack/react-start";
 import { auth } from "../auth";
 import { isUserAdmin } from "../helper/vendor";
 
+const getRequestUrl = (request: Request) => {
+  try {
+    return new URL(request.url);
+  } catch {
+    const headers = request.headers;
+    const proto = headers.get("x-forwarded-proto") ?? "http";
+    const host =
+      headers.get("x-forwarded-host") ??
+      headers.get("host") ??
+      "localhost:3000";
+    return new URL(request.url, `${proto}://${host}`);
+  }
+};
+
 export const adminMiddleware = createMiddleware().server(
   async ({ next, request }) => {
     const session = await auth.api.getSession({
@@ -18,7 +32,7 @@ export const adminMiddleware = createMiddleware().server(
 
     // Redirect to sign-in if no valid session
     if (!session || !session.user) {
-      const url = new URL(request.url);
+      const url = getRequestUrl(request);
       const redirectTo = url.pathname + url.search;
       throw redirect({
         to: "/auth/sign-in",
