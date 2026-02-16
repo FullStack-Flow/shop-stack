@@ -13,6 +13,7 @@ const config = defineConfig({
     }),
     tailwindcss(),
     nitroV2Plugin({
+      preset: "vercel",
       compatibilityDate: "2026-02-16",
     }),
     tanstackStart(),
