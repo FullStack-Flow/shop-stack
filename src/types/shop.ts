@@ -63,8 +63,14 @@ export interface AdminShop {
   status: string | null;
   rating: string | null;
   monthlyRevenue: string | null;
+  commissionRate: string;
+  stripeConnectedAccountId: string | null;
+  stripeOnboardingComplete: boolean;
+  stripeChargesEnabled: boolean;
+  stripePayoutsEnabled: boolean;
   totalProducts: number;
   totalOrders: number;
+  customerCount: number;
   createdAt: string;
   updatedAt: string;
   vendorBusinessName: string | null;

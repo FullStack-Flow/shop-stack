@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Loader2 } from "lucide-react";
 import AdminTenantDetailsTemplate from "@/components/templates/admin/tenants/admin-tenant-details-template";
 import { useAdminShops } from "@/hooks/admin/use-admin-shops";
+import { formatCurrency } from "@/lib/utils";
 
 export const Route = createFileRoute("/(admin)/admin/tenants/$tenantId")({
   component: TenantDetailsPage,
@@ -43,6 +44,7 @@ function TenantDetailsPage() {
     );
   }
 
+  const revenueValue = Number(shop.monthlyRevenue ?? 0);
   const tenant = {
     id: shop.id,
     name: shop.name,
@@ -53,14 +55,20 @@ function TenantDetailsPage() {
       email: shop.ownerEmail ?? "Unknown",
       avatar: shop.ownerImage ?? undefined,
     },
+    vendorId: shop.vendorId,
+    commissionRate: shop.commissionRate ?? "10.00",
+    stripeConnectedAccountId: shop.stripeConnectedAccountId ?? null,
+    stripeOnboardingComplete: shop.stripeOnboardingComplete ?? false,
+    stripeChargesEnabled: shop.stripeChargesEnabled ?? false,
+    stripePayoutsEnabled: shop.stripePayoutsEnabled ?? false,
     plan: "free",
     status: (shop.status ?? "pending") as "active" | "suspended" | "pending",
     joinedDate: shop.createdAt,
     stats: {
-      revenue: shop.monthlyRevenue ?? "$0",
+      revenue: formatCurrency(Number.isNaN(revenueValue) ? 0 : revenueValue),
       orders: shop.totalOrders ?? 0,
       products: shop.totalProducts ?? 0,
-      customers: 0,
+      customers: shop.customerCount ?? 0,
     },
   };
 

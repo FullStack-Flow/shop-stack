@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
-import { and, eq } from "drizzle-orm";
+import { and, eq, inArray, sql } from "drizzle-orm";
 import { db } from "../db";
+import { orders } from "../db/schema/order-schema";
 import { shops, vendors } from "../db/schema/shop-schema";
 import { getProductCountsForShops } from "../helper/shop-helper";
 import { getVendorForUser, isUserAdmin } from "../helper/vendor";
@@ -17,6 +18,22 @@ async function getShopStates(shopIds: string[]) {
   if (shopIds.length === 0) return new Map();
 
   const productCountMap = await getProductCountsForShops(shopIds);
+  const orderStats = await db
+    .select({
+      shopId: orders.shopId,
+      orderCount: sql<number>`count(${orders.id})`,
+      revenue: sql<number>`coalesce(sum(case when ${orders.paymentStatus} = 'paid' then ${orders.totalAmount} else 0 end), 0)`,
+    })
+    .from(orders)
+    .where(inArray(orders.shopId, shopIds))
+    .groupBy(orders.shopId);
+
+  const orderStatsMap = new Map(
+    orderStats.map((row) => [
+      row.shopId,
+      { orderCount: Number(row.orderCount), revenue: Number(row.revenue) },
+    ]),
+  );
 
   // Build state map with product counts
   const stateMap = new Map<
@@ -25,10 +42,11 @@ async function getShopStates(shopIds: string[]) {
   >();
 
   for (const shopId of shopIds) {
+    const stats = orderStatsMap.get(shopId);
     stateMap.set(shopId, {
       productCount: productCountMap.get(shopId) ?? 0,
-      orderCount: 0,
-      revenue: 0,
+      orderCount: stats?.orderCount ?? 0,
+      revenue: stats?.revenue ?? 0,
     });
   }
 

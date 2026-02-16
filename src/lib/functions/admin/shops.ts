@@ -1,7 +1,18 @@
 import { createServerFn } from "@tanstack/react-start";
-import { and, asc, count, desc, eq, ilike, or, type SQL } from "drizzle-orm";
+import {
+  and,
+  asc,
+  count,
+  desc,
+  eq,
+  ilike,
+  or,
+  sql,
+  type SQL,
+} from "drizzle-orm";
 import { db } from "@/lib/db";
 import { user } from "@/lib/db/schema/auth-schema";
+import { orders } from "@/lib/db/schema/order-schema";
 import { products } from "@/lib/db/schema/products-schema";
 import { shops, vendors } from "@/lib/db/schema/shop-schema";
 import {
@@ -10,6 +21,8 @@ import {
   normalizeShop,
 } from "@/lib/helper/shop-helper";
 import { adminMiddleware } from "@/lib/middleware/admin";
+import { isStripeConfigured } from "@/lib/stripe";
+import { getAccountStatus } from "@/lib/stripe/connect";
 import {
   type AdminShopsQuery,
   adminShopsQuerySchema,
@@ -192,13 +205,59 @@ export const getAdminShopById = createServerFn({ method: "GET" })
 
     const { shop, vendor, owner } = result[0];
 
-    // Get actual product count using shared helper
     const productCount = await getProductCountForShop(shop.id);
+    const [orderStats] = await db
+      .select({
+        totalOrders: sql<number>`count(${orders.id})`,
+        paidRevenue: sql<string>`coalesce(sum(case when ${orders.paymentStatus} = 'paid' then ${orders.totalAmount} else 0 end), 0)`,
+        customerCount: sql<number>`count(distinct case when ${orders.paymentStatus} = 'paid' then coalesce(${orders.userId}, ${orders.guestEmail}) end)`,
+      })
+      .from(orders)
+      .where(eq(orders.shopId, shop.id));
 
-    // Normalize shop using shared helper
-    const normalizedShop = normalizeShop(shop, vendor, owner, productCount);
+    let resolvedVendor = vendor;
+    if (vendor?.stripeConnectedAccountId && isStripeConfigured()) {
+      try {
+        const status = await getAccountStatus(vendor.stripeConnectedAccountId);
+        if (status) {
+          await db
+            .update(vendors)
+            .set({
+              stripeOnboardingComplete: status.detailsSubmitted,
+              stripeChargesEnabled: status.chargesEnabled,
+              stripePayoutsEnabled: status.payoutsEnabled,
+            })
+            .where(eq(vendors.id, vendor.id));
+          resolvedVendor = {
+            ...vendor,
+            stripeOnboardingComplete: status.detailsSubmitted,
+            stripeChargesEnabled: status.chargesEnabled,
+            stripePayoutsEnabled: status.payoutsEnabled,
+          };
+        }
+      } catch {
+        resolvedVendor = vendor;
+      }
+    }
 
-    return { shop: normalizedShop };
+    const normalizedShop = normalizeShop(
+      shop,
+      resolvedVendor,
+      owner,
+      productCount,
+    );
+    const totalOrders = Number(orderStats?.totalOrders ?? 0);
+    const customerCount = Number(orderStats?.customerCount ?? 0);
+    const monthlyRevenue = orderStats?.paidRevenue ?? "0";
+
+    return {
+      shop: {
+        ...normalizedShop,
+        totalOrders,
+        customerCount,
+        monthlyRevenue,
+      },
+    };
   });
 
 // ============================================================================

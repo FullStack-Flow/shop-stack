@@ -19,8 +19,14 @@ export interface NormalizedShop {
   status: string | null;
   rating: string | null;
   monthlyRevenue: string | null;
+  commissionRate: string;
+  stripeConnectedAccountId: string | null;
+  stripeOnboardingComplete: boolean;
+  stripeChargesEnabled: boolean;
+  stripePayoutsEnabled: boolean;
   totalProducts: number;
   totalOrders: number;
+  customerCount: number;
   createdAt: string;
   updatedAt: string;
   // Vendor/owner info
@@ -52,8 +58,14 @@ export function normalizeShop(
     status: shop.status,
     rating: shop.rating,
     monthlyRevenue: shop.monthlyRevenue,
+    commissionRate: vendor?.commissionRate ?? "10.00",
+    stripeConnectedAccountId: vendor?.stripeConnectedAccountId ?? null,
+    stripeOnboardingComplete: vendor?.stripeOnboardingComplete ?? false,
+    stripeChargesEnabled: vendor?.stripeChargesEnabled ?? false,
+    stripePayoutsEnabled: vendor?.stripePayoutsEnabled ?? false,
     totalProducts: productCount ?? shop.totalProducts ?? 0,
     totalOrders: shop.totalOrders ?? 0,
+    customerCount: 0,
     createdAt: shop.createdAt.toISOString(),
     updatedAt: shop.updatedAt.toISOString(),
     // Vendor/owner info

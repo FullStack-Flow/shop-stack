@@ -93,12 +93,12 @@ export const createTransactionColumns = ({
       header: "Customer",
       cell: ({ row }) => {
         const customer = row.original.customer;
+        const customerName = customer?.name ?? "Guest";
+        const customerEmail = customer?.email ?? "—";
         return (
           <div>
-            <div className="font-medium">{customer.name ?? "Guest"}</div>
-            <div className="text-muted-foreground text-xs">
-              {customer.email}
-            </div>
+            <div className="font-medium">{customerName}</div>
+            <div className="text-muted-foreground text-xs">{customerEmail}</div>
           </div>
         );
       },

@@ -22,6 +22,12 @@ export interface AdminTenantDetailsProps {
       email: string;
       avatar?: string;
     };
+    vendorId: string;
+    commissionRate: string;
+    stripeConnectedAccountId?: string | null;
+    stripeOnboardingComplete?: boolean;
+    stripeChargesEnabled?: boolean;
+    stripePayoutsEnabled?: boolean;
     plan: string;
     status: "active" | "suspended" | "pending";
     joinedDate: string;
