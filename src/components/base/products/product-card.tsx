@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Eye, Loader2, ShoppingCart, Star } from "lucide-react";
+import { Eye, Loader2, ShoppingCart, Star, Store } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
@@ -145,12 +145,22 @@ export default function ProductCard({
               {product.name}
             </h3>
           </Link>
+
           {variant === "list" && (
             <p className="line-clamp-2 text-muted-foreground text-sm">
               {product.description}
             </p>
           )}
         </div>
+
+        <Link
+          to="/store/$slug"
+          params={{ slug: product.store.slug }}
+          className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors w-fit"
+        >
+          <Store className="h-3.5 w-3.5" />
+          <span className="text-xs font-medium">{product.store.name}</span>
+        </Link>
 
         {/* Price & Colors */}
         <div
