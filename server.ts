@@ -91,7 +91,7 @@ const log = {
 
 // Preloading configuration from environment variables
 const MAX_PRELOAD_BYTES = Number(
-  process.env.ASSET_PRELOAD_MAX_SIZE ?? 5 * 1024 * 1024 // 5MB default
+  process.env.ASSET_PRELOAD_MAX_SIZE ?? 5 * 1024 * 1024, // 5MB default
 );
 
 // Parse comma-separated include patterns (no defaults)
@@ -203,7 +203,7 @@ function isFileEligibleForPreloading(relativePath: string): boolean {
  */
 function isMimeTypeCompressible(mimeType: string): boolean {
   return GZIP_TYPES.some((type) =>
-    type.endsWith("/") ? mimeType.startsWith(type) : mimeType === type
+    type.endsWith("/") ? mimeType.startsWith(type) : mimeType === type,
   );
 }
 
@@ -212,7 +212,7 @@ function isMimeTypeCompressible(mimeType: string): boolean {
  */
 function compressDataIfAppropriate(
   data: Uint8Array,
-  mimeType: string
+  mimeType: string,
 ): Uint8Array | undefined {
   if (!ENABLE_GZIP) return undefined;
   if (data.byteLength < GZIP_MIN_BYTES) return undefined;
@@ -228,7 +228,7 @@ function compressDataIfAppropriate(
  * Create response handler function with ETag and Gzip support
  */
 function createResponseHandler(
-  asset: InMemoryAsset
+  asset: InMemoryAsset,
 ): (req: Request) => Response {
   return (req: Request) => {
     const headers: Record<string, string> = {
@@ -284,7 +284,7 @@ function createCompositeGlobPattern(): Bun.Glob {
  * Small files are loaded into memory, large files are served on-demand
  */
 async function initializeStaticRoutes(
-  clientDirectory: string
+  clientDirectory: string,
 ): Promise<PreloadResult> {
   const routes: Record<string, (req: Request) => Response | Promise<Response>> =
     {};
@@ -294,16 +294,16 @@ async function initializeStaticRoutes(
   log.info(`Loading static assets from ${clientDirectory}...`);
   if (VERBOSE) {
     console.log(
-      `Max preload size: ${(MAX_PRELOAD_BYTES / 1024 / 1024).toFixed(2)} MB`
+      `Max preload size: ${(MAX_PRELOAD_BYTES / 1024 / 1024).toFixed(2)} MB`,
     );
     if (INCLUDE_PATTERNS.length > 0) {
       console.log(
-        `Include patterns: ${process.env.ASSET_PRELOAD_INCLUDE_PATTERNS ?? ""}`
+        `Include patterns: ${process.env.ASSET_PRELOAD_INCLUDE_PATTERNS ?? ""}`,
       );
     }
     if (EXCLUDE_PATTERNS.length > 0) {
       console.log(
-        `Exclude patterns: ${process.env.ASSET_PRELOAD_EXCLUDE_PATTERNS ?? ""}`
+        `Exclude patterns: ${process.env.ASSET_PRELOAD_EXCLUDE_PATTERNS ?? ""}`,
       );
     }
   }
@@ -376,13 +376,13 @@ async function initializeStaticRoutes(
     // Show detailed file overview only when verbose mode is enabled
     if (VERBOSE && (loaded.length > 0 || skipped.length > 0)) {
       const allFiles = [...loaded, ...skipped].sort((a, b) =>
-        a.route.localeCompare(b.route)
+        a.route.localeCompare(b.route),
       );
 
       // Calculate max path length for alignment
       const maxPathLength = Math.min(
         Math.max(...allFiles.map((f) => f.route.length)),
-        60
+        60,
       );
 
       // Format file size with KB and actual gzip size
@@ -410,7 +410,7 @@ async function initializeStaticRoutes(
       if (loaded.length > 0) {
         console.log("\n📁 Preloaded into memory:");
         console.log(
-          "Path                                          │    Size │ Gzip Size"
+          "Path                                          │    Size │ Gzip Size",
         );
         loaded
           .sort((a, b) => a.route.localeCompare(b.route))
@@ -426,7 +426,7 @@ async function initializeStaticRoutes(
       if (skipped.length > 0) {
         console.log("\n💾 Served on-demand:");
         console.log(
-          "Path                                          │    Size │ Gzip Size"
+          "Path                                          │    Size │ Gzip Size",
         );
         skipped
           .sort((a, b) => a.route.localeCompare(b.route))
@@ -444,11 +444,11 @@ async function initializeStaticRoutes(
     if (VERBOSE) {
       if (loaded.length > 0 || skipped.length > 0) {
         const allFiles = [...loaded, ...skipped].sort((a, b) =>
-          a.route.localeCompare(b.route)
+          a.route.localeCompare(b.route),
         );
         console.log("\n📊 Detailed file information:");
         console.log(
-          "Status       │ Path                            │ MIME Type                    │ Reason"
+          "Status       │ Path                            │ MIME Type                    │ Reason",
         );
         allFiles.forEach((file) => {
           const isPreloaded = loaded.includes(file);
@@ -464,7 +464,7 @@ async function initializeStaticRoutes(
               ? `${file.route.substring(0, 27)}...`
               : file.route;
           console.log(
-            `${status.padEnd(12)} │ ${route.padEnd(30)} │ ${file.type.padEnd(28)} │ ${reason.padEnd(10)}`
+            `${status.padEnd(12)} │ ${route.padEnd(30)} │ ${file.type.padEnd(28)} │ ${reason.padEnd(10)}`,
           );
         });
       } else {
@@ -476,7 +476,7 @@ async function initializeStaticRoutes(
     console.log(); // Empty line for separation
     if (loaded.length > 0) {
       log.success(
-        `Preloaded ${String(loaded.length)} files (${(totalPreloadedBytes / 1024 / 1024).toFixed(2)} MB) into memory`
+        `Preloaded ${String(loaded.length)} files (${(totalPreloadedBytes / 1024 / 1024).toFixed(2)} MB) into memory`,
       );
     } else {
       log.info("No files preloaded into memory");
@@ -486,12 +486,12 @@ async function initializeStaticRoutes(
       const tooLarge = skipped.filter((f) => f.size > MAX_PRELOAD_BYTES).length;
       const filtered = skipped.length - tooLarge;
       log.info(
-        `${String(skipped.length)} files will be served on-demand (${String(tooLarge)} too large, ${String(filtered)} filtered)`
+        `${String(skipped.length)} files will be served on-demand (${String(tooLarge)} too large, ${String(filtered)} filtered)`,
       );
     }
   } catch (error) {
     log.error(
-      `Failed to load static files from ${clientDirectory}: ${String(error)}`
+      `Failed to load static files from ${clientDirectory}: ${String(error)}`,
     );
   }
 
@@ -542,7 +542,7 @@ async function initializeServer() {
     // Global error handler
     error(error) {
       log.error(
-        `Uncaught server error: ${error instanceof Error ? error.message : String(error)}`
+        `Uncaught server error: ${error instanceof Error ? error.message : String(error)}`,
       );
       return new Response("Internal Server Error", { status: 500 });
     },

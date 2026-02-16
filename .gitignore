@@ -14,3 +14,4 @@ todos.json
 .agents
 .nitro
 .agents
+src/routeTree.gen.ts
