@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "start": "bun run server.ts",
+    "start": "node .output/server/index.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "db:generate": "drizzle-kit generate",
