@@ -39,10 +39,11 @@ export const auth = betterAuth({
   // Use a deterministic dev secret if env is missing to prevent runtime errors
   secret: process.env.BETTER_AUTH_SECRET ?? "dev-secret",
   trustedOrigins: [
-    // Local development
-    process.env.VITE_BETTER_AUTH_URL!,
-    // Optionally add your production app URL via env
-    ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
+    ...new Set(
+      [process.env.VITE_BETTER_AUTH_URL, process.env.BETTER_AUTH_URL].filter(
+        Boolean,
+      ) as string[],
+    ),
   ],
 
   emailAndPassword: {
